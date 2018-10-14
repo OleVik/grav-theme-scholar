@@ -1,6 +1,6 @@
 # Scholar
 
-Scholar is a theme made especially for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/).
+Scholar is a theme made especially for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/). This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
 
 # Installation
 
@@ -81,17 +81,24 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
 ### Current
 
 1. Recast as Scholar
+    - Maintain Grav-terminology of extensions as Themes or Plugins
+        - Customizations _within_ this theme are Styles (color schemes) and Layouts (templates)
+        - Extensions can add either, or features not strictly necessary for Scholar "Core"
+1. Optimize blueprints and languages
+    - [ ] Optimize fields
+    - [ ] String-hierarchy in languages.yaml
 1. Layouts
     - [ ] Optimize templates for docs
     - [ ] Add templates for pages
-    - [ ] Add templates for book
+    - [ ] Add templates for book/papers/articles
 1. Styles
     - [ ] Join docs, pages, and book styles into one sheet
+        - Color-customization should be available globally, for page-hierarchies, and single pages
     - [ ] Add styles for docs
-        - Missing GitBooks-like, something like http://learn.simonhalimonov.de/
+        - Missing GitBooks-like, something like [Simon Halimonov](http://learn.simonhalimonov.de/)
     - [ ] Add styles for pages
     - [ ] Add styles for book
-        - See https://docs.gitbook.com/, https://pressbooks.com/themes/
+        - See [GitBook](https://docs.gitbook.com/), [PressBooks](https://pressbooks.com/themes/)
 
 ### Future
 
