@@ -95,6 +95,7 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
     - [ ] Add templates for book/papers/articles
 1. Styles
     - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
+    - [ ] Unify to reduce customizations in core Styles
     - [ ] Join docs, pages, and book styles into one sheet
         - Color-customization should be available globally, for page-hierarchies, and single pages
     - [ ] Add styles for docs
