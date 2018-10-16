@@ -30,6 +30,10 @@ en:
                         DESCRIPTION: "URL-path to the pages-folder, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-learn2-with-git-sync/tree/master'."
                 GOOGLEANALYTICS:
                     LABEL: Google Analytics Code
+                DEBUG:
+                    LABEL: Debug
+                    HELP: Enable or disable debugging
+                    DESCRIPTION: Enable or disable debugging.
         GIT:
             GITSYNC:
                 INIT: Add/Setup Git Sync Plugin

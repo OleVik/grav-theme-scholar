@@ -4,7 +4,7 @@
 $theme-main: #CAD1D9;
 $theme-secondary: #383F45;
 $theme-main-alt: #FAFAFA;
-$theme-secondary-alt: #383F45;
+$theme-secondary-alt: darken($theme-secondary, 5%);
 $theme-text: #383F45;
 $theme-text-alt: #2c2d30;
 $theme-background: #FAFAFA;
@@ -16,7 +16,7 @@ $core-accent: $theme-secondary;
 $secondary-link: darken($core-accent, 15%);
 
 $header-height: 0;
-$header-bg: $theme-main;
+$header-bg: darken(desaturate(adjust-hue($theme-main, -2), 11.90), 24.90);
 $sidebar-width: 300px;
 $sidebar-width-smaller: 230px;
 $sidebar-bg: $theme-secondary-alt;

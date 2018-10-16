@@ -39,18 +39,23 @@ class Scholar extends Theme
     {
         $assets = $this->grav['assets'];
         $config = $this->config();
-        if ($config['theme']) {
-            $theme = $config['theme'];
-            if ($config['theme'] == 'default') {
-                $theme = 'theme';
-            }
+        if ($config['style']) {
+            $style = $config['style'];
             $current = self::fileFinder(
-                $theme,
+                $style,
                 '.css',
                 'theme://css/styles',
                 'theme://css'
             );
             $assets->addCss($current, 101);
+        }
+        if ($config['debug']) {
+            $debug = self::fileFinder(
+                'tota11y',
+                '.min.js',
+                'theme://js'
+            );
+            $assets->addJs($debug, 100);
         }
     }
 

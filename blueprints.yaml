@@ -1,5 +1,5 @@
 name: Scholar
-version: 0.0.2
+version: 0.0.3
 description: "An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav."
 icon: git
 author:
@@ -100,3 +100,15 @@ form:
               placeholder: UA-XXXXXXXX-X
               validate:
                 type: text
+            debug:
+              type: toggle
+              label: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.LABEL
+              help: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.HELP
+              description: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.DESCRIPTION
+              highlight: 0
+              default: 0
+              options:
+                1: 'Enabled'
+                0: 'Disabled'
+              validate:
+                type: bool

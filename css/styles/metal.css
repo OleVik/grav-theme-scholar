@@ -24,7 +24,7 @@ body {
 a {
   color: #b47d6c; }
   a:hover {
-    color: #8c5847; }
+    color: #6a4236; }
 
 #body-inner a:hover {
   text-decoration: underline;
@@ -188,7 +188,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          opacity: 0.5;
+          color: #ababa4;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
@@ -198,6 +198,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem; }
+        #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
+          color: #5f5f57; }
     #sidebar ul li.active > a {
       background: #fff;
       color: #000000 !important;
@@ -275,7 +277,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     top: 0;
     bottom: 0;
     width: 4rem;
-    font-size: 50px;
+    font-size: 0;
     height: 100%;
     cursor: pointer;
     display: table;
@@ -296,6 +298,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-top: 0; }
         #body .nav > i {
           display: inline-block; } }
+    #body .nav i {
+      font-size: 50px; }
     #body .nav:hover {
       background: #e8e8e6; }
     #body .nav.nav-pref {

@@ -88,10 +88,13 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
     - [X] Optimize fields
     - [X] String-hierarchy in languages.yaml
 1. Layouts
+    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
+        - See https://a11yproject.com/resources for ARIA-WAI
     - [ ] Optimize templates for docs
     - [ ] Add templates for pages
     - [ ] Add templates for book/papers/articles
 1. Styles
+    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
     - [ ] Join docs, pages, and book styles into one sheet
         - Color-customization should be available globally, for page-hierarchies, and single pages
     - [ ] Add styles for docs

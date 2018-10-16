@@ -24,7 +24,7 @@ body {
 a {
   color: #383F45; }
   a:hover {
-    color: #16181b; }
+    color: black; }
 
 #body-inner a:hover {
   text-decoration: underline;
@@ -59,7 +59,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(19, 131, 179, 0.7); }
 
 #header {
-  background: #CAD1D9;
+  background: #8d9297;
   color: #fff;
   text-align: center;
   padding: 1rem; }
@@ -74,8 +74,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 .searchbox {
   margin-top: 0.5rem;
   position: relative;
-  border: 1px solid #d9dee4;
-  background: #bbc4ce;
+  border: 1px solid #9a9fa3;
+  background: #80858b;
   border-radius: 4px; }
   .searchbox label {
     color: rgba(255, 255, 255, 0.8);
@@ -116,7 +116,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       display: inline-block; } }
 
 #sidebar {
-  background-color: #383F45;
+  background-color: #2d3237;
   position: fixed;
   top: 0;
   width: 300px;
@@ -131,7 +131,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #sidebar a.subtitle {
       color: rgba(250, 250, 250, 0.6); }
   #sidebar hr {
-    border-bottom: 1px solid #31373d; }
+    border-bottom: 1px solid #262a2e; }
   #sidebar a.padding {
     padding: 0 1rem; }
   #sidebar h5 {
@@ -151,7 +151,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       top: 0.7rem;
       font-size: 80%; }
     #sidebar h5.parent a {
-      background: #282d31;
+      background: #1d2023;
       color: white !important; }
     #sidebar h5.active a {
       background: #fff;
@@ -188,16 +188,18 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          opacity: 0.5;
+          color: #bababa;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
       #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-        background: #2d3237;
+        background: #212529;
         margin-left: -1rem;
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem; }
+        #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
+          color: #6e6e6e; }
     #sidebar ul li.active > a {
       background: #fff;
       color: #383F45 !important;
@@ -275,7 +277,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     top: 0;
     bottom: 0;
     width: 4rem;
-    font-size: 50px;
+    font-size: 0;
     height: 100%;
     cursor: pointer;
     display: table;
@@ -296,6 +298,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-top: 0; }
         #body .nav > i {
           display: inline-block; } }
+    #body .nav i {
+      font-size: 50px; }
     #body .nav:hover {
       background: #FAFAFA; }
     #body .nav.nav-pref {
