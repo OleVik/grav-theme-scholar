@@ -85,8 +85,8 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
         - Customizations _within_ this theme are Styles (color schemes) and Layouts (templates)
         - Extensions can add either, or features not strictly necessary for Scholar "Core"
 1. Optimize blueprints and languages
-    - [ ] Optimize fields
-    - [ ] String-hierarchy in languages.yaml
+    - [X] Optimize fields
+    - [X] String-hierarchy in languages.yaml
 1. Layouts
     - [ ] Optimize templates for docs
     - [ ] Add templates for pages

@@ -8,4 +8,4 @@ github:
     icon:                                           # FontAwesome icon
     tree:
 default_taxonomy_category: docs
-theme: sunrise
+theme: metal

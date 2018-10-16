@@ -36,7 +36,7 @@
 
 <div class="scrollbar-inner">
     <div class="highlightable">
-        {% if theme_config.top_level_version %}
+        {% if theme_config.collapse_pages %}
             {% for slug, ver in pages.children %}
                 {{ _self.version(ver) }}
                 <ul id="{{ slug }}" class="topics">
@@ -55,14 +55,14 @@
         <hr />
 
         <a class="padding" href="#" data-clear-history-toggle><i
-                    class="fa fa-fw fa-history"></i> {{ 'THEME_SCHOLAR_CLEAR_HISTORY'|t }}</a><br/>
+                    class="fa fa-fw fa-history"></i> {{ 'THEME_SCHOLAR.SEARCH.CLEAR_HISTORY'|t }}</a><br/>
 
         <section id="footer">
             {% if config.plugins.feed.enabled and pages.find('/feed') %}
               <a class="button" href="{{ base_url }}/feed.atom"><i class="fa fa-rss-square"></i> Atom 1.0</a>
               <a class="button" href="{{ base_url }}/feed.rss"><i class="fa fa-rss-square"></i> RSS</a><br><br>
             {% endif %}
-            <p>{{ 'THEME_SCHOLAR_BUILT_WITH_GRAV'|t }}</p>
+            <p>{{ 'THEME_SCHOLAR.BUILT_WITH'|t }}</p>
         </section>
     </div>
 </div>

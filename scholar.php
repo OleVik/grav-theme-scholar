@@ -35,12 +35,6 @@ class Scholar extends Theme
         }
     }
 
-    public static function getdefaulttaxonomycategory()
-    {
-        $config = Grav::instance()['config'];
-        return $config->get('themes.' . $config->get('system.pages.theme'). '.default_taxonomy_category');
-    }
-
     public function onPageInitialized()
     {
         $assets = $this->grav['assets'];

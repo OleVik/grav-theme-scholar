@@ -1,10 +1,42 @@
 en:
-    THEME_SCHOLAR_GIT_EDIT_THIS_PAGE: Edit this Page
-    THEME_SCHOLAR_GIT_NOTE: Notice an error? Think you can improve this documentation?
-    THEME_SCHOLAR_CLEAR_HISTORY: Clear History
-    THEME_SCHOLAR_BUILT_WITH_GRAV: Built with <a href="http://getgrav.org">Grav</a> - The Modern Flat-File CMS
-    THEME_SCHOLAR_SEARCH_DOCUMENTATION: Search Docs
-    THEME_SCHOLAR_GIT_ADD_SETUP_GIT_SYNC_PLUGIN: Add/Setup Git Sync Plugin
-    THEME_SCHOLAR_GIT_SETUP_GIT_SYNC_PLUGIN: Setup Git Sync
-    THEME_SCHOLAR_ADVANCED_SEARCH: Advanced Search
-    THEME_SCHOLAR_ADVANCED_SEARCH_PLACEHOLDER: Search the docs
+    THEME_SCHOLAR:
+        BASIC:
+            NAME: Basic
+            DOCS:
+                COLLAPSE_PAGES:
+                    LABEL: Collapse Pages
+                    HELP: Collapse Pages in Menus
+                    DESCRIPTION: Collapse Pages in Menus.
+                HOME_URL_OVERRIDE:
+                    LABEL: Home URL Override
+                    HELP: Override the link in the menu with your own
+                    DESCRIPTION: Override the link in the menu with your own.
+        ADVANCED:
+            NAME: Advanced
+            DOCS:
+                GITSYNC:
+                    TITLE: Git Sync Options
+                    POSITION:
+                        LABEL: Git Sync Link Position
+                        HELP: Set where the link to Git Sync appears
+                        DESCRIPTION: Set where the link to Git Sync appears.
+                    ICON:
+                        LABEL: Custom Git Link Icon
+                        HELP: Short name of the Font Awesome icon
+                        DESCRIPTION: Enter the short name of the Font Awesome icon for the link, for example 'gitlab'.
+                    TREE:
+                        LABEL: Custom Git Repository Tree
+                        HELP: URL that leads to the pages-folder
+                        DESCRIPTION: "URL-path to the pages-folder, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-learn2-with-git-sync/tree/master'."
+                GOOGLEANALYTICS:
+                    LABEL: Google Analytics Code
+        GIT:
+            GITSYNC:
+                INIT: Add/Setup Git Sync Plugin
+            EDIT_THIS_PAGE: Edit this Page
+            NOTE: Notice an error? Think you can improve this documentation?
+        SEARCH:
+            DOCS: Search Docs
+            ADVANCED: Advanced Search
+            CLEAR_HISTORY: Clear History
+        BUILT_WITH: Built with <a href="http://getgrav.org">Grav</a> - The Modern Flat-File CMS

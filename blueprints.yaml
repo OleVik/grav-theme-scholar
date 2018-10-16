@@ -1,108 +1,102 @@
 name: Scholar
-version: 0.0.1
-description: ""
+version: 0.0.2
+description: "An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav."
 icon: git
 author:
- name: Hibbitts Design
- email: hello@hibbittsdesign.org
- url: http://hibbittsdesign.org
-homepage: https://github.com/hibbitts-design/grav-theme-learn2-git-sync
-demo: http://demo.hibbittsdesign.org/grav-learn2-git-sync/
-keywords: learn2, gitsync
-bugs: https://github.com/hibbitts-design/grav-theme-learn2-git-sync/issues
+  name: Ole Vik
+  email: git@olevik.net
+homepage: https://github.com/OleVik/grav-theme-scholar
+demo: https://olevik.me/staging/grav-skeleton-scholar
+keywords: academic, academics, paper, papers, article, articles, book, books, doc, docs, documentation, resume, CV
+bugs: https://github.com/OleVik/grav-theme-scholar/issues
+readme: https://github.com/OleVik/grav-theme-scholar/blob/develop/README.md
 license: MIT
 
 dependencies:
-  - admin
-  - breadcrumbs
-  - learn2
-  - error
-  - external_links
-  - feed
-  - git-sync
-  - highlight
-  - problems
-  - simplesearch
-  - tntsearch
-  - youtube
+- { name: grav, version: '~1.6' }
+- { name: breadcrumbs, version: '~1.5' }
+- { name: highlight }
 
 form:
   validation: loose
   fields:
-
-    gitsyncoptions:
-      type: section
-      title: 'Git Sync Link Options'
-      underline: true
-
-    github.position:
-        type: select
-        size: medium
-        classes: fancy
-        label: Git Link Position
-        options:
-            top: Top
-            bottom: Bottom
-            off: Off
-
-    github.icon:
-        type: input.text
-        size: small
-        label: Custom Git Link Font Awesome Icon
-        description: Icon short name.
-        help: Enter the short name of the Font Awesome icon for the link, for example 'gitlab'.
-        validate:
-            type: text
-
-    github.tree:
-        type: text
-        label: Custom Git Repository Tree URL
-        help: Enter the URL that leads to the pages folder of your Git Repository.
-        description: "URL path to the pages folder, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-learn2-with-git-sync/tree/master'."
-
-    siteandpageoptions:
-      type: section
-      title: 'Learn2 Theme Options'
-      underline: true
-
-
-    style:
-      type: select
-      size: long
-      label: Style
-      description: Custom style selection.
-      default: default
-      options:
-        default: Default
-        metal: Metal
-
-    top_level_version:
-        type: toggle
-        label: Top Level Version
-        highlight: 1
-        default: 0
-        options:
-          1: Enabled
-          0: Disabled
-        validate:
-          type: bool
-
-    home_url:
-        type: text
-        label: Home URL
-        placeholder: http://getgrav.org
-        validate:
-          type: text
-
-    google_analytics_code:
-        type: text
-        label: Google Analytics Code
-        placeholder: UA-XXXXXXXX-X
-        validate:
-          type: text
-
-    default_taxonomy_category:
-      type: text
-      label: Default Taxonomy Category
-      validate:
-          required: true
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        basic:
+          title: THEME_SCHOLAR.BASIC.NAME
+          type: tab
+          fields:
+            style:
+              type: select
+              label: Style
+              description: Default style to use across the site.
+              default: default
+              options:
+                default: Grav Default
+                metal: Metal
+                sunrise: Sunrise
+                navy_sunrise: Navy Sunrise
+                hoth: Hoth
+                gold: Gold
+                grey: Grey
+                dark_ocean: Dark Ocean
+                arctic: Arctic
+            collapse_pages:
+              type: toggle
+              label: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.LABEL
+              help: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.HELP
+              description: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.DESCRIPTION
+              highlight: 0
+              default: 0
+              options:
+                1: 'Yes'
+                0: 'No'
+              validate:
+                type: bool
+            home_url_override:
+              type: text
+              label: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.LABEL
+              help: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.HELP
+              description: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.DESCRIPTION
+              placeholder: http://getgrav.org
+              validate:
+                type: text
+        advanced:
+          title: THEME_SCHOLAR.ADVANCED.NAME
+          type: tab
+          fields:
+            gitsyncoptions:
+              type: section
+              title: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TITLE
+              underline: true
+            github.position:
+              type: select
+              classes: fancy
+              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.LABEL
+              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.HELP
+              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.DESCRIPTION
+              default: top
+              options:
+                top: Top
+                bottom: Bottom
+                none: None
+            github.icon:
+              type: input.text
+              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.LABEL
+              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.HELP
+              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.DESCRIPTION
+              validate:
+                type: text
+            github.tree:
+              type: text
+              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.LABEL
+              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.HELP
+              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.DESCRIPTION
+            google_analytics_code:
+              type: text
+              label: THEME_SCHOLAR.ADVANCED.DOCS.GOOGLEANALYTICS.LABEL
+              placeholder: UA-XXXXXXXX-X
+              validate:
+                type: text
