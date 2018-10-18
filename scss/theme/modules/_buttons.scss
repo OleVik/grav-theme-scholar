@@ -7,8 +7,8 @@
 }
 
 @mixin button-color($color) {
-	background: $color;
-	color: $white;
+	background: $color !important;
+	color: maximize-contrast-color($color) !important;
 	box-shadow: 0 3px 0 darken($color, 6%);
 	&:hover {
 		background: darken($color, 6%);

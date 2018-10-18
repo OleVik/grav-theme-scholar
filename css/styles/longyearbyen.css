@@ -15,8 +15,69 @@
   .button:active, .button-secondary:active {
     margin: 2px 0 -2px 0; }
 
+/*
+  The Ultimate Hover Color Function
+  @author Gray Gilmore - http://code.graygilmore.com
+
+  The goal of this Sass function is provide a hover color that works
+  with any color on any background. No longer do we need to bundle
+  hover color options with our themes, let Sassy McSasserson take care
+  of that for you.
+
+  The hover color, seen in this demo as "After" text, must be visible in
+  all situations and, hopefully, pass the WCAG 2.0 contrast ratio [1]
+  formula (4.5:1).
+
+  [1] http://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast
+
+  contrast-ratio() help from @davidkaneda
+
+
+  ## Usage ##
+
+  a {
+    color: $link-color;
+    
+    &:hover {
+      color: hover($background-color, $link-color);
+    }
+  }
+
+  button {
+    background: $button-background;
+    color: $button-color;
+
+    &:hover {
+      background: hover($background-color, $button-background);
+    }
+  }
+
+  ## End Usage ##
+
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns black for dark text and white for light text.
+ */
+#sidebar #logo {
+  color: #383F45 !important; }
+  #sidebar #logo:hover {
+    color: #0a0c0d; }
+
+#sidebar ul.topics > li.parent,
+#sidebar ul.topics > li.active {
+  background: inherit !important; }
+
 body {
-  background: #FAFAFA;
+  background: #ffffff;
   color: #383F45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -59,7 +120,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(19, 131, 179, 0.7); }
 
 #header {
-  background: #8d9297;
+  background: #f8f8fa;
   color: #fff;
   text-align: center;
   padding: 1rem; }
@@ -74,8 +135,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 .searchbox {
   margin-top: 0.5rem;
   position: relative;
-  border: 1px solid #9a9fa3;
-  background: #80858b;
+  border: 1px solid white;
+  background: #e9e9ef;
   border-radius: 4px; }
   .searchbox label {
     color: rgba(255, 255, 255, 0.8);
@@ -116,7 +177,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       display: inline-block; } }
 
 #sidebar {
-  background-color: #2d3237;
+  background-color: #f8f8fa;
   position: fixed;
   top: 0;
   width: 300px;
@@ -125,13 +186,13 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   font-weight: 500;
   font-size: 15px; }
   #sidebar a {
-    color: #FAFAFA; }
-    #sidebar a:hover, #sidebar a.button {
-      color: white; }
+    color: #6C6F73; }
+    #sidebar a:hover {
+      color: #3b3c3e; }
     #sidebar a.subtitle {
-      color: rgba(250, 250, 250, 0.6); }
+      color: rgba(108, 111, 115, 0.6); }
   #sidebar hr {
-    border-bottom: 1px solid #262a2e; }
+    border-bottom: 1px solid #efeff4; }
   #sidebar a.padding {
     padding: 0 1rem; }
   #sidebar h5 {
@@ -145,14 +206,14 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       padding-left: 1rem;
       padding-right: 1rem; }
     #sidebar h5 i {
-      color: rgba(250, 250, 250, 0.6);
+      color: rgba(108, 111, 115, 0.6);
       position: absolute;
       right: 0.6rem;
       top: 0.7rem;
       font-size: 80%; }
     #sidebar h5.parent a {
-      background: #1d2023;
-      color: white !important; }
+      background: #e3e3eb;
+      color: #787c80 !important; }
     #sidebar h5.active a {
       background: #fff;
       color: #383F45 !important; }
@@ -168,11 +229,11 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     padding: 0;
     margin: 0; }
     #sidebar ul.searched a {
-      color: #c7c7c7; }
+      color: #3b3c3e; }
     #sidebar ul.searched .search-match a {
-      color: white; }
+      color: #85888d; }
       #sidebar ul.searched .search-match a:hover {
-        color: white; }
+        color: #a0a2a5; }
     #sidebar ul.topics {
       margin: 0 1rem; }
       #sidebar ul.topics.searched ul {
@@ -188,18 +249,19 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          color: #bababa;
+          color: #2e3031;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
-      #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-        background: #212529;
+      #sidebar ul.topics > li.parent,
+      #sidebar ul.topics > li.active {
+        background: #e9e9ef;
         margin-left: -1rem;
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem; }
         #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
-          color: #6e6e6e; }
+          color: black; }
     #sidebar ul li.active > a {
       background: #fff;
       color: #383F45 !important;
@@ -301,7 +363,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #body .nav i {
       font-size: 50px; }
     #body .nav:hover {
-      background: #FAFAFA; }
+      background: #ffffff; }
     #body .nav.nav-pref {
       left: 0; }
     #body .nav.nav-next {
@@ -332,7 +394,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 
 #footer {
   padding: 3rem 1rem;
-  color: #e1e1e1;
+  color: #535659;
   font-size: 13px; }
   #footer p {
     margin: 0; }
@@ -489,8 +551,8 @@ td {
   border: 1px solid #eaeaea; }
 
 .button {
-  background: #383F45;
-  color: #fff;
+  background: #383F45 !important;
+  color: white !important;
   box-shadow: 0 3px 0 #2a3034; }
   .button:hover {
     background: #2a3034;
@@ -500,8 +562,8 @@ td {
     box-shadow: 0 1px 0 #1d2023; }
 
 .button-secondary {
-  background: #16181b;
-  color: #fff;
+  background: #16181b !important;
+  color: white !important;
   box-shadow: 0 3px 0 #08090a; }
   .button-secondary:hover {
     background: #08090a;
@@ -871,7 +933,7 @@ td {
     background: #34495E; }
 
 #top-bar {
-  background: #FAFAFA;
+  background: #ffffff;
   border-radius: 2px;
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
@@ -956,4 +1018,4 @@ td {
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d; }
 
-/*# sourceMappingURL=hoth.css.map */
+/*# sourceMappingURL=longyearbyen.css.map */

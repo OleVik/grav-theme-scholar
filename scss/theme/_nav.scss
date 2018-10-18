@@ -20,9 +20,8 @@
 
     a {
         color: $sidebar-link;
-        &:hover,
-        &.button {
-            color: lighten($sidebar-link, 100%);
+        &:hover {
+            color: hover($sidebar-bg, $sidebar-link);
         }
         &.subtitle {
             color: rgba($sidebar-link, 0.6);

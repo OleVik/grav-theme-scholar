@@ -15,6 +15,58 @@
   .button:active, .button-secondary:active {
     margin: 2px 0 -2px 0; }
 
+/*
+  The Ultimate Hover Color Function
+  @author Gray Gilmore - http://code.graygilmore.com
+
+  The goal of this Sass function is provide a hover color that works
+  with any color on any background. No longer do we need to bundle
+  hover color options with our themes, let Sassy McSasserson take care
+  of that for you.
+
+  The hover color, seen in this demo as "After" text, must be visible in
+  all situations and, hopefully, pass the WCAG 2.0 contrast ratio [1]
+  formula (4.5:1).
+
+  [1] http://www.w3.org/TR/2008/REC-WCAG20-20081211/#visual-audio-contrast-contrast
+
+  contrast-ratio() help from @davidkaneda
+
+
+  ## Usage ##
+
+  a {
+    color: $link-color;
+    
+    &:hover {
+      color: hover($background-color, $link-color);
+    }
+  }
+
+  button {
+    background: $button-background;
+    color: $button-color;
+
+    &:hover {
+      background: hover($background-color, $button-background);
+    }
+  }
+
+  ## End Usage ##
+
+*/
+/**
+ * Calculate the luminance for a color.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Calculate the contrast ratio between two colors.
+ * See https://www.w3.org/TR/WCAG20-TECHS/G17.html#G17-tests
+ */
+/**
+ * Determine whether to use dark or light text on top of given color.
+ * Returns black for dark text and white for light text.
+ */
 body #sidebar ul li.active > a {
   color: #080000 !important; }
 
@@ -129,8 +181,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   font-size: 15px; }
   #sidebar a {
     color: white; }
-    #sidebar a:hover, #sidebar a.button {
-      color: white; }
+    #sidebar a:hover {
+      color: #ededed; }
     #sidebar a.subtitle {
       color: rgba(255, 255, 255, 0.6); }
   #sidebar hr {
@@ -492,8 +544,8 @@ td {
   border: 1px solid #eaeaea; }
 
 .button {
-  background: #919191;
-  color: #fff;
+  background: #919191 !important;
+  color: black !important;
   box-shadow: 0 3px 0 #828282; }
   .button:hover {
     background: #828282;
@@ -503,8 +555,8 @@ td {
     box-shadow: 0 1px 0 #737373; }
 
 .button-secondary {
-  background: #6b6b6b;
-  color: #fff;
+  background: #6b6b6b !important;
+  color: white !important;
   box-shadow: 0 3px 0 #5c5c5c; }
   .button-secondary:hover {
     background: #5c5c5c;

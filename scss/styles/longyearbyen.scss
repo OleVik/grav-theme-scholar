@@ -1,0 +1,63 @@
+@import "../prefix";
+
+// Theme
+$theme-main: #FAFAFA;
+$theme-secondary: darken($theme-main, 5%);
+$theme-main-alt: #CAD1D9;
+$theme-secondary-alt: #383F45;
+$theme-text: #383F45;
+$theme-text-alt: #2c2d30;
+$theme-background: #FAFAFA;
+
+$theme-main: #CAD1D9;
+$theme-secondary: #383F45;
+$theme-main-alt: #FAFAFA;
+$theme-secondary-alt: #f8f8fa;
+$theme-text: #383F45;
+$theme-text-alt: #2c2d30;
+$theme-background: #ffffff;
+
+// Implementation and customization
+$page-bg: $theme-background;
+$core-text: $theme-text;
+$core-accent: $theme-secondary;
+$secondary-link: darken($core-accent, 15%);
+
+$header-height: 0;
+$header-bg: $theme-secondary-alt;
+$sidebar-width: 300px;
+$sidebar-width-smaller: 230px;
+$sidebar-bg: $theme-secondary-alt;
+$sidebar-text: darken($theme-background, 5%);
+$sidebar-link: #6C6F73;
+$navbar-text: desaturate($core-accent,50%);
+$navbar-bg: $theme-background;
+$check-color: lighten($sidebar-bg, 30%);
+
+// Font Weights
+$font-weight-bold: 600;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+
+// Body
+$body-margin: 4rem;
+
+// Logo
+$logo-width: 8rem;
+$logo-height: 2rem;
+
+// Overrides
+#sidebar {
+  #logo {
+    color: $theme-text !important;
+    &:hover {
+      color: hover($sidebar-bg, $theme-text);
+    }
+  }
+  ul.topics > li.parent,
+  ul.topics > li.active {
+    background: inherit !important;
+  }
+}
+
+@import "../affix";

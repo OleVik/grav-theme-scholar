@@ -68,15 +68,15 @@
  * Returns black for dark text and white for light text.
  */
 body {
-  background: #ffffff;
-  color: #000000;
+  background: #FAFAFA;
+  color: #383F45;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: #b47d6c; }
+  color: #383F45; }
   a:hover {
-    color: #6a4236; }
+    color: black; }
 
 #body-inner a:hover {
   text-decoration: underline;
@@ -111,7 +111,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06), 0 0 5px rgba(19, 131, 179, 0.7); }
 
 #header {
-  background: #bd8c7d;
+  background: #8d9297;
   color: #fff;
   text-align: center;
   padding: 1rem; }
@@ -126,8 +126,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 .searchbox {
   margin-top: 0.5rem;
   position: relative;
-  border: 1px solid #c69b8e;
-  background: #b47d6c;
+  border: 1px solid #9a9fa3;
+  background: #80858b;
   border-radius: 4px; }
   .searchbox label {
     color: rgba(255, 255, 255, 0.8);
@@ -168,7 +168,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       display: inline-block; } }
 
 #sidebar {
-  background-color: #49494b;
+  background-color: #2d3237;
   position: fixed;
   top: 0;
   width: 300px;
@@ -177,13 +177,13 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   font-weight: 500;
   font-size: 15px; }
   #sidebar a {
-    color: #e8e8e6; }
+    color: #FAFAFA; }
     #sidebar a:hover {
-      color: #b7b7b1; }
+      color: #c7c7c7; }
     #sidebar a.subtitle {
-      color: rgba(232, 232, 230, 0.6); }
+      color: rgba(250, 250, 250, 0.6); }
   #sidebar hr {
-    border-bottom: 1px solid #414143; }
+    border-bottom: 1px solid #262a2e; }
   #sidebar a.padding {
     padding: 0 1rem; }
   #sidebar h5 {
@@ -197,19 +197,19 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       padding-left: 1rem;
       padding-right: 1rem; }
     #sidebar h5 i {
-      color: rgba(232, 232, 230, 0.6);
+      color: rgba(250, 250, 250, 0.6);
       position: absolute;
       right: 0.6rem;
       top: 0.7rem;
       font-size: 80%; }
     #sidebar h5.parent a {
-      background: #373739;
-      color: #f4f4f3 !important; }
+      background: #1d2023;
+      color: white !important; }
     #sidebar h5.active a {
       background: #fff;
-      color: #000000 !important; }
+      color: #383F45 !important; }
     #sidebar h5.active i {
-      color: #000000 !important; }
+      color: #383F45 !important; }
   #sidebar h5 + ul.topics {
     display: none;
     margin-top: 0; }
@@ -220,7 +220,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     padding: 0;
     margin: 0; }
     #sidebar ul.searched a {
-      color: #b7b7b1; }
+      color: #c7c7c7; }
     #sidebar ul.searched .search-match a {
       color: white; }
       #sidebar ul.searched .search-match a:hover {
@@ -240,21 +240,21 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          color: #ababa4;
+          color: #bababa;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
       #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-        background: #3c3c3e;
+        background: #212529;
         margin-left: -1rem;
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem; }
         #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
-          color: #5f5f57; }
+          color: #6e6e6e; }
     #sidebar ul li.active > a {
       background: #fff;
-      color: #000000 !important;
+      color: #383F45 !important;
       margin-left: -1rem;
       margin-right: -1rem;
       padding-left: 1rem;
@@ -281,7 +281,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: #b47d6c;
+        color: #383F45;
         display: inline; }
       #sidebar ul li li {
         padding-left: 1rem;
@@ -353,7 +353,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #body .nav i {
       font-size: 50px; }
     #body .nav:hover {
-      background: #e8e8e6; }
+      background: #FAFAFA; }
     #body .nav.nav-pref {
       left: 0; }
     #body .nav.nav-next {
@@ -384,7 +384,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 
 #footer {
   padding: 3rem 1rem;
-  color: #d0d0cb;
+  color: #e1e1e1;
   font-size: 13px; }
   #footer p {
     margin: 0; }
@@ -507,14 +507,14 @@ hr {
   padding: 25px;
   float: left;
   clear: both;
-  background: #b47d6c;
+  background: #383F45;
   color: #fff; }
 
 #body a.anchor-link {
   color: #ccc; }
 
 #body a.anchor-link:hover {
-  color: #b47d6c; }
+  color: #383F45; }
 
 .scrollbar-inner > .scroll-element .scroll-element_track {
   background-color: rgba(255, 255, 255, 0.3); }
@@ -541,26 +541,26 @@ td {
   border: 1px solid #eaeaea; }
 
 .button {
-  background: #b47d6c !important;
-  color: black !important;
-  box-shadow: 0 3px 0 #aa6b58; }
+  background: #383F45 !important;
+  color: white !important;
+  box-shadow: 0 3px 0 #2a3034; }
   .button:hover {
-    background: #aa6b58;
-    box-shadow: 0 3px 0 #965e4d;
+    background: #2a3034;
+    box-shadow: 0 3px 0 #1d2023;
     color: #fff; }
   .button:active {
-    box-shadow: 0 1px 0 #965e4d; }
+    box-shadow: 0 1px 0 #1d2023; }
 
 .button-secondary {
-  background: #8c5847 !important;
+  background: #16181b !important;
   color: white !important;
-  box-shadow: 0 3px 0 #784b3d; }
+  box-shadow: 0 3px 0 #08090a; }
   .button-secondary:hover {
-    background: #784b3d;
-    box-shadow: 0 3px 0 #643e33;
+    background: #08090a;
+    box-shadow: 0 3px 0 black;
     color: #fff; }
   .button-secondary:active {
-    box-shadow: 0 1px 0 #643e33; }
+    box-shadow: 0 1px 0 black; }
 
 .bullets {
   margin: 1.7rem 0;
@@ -923,7 +923,7 @@ td {
     background: #34495E; }
 
 #top-bar {
-  background: #e8e8e6;
+  background: #FAFAFA;
   border-radius: 2px;
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
@@ -986,7 +986,7 @@ td {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  color: black;
+  color: #212529;
   background-color: #f9f2f4;
   margin-left: -.2rem;
   cursor: pointer;
@@ -1008,4 +1008,4 @@ td {
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d; }
 
-/*# sourceMappingURL=metal.css.map */
+/*# sourceMappingURL=spitsbergen.css.map */
