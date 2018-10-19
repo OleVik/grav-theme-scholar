@@ -113,3 +113,4 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
             - Features like [Gutenberg](https://wordpress.org/gutenberg/), [VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor)?
         - Lightweight Admin-implementation
     - [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) as personal page
+    - [ ] Implement a PowerPoint-equivalent using [Fullpage](https://github.com/OleVik/grav-plugin-fullpage)
