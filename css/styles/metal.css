@@ -67,6 +67,84 @@
  * Determine whether to use dark or light text on top of given color.
  * Returns black for dark text and white for light text.
  */
+/*
+  WCAG color contrast formula
+  https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G18#G18-procedure
+
+  @see https://codepen.io/giana/project/full/ZWbGzD
+
+  This pen uses the non-standard Sass pow() function
+  https://css-tricks.com/snippets/sass/power-function/
+  Using it outside of CodePen requires you provide your own pow() function with support for decimals
+
+  To generate random colors, we're also using a two-variable random() function includded with compass.
+*/
+.ratio::after {
+  content: "13"; }
+
+.balance::after {
+  content: "24"; }
+
+.color-block .color1 {
+  background: #670896;
+  color: #fff; }
+  .color-block .color1::after {
+    content: "#670896"; }
+
+.color-block .color2 {
+  background: #c65056;
+  color: #fff; }
+  .color-block .color2::after {
+    content: "#c65056"; }
+
+.fix-color .color:nth-child(2) {
+  background: #000;
+  color: #fff; }
+  .fix-color .color:nth-child(2)::after {
+    content: "#000"; }
+
+.fix-color .color:nth-child(3) {
+  background: #fff;
+  color: #000; }
+  .fix-color .color:nth-child(3)::after {
+    content: "#fff"; }
+
+.fix-contrast .color:nth-child(2) {
+  background: #480250;
+  color: #fff; }
+  .fix-contrast .color:nth-child(2)::after {
+    content: "#480250"; }
+
+.fix-contrast .color:nth-child(3) {
+  background: #ffebec;
+  color: #000; }
+  .fix-contrast .color:nth-child(3)::after {
+    content: "#ffebec"; }
+
+.best-contrast .color:nth-child(2) {
+  background: #322b50;
+  color: #fff; }
+  .best-contrast .color:nth-child(2)::after {
+    content: "#322b50"; }
+
+.best-contrast .color:nth-child(3) {
+  background: white;
+  color: #000; }
+  .best-contrast .color:nth-child(3)::after {
+    content: "white"; }
+
+.scale-luminance .color:nth-child(2) {
+  background: #bc46ff;
+  color: #fff; }
+  .scale-luminance .color:nth-child(2)::after {
+    content: "#bc46ff"; }
+
+.check-contrast .result::after {
+  content: "false"; }
+
+.luminance .result::after {
+  content: "0.05267, 0.18547"; }
+
 body {
   background: #ffffff;
   color: #000000;
@@ -74,13 +152,17 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: #b47d6c; }
-  a:hover {
-    color: #6a4236; }
+  color: black; }
+  a:link, a:visited {
+    color: black; }
+  a:hover, a:active {
+    color: black; }
 
-#body-inner a:hover {
+#body-inner a {
   text-decoration: underline;
   text-decoration-style: dotted; }
+  #body-inner a:hover {
+    text-decoration-style: solid; }
 
 pre {
   position: relative; }
@@ -112,7 +194,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 
 #header {
   background: #bd8c7d;
-  color: #fff;
+  color: #f2e8e5;
   text-align: center;
   padding: 1rem; }
   #header a {
@@ -126,8 +208,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 .searchbox {
   margin-top: 0.5rem;
   position: relative;
-  border: 1px solid #c69b8e;
-  background: #b47d6c;
+  border: 1px solid #b47d6c;
+  background: #c69b8e;
   border-radius: 4px; }
   .searchbox label {
     color: rgba(255, 255, 255, 0.8);
@@ -144,7 +226,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       color: rgba(255, 255, 255, 0.9); }
   .searchbox input {
     display: inline-block;
-    color: #fff;
+    color: #f4ebe8;
     width: 100%;
     height: 30px;
     background: transparent;
@@ -153,13 +235,13 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     margin: 0;
     font-weight: 400; }
     .searchbox input::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #f0e5e2; }
     .searchbox input::-moz-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #f0e5e2; }
     .searchbox input:-moz-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #f0e5e2; }
     .searchbox input:-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #f0e5e2; }
 
 #sidebar-toggle {
   display: none; }
@@ -175,12 +257,16 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   bottom: 0;
   left: 0;
   font-weight: 500;
-  font-size: 15px; }
-  #sidebar a {
+  font-size: 15px;
+  border-right: 1px solid #5b5b5d; }
+  #sidebar a,
+  #sidebar i {
     color: #e8e8e6; }
-    #sidebar a:hover {
-      color: #b7b7b1; }
-    #sidebar a.subtitle {
+    #sidebar a:hover,
+    #sidebar i:hover {
+      color: #c3c3be; }
+    #sidebar a.subtitle,
+    #sidebar i.subtitle {
       color: rgba(232, 232, 230, 0.6); }
   #sidebar hr {
     border-bottom: 1px solid #414143; }
@@ -220,7 +306,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     padding: 0;
     margin: 0; }
     #sidebar ul.searched a {
-      color: #b7b7b1; }
+      color: white; }
     #sidebar ul.searched .search-match a {
       color: white; }
       #sidebar ul.searched .search-match a:hover {
@@ -240,7 +326,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          color: #ababa4;
+          color: #e8e8e6;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
@@ -251,7 +337,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-left: 1rem;
         padding-right: 1rem; }
         #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
-          color: #5f5f57; }
+          color: #e8e8e6; }
     #sidebar ul li.active > a {
       background: #fff;
       color: #000000 !important;
@@ -259,6 +345,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       margin-right: -1rem;
       padding-left: 1rem;
       padding-right: 1rem; }
+      #sidebar ul li.active > a b {
+        color: #000000 !important; }
     #sidebar ul li {
       padding: 0; }
       #sidebar ul li.visited + span {
@@ -286,6 +374,11 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }
+
+#body #navigation .nav .fa {
+  color: black; }
+  #body #navigation .nav .fa:active, #body #navigation .nav .fa:focus, #body #navigation .nav .fa:hover, #body #navigation .nav .fa:visited {
+    color: #171717; }
 
 #main {
   background: #f7f7f7;
@@ -415,11 +508,11 @@ blockquote {
   border-left: 10px solid #F0F2F4; }
   blockquote p {
     font-size: 1.1rem;
-    color: #999; }
+    color: #666666; }
   blockquote cite {
     display: block;
     text-align: right;
-    color: #666;
+    color: #333333;
     font-size: 1.2rem; }
 
 blockquote {
@@ -543,24 +636,28 @@ td {
 .button {
   background: #b47d6c !important;
   color: black !important;
-  box-shadow: 0 3px 0 #aa6b58; }
+  box-shadow: 0 3px 0 #be8f80 !important; }
   .button:hover {
-    background: #aa6b58;
-    box-shadow: 0 3px 0 #965e4d;
-    color: #fff; }
+    background: #be8f80 !important;
+    box-shadow: 0 3px 0 #c9a195 !important;
+    color: black !important; }
   .button:active {
-    box-shadow: 0 1px 0 #965e4d; }
+    box-shadow: 0 1px 0 #c9a195 !important; }
+  .button i {
+    color: black !important; }
 
 .button-secondary {
   background: #8c5847 !important;
   color: white !important;
-  box-shadow: 0 3px 0 #784b3d; }
+  box-shadow: 0 3px 0 #784b3d !important; }
   .button-secondary:hover {
-    background: #784b3d;
-    box-shadow: 0 3px 0 #643e33;
-    color: #fff; }
+    background: #784b3d !important;
+    box-shadow: 0 3px 0 #643e33 !important;
+    color: white !important; }
   .button-secondary:active {
-    box-shadow: 0 1px 0 #643e33; }
+    box-shadow: 0 1px 0 #643e33 !important; }
+  .button-secondary i {
+    color: white !important; }
 
 .bullets {
   margin: 1.7rem 0;

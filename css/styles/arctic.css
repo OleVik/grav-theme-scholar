@@ -67,6 +67,84 @@
  * Determine whether to use dark or light text on top of given color.
  * Returns black for dark text and white for light text.
  */
+/*
+  WCAG color contrast formula
+  https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G18#G18-procedure
+
+  @see https://codepen.io/giana/project/full/ZWbGzD
+
+  This pen uses the non-standard Sass pow() function
+  https://css-tricks.com/snippets/sass/power-function/
+  Using it outside of CodePen requires you provide your own pow() function with support for decimals
+
+  To generate random colors, we're also using a two-variable random() function includded with compass.
+*/
+.ratio::after {
+  content: "11"; }
+
+.balance::after {
+  content: "93"; }
+
+.color-block .color1 {
+  background: #020308;
+  color: #fff; }
+  .color-block .color1::after {
+    content: "#020308"; }
+
+.color-block .color2 {
+  background: #51695f;
+  color: #fff; }
+  .color-block .color2::after {
+    content: "#51695f"; }
+
+.fix-color .color:nth-child(2) {
+  background: #000;
+  color: #fff; }
+  .fix-color .color:nth-child(2)::after {
+    content: "#000"; }
+
+.fix-color .color:nth-child(3) {
+  background: #9ec6b6;
+  color: #fff; }
+  .fix-color .color:nth-child(3)::after {
+    content: "#9ec6b6"; }
+
+.fix-contrast .color:nth-child(2) {
+  background: #000001;
+  color: #fff; }
+  .fix-contrast .color:nth-child(2)::after {
+    content: "#000001"; }
+
+.fix-contrast .color:nth-child(3) {
+  background: #9dc5b4;
+  color: #fff; }
+  .fix-contrast .color:nth-child(3)::after {
+    content: "#9dc5b4"; }
+
+.best-contrast .color:nth-child(2) {
+  background: #ceeecd;
+  color: #000; }
+  .best-contrast .color:nth-child(2)::after {
+    content: "#ceeecd"; }
+
+.best-contrast .color:nth-child(3) {
+  background: #caeac9;
+  color: #000; }
+  .best-contrast .color:nth-child(3)::after {
+    content: "#caeac9"; }
+
+.scale-luminance .color:nth-child(2) {
+  background: #5c68a2;
+  color: #fff; }
+  .scale-luminance .color:nth-child(2)::after {
+    content: "#5c68a2"; }
+
+.check-contrast .result::after {
+  content: "false"; }
+
+.luminance .result::after {
+  content: "0.0009, 0.12697"; }
+
 body #sidebar ul li.active > a {
   color: #333333 !important; }
 
@@ -77,13 +155,17 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: #0a0a0a; }
-  a:hover {
+  color: #0d0d0d; }
+  a:link, a:visited {
+    color: #0d0d0d; }
+  a:hover, a:active {
     color: black; }
 
-#body-inner a:hover {
+#body-inner a {
   text-decoration: underline;
   text-decoration-style: dotted; }
+  #body-inner a:hover {
+    text-decoration-style: solid; }
 
 pre {
   position: relative; }
@@ -115,7 +197,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 
 #header {
   background: #99D3DF;
-  color: #fff;
+  color: #ebf6f9;
   text-align: center;
   padding: 1rem; }
   #header a {
@@ -129,8 +211,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 .searchbox {
   margin-top: 0.5rem;
   position: relative;
-  border: 1px solid #acdbe5;
-  background: #86cbd9;
+  border: 1px solid #86cbd9;
+  background: #acdbe5;
   border-radius: 4px; }
   .searchbox label {
     color: rgba(255, 255, 255, 0.8);
@@ -147,7 +229,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       color: rgba(255, 255, 255, 0.9); }
   .searchbox input {
     display: inline-block;
-    color: #fff;
+    color: #eef8fa;
     width: 100%;
     height: 30px;
     background: transparent;
@@ -156,13 +238,13 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     margin: 0;
     font-weight: 400; }
     .searchbox input::-webkit-input-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #e7f5f7; }
     .searchbox input::-moz-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #e7f5f7; }
     .searchbox input:-moz-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #e7f5f7; }
     .searchbox input:-ms-input-placeholder {
-      color: rgba(255, 255, 255, 0.6); }
+      color: #e7f5f7; }
 
 #sidebar-toggle {
   display: none; }
@@ -178,15 +260,19 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   bottom: 0;
   left: 0;
   font-weight: 500;
-  font-size: 15px; }
-  #sidebar a {
+  font-size: 15px;
+  border-right: 1px solid #3d84b1; }
+  #sidebar a,
+  #sidebar i {
     color: white; }
-    #sidebar a:hover {
-      color: #dceaf3; }
-    #sidebar a.subtitle {
+    #sidebar a:hover,
+    #sidebar i:hover {
+      color: #eff5fa; }
+    #sidebar a.subtitle,
+    #sidebar i.subtitle {
       color: rgba(255, 255, 255, 0.6); }
   #sidebar hr {
-    border-bottom: 1px solid #448fbe; }
+    border-bottom: 1px solid #5a9dc6; }
   #sidebar a.padding {
     padding: 0 1rem; }
   #sidebar h5 {
@@ -206,7 +292,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       top: 0.7rem;
       font-size: 80%; }
     #sidebar h5.parent a {
-      background: #3d84b1;
+      background: #6aa6cc;
       color: white !important; }
     #sidebar h5.active a {
       background: #fff;
@@ -223,7 +309,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     padding: 0;
     margin: 0; }
     #sidebar ul.searched a {
-      color: #cccccc; }
+      color: white; }
     #sidebar ul.searched .search-match a {
       color: white; }
       #sidebar ul.searched .search-match a:hover {
@@ -243,18 +329,18 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         line-height: 2rem;
         font-size: 1.1rem; }
         #sidebar ul.topics > li > a b {
-          color: #bfbfbf;
+          color: white;
           font-weight: normal; }
         #sidebar ul.topics > li > a .fa {
           margin-top: 9px; }
       #sidebar ul.topics > li.parent, #sidebar ul.topics > li.active {
-        background: #408ab8;
+        background: #62a1c9;
         margin-left: -1rem;
         margin-right: -1rem;
         padding-left: 1rem;
         padding-right: 1rem; }
         #sidebar ul.topics > li.parent > a b, #sidebar ul.topics > li.active > a b {
-          color: #737373; }
+          color: white; }
     #sidebar ul li.active > a {
       background: #fff;
       color: #333333 !important;
@@ -262,6 +348,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       margin-right: -1rem;
       padding-left: 1rem;
       padding-right: 1rem; }
+      #sidebar ul li.active > a b {
+        color: #333333 !important; }
     #sidebar ul li {
       padding: 0; }
       #sidebar ul li.visited + span {
@@ -289,6 +377,11 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }
+
+#body #navigation .nav .fa {
+  color: #183547; }
+  #body #navigation .nav .fa:active, #body #navigation .nav .fa:focus, #body #navigation .nav .fa:hover, #body #navigation .nav .fa:visited {
+    color: #2c5f80; }
 
 #main {
   background: #f7f7f7;
@@ -418,11 +511,11 @@ blockquote {
   border-left: 10px solid #F0F2F4; }
   blockquote p {
     font-size: 1.1rem;
-    color: #999; }
+    color: #666666; }
   blockquote cite {
     display: block;
     text-align: right;
-    color: #666;
+    color: #333333;
     font-size: 1.2rem; }
 
 blockquote {
@@ -546,24 +639,28 @@ td {
 .button {
   background: #0a0a0a !important;
   color: white !important;
-  box-shadow: 0 3px 0 black; }
+  box-shadow: 0 3px 0 black !important; }
   .button:hover {
-    background: black;
-    box-shadow: 0 3px 0 black;
-    color: #fff; }
+    background: black !important;
+    box-shadow: 0 3px 0 black !important;
+    color: white !important; }
   .button:active {
-    box-shadow: 0 1px 0 black; }
+    box-shadow: 0 1px 0 black !important; }
+  .button i {
+    color: white !important; }
 
 .button-secondary {
   background: black !important;
   color: white !important;
-  box-shadow: 0 3px 0 black; }
+  box-shadow: 0 3px 0 black !important; }
   .button-secondary:hover {
-    background: black;
-    box-shadow: 0 3px 0 black;
-    color: #fff; }
+    background: black !important;
+    box-shadow: 0 3px 0 black !important;
+    color: white !important; }
   .button-secondary:active {
-    box-shadow: 0 1px 0 black; }
+    box-shadow: 0 1px 0 black !important; }
+  .button-secondary i {
+    color: white !important; }
 
 .bullets {
   margin: 1.7rem 0;

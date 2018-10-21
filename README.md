@@ -96,6 +96,15 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
 1. Styles
     - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
     - [ ] Unify to reduce customizations in core Styles
+        - [ ] Arctic
+        - [ ] Dark Ocean
+        - [ ] Gold
+        - [ ] Grey
+        - [X] Longyearbyen
+        - [ ] Metal
+        - [ ] Navy Sunrise
+        - [ ] Spitsbergen
+        - [ ] Sunrise
     - [ ] Join docs, pages, and book styles into one sheet
         - Color-customization should be available globally, for page-hierarchies, and single pages
     - [ ] Add styles for docs

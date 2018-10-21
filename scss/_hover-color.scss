@@ -66,7 +66,7 @@
   }
 }
 
-@function hover($background, $color) {
+@function contrast-color($background, $color) {
 
   $style: '';
   $hover-color: '';
@@ -436,7 +436,7 @@ $linear-channel-values:
  * Determine whether to use dark or light text on top of given color.
  * Returns black for dark text and white for light text.
  */
-@function maximize-contrast-color($color) {
+@function maximize-color-contrast($color) {
   $lightContrast: contrast($color, white);
   $darkContrast: contrast($color, black);
 

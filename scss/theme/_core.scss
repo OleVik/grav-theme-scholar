@@ -6,17 +6,23 @@ body {
 }
 
 a {
-	color: $core-accent;
-	&:hover {
-		color: darken($core-accent, 25%);
+	color: amplify($core-text, 15%);
+	&:link,
+	&:visited {
+		color: amplify($core-text, 15%);
+	}
+	&:hover,
+	&:active {
+		color: amplify($core-text, 40%);
 	}
 }
 
 #body-inner {
 	a {
+		text-decoration: underline;
+		text-decoration-style: dotted;
 		&:hover {
-			text-decoration: underline;
-			text-decoration-style: dotted;
+			text-decoration-style: solid;
 		}
 	}
 }
