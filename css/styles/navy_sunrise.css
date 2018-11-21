@@ -80,28 +80,28 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "14"; }
+  content: "18"; }
 
 .balance::after {
-  content: "97"; }
+  content: "38"; }
 
 .color-block .color1 {
-  background: #e2d2a7;
-  color: #000; }
+  background: #924a07;
+  color: #fff; }
   .color-block .color1::after {
-    content: "#e2d2a7"; }
+    content: "#924a07"; }
 
 .color-block .color2 {
-  background: #f5e18b;
-  color: #000; }
+  background: #9e61ff;
+  color: #fff; }
   .color-block .color2::after {
-    content: "#f5e18b"; }
+    content: "#9e61ff"; }
 
 .fix-color .color:nth-child(2) {
-  background: #454443;
+  background: #000;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#454443"; }
+    content: "#000"; }
 
 .fix-color .color:nth-child(3) {
   background: #fff;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #444444;
+  background: #000;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#444444"; }
+    content: "#000"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #f5e28e;
+  background: #ffe6ff;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#f5e28e"; }
+    content: "#ffe6ff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #eaeff0;
-  color: #000; }
+  background: #3d423f;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#eaeff0"; }
+    content: "#3d423f"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #4c4c4c;
-  color: #fff; }
+  background: #feffff;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#4c4c4c"; }
+    content: "#feffff"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #f0e0b2;
-  color: #000; }
+  background: #cb7045;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#f0e0b2"; }
+    content: "#cb7045"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.65021, 0.75071"; }
+  content: "0.11167, 0.23141"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -155,9 +155,9 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: #0d0d0d; }
+  color: black; }
   a:link, a:visited {
-    color: #0d0d0d; }
+    color: black; }
   a:hover, a:active {
     color: black; }
 
@@ -174,7 +174,10 @@ pre {
   background: #fff;
   border: 1px solid #eaeaea; }
 
-b, strong, label, th {
+b,
+strong,
+label,
+th {
   font-weight: 600; }
 
 .default-animation, #header #logo-svg, #header #logo-svg path, #sidebar, #sidebar ul, #body, #body .padding, #body .nav {
@@ -1028,7 +1031,12 @@ td {
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
   height: 0;
-  min-height: 3rem; }
+  min-height: 3rem;
+  color: #333333; }
+  #top-bar a {
+    color: #1a1a1a; }
+    #top-bar a:hover {
+      color: #0d0d0d; }
 
 #top-github-link {
   position: relative;

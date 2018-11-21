@@ -80,28 +80,28 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "13"; }
+  content: "19"; }
 
 .balance::after {
-  content: "42"; }
+  content: "5"; }
 
 .color-block .color1 {
-  background: #6de9c8;
-  color: #000; }
+  background: #624e28;
+  color: #fff; }
   .color-block .color1::after {
-    content: "#6de9c8"; }
+    content: "#624e28"; }
 
 .color-block .color2 {
-  background: #b4efcf;
-  color: #000; }
+  background: #4f894e;
+  color: #fff; }
   .color-block .color2::after {
-    content: "#b4efcf"; }
+    content: "#4f894e"; }
 
 .fix-color .color:nth-child(2) {
-  background: #094645;
+  background: #000;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#094645"; }
+    content: "#000"; }
 
 .fix-color .color:nth-child(3) {
   background: #fff;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #434b49;
+  background: #0a0602;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#434b49"; }
+    content: "#0a0602"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #e0f8eb;
+  background: #f6f9f6;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#e0f8eb"; }
+    content: "#f6f9f6"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #df8443;
+  background: #1d1302;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#df8443"; }
+    content: "#1d1302"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #695046;
-  color: #fff; }
+  background: #ffff55;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#695046"; }
+    content: "#ffff55"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #78f8d5;
-  color: #000; }
+  background: #947b56;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#78f8d5"; }
+    content: "#947b56"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.65752, 0.75773"; }
+  content: "0.08387, 0.20127"; }
 
 body #sidebar ul li.active > a {
   color: #000000 !important; }
@@ -1035,13 +1035,18 @@ td {
   z-index: 1;
   float: right;
   display: block; }
+  #top-github-link a {
+    color: #0d0d0d; }
+    #top-github-link a:hover {
+      color: black; }
 
 #body #breadcrumbs {
   height: auto;
   display: block;
   margin-bottom: 0;
   padding-left: 0;
-  line-height: 1.4; }
+  line-height: 1.4;
+  color: black; }
   #body #breadcrumbs span {
     padding: 0 0.1rem; }
 

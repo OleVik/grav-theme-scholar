@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "21"; }
+  content: "12"; }
 
 .balance::after {
-  content: "70"; }
+  content: "13"; }
 
 .color-block .color1 {
-  background: #9297d9;
+  background: #546457;
   color: #fff; }
   .color-block .color1::after {
-    content: "#9297d9"; }
+    content: "#546457"; }
 
 .color-block .color2 {
-  background: #bfb34e;
+  background: #968062;
   color: #fff; }
   .color-block .color2::after {
-    content: "#bfb34e"; }
+    content: "#968062"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -110,10 +110,10 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #000;
+  background: #484b49;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#484b49"; }
 
 .fix-contrast .color:nth-child(3) {
   background: #fff;
@@ -122,10 +122,10 @@
     content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #514e0b;
+  background: #525557;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#514e0b"; }
+    content: "#525557"; }
 
 .best-contrast .color:nth-child(3) {
   background: white;
@@ -134,16 +134,16 @@
     content: "white"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #a5acf4;
+  background: #778a7b;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#a5acf4"; }
+    content: "#778a7b"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.33359, 0.43756"; }
+  content: "0.1177, 0.22746"; }
 
 body #sidebar ul li.active > a {
   color: #080000 !important; }
@@ -155,11 +155,11 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: black; }
+  color: #6e0000; }
   a:link, a:visited {
-    color: black; }
+    color: #6e0000; }
   a:hover, a:active {
-    color: black; }
+    color: #550000; }
 
 #body-inner a {
   text-decoration: underline;
@@ -174,7 +174,10 @@ pre {
   background: #fff;
   border: 1px solid #eaeaea; }
 
-b, strong, label, th {
+b,
+strong,
+label,
+th {
   font-weight: 600; }
 
 .default-animation, #header #logo-svg, #header #logo-svg path, #sidebar, #sidebar ul, #body, #body .padding, #body .nav {
@@ -1028,7 +1031,12 @@ td {
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
   height: 0;
-  min-height: 3rem; }
+  min-height: 3rem;
+  color: #333333; }
+  #top-bar a {
+    color: #1a1a1a; }
+    #top-bar a:hover {
+      color: #0d0d0d; }
 
 #top-github-link {
   position: relative;

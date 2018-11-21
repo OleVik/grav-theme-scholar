@@ -83,19 +83,19 @@
   content: "13"; }
 
 .balance::after {
-  content: "24"; }
+  content: "33"; }
 
 .color-block .color1 {
-  background: #670896;
+  background: #070d0e;
   color: #fff; }
   .color-block .color1::after {
-    content: "#670896"; }
+    content: "#070d0e"; }
 
 .color-block .color2 {
-  background: #c65056;
+  background: #64646e;
   color: #fff; }
   .color-block .color2::after {
-    content: "#c65056"; }
+    content: "#64646e"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -104,46 +104,46 @@
     content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fff;
+  background: #d6d5e9;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#d6d5e9"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #480250;
+  background: #050909;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#480250"; }
+    content: "#050909"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #ffebec;
+  background: #cfcfe1;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#ffebec"; }
+    content: "#cfcfe1"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #322b50;
+  background: #07120e;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#322b50"; }
+    content: "#07120e"; }
 
 .best-contrast .color:nth-child(3) {
-  background: white;
+  background: #8ffff6;
   color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "white"; }
+    content: "#8ffff6"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #bc46ff;
+  background: #527272;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#bc46ff"; }
+    content: "#527272"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.05267, 0.18547"; }
+  content: "0.00592, 0.13006"; }
 
 body {
   background: #ffffff;
@@ -1032,13 +1032,18 @@ td {
   z-index: 1;
   float: right;
   display: block; }
+  #top-github-link a {
+    color: #0d0d0d; }
+    #top-github-link a:hover {
+      color: black; }
 
 #body #breadcrumbs {
   height: auto;
   display: block;
   margin-bottom: 0;
   padding-left: 0;
-  line-height: 1.4; }
+  line-height: 1.4;
+  color: black; }
   #body #breadcrumbs span {
     padding: 0 0.1rem; }
 

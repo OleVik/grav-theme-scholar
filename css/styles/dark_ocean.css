@@ -80,70 +80,70 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "21"; }
+  content: "1"; }
 
 .balance::after {
-  content: "9"; }
+  content: "96"; }
 
 .color-block .color1 {
-  background: #0f2e27;
-  color: #fff; }
+  background: #e6e0e2;
+  color: #000; }
   .color-block .color1::after {
-    content: "#0f2e27"; }
+    content: "#e6e0e2"; }
 
 .color-block .color2 {
-  background: #796759;
-  color: #fff; }
+  background: #ffeae1;
+  color: #000; }
   .color-block .color2::after {
-    content: "#796759"; }
+    content: "#ffeae1"; }
 
 .fix-color .color:nth-child(2) {
-  background: #000;
-  color: #fff; }
+  background: #e6e0e2;
+  color: #000; }
   .fix-color .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#e6e0e2"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fff;
+  background: #ffeae1;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#ffeae1"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #000;
-  color: #fff; }
+  background: #e6e0e2;
+  color: #000; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#e6e0e2"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #fff;
+  background: #ffeae1;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#ffeae1"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #9f9675;
+  background: #612937;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#9f9675"; }
+    content: "#612937"; }
 
 .best-contrast .color:nth-child(3) {
-  background: white;
-  color: #000; }
+  background: #612937;
+  color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "white"; }
+    content: "#612937"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #52786e;
-  color: #fff; }
+  background: #f3edef;
+  color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#52786e"; }
+    content: "#f3edef"; }
 
 .check-contrast .result::after {
-  content: "false"; }
+  content: "true"; }
 
 .luminance .result::after {
-  content: "0.02448, 0.14558"; }
+  content: "0.75584, 0.85587"; }
 
 body #sidebar ul li.active > a {
   color: #2B303B !important; }
@@ -155,11 +155,11 @@ body {
   -moz-osx-font-smoothing: grayscale; }
 
 a {
-  color: white; }
+  color: #b5bcc9; }
   a:link, a:visited {
-    color: white; }
+    color: #b5bcc9; }
   a:hover, a:active {
-    color: white; }
+    color: #c4c9d4; }
 
 #body-inner a {
   text-decoration: underline;
@@ -174,7 +174,10 @@ pre {
   background: #fff;
   border: 1px solid #eaeaea; }
 
-b, strong, label, th {
+b,
+strong,
+label,
+th {
   font-weight: 600; }
 
 .default-animation, #header #logo-svg, #header #logo-svg path, #sidebar, #sidebar ul, #body, #body .padding, #body .nav {
@@ -1028,7 +1031,12 @@ td {
   margin: 0rem -1rem 2rem;
   padding: 0 1rem;
   height: 0;
-  min-height: 3rem; }
+  min-height: 3rem;
+  color: #cccccc; }
+  #top-bar a {
+    color: #e6e6e6; }
+    #top-bar a:hover {
+      color: #f2f2f2; }
 
 #top-github-link {
   position: relative;
