@@ -209,6 +209,7 @@
             }
 
             .fa {
+                display: none;
                 float: right;
                 font-size: 13px;
                 min-width: 16px;
@@ -218,8 +219,24 @@
 
             &.visited {
                 >a .read-icon {
-                    color: $core-accent;
                     display: inline;
+                    color: $sidebar-link;
+
+                    &:hover {
+                        color: amplify(contrast-color($sidebar-bg, $sidebar-link), 5%);
+                    }
+                }
+            }
+
+            &.active,
+            &.active.visited {
+                >a .read-icon {
+                    display: inline;
+                    color: $core-text;
+
+                    &:hover {
+                        color: amplify(contrast-color($white, $core-text), 5%);
+                    }
                 }
             }
 

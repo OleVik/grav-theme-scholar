@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "18"; }
+  content: "9"; }
 
 .balance::after {
-  content: "12"; }
+  content: "99"; }
 
 .color-block .color1 {
-  background: #cdba42;
+  background: #48322d;
   color: #fff; }
   .color-block .color1::after {
-    content: "#cdba42"; }
+    content: "#48322d"; }
 
 .color-block .color2 {
-  background: #d1c8c0;
-  color: #000; }
+  background: #587475;
+  color: #fff; }
   .color-block .color2::after {
-    content: "#d1c8c0"; }
+    content: "#587475"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -104,46 +104,46 @@
     content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fff;
+  background: #b8ecee;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#b8ecee"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #434202;
+  background: #010000;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#434202"; }
+    content: "#010000"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #fff;
-  color: #000; }
+  background: #8ab1b3;
+  color: #fff; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#8ab1b3"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #d3decf;
-  color: #000; }
+  background: #246049;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#d3decf"; }
+    content: "#246049"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #b5beb2;
-  color: #fff; }
+  background: #a4ffff;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#b5beb2"; }
+    content: "#a4ffff"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #deca59;
-  color: #000; }
+  background: #8d6c67;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#deca59"; }
+    content: "#8d6c67"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.48509, 0.58535"; }
+  content: "0.04038, 0.15925"; }
 
 body #sidebar ul li.active > a {
   color: #2B303B !important; }
@@ -370,14 +370,22 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
+        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: #C0C5CE;
-        display: inline; }
+        display: inline;
+        color: #f0f2f4; }
+        #sidebar ul li.visited > a .read-icon:hover {
+          color: #c4c9d4; }
+      #sidebar ul li.active > a .read-icon, #sidebar ul li.active.visited > a .read-icon {
+        display: inline;
+        color: #f0f2f4; }
+        #sidebar ul li.active > a .read-icon:hover, #sidebar ul li.active.visited > a .read-icon:hover {
+          color: #c4c9d4; }
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }

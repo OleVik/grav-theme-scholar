@@ -83,67 +83,67 @@
   content: "5"; }
 
 .balance::after {
-  content: "24"; }
+  content: "39"; }
 
 .color-block .color1 {
-  background: #bbe0a9;
-  color: #000; }
+  background: #2e292d;
+  color: #fff; }
   .color-block .color1::after {
-    content: "#bbe0a9"; }
+    content: "#2e292d"; }
 
 .color-block .color2 {
-  background: #e4e2e6;
-  color: #000; }
+  background: #5967ae;
+  color: #fff; }
   .color-block .color2::after {
-    content: "#e4e2e6"; }
+    content: "#5967ae"; }
 
 .fix-color .color:nth-child(2) {
-  background: #5d6958;
+  background: #000;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#5d6958"; }
+    content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fff;
-  color: #000; }
+  background: #8496f7;
+  color: #fff; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#8496f7"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #66745f;
+  background: #1c191b;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#66745f"; }
+    content: "#1c191b"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #f9f8f9;
-  color: #000; }
+  background: #7a88e1;
+  color: #fff; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#f9f8f9"; }
+    content: "#7a88e1"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #dbccb8;
-  color: #000; }
+  background: #525544;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#dbccb8"; }
+    content: "#525544"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #6f6962;
-  color: #fff; }
+  background: #ced5b0;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#6f6962"; }
+    content: "#ced5b0"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #c7eeb4;
-  color: #000; }
+  background: #776f75;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#c7eeb4"; }
+    content: "#776f75"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.66711, 0.76716"; }
+  content: "0.02587, 0.14921"; }
 
 #sidebar #logo {
   color: #383F45 !important; }
@@ -377,14 +377,22 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
+        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: #383F45;
-        display: inline; }
+        display: inline;
+        color: #6C6F73; }
+        #sidebar ul li.visited > a .read-icon:hover {
+          color: #2e3031; }
+      #sidebar ul li.active > a .read-icon, #sidebar ul li.active.visited > a .read-icon {
+        display: inline;
+        color: #383F45; }
+        #sidebar ul li.active > a .read-icon:hover, #sidebar ul li.active.visited > a .read-icon:hover {
+          color: black; }
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }

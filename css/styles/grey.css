@@ -80,28 +80,28 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "7"; }
+  content: "17"; }
 
 .balance::after {
-  content: "80"; }
+  content: "55"; }
 
 .color-block .color1 {
-  background: #fbf1ee;
+  background: #f2ecf4;
   color: #000; }
   .color-block .color1::after {
-    content: "#fbf1ee"; }
+    content: "#f2ecf4"; }
 
 .color-block .color2 {
-  background: #ffff48;
+  background: #e3ffff;
   color: #000; }
   .color-block .color2::after {
-    content: "#ffff48"; }
+    content: "#e3ffff"; }
 
 .fix-color .color:nth-child(2) {
-  background: #615e5e;
+  background: #454545;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#615e5e"; }
+    content: "#454545"; }
 
 .fix-color .color:nth-child(3) {
   background: #fff;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #615f5e;
+  background: #454545;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#615f5e"; }
+    content: "#454545"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #ffff6c;
+  background: azure;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#ffff6c"; }
+    content: "azure"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #d5dadd;
-  color: #000; }
+  background: #d2c804;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#d5dadd"; }
+    content: "#d2c804"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #656768;
+  background: #504f00;
   color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#656768"; }
+    content: "#504f00"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #fff5f3;
+  background: #fef7ff;
   color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#fff5f3"; }
+    content: "#fef7ff"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.89523, 0.93255"; }
+  content: "0.85077, 0.95078"; }
 
 body #sidebar ul li.active > a {
   color: #080000 !important; }
@@ -370,14 +370,22 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
+        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: #919191;
-        display: inline; }
+        display: inline;
+        color: white; }
+        #sidebar ul li.visited > a .read-icon:hover {
+          color: #fafafa; }
+      #sidebar ul li.active > a .read-icon, #sidebar ul li.active.visited > a .read-icon {
+        display: inline;
+        color: #080000; }
+        #sidebar ul li.active > a .read-icon:hover, #sidebar ul li.active.visited > a .read-icon:hover {
+          color: #550000; }
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }

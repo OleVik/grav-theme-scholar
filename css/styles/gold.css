@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "16"; }
+  content: "17"; }
 
 .balance::after {
-  content: "80"; }
+  content: "8"; }
 
 .color-block .color1 {
-  background: #3b5445;
+  background: #91be83;
   color: #fff; }
   .color-block .color1::after {
-    content: "#3b5445"; }
+    content: "#91be83"; }
 
 .color-block .color2 {
-  background: #9968a3;
-  color: #fff; }
+  background: #49dbb8;
+  color: #000; }
   .color-block .color2::after {
-    content: "#9968a3"; }
+    content: "#49dbb8"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #000;
+  background: #444543;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#444543"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #ffd3ff;
+  background: #fff;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#ffd3ff"; }
+    content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #020203;
-  color: #fff; }
+  background: #bbc9ba;
+  color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#020203"; }
+    content: "#bbc9ba"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #fffeff;
-  color: #000; }
+  background: #b2bfb1;
+  color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#fffeff"; }
+    content: "#b2bfb1"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #678472;
-  color: #fff; }
+  background: #a1d293;
+  color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#678472"; }
+    content: "#a1d293"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.07779, 0.19408"; }
+  content: "0.44468, 0.55548"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -370,14 +370,22 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
+        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: black;
-        display: inline; }
+        display: inline;
+        color: white; }
+        #sidebar ul li.visited > a .read-icon:hover {
+          color: #fcfbfa; }
+      #sidebar ul li.active > a .read-icon, #sidebar ul li.active.visited > a .read-icon {
+        display: inline;
+        color: #333333; }
+        #sidebar ul li.active > a .read-icon:hover, #sidebar ul li.active.visited > a .read-icon:hover {
+          color: black; }
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }

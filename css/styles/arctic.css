@@ -80,70 +80,70 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "2"; }
+  content: "21"; }
 
 .balance::after {
-  content: "46"; }
+  content: "33"; }
 
 .color-block .color1 {
-  background: #285a16;
-  color: #fff; }
+  background: #f4fbfb;
+  color: #000; }
   .color-block .color1::after {
-    content: "#285a16"; }
+    content: "#f4fbfb"; }
 
 .color-block .color2 {
-  background: #4e80a0;
-  color: #fff; }
+  background: white;
+  color: #000; }
   .color-block .color2::after {
-    content: "#4e80a0"; }
+    content: "white"; }
 
 .fix-color .color:nth-child(2) {
-  background: #496046;
+  background: #000;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#496046"; }
+    content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #5d86a5;
-  color: #fff; }
+  background: #fff;
+  color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#5d86a5"; }
+    content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #385d2c;
+  background: #000;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#385d2c"; }
+    content: "#000"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #5683a2;
-  color: #fff; }
+  background: white;
+  color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#5683a2"; }
+    content: "white"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #e9fa2e;
+  background: #f1f4f0;
   color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#e9fa2e"; }
+    content: "#f1f4f0"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #e9fa2e;
-  color: #000; }
+  background: black;
+  color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#e9fa2e"; }
+    content: "black"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #578b4c;
-  color: #fff; }
+  background: white;
+  color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#578b4c"; }
+    content: "white"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.07939, 0.19611"; }
+  content: "0.94917, 1.00001"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -370,14 +370,22 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
+        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
         margin: 4px 0 0 0;
         text-align: right; }
       #sidebar ul li.visited > a .read-icon {
-        color: #0a0a0a;
-        display: inline; }
+        display: inline;
+        color: white; }
+        #sidebar ul li.visited > a .read-icon:hover {
+          color: #eff5fa; }
+      #sidebar ul li.active > a .read-icon, #sidebar ul li.active.visited > a .read-icon {
+        display: inline;
+        color: #333333; }
+        #sidebar ul li.active > a .read-icon:hover, #sidebar ul li.active.visited > a .read-icon:hover {
+          color: black; }
       #sidebar ul li li {
         padding-left: 1rem;
         text-indent: 0.2rem; }
