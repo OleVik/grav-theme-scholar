@@ -5,8 +5,14 @@ body {
 }
 
 // Headings
-h1, h2, h3, h4, h5, h6 {
-	margin: $leading-margin / 2 0 $leading-margin 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	// margin: $leading-margin / 4 0 $leading-margin / 2 0;
+	margin: ($leading-margin / 4) 0 ($leading-margin / 2) 0;
 	text-rendering: optimizeLegibility;
 }
 
@@ -40,10 +46,13 @@ p {
 }
 
 // Lists
-ul, ol {
+ul,
+ol {
 	margin-top: $leading-margin;
 	margin-bottom: $leading-margin;
-	ul, ol {
+
+	ul,
+	ol {
 		margin-top: 0;
 		margin-bottom: 0;
 	}
@@ -58,15 +67,16 @@ blockquote {
 cite {
 	display: block;
 	font-size: $core-font-size - 0.125;
+
 	&:before {
-      content: "\2014 \0020";
-    }
+		content: "\2014 \0020";
+	}
 }
 
 // Inline and Code
 pre {
 	margin: $leading-margin 0;
- 	padding: $content-padding;
+	padding: $content-padding;
 }
 
 code {

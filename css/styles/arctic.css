@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "21"; }
+  content: "11"; }
 
 .balance::after {
-  content: "33"; }
+  content: "59"; }
 
 .color-block .color1 {
-  background: #f4fbfb;
-  color: #000; }
+  background: #2b3b32;
+  color: #fff; }
   .color-block .color1::after {
-    content: "#f4fbfb"; }
+    content: "#2b3b32"; }
 
 .color-block .color2 {
-  background: white;
-  color: #000; }
+  background: #b55647;
+  color: #fff; }
   .color-block .color2::after {
-    content: "white"; }
+    content: "#b55647"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -104,46 +104,46 @@
     content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fff;
+  background: #fffad3;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#fffad3"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #000;
+  background: #121814;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#121814"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: white;
+  background: #ffc2a2;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "white"; }
+    content: "#ffc2a2"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #f1f4f0;
-  color: #000; }
+  background: #6235a7;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#f1f4f0"; }
+    content: "#6235a7"; }
 
 .best-contrast .color:nth-child(3) {
-  background: black;
-  color: #fff; }
+  background: #fffbff;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "black"; }
+    content: "#fffbff"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: white;
-  color: #000; }
+  background: #677c6f;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "white"; }
+    content: "#677c6f"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.94917, 1.00001"; }
+  content: "0.04051, 0.17039"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -500,27 +500,67 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 body {
   font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   letter-spacing: -0.03rem;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
   line-height: 150%;
-  letter-spacing: -0px; }
+  letter-spacing: -0px;
+  overflow-wrap: break-word;
+  overflow: visible;
+  word-break: break-word;
+  white-space: normal;
+  margin: 0.425rem 0 0.85rem 0; }
 
 h1 {
   text-align: center;
-  letter-spacing: -3px; }
+  letter-spacing: -3px;
+  font-size: 2.55rem; }
 
 h2 {
-  letter-spacing: -2px; }
+  letter-spacing: -2px;
+  font-size: 2.15rem; }
 
 h3 {
-  letter-spacing: -1px; }
+  letter-spacing: -1px;
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.4rem; }
+
+h5 {
+  font-size: 0.9rem; }
+
+h6 {
+  font-size: 0.7rem; }
+
+p {
+  margin: 1.7rem 0; }
+
+ul,
+ol {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem; }
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: 0;
+    margin-bottom: 0; }
 
 blockquote {
-  border-left: 10px solid #F0F2F4; }
+  border-left: 10px solid #F0F2F4;
+  margin: 1.7rem 0;
+  padding-left: 0.85rem; }
   blockquote p {
     font-size: 1.1rem;
     color: #666666; }
@@ -528,7 +568,25 @@ blockquote {
     display: block;
     text-align: right;
     color: #333333;
-    font-size: 1.2rem; }
+    font-size: 0.925rem; }
+    blockquote cite:before {
+      content: "\2014 \0020"; }
+
+pre {
+  margin: 1.7rem 0;
+  padding: 0.938rem; }
+
+code {
+  vertical-align: bottom; }
+
+small {
+  font-size: 0.925rem; }
+
+hr {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.7rem 0; }
 
 blockquote {
   position: relative; }

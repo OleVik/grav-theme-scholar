@@ -80,70 +80,70 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "5"; }
+  content: "10"; }
 
 .balance::after {
-  content: "39"; }
+  content: "11"; }
 
 .color-block .color1 {
-  background: #2e292d;
+  background: #b2b0ba;
   color: #fff; }
   .color-block .color1::after {
-    content: "#2e292d"; }
+    content: "#b2b0ba"; }
 
 .color-block .color2 {
-  background: #5967ae;
+  background: #87d0c8;
   color: #fff; }
   .color-block .color2::after {
-    content: "#5967ae"; }
+    content: "#87d0c8"; }
 
 .fix-color .color:nth-child(2) {
-  background: #000;
+  background: #454545;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#454545"; }
 
 .fix-color .color:nth-child(3) {
-  background: #8496f7;
-  color: #fff; }
+  background: #fff;
+  color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#8496f7"; }
+    content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #1c191b;
+  background: #525254;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#1c191b"; }
+    content: "#525254"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #7a88e1;
-  color: #fff; }
+  background: #f2faf9;
+  color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#7a88e1"; }
+    content: "#f2faf9"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #525544;
-  color: #fff; }
+  background: #d2f4db;
+  color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#525544"; }
+    content: "#d2f4db"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #ced5b0;
-  color: #000; }
+  background: #abc8b3;
+  color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#ced5b0"; }
+    content: "#abc8b3"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #776f75;
+  background: #c4c1cc;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#776f75"; }
+    content: "#c4c1cc"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.02587, 0.14921"; }
+  content: "0.44084, 0.54255"; }
 
 #sidebar #logo {
   color: #383F45 !important; }
@@ -507,27 +507,67 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 body {
   font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   letter-spacing: -0.03rem;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
   line-height: 150%;
-  letter-spacing: -0px; }
+  letter-spacing: -0px;
+  overflow-wrap: break-word;
+  overflow: visible;
+  word-break: break-word;
+  white-space: normal;
+  margin: 0.425rem 0 0.85rem 0; }
 
 h1 {
   text-align: center;
-  letter-spacing: -3px; }
+  letter-spacing: -3px;
+  font-size: 2.55rem; }
 
 h2 {
-  letter-spacing: -2px; }
+  letter-spacing: -2px;
+  font-size: 2.15rem; }
 
 h3 {
-  letter-spacing: -1px; }
+  letter-spacing: -1px;
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.4rem; }
+
+h5 {
+  font-size: 0.9rem; }
+
+h6 {
+  font-size: 0.7rem; }
+
+p {
+  margin: 1.7rem 0; }
+
+ul,
+ol {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem; }
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: 0;
+    margin-bottom: 0; }
 
 blockquote {
-  border-left: 10px solid #F0F2F4; }
+  border-left: 10px solid #F0F2F4;
+  margin: 1.7rem 0;
+  padding-left: 0.85rem; }
   blockquote p {
     font-size: 1.1rem;
     color: #666666; }
@@ -535,7 +575,25 @@ blockquote {
     display: block;
     text-align: right;
     color: #333333;
-    font-size: 1.2rem; }
+    font-size: 0.925rem; }
+    blockquote cite:before {
+      content: "\2014 \0020"; }
+
+pre {
+  margin: 1.7rem 0;
+  padding: 0.938rem; }
+
+code {
+  vertical-align: bottom; }
+
+small {
+  font-size: 0.925rem; }
+
+hr {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.7rem 0; }
 
 blockquote {
   position: relative; }

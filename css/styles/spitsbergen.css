@@ -80,28 +80,28 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "16"; }
+  content: "7"; }
 
 .balance::after {
-  content: "56"; }
+  content: "100"; }
 
 .color-block .color1 {
-  background: #4ce53e;
+  background: #fac7ca;
   color: #000; }
   .color-block .color1::after {
-    content: "#4ce53e"; }
+    content: "#fac7ca"; }
 
 .color-block .color2 {
-  background: #ffc0ff;
+  background: #a6efe6;
   color: #000; }
   .color-block .color2::after {
-    content: "#ffc0ff"; }
+    content: "#a6efe6"; }
 
 .fix-color .color:nth-child(2) {
-  background: #000;
+  background: #605455;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#605455"; }
 
 .fix-color .color:nth-child(3) {
   background: #fff;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #024201;
+  background: #5c5656;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#024201"; }
+    content: "#5c5656"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #fff;
+  background: #a6efe6;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#fff"; }
+    content: "#a6efe6"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #96a677;
+  background: #a48a89;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#96a677"; }
+    content: "#a48a89"; }
 
 .best-contrast .color:nth-child(3) {
-  background: black;
+  background: #695e5d;
   color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "black"; }
+    content: "#695e5d"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #5ef356;
+  background: #ffd8dc;
   color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#5ef356"; }
+    content: "#ffd8dc"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.57789, 0.66071"; }
+  content: "0.6542, 0.75462"; }
 
 body {
   background: #FAFAFA;
@@ -497,27 +497,67 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 body {
   font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   letter-spacing: -0.03rem;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
   line-height: 150%;
-  letter-spacing: -0px; }
+  letter-spacing: -0px;
+  overflow-wrap: break-word;
+  overflow: visible;
+  word-break: break-word;
+  white-space: normal;
+  margin: 0.425rem 0 0.85rem 0; }
 
 h1 {
   text-align: center;
-  letter-spacing: -3px; }
+  letter-spacing: -3px;
+  font-size: 2.55rem; }
 
 h2 {
-  letter-spacing: -2px; }
+  letter-spacing: -2px;
+  font-size: 2.15rem; }
 
 h3 {
-  letter-spacing: -1px; }
+  letter-spacing: -1px;
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.4rem; }
+
+h5 {
+  font-size: 0.9rem; }
+
+h6 {
+  font-size: 0.7rem; }
+
+p {
+  margin: 1.7rem 0; }
+
+ul,
+ol {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem; }
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: 0;
+    margin-bottom: 0; }
 
 blockquote {
-  border-left: 10px solid #F0F2F4; }
+  border-left: 10px solid #F0F2F4;
+  margin: 1.7rem 0;
+  padding-left: 0.85rem; }
   blockquote p {
     font-size: 1.1rem;
     color: #666666; }
@@ -525,7 +565,25 @@ blockquote {
     display: block;
     text-align: right;
     color: #333333;
-    font-size: 1.2rem; }
+    font-size: 0.925rem; }
+    blockquote cite:before {
+      content: "\2014 \0020"; }
+
+pre {
+  margin: 1.7rem 0;
+  padding: 0.938rem; }
+
+code {
+  vertical-align: bottom; }
+
+small {
+  font-size: 0.925rem; }
+
+hr {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.7rem 0; }
 
 blockquote {
   position: relative; }

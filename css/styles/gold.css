@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "17"; }
+  content: "21"; }
 
 .balance::after {
-  content: "8"; }
+  content: "84"; }
 
 .color-block .color1 {
-  background: #91be83;
+  background: #aecc14;
   color: #fff; }
   .color-block .color1::after {
-    content: "#91be83"; }
+    content: "#aecc14"; }
 
 .color-block .color2 {
-  background: #49dbb8;
+  background: #48ee5e;
   color: #000; }
   .color-block .color2::after {
-    content: "#49dbb8"; }
+    content: "#48ee5e"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -110,10 +110,10 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #444543;
+  background: #000;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#444543"; }
+    content: "#000"; }
 
 .fix-contrast .color:nth-child(3) {
   background: #fff;
@@ -122,28 +122,28 @@
     content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #bbc9ba;
-  color: #000; }
+  background: #a4a8a6;
+  color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#bbc9ba"; }
+    content: "#a4a8a6"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #b2bfb1;
+  background: black;
   color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#b2bfb1"; }
+    content: "black"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #a1d293;
+  background: #bedf47;
   color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#a1d293"; }
+    content: "#bedf47"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.44468, 0.55548"; }
+  content: "0.52305, 0.63619"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -500,27 +500,67 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
 body {
   font-family: "Muli", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   letter-spacing: -0.03rem;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7; }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "Montserrat", "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
   font-weight: 400;
   text-rendering: optimizeLegibility;
   line-height: 150%;
-  letter-spacing: -0px; }
+  letter-spacing: -0px;
+  overflow-wrap: break-word;
+  overflow: visible;
+  word-break: break-word;
+  white-space: normal;
+  margin: 0.425rem 0 0.85rem 0; }
 
 h1 {
   text-align: center;
-  letter-spacing: -3px; }
+  letter-spacing: -3px;
+  font-size: 2.55rem; }
 
 h2 {
-  letter-spacing: -2px; }
+  letter-spacing: -2px;
+  font-size: 2.15rem; }
 
 h3 {
-  letter-spacing: -1px; }
+  letter-spacing: -1px;
+  font-size: 1.8rem; }
+
+h4 {
+  font-size: 1.4rem; }
+
+h5 {
+  font-size: 0.9rem; }
+
+h6 {
+  font-size: 0.7rem; }
+
+p {
+  margin: 1.7rem 0; }
+
+ul,
+ol {
+  margin-top: 1.7rem;
+  margin-bottom: 1.7rem; }
+  ul ul,
+  ul ol,
+  ol ul,
+  ol ol {
+    margin-top: 0;
+    margin-bottom: 0; }
 
 blockquote {
-  border-left: 10px solid #F0F2F4; }
+  border-left: 10px solid #F0F2F4;
+  margin: 1.7rem 0;
+  padding-left: 0.85rem; }
   blockquote p {
     font-size: 1.1rem;
     color: #666666; }
@@ -528,7 +568,25 @@ blockquote {
     display: block;
     text-align: right;
     color: #333333;
-    font-size: 1.2rem; }
+    font-size: 0.925rem; }
+    blockquote cite:before {
+      content: "\2014 \0020"; }
+
+pre {
+  margin: 1.7rem 0;
+  padding: 0.938rem; }
+
+code {
+  vertical-align: bottom; }
+
+small {
+  font-size: 0.925rem; }
+
+hr {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  margin: 1.7rem 0; }
 
 blockquote {
   position: relative; }
