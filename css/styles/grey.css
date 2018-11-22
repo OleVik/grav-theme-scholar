@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "6"; }
+  content: "21"; }
 
 .balance::after {
-  content: "92"; }
+  content: "37"; }
 
 .color-block .color1 {
-  background: #800f00;
+  background: #362616;
   color: #fff; }
   .color-block .color1::after {
-    content: "#800f00"; }
+    content: "#362616"; }
 
 .color-block .color2 {
-  background: #757446;
+  background: #646b76;
   color: #fff; }
   .color-block .color2::after {
-    content: "#757446"; }
+    content: "#646b76"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -104,46 +104,46 @@
     content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #cac880;
+  background: #fff;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#cac880"; }
+    content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #0a0100;
+  background: #000;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#0a0100"; }
+    content: "#000"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #8f8e61;
-  color: #fff; }
+  background: #fff;
+  color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#8f8e61"; }
+    content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #414c3d;
+  background: #05060a;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#414c3d"; }
+    content: "#05060a"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #ceeec5;
+  background: #f6ffff;
   color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#ceeec5"; }
+    content: "#f6ffff"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #db4b01;
+  background: #856b58;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#db4b01"; }
+    content: "#856b58"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.05097, 0.16843"; }
+  content: "0.02507, 0.14556"; }
 
 body #sidebar ul li.active > a {
   color: #080000 !important; }
@@ -403,14 +403,17 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   position: relative;
   margin-left: 300px;
   min-height: 100%; }
-  #body img, #body .video-container {
+  #body img,
+  #body .video-container {
     margin: 3rem auto;
     display: block;
     text-align: center; }
-    #body img.border, #body .video-container.border {
+    #body img.border,
+    #body .video-container.border {
       border: 2px solid #e6e6e6 !important;
       padding: 2px; }
-    #body img.shadow, #body .video-container.shadow {
+    #body img.shadow,
+    #body .video-container.shadow {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
   #body .bordered {
     border: 1px solid #ccc; }
@@ -461,7 +464,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #body .nav i {
       font-size: 50px; }
     #body .nav:hover {
-      background: #f9f9f9; }
+      background: #e0e0e0; }
     #body .nav.nav-pref {
       left: 0; }
     #body .nav.nav-next {

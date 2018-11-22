@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "21"; }
+  content: "17"; }
 
 .balance::after {
-  content: "84"; }
+  content: "1"; }
 
 .color-block .color1 {
-  background: #aecc14;
+  background: #978e63;
   color: #fff; }
   .color-block .color1::after {
-    content: "#aecc14"; }
+    content: "#978e63"; }
 
 .color-block .color2 {
-  background: #48ee5e;
-  color: #000; }
+  background: #bd9c98;
+  color: #fff; }
   .color-block .color2::after {
-    content: "#48ee5e"; }
+    content: "#bd9c98"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -110,10 +110,10 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #000;
+  background: #464644;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#000"; }
+    content: "#464644"; }
 
 .fix-contrast .color:nth-child(3) {
   background: #fff;
@@ -122,28 +122,28 @@
     content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #a4a8a6;
+  background: #c5c2cc;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#a4a8a6"; }
+    content: "#c5c2cc"; }
 
 .best-contrast .color:nth-child(3) {
-  background: black;
-  color: #fff; }
+  background: white;
+  color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "black"; }
+    content: "white"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #bedf47;
-  color: #000; }
+  background: #afa577;
+  color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#bedf47"; }
+    content: "#afa577"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.52305, 0.63619"; }
+  content: "0.26739, 0.36985"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -403,14 +403,17 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   position: relative;
   margin-left: 300px;
   min-height: 100%; }
-  #body img, #body .video-container {
+  #body img,
+  #body .video-container {
     margin: 3rem auto;
     display: block;
     text-align: center; }
-    #body img.border, #body .video-container.border {
+    #body img.border,
+    #body .video-container.border {
       border: 2px solid #e6e6e6 !important;
       padding: 2px; }
-    #body img.shadow, #body .video-container.shadow {
+    #body img.shadow,
+    #body .video-container.shadow {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
   #body .bordered {
     border: 1px solid #ccc; }
@@ -461,7 +464,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #body .nav i {
       font-size: 50px; }
     #body .nav:hover {
-      background: #F4F4F4; }
+      background: #dbdbdb; }
     #body .nav.nav-pref {
       left: 0; }
     #body .nav.nav-next {

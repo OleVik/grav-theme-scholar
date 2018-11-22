@@ -1,10 +1,12 @@
 #main {
-	background: $main-bg;
-	margin: 0 0 $content-margin + $content-padding 0;
+    background: $main-bg;
+    margin: 0 0 $content-margin + $content-padding 0;
 }
 
 #body {
-    img, .video-container {
+
+    img,
+    .video-container {
         margin: 3rem auto;
         display: block;
         text-align: center;
@@ -42,7 +44,7 @@
         }
     }
 
-    h1 + hr {
+    h1+hr {
         margin-top: -1.7rem;
         margin-bottom: 3rem;
     }
@@ -68,7 +70,8 @@
         cursor: pointer;
         display: table;
         text-align: center;
-        > i {
+
+        >i {
             display: table-cell;
             vertical-align: middle;
             text-align: center;
@@ -83,7 +86,8 @@
             height: 100px;
             line-height: 100px;
             padding-top: 0;
-            > i {
+
+            >i {
                 display: inline-block;
             }
         }
@@ -93,7 +97,7 @@
         }
 
         &:hover {
-            background: $navbar-bg;
+            background: diminish($page-bg, 10%);
         }
 
         &.nav-pref {

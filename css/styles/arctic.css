@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "11"; }
+  content: "9"; }
 
 .balance::after {
-  content: "59"; }
+  content: "11"; }
 
 .color-block .color1 {
-  background: #2b3b32;
+  background: #032900;
   color: #fff; }
   .color-block .color1::after {
-    content: "#2b3b32"; }
+    content: "#032900"; }
 
 .color-block .color2 {
-  background: #b55647;
+  background: #696962;
   color: #fff; }
   .color-block .color2::after {
-    content: "#b55647"; }
+    content: "#696962"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -104,46 +104,46 @@
     content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #fffad3;
+  background: #c6c6bb;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#fffad3"; }
+    content: "#c6c6bb"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #121814;
+  background: #032400;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#121814"; }
+    content: "#032400"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #ffc2a2;
-  color: #000; }
+  background: #c2c2b6;
+  color: #fff; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#ffc2a2"; }
+    content: "#c2c2b6"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #6235a7;
-  color: #fff; }
+  background: #f5edea;
+  color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#6235a7"; }
+    content: "#f5edea"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #fffbff;
+  background: #ebe4e1;
   color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#fffbff"; }
+    content: "#ebe4e1"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #677c6f;
+  background: #467c03;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#677c6f"; }
+    content: "#467c03"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.04051, 0.17039"; }
+  content: "0.01776, 0.13948"; }
 
 body #sidebar ul li.active > a {
   color: #333333 !important; }
@@ -403,14 +403,17 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   position: relative;
   margin-left: 300px;
   min-height: 100%; }
-  #body img, #body .video-container {
+  #body img,
+  #body .video-container {
     margin: 3rem auto;
     display: block;
     text-align: center; }
-    #body img.border, #body .video-container.border {
+    #body img.border,
+    #body .video-container.border {
       border: 2px solid #e6e6e6 !important;
       padding: 2px; }
-    #body img.shadow, #body .video-container.shadow {
+    #body img.shadow,
+    #body .video-container.shadow {
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
   #body .bordered {
     border: 1px solid #ccc; }
@@ -461,7 +464,7 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
     #body .nav i {
       font-size: 50px; }
     #body .nav:hover {
-      background: #E9E9E9; }
+      background: #d0d0d0; }
     #body .nav.nav-pref {
       left: 0; }
     #body .nav.nav-next {
