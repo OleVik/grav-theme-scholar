@@ -2,8 +2,8 @@
     display: none;
 
     @include breakpoint(mobile-only) {
-         display: inline-block;
-     }
+        display: inline-block;
+    }
 
 }
 
@@ -22,9 +22,11 @@
     a,
     i {
         color: $sidebar-link;
+
         &:hover {
             color: amplify(contrast-color($sidebar-bg, $sidebar-link), 5%);
         }
+
         &.subtitle {
             color: rgba($sidebar-link, 0.6);
         }
@@ -80,13 +82,14 @@
 
     }
 
-    h5 + ul.topics {
+    h5+ul.topics {
         display: none;
         margin-top: 0;
     }
 
-    h5.parent, h5.active {
-        + ul.topics {
+    h5.parent,
+    h5.active {
+        +ul.topics {
             display: block;
         }
     }
@@ -106,6 +109,7 @@
             .search-match {
                 a {
                     color: amplify($sidebar-link, 10%);
+
                     &:hover {
                         color: amplify($sidebar-link, 20%);
                     }
@@ -131,12 +135,13 @@
                 }
             }
 
-            li.parent ul, > li.active ul {
+            li.parent ul,
+            >li.active ul {
                 display: block;
             }
 
-            > li {
-                > a {
+            >li {
+                >a {
                     line-height: 2rem;
                     font-size: 1.1rem;
 
@@ -150,13 +155,15 @@
                     }
                 }
 
-                &.parent, &.active {
+                &.parent,
+                &.active {
                     background: amplify($sidebar-bg, 5%);
                     margin-left: -1rem;
                     margin-right: -1rem;
                     padding-left: 1rem;
                     padding-right: 1rem;
-                    > a {
+
+                    >a {
                         b {
                             color: $sidebar-link;
                         }
@@ -165,13 +172,14 @@
             }
         }
 
-        li.active > a {
+        li.active>a {
             background: $white;
             color: $core-text !important;
             margin-left: -1rem;
             margin-right: -1rem;
             padding-left: 1rem;
             padding-right: 1rem;
+
             b {
                 color: $core-text !important;
             }
@@ -179,12 +187,15 @@
 
         li {
             padding: 0;
-            &.visited + span {
+
+            &.visited+span {
                 margin-right: 16px;
             }
+
             a {
                 display: block;
                 padding: 2px 0;
+
                 span {
                     text-overflow: ellipsis;
                     overflow: hidden;
@@ -192,12 +203,12 @@
                     display: block;
                 }
             }
-            > a {
+
+            >a {
                 padding: 4px 0;
             }
 
             .fa {
-                display: none;
                 float: right;
                 font-size: 13px;
                 min-width: 16px;
@@ -206,7 +217,7 @@
             }
 
             &.visited {
-                > a .read-icon {
+                >a .read-icon {
                     color: $core-accent;
                     display: inline;
                 }
@@ -220,11 +231,13 @@
 
     }
 }
+
 #body {
     #navigation {
         .nav {
             .fa {
                 color: amplify(contrast-color($page-bg, $sidebar-bg), 15%);
+
                 &:active,
                 &:focus,
                 &:hover,

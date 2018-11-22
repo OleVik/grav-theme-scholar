@@ -80,28 +80,28 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "6"; }
-
-.balance::after {
   content: "5"; }
 
+.balance::after {
+  content: "24"; }
+
 .color-block .color1 {
-  background: #74ec04;
+  background: #bbe0a9;
   color: #000; }
   .color-block .color1::after {
-    content: "#74ec04"; }
+    content: "#bbe0a9"; }
 
 .color-block .color2 {
-  background: #ffd1f9;
+  background: #e4e2e6;
   color: #000; }
   .color-block .color2::after {
-    content: "#ffd1f9"; }
+    content: "#e4e2e6"; }
 
 .fix-color .color:nth-child(2) {
-  background: #496200;
+  background: #5d6958;
   color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#496200"; }
+    content: "#5d6958"; }
 
 .fix-color .color:nth-child(3) {
   background: #fff;
@@ -110,40 +110,40 @@
     content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #4d7201;
+  background: #66745f;
   color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#4d7201"; }
+    content: "#66745f"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #fffdff;
+  background: #f9f8f9;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#fffdff"; }
+    content: "#f9f8f9"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #765095;
-  color: #fff; }
+  background: #dbccb8;
+  color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#765095"; }
+    content: "#dbccb8"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #72598b;
+  background: #6f6962;
   color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#72598b"; }
+    content: "#6f6962"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #7ffc04;
+  background: #c7eeb4;
   color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#7ffc04"; }
+    content: "#c7eeb4"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.63782, 0.73793"; }
+  content: "0.66711, 0.76716"; }
 
 #sidebar #logo {
   color: #383F45 !important; }
@@ -311,7 +311,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   #sidebar h5 + ul.topics {
     display: none;
     margin-top: 0; }
-  #sidebar h5.parent + ul.topics, #sidebar h5.active + ul.topics {
+  #sidebar h5.parent + ul.topics,
+  #sidebar h5.active + ul.topics {
     display: block; }
   #sidebar ul {
     list-style: none;
@@ -332,7 +333,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-bottom: 1rem; }
         #sidebar ul.topics ul ul {
           padding-bottom: 0; }
-      #sidebar ul.topics li.parent ul, #sidebar ul.topics > li.active ul {
+      #sidebar ul.topics li.parent ul,
+      #sidebar ul.topics > li.active ul {
         display: block; }
       #sidebar ul.topics > li > a {
         line-height: 2rem;
@@ -375,7 +377,6 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
-        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;

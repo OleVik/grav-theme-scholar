@@ -80,22 +80,22 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "18"; }
+  content: "20"; }
 
 .balance::after {
-  content: "22"; }
+  content: "8"; }
 
 .color-block .color1 {
-  background: #0f522f;
+  background: #333538;
   color: #fff; }
   .color-block .color1::after {
-    content: "#0f522f"; }
+    content: "#333538"; }
 
 .color-block .color2 {
-  background: #5c7e63;
+  background: #92644e;
   color: #fff; }
   .color-block .color2::after {
-    content: "#5c7e63"; }
+    content: "#92644e"; }
 
 .fix-color .color:nth-child(2) {
   background: #000;
@@ -116,34 +116,34 @@
     content: "#000"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #e7f0ea;
+  background: #fcf9f7;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#e7f0ea"; }
+    content: "#fcf9f7"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #df9c62;
+  background: #fc22e9;
   color: #fff; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#df9c62"; }
+    content: "#fc22e9"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #ffffa9;
+  background: white;
   color: #000; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#ffffa9"; }
+    content: "white"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #4a885f;
+  background: #717479;
   color: #fff; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#4a885f"; }
+    content: "#717479"; }
 
 .check-contrast .result::after {
   content: "false"; }
 
 .luminance .result::after {
-  content: "0.06559, 0.18149"; }
+  content: "0.03753, 0.15906"; }
 
 body {
   background: #FAFAFA;
@@ -302,7 +302,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   #sidebar h5 + ul.topics {
     display: none;
     margin-top: 0; }
-  #sidebar h5.parent + ul.topics, #sidebar h5.active + ul.topics {
+  #sidebar h5.parent + ul.topics,
+  #sidebar h5.active + ul.topics {
     display: block; }
   #sidebar ul {
     list-style: none;
@@ -323,7 +324,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-bottom: 1rem; }
         #sidebar ul.topics ul ul {
           padding-bottom: 0; }
-      #sidebar ul.topics li.parent ul, #sidebar ul.topics > li.active ul {
+      #sidebar ul.topics li.parent ul,
+      #sidebar ul.topics > li.active ul {
         display: block; }
       #sidebar ul.topics > li > a {
         line-height: 2rem;
@@ -365,7 +367,6 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
-        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;

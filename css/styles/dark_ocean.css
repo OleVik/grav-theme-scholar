@@ -80,70 +80,70 @@
   To generate random colors, we're also using a two-variable random() function includded with compass.
 */
 .ratio::after {
-  content: "1"; }
+  content: "18"; }
 
 .balance::after {
-  content: "96"; }
+  content: "12"; }
 
 .color-block .color1 {
-  background: #e6e0e2;
-  color: #000; }
+  background: #cdba42;
+  color: #fff; }
   .color-block .color1::after {
-    content: "#e6e0e2"; }
+    content: "#cdba42"; }
 
 .color-block .color2 {
-  background: #ffeae1;
+  background: #d1c8c0;
   color: #000; }
   .color-block .color2::after {
-    content: "#ffeae1"; }
+    content: "#d1c8c0"; }
 
 .fix-color .color:nth-child(2) {
-  background: #e6e0e2;
-  color: #000; }
+  background: #000;
+  color: #fff; }
   .fix-color .color:nth-child(2)::after {
-    content: "#e6e0e2"; }
+    content: "#000"; }
 
 .fix-color .color:nth-child(3) {
-  background: #ffeae1;
+  background: #fff;
   color: #000; }
   .fix-color .color:nth-child(3)::after {
-    content: "#ffeae1"; }
+    content: "#fff"; }
 
 .fix-contrast .color:nth-child(2) {
-  background: #e6e0e2;
-  color: #000; }
+  background: #434202;
+  color: #fff; }
   .fix-contrast .color:nth-child(2)::after {
-    content: "#e6e0e2"; }
+    content: "#434202"; }
 
 .fix-contrast .color:nth-child(3) {
-  background: #ffeae1;
+  background: #fff;
   color: #000; }
   .fix-contrast .color:nth-child(3)::after {
-    content: "#ffeae1"; }
+    content: "#fff"; }
 
 .best-contrast .color:nth-child(2) {
-  background: #612937;
-  color: #fff; }
+  background: #d3decf;
+  color: #000; }
   .best-contrast .color:nth-child(2)::after {
-    content: "#612937"; }
+    content: "#d3decf"; }
 
 .best-contrast .color:nth-child(3) {
-  background: #612937;
+  background: #b5beb2;
   color: #fff; }
   .best-contrast .color:nth-child(3)::after {
-    content: "#612937"; }
+    content: "#b5beb2"; }
 
 .scale-luminance .color:nth-child(2) {
-  background: #f3edef;
+  background: #deca59;
   color: #000; }
   .scale-luminance .color:nth-child(2)::after {
-    content: "#f3edef"; }
+    content: "#deca59"; }
 
 .check-contrast .result::after {
-  content: "true"; }
+  content: "false"; }
 
 .luminance .result::after {
-  content: "0.75584, 0.85587"; }
+  content: "0.48509, 0.58535"; }
 
 body #sidebar ul li.active > a {
   color: #2B303B !important; }
@@ -305,7 +305,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
   #sidebar h5 + ul.topics {
     display: none;
     margin-top: 0; }
-  #sidebar h5.parent + ul.topics, #sidebar h5.active + ul.topics {
+  #sidebar h5.parent + ul.topics,
+  #sidebar h5.active + ul.topics {
     display: block; }
   #sidebar ul {
     list-style: none;
@@ -326,7 +327,8 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
         padding-bottom: 1rem; }
         #sidebar ul.topics ul ul {
           padding-bottom: 0; }
-      #sidebar ul.topics li.parent ul, #sidebar ul.topics > li.active ul {
+      #sidebar ul.topics li.parent ul,
+      #sidebar ul.topics > li.active ul {
         display: block; }
       #sidebar ul.topics > li > a {
         line-height: 2rem;
@@ -368,7 +370,6 @@ textarea, input[type="email"], input[type="number"], input[type="password"], inp
       #sidebar ul li > a {
         padding: 4px 0; }
       #sidebar ul li .fa {
-        display: none;
         float: right;
         font-size: 13px;
         min-width: 16px;
