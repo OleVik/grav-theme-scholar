@@ -93,6 +93,23 @@ To recompile default style using a Sass-compiler, run it on /scss/theme.scss and
     - [ ] Optimize templates for docs
     - [ ] Add templates for pages
     - [ ] Add templates for book/papers/articles
+        - https://github.com/sachsmc/pandoc-journal-templates
+        - https://www.overleaf.com/latex/templates/
+        - https://latex.org/forum/viewtopic.php?t=26165
+        - CSS3 Multiple Column Layout: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts
+            - https://github.com/futurepress/epub.js/
+            - https://github.com/vivliostyle/vivliostyle.js
+            - https://github.com/vivliostyle/vivliostyle-print
+            - https://w3c.github.io/scholarly-html/
+        - Print:
+            - W3C drafts:
+                - https://www.w3.org/TR/css-gcpm-3/
+                - https://drafts4.csswg.org/css-gcpm-4/
+            - Paged Media: https://www.pagedmedia.org/paged-media-approaches-part-1-of-2/
+                - https://gitlab.pagedmedia.org/tools/pagedjs
+            - Breaking HTML into pages: https://alistapart.com/article/boom
+            - Print Stylessheets: https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/
+            - 
 1. Styles
     - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
     - [ ] Unify to reduce customizations in core Styles
