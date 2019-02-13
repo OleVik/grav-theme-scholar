@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% do assets.addCss('theme://css/normal.css', {'group': 'normal'}) %}
+    {% do assets.addJs('theme://node_modules/tota11y/build/tota11y.min.js', {'group': 'debug'}) %}
+    {{ assets.css('normal') }}
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Logo</a>
+      <a href="#" class="button">Home</a>
+      <button>Download</button>
+    </header>
+    <main class="grid">
+      <article class="twelve">
+        {{ page.content }}
+      </article>
+    </main>
+    <aside>
+      <p>Related</p>
+    </aside>
+    <footer>
+      <p>Footer text</p>
+    </footer>
+    {{ assets.js('normal') }}
+    {# {{ assets.js('debug') }} #}
+  </body>
+</html>

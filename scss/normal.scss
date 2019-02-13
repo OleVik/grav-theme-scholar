@@ -1,0 +1,162 @@
+$breakpoints: (xs: 320px,
+sm: 576px,
+md: 768px,
+lg: 992px,
+xl: 1200px);
+
+@import "../node_modules/include-media/dist/_include-media.scss";
+@import 'modules/grid';
+
+/* Sans-serif */
+$lucida-grande-font-stack: "Lucida Grande",
+"Lucida Sans Unicode",
+"Lucida Sans",
+Geneva,
+Verdana,
+sans-serif !default;
+$roboto-font-stack: "Roboto",
+"Helvetica",
+"Arial",
+-apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol",
+sans-serif !default;
+$pt-sans-font-stack: "PT Sans",
+"Helvetica Neue",
+Helvetica,
+Arial,
+sans-serif !default;
+/* Serif */
+$palatino-font-stack: Palatino,
+"Palatino Linotype",
+"Palatino LT STD",
+"Book Antiqua",
+Georgia,
+serif !default;
+$source-serif-pro-font-stack: "Source Serif Pro",
+"Apple Garamond",
+"Baskerville",
+"Times New Roman",
+"Droid Serif",
+"Times",
+serif !default;
+/* Monotyped */
+$monaco-font-stack: monaco,
+Consolas,
+"Lucida Console",
+monospace !default;
+$courier-font-stack: "Courier New",
+Courier,
+"Lucida Sans Typewriter",
+"Lucida Typewriter",
+monospace !default;
+
+/*
+  Flavor name: Default (mini-default)
+  Author: Ole Vik
+  Maintainers: Ole Vik
+  mini.css version: v3.0.1
+*/
+@import '../node_modules/mini.css/src/mini/core';
+@import '../node_modules/mini.css/src/mini/layout';
+
+/* Cards */
+$card-small-name: 'small';
+$card-small-width: 240px;
+@include make-card-alt-size ($card-small-name, $card-small-width);
+$card-large-name: 'large';
+$card-large-width: 480px;
+@include make-card-alt-size ($card-large-name, $card-large-width);
+$card-fluid-name: 'fluid';
+$card-fluid-width: 100%;
+@include make-card-alt-size ($card-fluid-name, $card-fluid-width);
+$card-warning-name: 'warning';
+$card-warning-back-color: #ffca28;
+$card-warning-fore-color: #111;
+$card-warning-border-color: #e8b825;
+@include make-card-alt-color ($card-warning-name, $card-warning-back-color, $card-warning-fore-color, $card-warning-border-color);
+$card-error-name: 'error';
+$card-error-back-color: #b71c1c;
+$card-error-fore-color: #f8f8f8;
+$card-error-border-color: #a71a1a;
+@include make-card-alt-color ($card-error-name, $card-error-back-color, $card-error-fore-color, $card-error-border-color);
+$card-section-dark-name: 'dark';
+$card-section-dark-back-color: #e0e0e0;
+$card-section-dark-fore-color: #111;
+@include make-card-section-alt-color ($card-section-dark-name, $card-section-dark-back-color, $card-section-dark-fore-color);
+$card-section-double-padded-name: 'double-padded';
+$card-section-double-padded-padding: calc(1.5 * var(#{$universal-padding-var}));
+@include make-card-section-alt-style ($card-section-double-padded-name, $card-section-double-padded-padding);
+
+/* Form and Input Elements */
+@import '../node_modules/mini.css/src/mini/input_control';
+$button-primary-name: 'primary';
+$button-primary-back-color: #1976d2;
+$button-primary-hover-back-color:#1565c0;
+$button-primary-fore-color: #f8f8f8;
+@include make-button-alt-color ($button-primary-name, $button-primary-back-color, $button-primary-hover-back-color, $button-primary-fore-color);
+$button-secondary-name: 'secondary';
+$button-secondary-back-color: #d32f2f;
+$button-secondary-hover-back-color:#c62828;
+$button-secondary-fore-color: #f8f8f8;
+@include make-button-alt-color ($button-secondary-name, $button-secondary-back-color, $button-secondary-hover-back-color, $button-secondary-fore-color);
+$button-tertiary-name: 'tertiary';
+$button-tertiary-back-color: #308732;
+$button-tertiary-hover-back-color:#277529;
+$button-tertiary-fore-color: #f8f8f8;
+@include make-button-alt-color ($button-tertiary-name, $button-tertiary-back-color, $button-tertiary-hover-back-color, $button-tertiary-fore-color);
+$button-inverse-name: 'inverse';
+$button-inverse-back-color: #212121;
+$button-inverse-hover-back-color:#111;
+$button-inverse-fore-color: #f8f8f8;
+@include make-button-alt-color ($button-inverse-name, $button-inverse-back-color, $button-inverse-hover-back-color, $button-inverse-fore-color);
+$button-small-name: 'small';
+$button-small-padding: calc(0.5 * var(#{$universal-padding-var})) calc(0.75 * var(#{$universal-padding-var}));
+$button-small-margin: var(#{$universal-margin-var});
+@include make-button-alt-size ($button-small-name, $button-small-padding, $button-small-margin);
+$button-large-name: 'large';
+$button-large-padding: calc(1.5 * var(#{$universal-padding-var})) calc(2 * var(#{$universal-padding-var}));
+$button-large-margin: var(#{$universal-margin-var});
+@include make-button-alt-size ($button-large-name, $button-large-padding, $button-large-margin);
+
+@import '../node_modules/mini.css/src/mini/navigation';
+@import '../node_modules/mini.css/src/mini/table';
+@import '../node_modules/mini.css/src/mini/contextual';
+$mark-secondary-name: 'secondary';
+$mark-secondary-back-color: #d32f2f;
+@include make-mark-alt-color ($mark-secondary-name, $mark-secondary-back-color);
+$mark-tertiary-name: 'tertiary';
+$mark-tertiary-back-color: #308732;
+@include make-mark-alt-color ($mark-tertiary-name, $mark-tertiary-back-color);
+$mark-tag-name: 'tag';
+$mark-tag-padding: calc(var(#{$universal-padding-var})/2) var(#{$universal-padding-var});
+$mark-tag-border-radius: 1em;
+@include make-mark-alt-size ($mark-tag-name, $mark-tag-padding, $mark-tag-border-radius);
+
+/* Progress Bar */
+@import '../node_modules/mini.css/src/mini/progress';
+$progress-primary-name: 'primary';
+$progress-primary-fore-color: #1976d2;
+@include make-progress-alt-color ($progress-primary-name, $progress-primary-fore-color);
+$progress-secondary-name: 'secondary';
+$progress-secondary-fore-color: #d32f2f;
+@include make-progress-alt-color ($progress-secondary-name, $progress-secondary-fore-color);
+$progress-tertiary-name: 'tertiary';
+$progress-tertiary-fore-color: #308732;
+@include make-progress-alt-color ($progress-tertiary-name, $progress-tertiary-fore-color);
+$spinner-donut-primary-name: 'primary';
+$spinner-donut-primary-fore-color: #1976d2;
+@include make-spinner-donut-alt-color ($spinner-donut-primary-name, $spinner-donut-primary-fore-color);
+$spinner-donut-secondary-name: 'secondary';
+$spinner-donut-secondary-fore-color: #d32f2f;
+@include make-spinner-donut-alt-color ($spinner-donut-secondary-name, $spinner-donut-secondary-fore-color);
+$spinner-donut-tertiary-name: 'tertiary';
+$spinner-donut-tertiary-fore-color: #308732;
+@include make-spinner-donut-alt-color ($spinner-donut-tertiary-name, $spinner-donut-tertiary-fore-color);
+
+/* Icons and Utilities */
+@import '../node_modules/mini.css/src/mini/icon';
+@import '../node_modules/mini.css/src/mini/utility';
