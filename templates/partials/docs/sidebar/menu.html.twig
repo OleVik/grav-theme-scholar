@@ -1,0 +1,7 @@
+{% from 'macros/docs/menu.html.twig' import loop %}
+
+<nav class="menu" aria-label="{{ "THEME_SCHOLAR.SITE_CONTENTS"|t }}">
+    <ol>
+        {{ loop(pages, active) }}
+    </ol>
+</nav>

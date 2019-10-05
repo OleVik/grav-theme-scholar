@@ -1,0 +1,26 @@
+{% block content %}
+
+{% block section %}
+<section>
+    {% for page in collection %}
+    {% if page.summary %}
+        {% set content = page.summary|strip_html_tags('h1,h2,h3,h4,h5,h6') %}
+    {% elseif page.children|length > 0 %}
+        {% set content = page.children|first.summary|strip_html_tags('h1,h2,h3,h4,h5,h6') %}
+    {% endif %}
+    <div>
+        {% with {
+            'title': page.title,
+            'subtitle': page.header.subtitle ?? null,
+            'url': page.url,
+            'level': 2,
+            'content': content ?? null
+            } %}
+            {{ block('content', 'partials/book/content.html.twig') }}
+        {% endwith %}
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% endblock %}

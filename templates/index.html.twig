@@ -1,0 +1,31 @@
+{% extends 'default.html.twig' %}
+
+{% set body_classes = (body_classes|default('page listing')) %}
+
+{% block article %}
+{% with {
+    'page': page,
+    'collection': page.collection
+    } %}
+    {{ block('content', 'partials/page/listing.html.twig') }}
+{% endwith %}
+<aside>
+    <header>
+        {% if page.header.image %}
+            {% if page.media[page.header.image.url ?? page.header.image].extension == 'svg' %}
+                {{ rawcontent(page.media[page.header.image.url ?? page.header.image].filepath) }}
+            {% else %}
+                <img src="{{ page.media[page.header.image.url ?? page.header.image].url }}" role="figure" />
+            {% endif %}
+        {% endif %}
+        <h1>{{ page.title }}</h1>
+        {{ page.content }}
+    </header>
+    {% with {
+        'page': page,
+        'collection': page.collection('aside')
+        } %}
+        {{ block('content', 'partials/page/listing.html.twig') }}
+    {% endwith %}
+</aside>
+{% endblock %}

@@ -1,0 +1,30 @@
+@import "../styles.base.pcss";
+
+:root {
+  --primary: #838383;
+  --secondary: #524841;
+  --text: #4a4a4a;
+  --text-alt: #f7f7f7;
+  --background: #f9f9f9;
+  --foreground: #ffffff;
+  --border-color: rgba(114, 126, 128, 0.6);
+  --header-background: #a4a4a4;
+  --aside-text: #c3c3c3;
+  --aside-text-active: #ececec;
+  --aside-background: var(--primary);
+  --aside-background-active: #636363;
+  --aside-background-active-state: #6f6f70;
+}
+
+.docs {
+  a:any-link {
+    color: var(--text-alt);
+  }
+  main {
+    > header[role="banner"] {
+      a:any-link {
+        color: var(--text-alt);
+      }
+    }
+  }
+}

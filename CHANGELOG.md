@@ -1,5 +1,5 @@
-# v0.0.5
-## 21-10-2018
+# v0.1.0
+##  06/23/2019
 
-1. [](#improved)
-    * Work on unifying Docs-Styles
+1. [](#new)
+    * ChangeLog started...

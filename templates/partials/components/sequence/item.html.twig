@@ -1,0 +1,30 @@
+{% set id = page.route|trim('/')|hyphenize %}
+{% set target = [] %}
+{% if next.route is defined and next.route is not null %}
+    {% set target = target|merge([next.route|trim('/')|hyphenize]) %}
+{% endif %}
+{% if page.header.data.links_to %}
+    {% if page.header.data.links_to is same as('string') %}
+        {% set target = target|merge([page.header.data.links_to|trim('/')|hyphenize]) %}
+    {% else %}
+        {% for link in page.header.data.links_to %}
+            {% set target = target|merge([link|trim('/')|hyphenize]) %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
+{% if page.children|length > 0 %}
+    {% set target = target|merge([page.children|first.route|trim('/')|hyphenize]) %}
+{% endif %}
+
+<div
+    id="{{ id }}"
+    class="{{ page.header.color|default('white') }}"
+    {% if target %}
+    data-links-to='{{ target|json_encode(constant('JSON_HEX_QUOT')) }}'
+    {% endif %}
+    role="listitem"
+    >
+    <{{ level }} itemprop="name">
+        <a href="{{ page.url }}" itemprop="url">{% if index %}{{ index }}. {% endif %}{{ page.title }}</a>
+    </{{ level }}>
+</div>

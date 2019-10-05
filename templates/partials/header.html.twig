@@ -1,0 +1,37 @@
+{% block title %}
+<h1>
+    <a href="{{ uri.rootUrl(true) }}">{{ site.title }}</a>
+</h1>
+{% endblock %}
+
+{% block links %}
+<nav class="links" role="navigation">
+<div>
+{% for page in page.collection({ items: {'@root.children': ''}}) %}
+    <a href="{{ page.url }}">{{ page.title }}</a>
+{% endfor %}
+</div>
+</nav>
+{% endblock %}
+
+{% block menu %}
+
+<nav class="menu" role="navigation">
+
+    {% block search %}
+    {% if config.theme.flexsearch.enabled %}
+        {% include 'partials/components/search/field.html.twig' %}
+    {% endif %}
+    {% endblock %}
+    
+    {% block drawer %}
+    {% if navigablePage.headings is not empty %}
+    <div data-drawer-open role="button" tabindex="0" data-target="drawer-menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"><path d="M 4 7 L 4 9 L 28 9 L 28 7 L 4 7 z M 4 15 L 4 17 L 28 17 L 28 15 L 4 15 z M 4 23 L 4 25 L 28 25 L 28 23 L 4 23 z"/></svg>
+    </div>
+    {% endif %}
+    {% endblock %}
+
+</nav>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% macro loop(pages) %}
+    {% for page in pages.children.published %}
+        {% if page.active or page.activeChild %}
+            <li class="item {% if page.active %}current{% endif %} active">
+                <a href="{{ page.url }}">{{ page.title }}</a>
+                {% if page.children.count > 0 %}
+                <ol>
+                    {% from 'macros/docs/menu.html.twig' import loop %}
+                    {{ loop(page) }}
+                </ol>
+                {% endif %}
+            </li>
+        {% else %}
+            <li class="item">
+                <a href="{{ page.url }}">{{ page.title }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

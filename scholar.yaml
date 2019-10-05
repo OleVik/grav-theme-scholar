@@ -1,12 +1,28 @@
 enabled: true
-style: spitsbergen
-root_page: false
-collapse_pages: false
-google_analytics_code: false
-home_url: false
-github:
-    position: top
-    icon: false
-    tree: false
-default_taxonomy_category: docs
-debug: true
+order:
+  by: folder
+  dir: asc
+search_route: "/search"
+data_route: "/data"
+style: metal
+toolbar:
+  breadcrumbs: true
+  search: true
+  navigation: true
+cache:
+  metadata: "persist"
+  content: "persist"
+flexsearch:
+  enabled: true
+  index:
+    profile: speed
+    encode: icase
+    tokenize: strict
+    cache: true
+    async: true
+  full:
+    profile: balance
+    encode: advanced
+    tokenize: full
+    cache: true
+    async: true

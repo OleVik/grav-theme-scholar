@@ -1,22 +1,28 @@
-# Scholar
+# Scholar Theme
 
 Scholar is a theme made especially for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/). This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
 
-# Installation
+## Description
 
-Installing the Scholar theme can be done in one of two ways. Our GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
+An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav.
+
+```
+node-sass --watch --source-map true scss/theme.scss css/theme.css
+```
 
 ## Features
 
 [UPDATE]
 
-### Supported Page Templates
+### Page Types
 
-[UPDATE]
+Scholar is stricter than most themes in the types of Page Types, that is templates, it offers, and how they must be structured.
 
-## GPM Installation (Preferred)
+## Installation
 
-The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
+### Grav Package Manager (Preferred)
+
+The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal -- also called the command line. From the root of your Grav install type:
 
     bin/gpm install scholar
 
@@ -30,12 +36,11 @@ You should now have all the theme files under
 
     /your/site/grav/user/themes/scholar
 
-
-# Updating
+## Updating
 
 As development for the Scholar-theme continues, new versions may become available that add additional features and functionality, improve compatibility with newer Grav releases, and generally provide a better user experience. Updating Scholar is easy, and can be done through Grav's GPM system, as well as manually.
 
-## GPM Update (Preferred)
+### GPM Update (Preferred)
 
 The simplest way to update this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this by navigating to the root directory of your Grav install using your system's Terminal (also called command-line) and typing the following:
 
@@ -43,7 +48,7 @@ The simplest way to update this theme is via the [Grav Package Manager (GPM)](ht
 
 This command will check your Grav-installation to see if your Scholar theme is due for an update. If a newer release is found, you will be asked whether or not you wish to update. To continue, type `y` and hit enter. The theme will automatically update and clear Grav's cache.
 
-## Manual Update
+### Manual Update
 
 Manually updating Scholar is pretty simple. Here is what you will need to do to get this done:
 
@@ -54,7 +59,7 @@ Manually updating Scholar is pretty simple. Here is what you will need to do to 
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/themes`) will remain intact.
 
-## Setup
+## Usage
 
 ### Git Sync
 
@@ -72,71 +77,97 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 
 ## Development
 
-### Recompile CSS from SCSS
+## TODO
 
-To recompile default style using a Sass-compiler, run it on /scss/theme.scss and output to /css-compiled/theme.css, like `node-sass --watch --source-map true scss/theme.scss css/theme.css`. To do the same for custom styles, run it on /scss/custom and output to /css-compiled/custom, like `node-sass --watch --source-map true scss/styles --output css/styles`.
-
-## Todo
+- [x] Global search-page, adapting to root templates
+  - [ ] Generate data via Enduring, and in Admin
+    - [ ] Taxonomy
+      - [ ] Meta-search Page (query params)
+      - [ ] Versions alá Translations-plugin (/lang/version/slug)
+  - [x] Make optional
+- [ ] Book root template
+  - [ ] Paged.js, somewhat too niche for general applicability
+  - [ ] Render all
+  - [ ] Render singular
+  - [x] Listing
+- [x] Docs keyboard navigation (prev next, accessibility)
+  - [ ] Design for listing template
+- [x] Blog Post template (post.html.twig) extends page.html.twig - does this cause a semantic conflict?
+- [x] Responsive styling
+- [ ] Styles
+  - [ ] Integrate Type specific variants into common base
+  - [ ] Minimize conflicts
+  - [ ] Print one, print all
+- [ ] API standardisation: All Page's must implement Linked Data and a REST endpoint
+- [ ] Components loader for Page Types (templates)
 
 ### Current
 
 1. Recast as Scholar
-    - Maintain Grav-terminology of extensions as Themes or Plugins
-        - Customizations _within_ this theme are Styles (color schemes) and Layouts (templates)
-        - Extensions can add either, or features not strictly necessary for Scholar "Core"
+   - Maintain Grav-terminology of extensions as Themes or Plugins
+     - Customizations _within_ this theme are Styles (color schemes) and Layouts (templates)
+     - Extensions can add either, or features not strictly necessary for Scholar "Core"
+   - [ ] Implement hierarchical-taxonomy, per https://towardsdatascience.com/https-medium-com-noa-weiss-the-hitchhikers-guide-to-hierarchical-classification-f8428ea1e076
 1. Optimize blueprints and languages
-    - [X] Optimize fields
-    - [X] String-hierarchy in languages.yaml
+   - [x] Optimize fields
+   - [x] String-hierarchy in languages.yaml
 1. Layouts
-    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
-        - See https://a11yproject.com/resources for ARIA-WAI
-    - [ ] Optimize templates for docs
-    - [ ] Add templates for pages
-    - [ ] Add templates for book/papers/articles
-        - https://github.com/sachsmc/pandoc-journal-templates
-        - https://www.overleaf.com/latex/templates/
-        - https://latex.org/forum/viewtopic.php?t=26165
-        - CSS3 Multiple Column Layout: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts
-            - https://github.com/futurepress/epub.js/
-            - https://github.com/vivliostyle/vivliostyle.js
-            - https://github.com/vivliostyle/vivliostyle-print
-            - https://w3c.github.io/scholarly-html/
-        - Print:
-            - W3C drafts:
-                - https://www.w3.org/TR/css-gcpm-3/
-                - https://drafts4.csswg.org/css-gcpm-4/
-            - Paged Media: https://www.pagedmedia.org/paged-media-approaches-part-1-of-2/
-                - https://gitlab.pagedmedia.org/tools/pagedjs
-            - Breaking HTML into pages: https://alistapart.com/article/boom
-            - Print Stylessheets: https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/
-            - 
+   - [x] Must comply with [tota11y](https://github.com/Khan/tota11y)
+     - See https://a11yproject.com/resources for ARIA-WAI
+   - [x] Optimize templates for docs
+   - [x] Add templates for pages
+     - [x] https://html5up.net/uploads/demos/future-imperfect/
+   - [x] Add templates for book/papers/articles
+     - **Structure/Article**:
+       - https://w3c.github.io/scholarly-html/ (outdated, but best reasoned)
+       - https://github.com/scienceai/scholarly.vernacular.io/blob/master/index.html (deprecated example)
+       - https://github.com/thomaspark/pubcss (implements some common formats)
+       - https://essepuntato.github.io/papers/rash-peerj2016.html (RASH)
+       - https://github.com/rubensworks/ScholarMarkdown (Ruby, but up to date)
+       - https://github.com/linkeddata/dokieli (Alternative to Rash, bloated)
+       - http://scholarlymarkdown.com/ (outdated, poor semantics)
+       - Example HTML structures:
+         - https://github.com/scienceai/scholarly.vernacular.io/blob/master/index.html (https://htmlpreview.github.io/?https://raw.githubusercontent.com/scienceai/scholarly.vernacular.io/master/index.html#scienceai)
+         - https://github.com/linkeddata/dokieli/blob/master/new
+         - https://github.com/linkeddata/dokieli/blob/master/docs
+         - https://github.com/edwardtufte/tufte-css/blob/gh-pages/index.html
+         - https://github.com/jakobib/hypertext2019/blob/master/template.html (https://github.com/jakobib/hypertext2019/blob/master/metadata.yaml, https://jakobib.github.io/hypertext2019/)
+       - RFD generators (https://stackoverflow.com/questions/49252518/what-is-the-relation-between-schema-org-goodrelations-vocabulary-org-and-produc/49255326#49255326):
+         - https://github.com/spatie/schema-org
+         - https://github.com/pietercolpaert/hardf
+     - **Structure/Book**:
+       - https://github.com/oreillymedia/HTMLBook/
+     - https://github.com/sachsmc/pandoc-journal-templates
+     - https://www.overleaf.com/latex/templates/
+     - https://latex.org/forum/viewtopic.php?t=26165
+     - CSS3 Multiple Column Layout: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns/Using_multi-column_layouts
+       - https://github.com/futurepress/epub.js/
+       - https://github.com/vivliostyle/vivliostyle.js
+       - https://github.com/vivliostyle/vivliostyle-print
+     - Print:
+       - W3C drafts:
+         - https://www.w3.org/TR/css-gcpm-3/
+         - https://drafts4.csswg.org/css-gcpm-4/
+       - Paged Media: https://www.pagedmedia.org/paged-media-approaches-part-1-of-2/
+         - https://gitlab.pagedmedia.org/tools/pagedjs
+       - Breaking HTML into pages: https://alistapart.com/article/boom
+       - Print Stylessheets: https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/
 1. Styles
-    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
-    - [ ] Unify to reduce customizations in core Styles
-        - [ ] Arctic
-        - [ ] Dark Ocean
-        - [ ] Gold
-        - [ ] Grey
-        - [X] Longyearbyen
-        - [ ] Metal
-        - [ ] Navy Sunrise
-        - [ ] Spitsbergen
-        - [ ] Sunrise
-    - [ ] Join docs, pages, and book styles into one sheet
-        - Color-customization should be available globally, for page-hierarchies, and single pages
-    - [ ] Add styles for docs
-        - Missing GitBooks-like, something like [Simon Halimonov](http://learn.simonhalimonov.de/)
-    - [ ] Add styles for pages
-    - [ ] Add styles for book
-        - See [GitBook](https://docs.gitbook.com/), [PressBooks](https://pressbooks.com/themes/)
-
-### Future
-
-1. Extensions
-    - [ ] Document modular-approach: Scholar as Core
-    - [ ] Zen Editor
-        - WYSIWYG, not WYSIWYM. Currently only [CKEditor](https://ckeditor.com/docs/ckeditor5/latest/features/markdown.html)?
-            - Features like [Gutenberg](https://wordpress.org/gutenberg/), [VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor)?
-        - Lightweight Admin-implementation
-    - [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) as personal page
-    - [ ] Implement a PowerPoint-equivalent using [Fullpage](https://github.com/OleVik/grav-plugin-fullpage)
+   - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
+   - [x] Unify to reduce customizations in core Styles
+     - [x] Arctic
+     - [ ] Dark Ocean
+     - [x] Gold
+     - [x] Grey
+     - [ ] Longyearbyen
+     - [x] Metal
+     - [x] Navy Sunrise
+     - [ ] Spitsbergen
+     - [ ] Sunrise
+   - [x] Join docs, pages, and book styles into one sheet
+     - Color-customization should be available globally, for page-hierarchies, and single pages
+   - [x] Add styles for docs
+     - Missing GitBooks-like, something like [Simon Halimonov](http://learn.simonhalimonov.de/)
+   - [x] Add styles for pages
+   - [x] Add styles for book
+     - See [GitBook](https://docs.gitbook.com/), [PressBooks](https://pressbooks.com/themes/)

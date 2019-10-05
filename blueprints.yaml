@@ -1,114 +1,30 @@
 name: Scholar
-version: 0.0.5
-description: "An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav."
-icon: git
+version: 0.1.0
+description: An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav.
+icon: rebel
 author:
   name: Ole Vik
   email: git@olevik.net
 homepage: https://github.com/OleVik/grav-theme-scholar
-demo: https://olevik.me/staging/grav-skeleton-scholar
-keywords: academic, academics, paper, papers, article, articles, book, books, doc, docs, documentation, resume, CV
+demo: http://demo.yoursite.com
+keywords: grav, theme, etc
 bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/develop/README.md
 license: MIT
-
 dependencies:
-- { name: grav, version: '~1.6' }
-- { name: breadcrumbs, version: '~1.5' }
-- { name: highlight }
+  - { name: grav, version: ">=1.6" }
+  - { name: breadcrumbs, version: ">=1.5.1" }
 
 form:
   validation: loose
   fields:
-    tabs:
-      type: tabs
-      active: 1
-      fields:
-        basic:
-          title: THEME_SCHOLAR.BASIC.NAME
-          type: tab
-          fields:
-            style:
-              type: select
-              label: Style
-              description: Default style to use across the site.
-              default: default
-              options:
-                default: Grav Default
-                metal: Metal
-                sunrise: Sunrise
-                navy_sunrise: Navy Sunrise
-                hoth: Hoth
-                gold: Gold
-                grey: Grey
-                dark_ocean: Dark Ocean
-                arctic: Arctic
-            collapse_pages:
-              type: toggle
-              label: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.LABEL
-              help: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.HELP
-              description: THEME_SCHOLAR.BASIC.DOCS.COLLAPSE_PAGES.DESCRIPTION
-              highlight: 0
-              default: 0
-              options:
-                1: 'Yes'
-                0: 'No'
-              validate:
-                type: bool
-            home_url_override:
-              type: text
-              label: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.LABEL
-              help: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.HELP
-              description: THEME_SCHOLAR.BASIC.DOCS.HOME_URL_OVERRIDE.DESCRIPTION
-              placeholder: http://getgrav.org
-              validate:
-                type: text
-        advanced:
-          title: THEME_SCHOLAR.ADVANCED.NAME
-          type: tab
-          fields:
-            gitsyncoptions:
-              type: section
-              title: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TITLE
-              underline: true
-            github.position:
-              type: select
-              classes: fancy
-              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.LABEL
-              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.HELP
-              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.POSITION.DESCRIPTION
-              default: top
-              options:
-                top: Top
-                bottom: Bottom
-                none: None
-            github.icon:
-              type: input.text
-              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.LABEL
-              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.HELP
-              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.ICON.DESCRIPTION
-              validate:
-                type: text
-            github.tree:
-              type: text
-              label: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.LABEL
-              help: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.HELP
-              description: THEME_SCHOLAR.ADVANCED.DOCS.GITSYNC.TREE.DESCRIPTION
-            google_analytics_code:
-              type: text
-              label: THEME_SCHOLAR.ADVANCED.DOCS.GOOGLEANALYTICS.LABEL
-              placeholder: UA-XXXXXXXX-X
-              validate:
-                type: text
-            debug:
-              type: toggle
-              label: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.LABEL
-              help: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.HELP
-              description: THEME_SCHOLAR.ADVANCED.DOCS.DEBUG.DESCRIPTION
-              highlight: 0
-              default: 0
-              options:
-                1: 'Enabled'
-                0: 'Disabled'
-              validate:
-                type: bool
+    dropdown.enabled:
+      type: toggle
+      label: Dropdown in Menu
+      highlight: 1
+      default: 1
+      options:
+        1: PLUGIN_ADMIN.ENABLED
+        0: PLUGIN_ADMIN.DISABLED
+      validate:
+        type: bool

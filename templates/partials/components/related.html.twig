@@ -1,0 +1,34 @@
+{% if page.evaluate([{'@page.children': page.parent.route}])|length > 0 %}
+    {% set collection = page.evaluate([{'@page.children': page.parent.route}]) %}
+{% else %}
+    {% set collection = page.evaluate([{'@root.children': ''}]) %}
+{% endif %}
+
+{% apply spaceless %}
+
+{% set previous = collection.nextSibling(page.path) %}
+{% set next = collection.prevSibling(page.path) %}
+{% if previous.url or next.url %}
+<aside class="next-previous">
+    <article>
+    {% if previous.url %}
+    <h2>
+        <a href="{{ previous.url }}">
+            {{ previous.title }}
+        </a>
+    </h2>
+    {% endif %}
+    </article>
+    <article>
+    {% if next.url %}
+    <h2>
+        <a href="{{ next.url }}">
+            {{ next.title }}
+        </a>
+    </h2>
+    {% endif %}
+    </article>
+</aside>
+{% endif %}
+
+{% endapply %}

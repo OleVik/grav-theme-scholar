@@ -1,0 +1,11 @@
+{% extends 'partials/header.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block links %}
+    {% include 'partials/docs/toolbar/breadcrumbs.html.twig' %}
+{% endblock %}
+
+{% block menu %}
+    {% include 'partials/docs/toolbar/menu.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
+{% endblock %}

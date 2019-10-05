@@ -1,0 +1,9 @@
+{% if wrap %}<p>{% endif %}
+{% if type == 'sidenote' %}
+<label for="{{ id }}" class="margin-toggle sidenote-number"></label>
+{% else %}
+<label for="{{ id }}" class="margin-toggle">&#8853;</label>
+{% endif %}
+<input type="checkbox" id="{{ id }}" class="margin-toggle"/>
+<span class="{{ type }}">{{ content|spaceless }}{{ title|markdown|unwrap_p }}</span>
+{% if wrap %}</p>{% endif %}

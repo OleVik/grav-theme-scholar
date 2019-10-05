@@ -1,0 +1,13 @@
+{% set long_date = config.system.pages.dateformat.long %}
+
+<span
+    id="{{ id }}"
+    class="post {% if post.header.color %}{{ post.header.color }}{% endif %}"
+    {% if target %}
+    data-links-to="{{ target }}"
+    {% endif %}
+    >
+    <h2 class="post-title" itemprop="name">
+        <a href="{{ post.url }}" itemprop="url">{{ index }}. {{ post.title }}</a>
+    </h2>
+</span>

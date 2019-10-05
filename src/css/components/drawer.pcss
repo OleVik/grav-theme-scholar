@@ -1,0 +1,107 @@
+[data-drawer-open],
+[data-drawer-close] {
+  margin: auto 0;
+  cursor: pointer;
+  svg {
+    display: block;
+    width: 1.5rem;
+    height: 1.5rem;
+    pointer-events: none;
+  }
+}
+.drawer {
+  overflow-y: auto;
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+  h2,
+  [data-drawer-close] {
+    margin: auto 0;
+    padding: 1rem;
+  }
+  .drawer-inner {
+    ol {
+      padding: 0;
+      padding-inline-start: 0;
+      counter-reset: item;
+      list-style-position: inside;
+    }
+    li {
+      display: block;
+      list-style-type: none;
+      margin: 0 0 0.25rem 0;
+      padding: 0 1rem;
+      &:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+      }
+    }
+  }
+}
+
+/*
+ * TinyDrawer.js
+ * @see https://github.com/jenstornell/tinyDrawer.js
+ */
+:root {
+  --tdm-drawer-width: var(--breakpoint-xs);
+  --tdm-drawer-speed: 0.2s;
+  --tdm-drawer-background: #eee;
+  --tdm-backdrop-background: rgba(0, 0, 0, 0.5);
+}
+
+drawer-menu,
+[data-drawer-backdrop] {
+  top: 0;
+  right: 0;
+  position: fixed;
+  display: block;
+  display: none;
+  height: 100%;
+}
+
+[data-drawer] {
+  drawer-menu,
+  [data-drawer-backdrop] {
+    display: block;
+  }
+}
+
+drawer-menu {
+  z-index: 99999;
+  margin-right: 0;
+  margin-right: calc(var(--tdm-drawer-width) * -1);
+  width: var(--tdm-drawer-width);
+  transition: margin-right var(--tdm-drawer-speed);
+  background: var(--tdm-drawer-background);
+}
+
+[data-drawer-backdrop] {
+  z-index: 99998;
+  width: 100%;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--tdm-backdrop-background);
+  transition-property: opacity, visibility;
+  transition-duration: var(--tdm-drawer-speed), 0s;
+  transition-delay: 0s, var(--tdm-drawer-speed);
+}
+
+[data-drawer="true"] {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  [data-drawer-backdrop] {
+    visibility: visible;
+    opacity: 1;
+    right: 0;
+    transition-property: visibility, opacity;
+    transition-duration: 0s, var(--tdm-drawer-speed);
+    transition-delay: 0s, 0s;
+  }
+  drawer-menu {
+    margin-right: 0;
+    transition: margin-right var(--tdm-drawer-speed);
+  }
+}

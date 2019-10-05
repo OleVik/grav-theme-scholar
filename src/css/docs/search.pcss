@@ -1,0 +1,47 @@
+.selectr-container {
+  display: flex;
+  .selectr-selected {
+    display: flex;
+    margin: 0 0 0.9rem;
+    padding: 0.6rem;
+    .selectr-placeholder {
+      align-self: center;
+    }
+  }
+  &.inverted .selectr-options-container,
+  .selectr-options-container,
+  &.open.inverted .selectr-selected,
+  .selectr-selected,
+  .selectr-input {
+    border-radius: 0;
+    border-color: var(--formbase__border);
+  }
+  .selectr-options {
+    overflow-x: auto;
+    overflow-y: auto;
+    .selectr-option {
+      &.active,
+      &.active.selected {
+        color: contrast(var(--formbase__active));
+        background-color: var(--formbase__active);
+      }
+      &.selected {
+        font-style: italic;
+        background-color: var(--formbase__background);
+      }
+    }
+  }
+  .selectr-tag {
+    margin: 0 5px 2px 0;
+    color: var(--formbase__color);
+    background-color: transparent;
+    border: 1px solid var(--formbase__border);
+    border-radius: 0;
+    .selectr-tag-remove {
+      &:before,
+      &:after {
+        background-color: var(--formbase__color);
+      }
+    }
+  }
+}

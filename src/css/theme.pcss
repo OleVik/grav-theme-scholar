@@ -1,0 +1,60 @@
+@import "./root.pcss";
+@import "./normalize.pcss";
+@import "../../css/fonts.css";
+@import "./grid.pcss";
+@import "./page/page.pcss";
+@import "./book/book.pcss";
+@import "./docs/docs.pcss";
+@import "./components/header.pcss";
+@import "./components/drawer.pcss";
+@import "./components/formbase/main.pcss";
+@import "./components/sequence.pcss";
+@import "./responsive.pcss";
+@import "../../node_modules/mobius1-selectr/dist/selectr.min.css";
+
+body {
+  font-family: var(--OpenSans);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  text-rendering: optimizeLegibility;
+}
+
+b,
+strong {
+  font-weight: 600;
+}
+
+a,
+a:link,
+a:visited,
+a:focus,
+a:active {
+  text-decoration: none;
+}
+a[href] {
+  cursor: pointer;
+}
+
+figure {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  line-height: 1.5;
+}
+
+pre {
+  word-break: break-all;
+  code {
+    white-space: pre-wrap;
+  }
+  &.sf-dump {
+    grid-column-end: span 12;
+  }
+}

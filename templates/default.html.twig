@@ -1,32 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% do assets.addCss('theme://css/normal.css', {'group': 'normal'}) %}
-    {% do assets.addJs('theme://node_modules/tota11y/build/tota11y.min.js', {'group': 'debug'}) %}
-    {{ assets.css('normal') }}
-  </head>
-  <body>
-    <header>
-      <a href="#" class="logo">Logo</a>
-      <a href="#" class="button">Home</a>
-      <button>Download</button>
-    </header>
-    <main class="grid">
-      <article class="twelve">
-        {{ page.content }}
-      </article>
-    </main>
-    <aside>
-      <p>Related</p>
-    </aside>
-    <footer>
-      <p>Footer text</p>
-    </footer>
-    {{ assets.js('normal') }}
-    {# {{ assets.js('debug') }} #}
-  </body>
-</html>
+{% extends 'partials/base.html.twig' %}
+
+{% set body_classes = (body_classes|default('page')) %}
+{% set navigablePage = page_navigation(page.content) %}
+
+{% block javascripts %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+        {% do assets.addInlineJs('Scholar.drawerInit();') %}
+    {% endif %}
+    {% with {
+        'mode': 'field'
+        } %}
+        {{ block('javascripts', 'partials/components/search/assets.html.twig') }}
+    {% endwith %}
+{% endblock %}
+
+{% block main %}
+
+{% block header %}
+<header role="banner">
+    {% include 'partials/header.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
+</header>
+{% endblock %}
+
+<main>
+    {% block article %}
+    <section>
+        <article>
+            {% block content %}
+            <header>
+                <h1>{{ page.title }}</h1>
+            </header>
+            {{ navigablePage.content }}
+            {% endblock %}
+        </article>
+    </section>
+    {% endblock %}
+    {% block search_results %}
+    {% include 'partials/components/search/wrapper.html.twig' %}
+    {% endblock %}
+</main>
+
+{% block footer %}
+<footer>
+    {% include 'partials/footer.html.twig' %}
+</footer>
+{% endblock %}
+
+{% endblock %}
+
+{% block append %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+        {% include 'partials/drawer.html.twig' with {headings: navigablePage.headings} %}
+    {% endif %}
+    {% include 'partials/components/search/result.html.twig' %}
+{% endblock %}

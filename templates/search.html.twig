@@ -1,11 +1,18 @@
-{% embed 'partials/base.html.twig' with { github_link_position: false } %}
+{% extends page.topParent.template == 'docs' ? 'docs.html.twig' : 'default.html.twig' %}
 
-    {% block content %}
-        {{ page.content }}
+{% block javascripts %}
+    {% with {
+        'mode': 'form'
+        } %}
+        {{ block('javascripts', 'partials/components/search/assets.html.twig') }}
+    {% endwith %}
+{% endblock %}
 
-        {% include 'partials/tntsearch.html.twig' with { in_page: true, placeholder: "Search the documentation..." }%}
-    {% endblock %}
-
-    {% block footer %}{% endblock %}
-
-{% endembed %}
+{% block article %}
+<article>
+    <h1>{{ "THEME_SCHOLAR.SEARCH.ADVANCED"|t }}</h1>
+    {% include 'partials/components/search/form.html.twig' %}
+    <h2>{{ "THEME_SCHOLAR.SEARCH.RESULTS"|t }}</h2>
+    <aside class="search-results"></aside>
+</article>
+{% endblock %}

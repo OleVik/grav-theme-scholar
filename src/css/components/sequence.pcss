@@ -1,0 +1,113 @@
+.sequence {
+  main {
+    > header {
+      h1 {
+        margin: 0 auto 1rem auto;
+        font-size: 2rem;
+      }
+    }
+    article {
+      display: flex;
+      flex-direction: row;
+      width: auto;
+      margin: 0;
+      padding: 1rem;
+      h1 {
+        font-size: 1.802rem;
+      }
+      h2 {
+        font-size: 1.602rem;
+      }
+      h3 {
+        font-size: 1.424rem;
+      }
+      h4 {
+        font-size: 1.266rem;
+      }
+      h5 {
+        font-size: 1.125rem;
+      }
+      h6 {
+        font-size: 0.889rem;
+      }
+      [role="list"] {
+        flex: 1;
+        min-width: 15rem;
+        margin: 1rem 2rem;
+        z-index: 1010;
+        [role="listitem"] {
+          margin: 2rem;
+          a {
+            display: block;
+            margin: 0;
+            padding: 1rem;
+            text-align: center;
+          }
+          [itemprop="name"] {
+            margin: 0;
+          }
+          &.white {
+            a {
+              background: rgb(250, 250, 250) !important;
+            }
+          }
+          &.red {
+            a {
+              background: rgb(255, 138, 128) !important;
+            }
+          }
+          &.orange {
+            a {
+              background: rgb(255, 209, 128) !important;
+            }
+          }
+          &.yellow {
+            a {
+              background: rgb(255, 255, 141) !important;
+            }
+          }
+          &.green {
+            a {
+              background: rgb(204, 255, 144) !important;
+            }
+          }
+          &.teal {
+            a {
+              background: rgb(167, 255, 235) !important;
+            }
+          }
+          &.blue {
+            a {
+              background: rgb(128, 216, 255) !important;
+            }
+          }
+          &.dark-blue {
+            a {
+              background: rgb(130, 177, 255) !important;
+            }
+          }
+          &.purple {
+            a {
+              background: rgb(179, 136, 255) !important;
+            }
+          }
+          &.pink {
+            a {
+              background: rgb(248, 187, 208) !important;
+            }
+          }
+          &.brown {
+            a {
+              background: rgb(215, 204, 200) !important;
+            }
+          }
+          &.gray {
+            a {
+              background: rgb(207, 216, 220) !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{% block content %}
+<header>
+    <h{{ level ?? 1 }}>
+        {% if url %}<a href="{{ url }}">{% endif %}
+        {{ title }}
+        {% if url %}</a>{% endif %}
+    </h{{ level ?? 1 }}>
+    {% if page.header.subtitle %}
+    <h{{ level ?? 1 + 1 }}>{{ page.header.subtitle }}</h{{ level ?? 1 + 1 }}>
+    {% endif %}
+    {% if metadata %}
+        {% include 'partials/components/metadata.html.twig' with {'page': page} %}
+    {% endif %}
+</header>
+{% if content %}
+{{ content }}
+{% endif %}
+{% endblock %}

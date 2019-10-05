@@ -1,0 +1,35 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set body_classes = (body_classes|default('page')) %}
+{% set navigablePage = page_navigation(page.content) %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/theme.css', 100) %}
+    {% do assets.addCss('theme://css/themes/metal.css', 99) %}
+    {% do assets.addCss('theme://css/custom.css', 98) %}
+{% endblock %}
+
+{% block main %}
+
+<main>
+    {% block article %}
+    <article typeof="schema:ScholarlyArticle">
+        {% block content %}
+        <h1>{{ page.title }}</h1>
+        {% if page.header.subtitle %}
+        <p class="subtitle">{{ page.header.subtitle }}</p>
+        {% endif %}
+        {% include 'partials/components/metadata.html.twig' with {'page': page} %}
+        {{ navigablePage.content|strip_html_tags(['h1']) }}
+        {% endblock %}
+    </article>
+    {% endblock %}
+</main>
+
+{% block footer %}
+<footer>
+    {% include 'partials/footer.html.twig' %}
+</footer>
+{% endblock %}
+
+{% endblock %}

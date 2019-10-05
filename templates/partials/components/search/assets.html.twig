@@ -1,0 +1,41 @@
+{% block javascripts %}
+    {% if config.theme.flexsearch.enabled %}
+        {% do assets.addJs('theme://node_modules/dayjs/dayjs.min.js') %}
+        {% do assets.addJs('theme://node_modules/dayjs/plugin/advancedFormat.js', {onload: 'dayjs.extend(dayjs_plugin_advancedFormat);'}) %}
+        {% do assets.addJs('theme://node_modules/dayjs/locale/' ~ language ~ '.js', {onload: 'dayjs.locale("' ~ language ~ '");'}) %}
+        {% do assets.addJs('theme://node_modules/flexsearch/dist/flexsearch.min.js') %}
+        {# {% do assets.addJs('theme://js/search.js', {group: 'bottom'}) %} #}
+
+        {% if mode == 'field' %}
+            {% if page.header.search.index and file_exists(page.header.search.index) %}
+                {% do assets.addJs(page.header.search.index) %}
+            {% elseif page.topParent.header.search.index and file_exists(page.topParent.header.search.index) %}
+                {% do assets.addJs(page.topParent.header.search.index) %}
+            {% elseif file_exists('user://data/persist/index.js') %}
+                {% do assets.addJs('user://data/persist/index.js') %}
+            {% endif %}
+            {% do assets.addInlineJs('
+                Scholar.searchFieldInit(GravMetadataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "media"], ' ~ json_encode(config.theme.flexsearch.index) ~ ');
+            ', {group: 'bottom'}) %}
+        {% elseif mode == 'form' %}
+            {% do assets.addJs('theme://node_modules/mobius1-selectr/dist/selectr.min.js') %}
+            {% do assets.addInlineJs('
+                const selectrOptions = {
+                    multiple: true,
+                    allowDeselect: true,
+                    customClass: "three"
+                };
+            ') %}
+            {% if page.header.search.full and file_exists(page.header.search.full) %}
+                {% do assets.addJs(page.header.search.full) %}
+            {% elseif page.topParent.header.search.full and file_exists(page.topParent.header.search.full) %}
+                {% do assets.addJs(page.topParent.header.search.full) %}
+            {% elseif file_exists('user://data/persist/index.full.js') %}
+                {% do assets.addJs('user://data/persist/index.full.js') %}
+            {% endif %}
+            {% do assets.addInlineJs('
+                searchPageInit(GravDataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "content", "media"], ' ~ json_encode(config.theme.flexsearch.full) ~ ');
+            ', {group: 'bottom'}) %}
+        {% endif %}
+    {% endif %}
+{% endblock %}

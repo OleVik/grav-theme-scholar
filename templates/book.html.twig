@@ -1,0 +1,76 @@
+{% extends 'partials/base.html.twig' %}
+
+{# 
+https://gitlab.pagedmedia.org/tools/pagedjs/wikis/Your-first-document-with-paged.js
+https://github.com/electricbookworks/paged-design
+#}
+
+{% set navigablePage = page_navigation(page.content) %}
+{# {% set page.content = navigablePage.content %} #}
+{% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
+
+{% if navigablePage.content is empty %}
+    {% if page.evaluate([{'@self.children': ''}])|length > 0 %}
+        {% set mode = 'children' %}
+        {% set collection = page.evaluate([{'@self.children': ''}]) %}
+    {% elseif page.evaluate([{'@self.siblings': ''}])|length > 0 %}
+        {% set mode = 'siblings' %}
+        {% set collection = page.evaluate([{'@self.siblings': ''}]) %}
+    {% else %}
+        {% set mode = 'blank' %}
+    {% endif %}
+    {% set body_classes = (body_classes|default('book page listing ' ~ mode)) %}
+{% else %}
+    {% set body_classes = (body_classes|default('book page')) %}
+{% endif %}
+
+{% block stylesheets %}
+    {% do assets.addCss('theme://css/theme.css', 100) %}
+    {% do assets.addCss('theme://css/themes/metal.css', 99) %}
+    {% do assets.addCss('theme://css/custom.css', 98) %}
+    {# {% do assets.addCss('theme://css/tinyDrawer.min.css') %} #}
+{% endblock %}
+
+{% block main %}
+
+<main>
+    {% block article %}
+    <article typeof="schema:Book">
+        {% block content %}
+        {% with {
+            'title': page.title,
+            'subtitle': page.header.subtitle ?? null,
+            'metadata': true,
+            'content': navigablePage.content|strip_html_tags(['h1'])
+            } %}
+            {{ block('content', 'partials/book/content.html.twig') }}
+        {% endwith %}
+        {% if navigablePage.content is empty %}
+            {% if page.template == 'chapter' %}
+                {% with {
+                    'page': page,
+                    'collection': collection
+                    } %}
+                    {{ block('content', 'partials/book/chapter/listing.html.twig') }}
+                {% endwith %}
+            {% else %}
+                {% with {
+                    'page': page,
+                    'collection': collection
+                    } %}
+                    {{ block('content', 'partials/book/listing.html.twig') }}
+                {% endwith %}
+            {% endif %}
+        {% endif %}
+        {% endblock %}
+    </article>
+    {% endblock %}
+</main>
+
+{% block footer %}
+<footer>
+    {% include 'partials/footer.html.twig' %}
+</footer>
+{% endblock %}
+
+{% endblock %}

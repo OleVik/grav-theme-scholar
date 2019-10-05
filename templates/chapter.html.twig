@@ -1,9 +1,11 @@
-{% extends 'docs.html.twig' %}
+{% if root_template(page.route) == 'docs' %}
+    {% set template_extends = 'docs.html.twig' %}
+{% elseif root_template(page.route) == 'book' %}
+    {% set template_extends = 'book.html.twig' %}
+{% elseif root_template(page.route) == 'default' %}
+    {% set template_extends = 'default.html.twig' %}
+{% else %}
+    {% set template_extends = 'partials/base.html.twig' %}
+{% endif %}
 
-{% block content %}
-	<div id="chapter">
-    	<div id="body-inner">
-				{{ page.content }}
-		</div>
-	</div>
-{% endblock %}
+{% extends template_extends %}

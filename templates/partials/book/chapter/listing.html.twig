@@ -1,0 +1,21 @@
+{% block content %}
+
+{% block section %}
+<section>
+    {% for page in collection %}
+    <div>
+        {% with {
+            'title': page.title,
+            'subtitle': page.header.subtitle ?? null,
+            'url': page.url,
+            'level': 2,
+            'content': page.content
+            } %}
+            {{ block('content', 'partials/book/content.html.twig') }}
+        {% endwith %}
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% endblock %}

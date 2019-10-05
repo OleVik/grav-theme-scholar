@@ -1,0 +1,38 @@
+.book,
+.book.listing {
+  main {
+    article {
+      grid-column-end: span 12;
+      header {
+        h1 {
+          order: 2;
+          margin: 3.5rem auto 1rem;
+          font-size: 3.052rem;
+        }
+        h2 {
+          order: 2;
+          font-size: 2.441rem;
+        }
+        h3 {
+          order: 3;
+          font-size: 1.953rem;
+        }
+        .metadata {
+          order: 10;
+          width: 100%;
+          padding: 2rem 4rem 1rem;
+        }
+      }
+      section {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        div {
+          flex: 1 0 49%;
+          margin: 0.5%;
+          padding: 1.5%;
+        }
+      }
+    }
+  }
+}

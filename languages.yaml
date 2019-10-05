@@ -1,46 +1,40 @@
 en:
-    THEME_SCHOLAR:
-        BASIC:
-            NAME: Basic
-            DOCS:
-                COLLAPSE_PAGES:
-                    LABEL: Collapse Pages
-                    HELP: Collapse Pages in Menus
-                    DESCRIPTION: Collapse Pages in Menus.
-                HOME_URL_OVERRIDE:
-                    LABEL: Home URL Override
-                    HELP: Override the link in the menu with your own
-                    DESCRIPTION: Override the link in the menu with your own.
-        ADVANCED:
-            NAME: Advanced
-            DOCS:
-                GITSYNC:
-                    TITLE: Git Sync Options
-                    POSITION:
-                        LABEL: Git Sync Link Position
-                        HELP: Set where the link to Git Sync appears
-                        DESCRIPTION: Set where the link to Git Sync appears.
-                    ICON:
-                        LABEL: Custom Git Link Icon
-                        HELP: Short name of the Font Awesome icon
-                        DESCRIPTION: Enter the short name of the Font Awesome icon for the link, for example 'gitlab'.
-                    TREE:
-                        LABEL: Custom Git Repository Tree
-                        HELP: URL that leads to the pages-folder
-                        DESCRIPTION: "URL-path to the pages-folder, but with '/pages' and everything following it removed. For example, 'https://github.com/paulhibbitts/demo-grav-learn2-with-git-sync/tree/master'."
-                GOOGLEANALYTICS:
-                    LABEL: Google Analytics Code
-                DEBUG:
-                    LABEL: Debug
-                    HELP: Enable or disable debugging
-                    DESCRIPTION: Enable or disable debugging.
-        GIT:
-            GITSYNC:
-                INIT: Add/Setup Git Sync Plugin
-            EDIT_THIS_PAGE: Edit this Page
-            NOTE: Notice an error? Think you can improve this documentation?
-        SEARCH:
-            DOCS: Search Docs
-            ADVANCED: Advanced Search
-            CLEAR_HISTORY: Clear History
-        BUILT_WITH: Built with <a href="http://getgrav.org">Grav</a> - The Modern Flat-File CMS
+  THEME_SCHOLAR:
+    GENERIC:
+      AT: at
+      IN: in
+      WITH: with
+      BY: by
+    BREADCRUMBS: Breadcrumbs
+    SITE_CONTENTS: Site Contents
+    PAGE_CONTENTS: Page Contents
+    SCHEMA:
+      AUTHOR: "Author(s)"
+      PUBLISHED: Published
+      RIGHTS: Rights
+      CANONICAL: Canonical
+      CATEGORIES: Category
+      TAGS: Tag
+    PAGE:
+      BLANK: This page intentionally left blank.
+      EMPTY: Empty page
+      CHILDREN: children
+      SIBLINGS: siblings
+    SEARCH:
+      TITLE: Search
+      LABEL: Search through site content
+      PLACEHOLDER: Type to search
+      RESULTS: Results
+      ADVANCED: Advanced Search
+      EMPTY: No items matched the query
+      FIELDS:
+        TITLE: Title
+        DATE: Date
+        TAXONOMY: Taxonomy
+        CATEGORIES: Categories
+        TAGS: Tags
+        CONTENT: Content
+    MENU: Menu
+    DRAWER: Contents
+    POWERED_BY: Powered by
+    MADE_WITH: Made with the

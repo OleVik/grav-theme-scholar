@@ -1,0 +1,47 @@
+input,
+textarea {
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 var(--formbase__margin);
+  padding: var(--formbase__padding);
+  background: var(--formbase__background);
+  border: 1px solid var(--formbase__border);
+  box-shadow: var(--formbase__shadow);
+  border-radius: var(--formbase__radius);
+  outline: none;
+  resize: vertical;
+  transition: border-color var(--formbase__duration var(--formbase__timing));
+  color: var(--formbase__color);
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  &:disabled {
+    border-color: color-mod(
+      var(--formbase__border) blend(var(--formbase__background) 50%)
+    );
+    background-color: color-mod(
+      var(--formbase__background) blend(var(--formbase__color) 25%)
+    );
+    box-shadow: none;
+    cursor: not-allowed;
+    &::placeholder {
+      color: color-mod(
+        var(--formbase__background) blend(var(--formbase__color) 75%)
+      );
+    }
+  }
+  &:focus {
+    border-color: var(--formbase__active);
+  }
+  &::placeholder {
+    color: var(--formbase__placeholder);
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: var(--formbase__placeholder);
+  }
+  &::-ms-input-placeholder {
+    color: var(--formbase__placeholder);
+  }
+}
