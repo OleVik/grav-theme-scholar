@@ -13,6 +13,7 @@ use Grav\Framework\File\Formatter\YamlFormatter;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Plugin\Taxonomylist;
+use RocketTheme\Toolbox\Event\Event;
 
 class Scholar extends Theme
 {
@@ -40,6 +41,9 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
+        // dump(new \SplFileInfo(GRAV_ROOT . '/system/pages/notfound.md'));
+        // dump(new \SplFileInfo(__FILE__));
+        // dump(new \SplFileObject(__FILE__));
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
@@ -55,11 +59,16 @@ class Scholar extends Theme
         $this->enable(
             [
                 // 'onPageInitialized' => ['pagePreCache', 0],
-                'onPagesInitialized' => ['handleAPI', 0],
+                'onPagesInitialized' => ['handleSearchPage', 0],
+                // 'onPagesInitialized' => ['handleAPI', 0],
+                // 'onPageNotFound' => ['handleSearchPage', 0],
                 'onPageContentProcessed' => ['onPageContentProcessed', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
-                // 'onTwigTemplatePaths' => ['templates', 0],
+                'onTwigTemplatePaths' => ['templates', 0],
                 'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0],
+                'onGetPageTemplates' => [
+                    ['onGetPageTemplates', 0]
+                ],
                 // 'onAssetsInitialized' => ['onAssetsInitialized', 0],
                 // 'onShutdown' => ['onShutdown', 0]
             ]
@@ -69,19 +78,31 @@ class Scholar extends Theme
         }
     }
 
+    public function templates() {
+        // dump($this->grav['twig']->twig_vars);
+        // dump($this->grav['twig']->twig_paths);
+    }
+
+    public function onGetPageTemplates(Event $event)
+    {
+        $types = $event->types;
+        $types->register('search');
+    }
+
     /**
      * Handle API
      *
      * @return void
      */
-    public function handleAPI()
+    public function handleAPI(Event $event)
     {
         $uri = $this->grav['uri'];
         $page = $this->grav['page'];
+        dump($page->template());
         $config = $this->config->get('themes.scholar');
-        if ($uri->path() == $config['search_route']) {
-            $this->handleSearchPage();
-        } elseif ($uri->path() == $config['data_route']) {
+        if ($uri->path() == $config['routes']['search']) {
+            $this->handleSearchPage($event);
+        } elseif ($uri->path() == $config['routes']['data']) {
             $this->handleDataAPI();
         }
     }
@@ -91,13 +112,25 @@ class Scholar extends Theme
      *
      * @return void
      */
-    public function handleSearchPage()
+    public function handleSearchPage(Event $event)
     {
-        exit("search page");
-        $page = new Page;
-        $page->init(new \SplFileInfo(__DIR__ . '/pages/search.md'));
-        unset($this->grav['page']);
-        $this->grav['page'] = $page;
+        $pages = $this->grav['pages'];
+        $page = $pages->dispatch($this->config->get('themes.scholar.routes.search', '/search'));
+        if (!$page) {
+            $page = new Page();
+            $page->init(new \SplFileInfo(__DIR__ . '/pages/search.md'));
+            $page->slug(basename($this->config->get('themes.scholar.routes.search', '/search')));
+            $pages->addPage($page, $this->config->get('themes.scholar.routes.search', '/search'));
+        }
+
+        // $output = $this->grav['twig']->processTemplate(
+        //     'search.html.twig',
+        //     [
+        //         'content' => 'contentio',
+        //         'page' => $page ?? null
+        //     ]
+        // );
+        // echo $output;
     }
 
     /**
@@ -246,10 +279,16 @@ class Scholar extends Theme
             $key = str_replace('en.', '', $key);
             $translationStrings[$key] = $this->grav['language']->translate([$key]);
         }
+        if ($this->grav['page']->template() == 'search') {
+            $searchRoute = $this->grav['page']->route();
+        } else {
+            $searchRoute = $this->config->get('themes.scholar.routes.search');
+        }
         $this->grav['assets']->addInlineJs(
             'const systemLanguage = "' . $language . '";' . "\n" .
             'const systemDateformat = {' . $dateFormatsJS() . '};' . "\n" .
             'const siteTaxonomy = [\'' . implode("','", $this->config->get('site.taxonomies')) . '\'];' . "\n" .
+            'const searchRoute = "' . $searchRoute . '";' . "\n" .
             'const ScholarTranslation = ' . json_encode(Utils::arrayUnflattenDotNotation($translationStrings)['THEME_SCHOLAR']) . ';'
         );
     }

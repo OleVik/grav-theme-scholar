@@ -257,7 +257,265 @@ function toggleButtonState(targetElement) {
     }
   }
 }
-},{}],"search.js":[function(require,module,exports) {
+},{}],"../../../../../../node_modules/is-buffer/index.js":[function(require,module,exports) {
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+},{}],"../../../../../../node_modules/kind-of/index.js":[function(require,module,exports) {
+var isBuffer = require('is-buffer');
+
+var toString = Object.prototype.toString;
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+module.exports = function kindOf(val) {
+  // primitivies
+  if (typeof val === 'undefined') {
+    return 'undefined';
+  }
+
+  if (val === null) {
+    return 'null';
+  }
+
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+
+  if (typeof val === 'string' || val instanceof String) {
+    return 'string';
+  }
+
+  if (typeof val === 'number' || val instanceof Number) {
+    return 'number';
+  } // functions
+
+
+  if (typeof val === 'function' || val instanceof Function) {
+    return 'function';
+  } // array
+
+
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  } // check for instances of RegExp and Date before calling `toString`
+
+
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+
+  if (val instanceof Date) {
+    return 'date';
+  } // other objects
+
+
+  var type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+
+  if (type === '[object Date]') {
+    return 'date';
+  }
+
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+
+  if (type === '[object Error]') {
+    return 'error';
+  } // buffer
+
+
+  if (isBuffer(val)) {
+    return 'buffer';
+  } // es6: Map, WeakMap, Set, WeakSet
+
+
+  if (type === '[object Set]') {
+    return 'set';
+  }
+
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+
+  if (type === '[object Map]') {
+    return 'map';
+  }
+
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  } // typed arrays
+
+
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  } // must be a plain object
+
+
+  return 'object';
+};
+},{"is-buffer":"../../../../../../node_modules/is-buffer/index.js"}],"../../node_modules/has-values/index.js":[function(require,module,exports) {
+/*!
+ * has-values <https://github.com/jonschlinkert/has-values>
+ *
+ * Copyright (c) 2014-2018, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+'use strict';
+
+var typeOf = require('kind-of');
+
+module.exports = function has(val) {
+  switch (typeOf(val)) {
+    case 'boolean':
+    case 'date':
+    case 'function':
+    case 'null':
+    case 'number':
+      return true;
+
+    case 'undefined':
+      return false;
+
+    case 'regexp':
+      return val.source !== '(?:)' && val.source !== '';
+
+    case 'buffer':
+      return val.toString() !== '';
+
+    case 'error':
+      return val.message !== '';
+
+    case 'string':
+    case 'arguments':
+      return val.length !== 0;
+
+    case 'file':
+    case 'map':
+    case 'set':
+      return val.size !== 0;
+
+    case 'array':
+    case 'object':
+      for (var key of Object.keys(val)) {
+        if (has(val[key])) {
+          return true;
+        }
+      }
+
+      return false;
+    // everything else
+
+    default:
+      {
+        return true;
+      }
+  }
+};
+},{"kind-of":"../../../../../../node_modules/kind-of/index.js"}],"utilities.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.findGetParameter = findGetParameter;
+Object.defineProperty(exports, "has", {
+  enumerable: true,
+  get: function () {
+    return _hasValues.default;
+  }
+});
+
+var _hasValues = _interopRequireDefault(require("has-values"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * Get value from GET-parameter.
+ * @param {string} parameterName GET-query parameter name.
+ */
+function findGetParameter(parameterName) {
+  var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var result = null,
+      tmp = [];
+  location.search.substr(1).split("&").forEach(function (item) {
+    tmp = item.split("=");
+
+    if (tmp[0] === parameterName) {
+      result = decodeURIComponent(tmp[1]);
+    }
+  });
+
+  if (result !== null) {
+    return result;
+  } else {
+    return type;
+  }
+}
+},{"has-values":"../../node_modules/has-values/index.js"}],"search.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -265,6 +523,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.searchFieldInit = searchFieldInit;
 exports.searchPageInit = searchPageInit;
+
+var util = _interopRequireWildcard(require("./utilities.js"));
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 /**
  * Initialize metadata and content search
@@ -290,6 +554,7 @@ function searchFieldInit(data, fields, options) {
 
   try {
     document.querySelector("#query").addEventListener("keyup", debounce(function (event) {
+      var start = performance.now();
       dataIndex.search(event.srcElement.value, 10).then(function (results) {
         console.debug("FlexSearch search(n = ".concat(results.length, "): ").concat(msToTime(performance.now() - start)));
         renderResults(results);
@@ -328,17 +593,47 @@ function searchPageInit(data, fields, options) {
     field: fields
   };
   var query = {
-    title: "",
-    date: "",
-    categories: [],
-    tags: [],
-    content: ""
+    title: util.findGetParameter("title", ""),
+    date: util.findGetParameter("date", ""),
+    categories: util.findGetParameter("category", ""),
+    tags: util.findGetParameter("tag", ""),
+    content: decodeURIComponent(util.findGetParameter("content", ""))
   };
 
   try {
     dataIndex = new FlexSearch(FlexSearchOptions);
     dataIndex.add(data);
     console.debug("FlexSearch add(n = ".concat(data.length, "): ").concat(msToTime(performance.now() - start)));
+
+    if (query.title !== "") {
+      document.querySelector(".search-query #title").value = query.title;
+    }
+
+    if (query.date !== "") {
+      document.querySelector(".search-query #date").value = query.date;
+    }
+
+    if (query.categories !== "") {
+      query.categories = query.categories.split(",");
+      categoriesSelector.setValue(query.categories);
+    } else {
+      query.categories = [];
+    }
+
+    if (query.tags !== "") {
+      query.tags = query.tags.split(",");
+      tagsSelector.setValue(query.tags);
+    } else {
+      query.tags = [];
+    }
+
+    if (query.content !== "") {
+      document.querySelector(".search-query #content").value = query.content;
+    }
+
+    if (util.has(query)) {
+      search(dataIndex, fields, query);
+    }
   } catch (error) {
     throw new Error(error);
   }
@@ -413,7 +708,7 @@ function search(index, fields, query) {
   console.debug("FlexSearch where(n = ".concat(data.length, "): ").concat(msToTime(performance.now() - start)));
 
   if (query.title !== "" || query.content !== "") {
-    contentIndex = new FlexSearch({
+    var contentIndex = new FlexSearch({
       profile: "balance",
       encode: "advanced",
       tokenize: "full",
@@ -428,6 +723,8 @@ function search(index, fields, query) {
     for (var i = 0; i < data.length; i++) {
       contentIndex.add(data[i]);
     }
+
+    var fieldQuery;
 
     if (query.title !== "" && query.content === "") {
       fieldQuery = [{
@@ -542,7 +839,7 @@ function renderResults(results) {
 
 function renderTime(paragraph, data) {
   var anchor = document.createElement("a");
-  anchor.setAttribute("href", "#");
+  anchor.setAttribute("href", "".concat(searchRoute, "/?date=").concat(dayjs(data).format("YYYY-MM-DD")));
   var time = document.createElement("time");
   time.setAttribute("datetime", data);
   time.appendChild(document.createTextNode(dayjs(data).format(toDayJSFormat(systemDateformat.short))));
@@ -576,7 +873,7 @@ function renderTaxonomy(paragraph, data, name, separator) {
   for (var n = 0; n < data.length; n++) {
     var taxonomy = document.createElement("a");
     taxonomy.classList.add(name);
-    taxonomy.setAttribute("href", "#");
+    taxonomy.setAttribute("href", "".concat(searchRoute, "/?").concat(name, "=").concat(data[n]));
     taxonomy.appendChild(document.createTextNode(data[n]));
 
     if (n > 0 && n < data.length) {
@@ -773,7 +1070,7 @@ function msToTime(millisec) {
     return days + " days";
   }
 }
-},{}],"tinyDrawer.js":[function(require,module,exports) {
+},{"./utilities.js":"utilities.js"}],"tinyDrawer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1080,7 +1377,7 @@ Object.keys(_leaderLine).forEach(function (key) {
 if (module && module.hot) {
   module.hot.accept();
 }
-},{"./accessibility.js":"accessibility.js","./search.js":"search.js","./tinyDrawer.js":"tinyDrawer.js","./leader-line.js":"leader-line.js"}],"../../node_modules/.registry.npmjs.org/parcel-bundler/1.12.3/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./accessibility.js":"accessibility.js","./search.js":"search.js","./tinyDrawer.js":"tinyDrawer.js","./leader-line.js":"leader-line.js"}],"../../../../../../../Users/Ole/GitHub/grav-theme-scholar-dev/node_modules/.registry.npmjs.org/parcel-bundler/1.12.3/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1108,7 +1405,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52084" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58795" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -1283,5 +1580,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../node_modules/.registry.npmjs.org/parcel-bundler/1.12.3/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","theme.js"], "Scholar")
+},{}]},{},["../../../../../../../Users/Ole/GitHub/grav-theme-scholar-dev/node_modules/.registry.npmjs.org/parcel-bundler/1.12.3/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","theme.js"], "Scholar")
 //# sourceMappingURL=/theme.js.map

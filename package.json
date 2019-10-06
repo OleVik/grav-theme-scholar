@@ -10,7 +10,7 @@
     "css": "concurrently --names \"Theme,Base,Styles\" --prefix-colors \"blue,white,cyan\" \"npm run theme\" \"npm run base\" \"npm run styles\"",
     "scripts:babel": "babel src --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
     "scripts:watch": "parcel watch src/js/theme.js --out-dir js --global Scholar",
-    "scripts:build": "parcel build src/css/theme.pcss --out-dir css"
+    "scripts:build": "parcel build src/js/theme.js --out-dir js --global Scholar"
   },
   "babel": {
     "presets": [
@@ -51,6 +51,8 @@
     "core-js": "3",
     "cssnano": "^4.1.10",
     "formbase": "^10.0.0",
+    "gutenberg-css": "^0.5.0",
+    "has-values": "^2.0.1",
     "line-awesome": "github:icons8/line-awesome",
     "magica11y": "^1.4.2",
     "paged-design": "github:electricbookworks/paged-design",

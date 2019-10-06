@@ -80,10 +80,11 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 ## TODO
 
 - [x] Global search-page, adapting to root templates
+  - [x] Meta-search Page (query params)
+    - [x] Integrate into Global search-page
   - [ ] Generate data via Enduring, and in Admin
-    - [ ] Taxonomy
-      - [ ] Meta-search Page (query params)
-      - [ ] Versions alá Translations-plugin (/lang/version/slug)
+  - [ ] Taxonomy
+    - [ ] Versions alá Translations-plugin (/lang/version/slug)
   - [x] Make optional
 - [ ] Book root template
   - [ ] Paged.js, somewhat too niche for general applicability
@@ -91,13 +92,15 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [ ] Render singular
   - [x] Listing
 - [x] Docs keyboard navigation (prev next, accessibility)
-  - [ ] Design for listing template
+  - [x] Design for listing template
 - [x] Blog Post template (post.html.twig) extends page.html.twig - does this cause a semantic conflict?
 - [x] Responsive styling
 - [ ] Styles
   - [ ] Integrate Type specific variants into common base
   - [ ] Minimize conflicts
-  - [ ] Print one, print all
+    - [ ] Resolve header and primary color lack of contrast
+  - [x] Print style
+    - [ ] Print all, subset, or collection
 - [ ] API standardisation: All Page's must implement Linked Data and a REST endpoint
 - [ ] Components loader for Page Types (templates)
 
@@ -156,14 +159,14 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
    - [x] Unify to reduce customizations in core Styles
      - [x] Arctic
-     - [ ] Dark Ocean
+     - [x] Dark Ocean
      - [x] Gold
      - [x] Grey
      - [ ] Longyearbyen
      - [x] Metal
      - [x] Navy Sunrise
      - [ ] Spitsbergen
-     - [ ] Sunrise
+     - [x] Sunrise
    - [x] Join docs, pages, and book styles into one sheet
      - Color-customization should be available globally, for page-hierarchies, and single pages
    - [x] Add styles for docs

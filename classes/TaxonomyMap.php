@@ -15,15 +15,6 @@ class TaxonomyMap
         foreach ($taxonomy as $key => $values) {
             $this->taxonomy[$key] = $values;
         }
-        // dump($this->taxonomy);
-        // dump($this->get());
-        // dump($this->get('categories'));
-        // dump($this->get('categories', true));
-        // dump($this->getPage('/learn/troubleshooting/permissions'));
-        // $all = $this->getDescendants('/');
-        // $all['tags'] = self::limit($all['tags']);
-        // $all['tags'] = self::treshold($all['tags'], 20);
-        // dump($all);
     }
 
     /**
@@ -129,9 +120,6 @@ class TaxonomyMap
         }
         if ($unique) {
             foreach ($list as $key => $values) {
-                // if (is_array($values)) {
-                //     $values = reset($values);
-                // }
                 $list[$key] = array_unique($values);
             }
         }

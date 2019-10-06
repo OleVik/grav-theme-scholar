@@ -2,8 +2,6 @@ enabled: true
 order:
   by: folder
   dir: asc
-search_route: "/search"
-data_route: "/data"
 style: metal
 toolbar:
   breadcrumbs: true
@@ -12,6 +10,9 @@ toolbar:
 cache:
   metadata: "persist"
   content: "persist"
+routes:
+  data: "/data"
+  search: "/search"
 flexsearch:
   enabled: true
   index:

@@ -34,7 +34,7 @@
                 {% do assets.addJs('user://data/persist/index.full.js') %}
             {% endif %}
             {% do assets.addInlineJs('
-                searchPageInit(GravDataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "content", "media"], ' ~ json_encode(config.theme.flexsearch.full) ~ ');
+                Scholar.searchPageInit(GravDataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "content", "media"], ' ~ json_encode(config.theme.flexsearch.full) ~ ');
             ', {group: 'bottom'}) %}
         {% endif %}
     {% endif %}

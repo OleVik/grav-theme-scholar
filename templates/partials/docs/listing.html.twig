@@ -1,18 +1,20 @@
 {% block content %}
 <h1>{{ page.title }}</h1>
-{% if mode == 'children' %}
+{# {% if mode == 'children' %}
     <p>{{ "THEME_SCHOLAR.PAGE.EMPTY"|t }}, {{ "THEME_SCHOLAR.PAGE.CHILDREN"|t }}:</p>
 {% elseif mode == 'children' %}
     <p>{{ "THEME_SCHOLAR.PAGE.EMPTY"|t }}, {{ "THEME_SCHOLAR.PAGE.SIBLINGS"|t }}:</p>
 {% elseif mode == 'blank' %}
     <p>{{ "THEME_SCHOLAR.PAGE.BLANK"|t }}</p>
-{% endif %}
+{% endif %} #}
 {% if collection %}
     {% for item in collection %}
+    <article>
         <h2>
             <a href="{{ item.url }}">{{ item.title }}</a>
         </h2>
         {{ item.summary|strip_html_tags('h1,h2,h3,h4,h5,h6') }}
+    </article>
     {% endfor %}
 {% endif %}
 {% endblock %}

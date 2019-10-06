@@ -22,6 +22,8 @@ devDependencies:
   core-js: 3.2.1
   cssnano: 4.1.10
   formbase: 10.0.0
+  gutenberg-css: 0.5.0
+  has-values: 2.0.1
   line-awesome: github.com/icons8/line-awesome/912ed9f69c1e99ef3c451af2e8e58c5f7b6e3af9
   magica11y: 1.4.2
   paged-design: github.com/electricbookworks/paged-design/7b5466d86e5dde018c6246e8e277fb7606ea46a7
@@ -3880,6 +3882,14 @@ packages:
     dev: true
     resolution:
       integrity: sha1-W55reMODJFLSuiuxy4MPlidkEKw=
+  /gutenberg-css/0.5.0:
+    dependencies:
+      normalize.css: 8.0.1
+    dev: true
+    engines:
+      node: '>=4.0'
+    resolution:
+      integrity: sha512-+0E80+tLUohV1OeEyTLTsXpGqTsFo33Lh3YjjqUfhqXC2si5OATXSPHGfx4moEWB74zLXPtQ7sAzJozTfDqMKQ==
   /har-schema/2.0.0:
     dev: true
     engines:
@@ -3962,6 +3972,14 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-lbC2P+whRmGab+V/51Yo1aOe/k8=
+  /has-values/2.0.1:
+    dependencies:
+      kind-of: 6.0.2
+    dev: true
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-+QdH3jOmq9P8GfdjFg0eJudqx1FqU62NQJ4P16rOEHeRdl7ckgwn6uqQjzYE0ZoHVV/e5E2esuJ5Gl5+HUW19w==
   /has/1.0.3:
     dependencies:
       function-bind: 1.1.1
@@ -5332,6 +5350,10 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-U+JJi7duF1o+u2pynbp2zXDW2/PADgC30f0GsHZtRh+HOcXHnw137TrNlyxxRvWW5fjKd3bcLHPxofWuCjaeZg==
+  /normalize.css/8.0.1:
+    dev: true
+    resolution:
+      integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==
   /npm-run-path/2.0.2:
     dependencies:
       path-key: 2.0.1
@@ -8743,6 +8765,8 @@ specifiers:
   focus-within-polyfill: ^4.1.0
   fontfaceobserver: ^2.1.0
   formbase: ^10.0.0
+  gutenberg-css: ^0.5.0
+  has-values: ^2.0.1
   leader-line: ^1.0.5
   line-awesome: 'github:icons8/line-awesome'
   magica11y: ^1.4.2

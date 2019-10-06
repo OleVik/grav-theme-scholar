@@ -1,3 +1,5 @@
+import * as util from "./utilities.js";
+
 /**
  * Initialize metadata and content search
  * @param {object[]} data An array of objects, each representing a Page
@@ -85,11 +87,11 @@ function searchPageInit(data, fields, options) {
     field: fields,
   };
   const query = {
-    title: "",
-    date: "",
-    categories: [],
-    tags: [],
-    content: "",
+    title: util.findGetParameter("title", ""),
+    date: util.findGetParameter("date", ""),
+    categories: util.findGetParameter("category", ""),
+    tags: util.findGetParameter("tag", ""),
+    content: decodeURIComponent(util.findGetParameter("content", "")),
   };
   try {
     dataIndex = new FlexSearch(FlexSearchOptions);
@@ -99,6 +101,30 @@ function searchPageInit(data, fields, options) {
         performance.now() - start
       )}`
     );
+    if (query.title !== "") {
+      document.querySelector(".search-query #title").value = query.title;
+    }
+    if (query.date !== "") {
+      document.querySelector(".search-query #date").value = query.date;
+    }
+    if (query.categories !== "") {
+      query.categories = query.categories.split(",");
+      categoriesSelector.setValue(query.categories);
+    } else {
+      query.categories = [];
+    }
+    if (query.tags !== "") {
+      query.tags = query.tags.split(",");
+      tagsSelector.setValue(query.tags);
+    } else {
+      query.tags = [];
+    }
+    if (query.content !== "") {
+      document.querySelector(".search-query #content").value = query.content;
+    }
+    if (util.has(query)) {
+      search(dataIndex, fields, query);
+    }
   } catch (error) {
     throw new Error(error);
   }
@@ -177,7 +203,7 @@ function search(index, fields, query) {
     )}`
   );
   if (query.title !== "" || query.content !== "") {
-    contentIndex = new FlexSearch({
+    var contentIndex = new FlexSearch({
       profile: "balance",
       encode: "advanced",
       tokenize: "full",
@@ -191,6 +217,7 @@ function search(index, fields, query) {
     for (let i = 0; i < data.length; i++) {
       contentIndex.add(data[i]);
     }
+    var fieldQuery;
     if (query.title !== "" && query.content === "") {
       fieldQuery = [{ field: "title", query: query.title }];
     } else if (query.title === "" && query.content !== "") {
@@ -314,7 +341,10 @@ function renderResults(results) {
  */
 function renderTime(paragraph, data) {
   const anchor = document.createElement("a");
-  anchor.setAttribute("href", "#");
+  anchor.setAttribute(
+    "href",
+    `${searchRoute}/?date=${dayjs(data).format("YYYY-MM-DD")}`
+  );
   const time = document.createElement("time");
   time.setAttribute("datetime", data);
   time.appendChild(
@@ -348,7 +378,7 @@ function renderTaxonomy(paragraph, data, name, separator) {
   for (let n = 0; n < data.length; n++) {
     const taxonomy = document.createElement("a");
     taxonomy.classList.add(name);
-    taxonomy.setAttribute("href", "#");
+    taxonomy.setAttribute("href", `${searchRoute}/?${name}=${data[n]}`);
     taxonomy.appendChild(document.createTextNode(data[n]));
     if (n > 0 && n < data.length) {
       paragraph.appendChild(document.createTextNode(", "));

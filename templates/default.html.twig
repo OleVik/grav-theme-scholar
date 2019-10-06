@@ -1,7 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set body_classes = (body_classes|default('page')) %}
-{% set navigablePage = page_navigation(page.content) %}
+{% set navigablePage = page_navigation(page.content ?? '') %}
 
 {% block javascripts %}
     {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
