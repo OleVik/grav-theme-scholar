@@ -1,14 +1,14 @@
 # A Fluent Builder For Schema.org Types And ld+json Generator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/schema-org.svg?style=flat-square)](https://packagist.org/packages/spatie/schema-org)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Code coverage](https://scrutinizer-ci.com/g/spatie/schema-org/badges/coverage.png)](https://scrutinizer-ci.com/g/spatie/schema-org)
+[![MIT License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
+[![Code coverage](https://img.shields.io/scrutinizer/coverage/g/spatie/schema-org?style=flat-square)](https://scrutinizer-ci.com/g/spatie/schema-org)
 [![Build Status](https://img.shields.io/travis/spatie/schema-org/master.svg?style=flat-square)](https://travis-ci.org/spatie/schema-org)
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/schema-org.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/schema-org)
 [![StyleCI](https://styleci.io/repos/74684096/shield?branch=master)](https://styleci.io/repos/74684096)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/schema-org.svg?style=flat-square)](https://packagist.org/packages/spatie/schema-org)
 
-`spatie/schema-org` provides a fluent builder for **all** Schema.org types and their properties. The code in `src` is generated from Schema.org's [RFDa standards file](https://github.com/schemaorg/schemaorg/blob/master/data/schema.rdfa), so it provides objects and methods for the entire core vocabulary. The classes and methods are also fully documented as a quick reference.
+`spatie/schema-org` provides a fluent builder for **all** Schema.org types and their properties. The code in `src` is generated from Schema.org's [RDFa standards file](https://github.com/schemaorg/schemaorg/blob/master/data/schema.rdfa), so it provides objects and methods for the entire core vocabulary. The classes and methods are also fully documented as a quick reference.
 
 ```php
 use Spatie\SchemaOrg\Schema;
@@ -18,7 +18,7 @@ $localBusiness = Schema::localBusiness()
     ->email('info@spatie.be')
     ->contactPoint(Schema::contactPoint()->areaServed('Worldwide'));
 
-$localBusiness->toScript();
+echo $localBusiness->toScript();
 ```
 
 ```html
@@ -46,7 +46,7 @@ composer require spatie/schema-org
 
 ## Usage
 
-All types can be instantiated though the `Spatie\SchemaOrg\Schema` factory class, or with the `new` keyword.
+All types can be instantiated through the `Spatie\SchemaOrg\Schema` factory class, or with the `new` keyword.
 
 ``` php
 $localBusiness = Schema::localBusiness()->name('Spatie');
@@ -76,7 +76,7 @@ Types can be converted to an array or rendered to a script.
 ```php
 $localBusiness->toArray();
 
-$localBusiness->toScript();
+echo $localBusiness->toScript();
 
 echo $localBusiness; // Same output as `toScript()`
 ```
@@ -86,6 +86,8 @@ Additionally, all types can be converted to a plain JSON string by just calling 
 ```php
 echo json_encode($localBusiness);
 ```
+
+I recommend double checking your structured data with [Google's structured data testing tool](https://search.google.com/structured-data/testing-tool).
 
 ### Enumerations
 
@@ -112,7 +114,13 @@ $localBusiness = Schema::localBusiness()
     });
 ```
 
-I recommended double checking your structured data with [Google's structured data testing tool](https://search.google.com/structured-data/testing-tool)
+### Identifier
+
+As of v2.6.0 the `identifier` key is replaced by `@id`. This is due to the definition for the `ld+json` syntax.
+
+> All schema.org syntaxes already have built-in representation for URIs and URLs, e.g. in Microdata 'itemid', in RDFa 1.1, 'resource', **in JSON-LD, '@id'.**
+> 
+> &mdash; [schema.org/docs](https://schema.org/docs/datamodel.html#identifierBg) // [PR#102](https://github.com/spatie/schema-org/pull/102) 
 
 ### Advanced Usage
 
@@ -177,24 +185,6 @@ echo $graph;
 With these tools the graph is a collection of all available schemas, can link these schemas with each other and prevent helper schemas from being rendered in the script-tag.
 
 ## Known Issues
-
-### Type Inheritance
-
-The spec rdfa document that's used to generate this code uses single inheritance for the types. However, the spec on http://schema.org uses multiple inheritance in some cases. Read the docs and use [Google's structured data testing tool](https://search.google.com/structured-data/testing-tool) to ensure you're on the right track!
-
-For example, according to the rdfa, a `LocalBusiness` inherits properties from `Organization`. However, if you visit the spec page on [Schema.org](https://schema.org/LocalBusiness), it inherits properties from `Organization` and `Place`. The current solution is by manually specifying properties on the item, as described above in [advanced usage](#advanced-usage).
-
-```php
-Schema::localBusiness()
-
-    // `address` is part of `Organization`, so the method exists
-    ->address(/* ... */)
-
-    // `openingHoursSpecification` is part of `Place`, so we need to manually add it
-    ->setProperty('openingHoursSpecification', /* ... */);
-```
-
-### Other Minor Issues
 
 - The `Float` type isn't available since it's a reserved keyword in PHP
 - The `Physician` type isn't available since it extends a type from the `health` extension spec

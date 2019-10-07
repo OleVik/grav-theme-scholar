@@ -13,6 +13,8 @@ cache:
 routes:
   data: "/data"
   search: "/search"
+components:
+  - sequence
 flexsearch:
   enabled: true
   index:

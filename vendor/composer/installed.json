@@ -124,33 +124,34 @@
     },
     {
         "name": "spatie/schema-org",
-        "version": "2.2.1",
-        "version_normalized": "2.2.1.0",
+        "version": "2.7.0",
+        "version_normalized": "2.7.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/spatie/schema-org.git",
-            "reference": "f6158bb124c5c8c6903263ab4d0f976067a65e38"
+            "reference": "d8d03a78e8ad2bc4fcda760eca0b1b543c8d71f7"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/spatie/schema-org/zipball/f6158bb124c5c8c6903263ab4d0f976067a65e38",
-            "reference": "f6158bb124c5c8c6903263ab4d0f976067a65e38",
+            "url": "https://api.github.com/repos/spatie/schema-org/zipball/d8d03a78e8ad2bc4fcda760eca0b1b543c8d71f7",
+            "reference": "d8d03a78e8ad2bc4fcda760eca0b1b543c8d71f7",
             "shasum": ""
         },
         "require": {
-            "php": "^7.0"
+            "ext-json": "*",
+            "php": "^7.1"
         },
         "require-dev": {
             "graham-campbell/analyzer": "^2.1.1",
             "league/flysystem": "^1.0",
-            "phpunit/phpunit": "^6.0",
+            "phpunit/phpunit": "^7.0|^8.0",
             "scrutinizer/ocular": "^1.5",
             "symfony/console": "^3.2",
             "symfony/css-selector": "^3.2",
             "symfony/dom-crawler": "^3.2",
             "twig/twig": "^1.28"
         },
-        "time": "2019-05-28T11:55:09+00:00",
+        "time": "2019-10-06T13:17:19+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

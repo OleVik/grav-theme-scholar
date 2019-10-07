@@ -1,6 +1,8 @@
 # Scholar Theme
 
-Scholar is a theme made especially for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/). This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
+Scholar is a theme made especially for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/).
+
+This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
 
 ## Description
 
@@ -52,10 +54,10 @@ This command will check your Grav-installation to see if your Scholar theme is d
 
 Manually updating Scholar is pretty simple. Here is what you will need to do to get this done:
 
-* Delete the `your/site/user/themes/scholar`-folder.
-* Download the new version of the Scholar-theme from either [GitHub](https://github.com/OleVik/grav-theme-scholar) or [GetGrav.org](http://getgrav.org/downloads/themes#extras).
-* Unzip the zip-file in `your/site/user/themes` and rename the resulting folder to `scholar`.
-* Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in terminal and typing `bin/grav clear-cache`.
+- Delete the `your/site/user/themes/scholar`-folder.
+- Download the new version of the Scholar-theme from either [GitHub](https://github.com/OleVik/grav-theme-scholar) or [GetGrav.org](http://getgrav.org/downloads/themes#extras).
+- Unzip the zip-file in `your/site/user/themes` and rename the resulting folder to `scholar`.
+- Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in terminal and typing `bin/grav clear-cache`.
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/themes`) will remain intact.
 
@@ -67,11 +69,11 @@ The Scholar-theme natively supports the [Git Sync](https://github.com/trilbymedi
 
 If you want to set Scholar as the default theme, you can do so by following these steps:
 
-* Navigate to `/your/site/grav/user/config`.
-* Open the **system.yaml** file.
-* Change the `theme:` setting to `theme: scholar`.
-* Save your changes.
-* Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in Terminal and typing `bin/grav clear-cache`.
+- Navigate to `/your/site/grav/user/config`.
+- Open the **system.yaml** file.
+- Change the `theme:` setting to `theme: scholar`.
+- Save your changes.
+- Clear the Grav cache. The simplest way to do this is by going to the root Grav directory in Terminal and typing `bin/grav clear-cache`.
 
 Once this is done, you should be able to see the new theme on the frontend. Keep in mind any customizations made to the previous theme will not be reflected as all of the theme- and templating-information is now being pulled from the **scholar** folder.
 
@@ -96,7 +98,7 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 - [x] Blog Post template (post.html.twig) extends page.html.twig - does this cause a semantic conflict?
 - [x] Responsive styling
 - [ ] Styles
-  - [ ] Integrate Type specific variants into common base
+  - [x] Integrate Type specific variants into common base
   - [ ] Minimize conflicts
     - [ ] Resolve header and primary color lack of contrast
   - [x] Print style
@@ -156,16 +158,17 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
        - Breaking HTML into pages: https://alistapart.com/article/boom
        - Print Stylessheets: https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/
 1. Styles
+
    - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
    - [x] Unify to reduce customizations in core Styles
      - [x] Arctic
      - [x] Dark Ocean
      - [x] Gold
      - [x] Grey
-     - [ ] Longyearbyen
+     - [x] Longyearbyen
      - [x] Metal
      - [x] Navy Sunrise
-     - [ ] Spitsbergen
+     - [x] Spitsbergen
      - [x] Sunrise
    - [x] Join docs, pages, and book styles into one sheet
      - Color-customization should be available globally, for page-hierarchies, and single pages
@@ -174,3 +177,12 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
    - [x] Add styles for pages
    - [x] Add styles for book
      - See [GitBook](https://docs.gitbook.com/), [PressBooks](https://pressbooks.com/themes/)
+
+1. Extensions
+   - [ ] Document modular-approach: Scholar as Core
+   - [ ] Zen Editor
+     - WYSIWYG, not WYSIWYM. Currently only [CKEditor](https://ckeditor.com/docs/ckeditor5/latest/features/markdown.html)?
+       - Features like [Gutenberg](https://wordpress.org/gutenberg/), [VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor)?
+     - Lightweight Admin-implementation
+   - [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) as personal page
+   - [ ] Implement a PowerPoint-equivalent using [Fullpage](https://github.com/OleVik/grav-plugin-fullpage)

@@ -9,11 +9,12 @@ use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
+use Grav\Plugin\Taxonomylist;
+use RocketTheme\Toolbox\Event\Event;
 // use Scholar\API\Content;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
-use Grav\Plugin\Taxonomylist;
-use RocketTheme\Toolbox\Event\Event;
+use Grav\Theme\Scholar\API\LinkedData;
 
 class Scholar extends Theme
 {
@@ -62,7 +63,7 @@ class Scholar extends Theme
                 'onPagesInitialized' => ['handleSearchPage', 0],
                 // 'onPagesInitialized' => ['handleAPI', 0],
                 // 'onPageNotFound' => ['handleSearchPage', 0],
-                'onPageContentProcessed' => ['onPageContentProcessed', 0],
+                'onPageInitialized' => ['onPageInitialized', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
                 'onTwigTemplatePaths' => ['templates', 0],
                 'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0],
@@ -81,6 +82,9 @@ class Scholar extends Theme
     public function templates() {
         // dump($this->grav['twig']->twig_vars);
         // dump($this->grav['twig']->twig_paths);
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $this->grav['twig']->twig_paths[] = __DIR__ . '/templates/components/' . $component;
+        }
     }
 
     public function onGetPageTemplates(Event $event)
@@ -154,8 +158,12 @@ class Scholar extends Theme
         exit();
     }
 
-    public function onPageContentProcessed()
+    public function onPageInitialized()
     {
+        // dump((array) $this->grav['page']->header());
+        $ld = new LinkedData();
+        $ld->buildSchema($this->grav['page']);
+        dump($ld->data);
         // $taxonomy = new TaxonomyMap();
         // dump(Grav::instance()['taxonomy']);
         // Grav::instance()['debugger']->addMessage(Grav::instance()['taxonomy']);
@@ -280,9 +288,9 @@ class Scholar extends Theme
             $translationStrings[$key] = $this->grav['language']->translate([$key]);
         }
         if ($this->grav['page']->template() == 'search') {
-            $searchRoute = $this->grav['page']->route();
+            $searchRoute = $this->grav['page']->url(true, true, true);
         } else {
-            $searchRoute = $this->config->get('themes.scholar.routes.search');
+            $searchRoute = $this->grav['uri']->rootUrl(true) . $this->config->get('themes.scholar.routes.search');
         }
         $this->grav['assets']->addInlineJs(
             'const systemLanguage = "' . $language . '";' . "\n" .

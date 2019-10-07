@@ -1,0 +1,40 @@
+{% extends 'default.html.twig' %}
+
+{% set body_classes = (body_classes|default('sequence page')) %}
+
+{% block javascripts %}
+    {% do assets.addJs('theme://node_modules/leader-line/leader-line.min.js') %}
+    {# {% do assets.addJs('theme://js/leader-line.js') %} #}
+    {# {% do assets.addJs('theme://src/tinyDrawer.js', {onload: 'tinyDrawer();'}) %} #}
+    {% do assets.addInlineCss('.leader-line {z-index: 1000;}') %}
+    {% do assets.addJs('theme://node_modules/fontfaceobserver/fontfaceobserver.js', {group: 'critical'}) %}
+    {% do assets.addInlineJs('
+    var font = new FontFaceObserver("Open Sans");
+    font.load().then(function () {
+        Scholar.leaderLinesInit();
+    });
+    ') %}
+{% endblock %}
+
+{% set collection = page.evaluate([{'@page.children': page.route}]) %}
+{% set orderBy = uri.param('sort-by')|default(page.header.content.order.by)|default('date') %}
+{% set orderDir = uri.param('sort-by')|default(page.header.content.order.dir)|default('desc') %}
+{% set collection = collection.order(orderBy, orderDir) %}
+
+{% block article %}
+{% block content %}
+<header>
+    <h1>{{ page.title }}</h1>
+</header>
+{{ navigablePage.content }}
+{% endblock %}
+<article>
+{% if collection|length > 0 %}
+    {% for item in collection %}
+        {% set previous = collection.nextSibling(item.path) %}
+        {% set next = collection.prevSibling(item.path) %}
+        {% include 'partials/sequence.group.html.twig' with {'page': item, 'next': next, 'index': loop.index} %}
+    {% endfor %}
+{% endif %}
+</article>
+{% endblock %}

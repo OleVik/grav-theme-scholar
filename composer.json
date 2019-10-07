@@ -11,7 +11,7 @@
   ],
   "minimum-stability": "stable",
   "require": {
-    "spatie/schema-org": "^2.2",
+    "spatie/schema-org": "2.7.0",
     "phpextra/sorter": "^1.0",
     "masterminds/html5": "^2.6",
     "symfony/css-selector": "^4.3",

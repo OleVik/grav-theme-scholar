@@ -3,11 +3,13 @@
 namespace Spatie\SchemaOrg;
 
 use DateTime;
+use ArrayAccess;
 use ReflectionClass;
+use JsonSerializable;
 use DateTimeInterface;
 use Spatie\SchemaOrg\Exceptions\InvalidProperty;
 
-abstract class BaseType implements Type, \ArrayAccess, \JsonSerializable
+abstract class BaseType implements Type, ArrayAccess, JsonSerializable
 {
     /** @var array */
     protected $properties = [];
@@ -24,7 +26,9 @@ abstract class BaseType implements Type, \ArrayAccess, \JsonSerializable
 
     public function setProperty(string $property, $value)
     {
-        $this->properties[$property] = $value;
+        if ($value !== null) {
+            $this->properties[$property] = $value;
+        }
 
         return $this;
     }
@@ -79,6 +83,7 @@ abstract class BaseType implements Type, \ArrayAccess, \JsonSerializable
 
     public function toArray(): array
     {
+        $this->serializeIdentifier();
         $properties = $this->serializeProperty($this->getProperties());
 
         return [
@@ -111,6 +116,14 @@ abstract class BaseType implements Type, \ArrayAccess, \JsonSerializable
         }
 
         return $property;
+    }
+
+    protected function serializeIdentifier()
+    {
+        if (isset($this['identifier'])) {
+            $this->setProperty('@id', $this['identifier']);
+            unset($this['identifier']);
+        }
     }
 
     public function toScript(): string
