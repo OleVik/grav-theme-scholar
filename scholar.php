@@ -80,11 +80,20 @@ class Scholar extends Theme
     }
 
     public function templates() {
-        // dump($this->grav['twig']->twig_vars);
-        // dump($this->grav['twig']->twig_paths);
-        foreach ($this->config->get('themes.scholar.components') as $component) {
-            $this->grav['twig']->twig_paths[] = __DIR__ . '/templates/components/' . $component;
+        // dump($this->config->get('themes.scholar'));
+        $locator = $this->grav['locator'];
+        foreach ($this->config->get('themes.scholar.schema') as $component) {
+            $this->grav['twig']->twig_paths[] = $locator->findResource('theme://templates/components/' . $component['name']);
         }
+        // dump($this->grav['twig']->twig_paths);
+        
+        // $array = Utils::arrayFilterRecursive(
+        //     (array) $this->config->get('themes.scholar.schema'),
+        //     function ($k, $v) {
+        //         return $v['name'] == 'book';
+        //     }
+        // );
+        // dump($array);
     }
 
     public function onGetPageTemplates(Event $event)

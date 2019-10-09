@@ -121,17 +121,65 @@ class LinkedData
         $date = $page->date();
         $date = \DateTime::createFromFormat('U', $date)->format('Y-m-d H:i:s');
         $header = (array) $page->header();
-        $this->data = Utils::arrayFlattenDotNotation($header);
+        $data = [
+            'name' => $page->title(),
+            'datePublished' => $date,
+            'url' => $page->url()
+        ];
+        
+        // dump(Grav::instance()['config']->get('themes.scholar.schema'));
+        $c = self::filterRecursive(
+            Grav::instance()['config']->get('themes.scholar.schema'),
+            function ($value) {
+                if (is_array($value) && array_key_exists('name', $value) && 'blog' === $value['name']) {
+                    dump($value['schema']);
+                    return $value['schema'];
+                }
+                return false;
+            }
+        );
+        $this->data = $c;
         return;
+
+        if (isset($header['taxonomy'])) {
+            $taxonomy = TaxonomyMap::pluralize($header['taxonomy']);
+            if (isset($taxonomy['categories'])) {
+                if (is_array($taxonomy['categories'])) {
+                    $taxonomy['categories'] = implode(",", $taxonomy['categories']);
+                }
+                $data['articleSection'] = $taxonomy['categories'];
+            }
+            if (isset($taxonomy['tags'])) {
+                if (is_array($taxonomy['tags'])) {
+                    $taxonomy['tags'] = implode(",", $taxonomy['tags']);
+                }
+                $data['keywords'] = $taxonomy['tags'];
+            }
+        }
         $this->data = self::getSchema(
-            [
-                'name' => $page->title(),
-                'datePublished' => $date,
-                'articleSection' => $header['taxonomy']['category'],
-                'url' => $page->url()
-            ],
+            $data,
             'Article'
         );
+    }
+
+    public static function determineType(string $template): string
+    {
+        $config = Grav::instance()['config']->get('themes.scholar.schema');
+    }
+
+    public static function filterRecursive(array $array, callable $callback): array
+    {
+        foreach ($array as $k => $v) {
+            $res = call_user_func($callback, $v);
+            if (false === $res) {
+                unset($array[$k]);
+            } else {
+                if (is_array($v)) {
+                    $array[$k] = self::filterRecursive($v, $callback);
+                }
+            }
+        }
+        return $array;
     }
 
     /**

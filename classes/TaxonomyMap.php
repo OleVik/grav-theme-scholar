@@ -102,7 +102,7 @@ class TaxonomyMap
      *
      * @return array
      */
-    protected static function pluralize(array $list, bool $unique = null)
+    public static function pluralize(array $list, bool $unique = null)
     {
         if (isset($list['category']) && isset($list['categories'])) {
             $list['categories'] = array_merge_recursive($list['category'], $list['categories']);

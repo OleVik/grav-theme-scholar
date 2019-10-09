@@ -13,8 +13,19 @@ cache:
 routes:
   data: "/data"
   search: "/search"
-components:
-  - sequence
+schema:
+  - name: blog
+    schema: Blog
+    children:
+      - name: post
+        schema: BlogPosting
+  - name: book
+    schema: Book
+    children:
+      - name: chapter
+        schema: Chapter
+  - name: sequence
+    schema: Drawing
 flexsearch:
   enabled: true
   index:

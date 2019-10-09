@@ -7,7 +7,7 @@
     'page': page,
     'collection': page.collection
     } %}
-    {{ block('content', 'partials/page/listing.html.twig') }}
+    {{ block('content', 'partials/blog/listing.html.twig') }}
 {% endwith %}
 <aside>
     <header>
@@ -18,7 +18,7 @@
         'page': page,
         'collection': page.collection('aside')
         } %}
-        {{ block('content', 'partials/page/listing.html.twig') }}
+        {{ block('content', 'partials/blog/listing.html.twig') }}
     {% endwith %}
 </aside>
 {% endblock %}

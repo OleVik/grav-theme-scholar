@@ -33,7 +33,7 @@
     {% for item in collection %}
         {% set previous = collection.nextSibling(item.path) %}
         {% set next = collection.prevSibling(item.path) %}
-        {% include 'partials/sequence.group.html.twig' with {'page': item, 'next': next, 'index': loop.index} %}
+        {% include 'partials/sequence/group.html.twig' with {'page': item, 'next': next, 'index': loop.index} %}
     {% endfor %}
 {% endif %}
 </article>

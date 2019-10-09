@@ -21,11 +21,11 @@ https://discourse.getgrav.org/t/grav-common-page-header-class/273
 {# {% set page = set('header.metadata', 'value') %} #}
 {# {{ dump(page) }} #}
 <section role="list">
-{% include 'partials/sequence.item.html.twig' with {'page': page, 'next': next, 'index': index, 'level': 'h2'} %}
+{% include 'partials/sequence/item.html.twig' with {'page': page, 'next': next, 'index': index, 'level': 'h2'} %}
 {% if collection|length > 0 %}
     {% for item in collection %}
         {% set next = collection.prevSibling(item.path) %}
-        {% include 'partials/sequence.item.html.twig' with {'page': item, 'next': next, 'index': index ~ '.' ~ loop.index, 'level': 'h3'} %}
+        {% include 'partials/sequence/item.html.twig' with {'page': item, 'next': next, 'index': index ~ '.' ~ loop.index, 'level': 'h3'} %}
     {% endfor %}
 {% endif %}
 </section>

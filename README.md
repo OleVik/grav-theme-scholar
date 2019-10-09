@@ -104,6 +104,7 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [x] Print style
     - [ ] Print all, subset, or collection
 - [ ] API standardisation: All Page's must implement Linked Data and a REST endpoint
+  - [ ] WIP: Determine Type from templates?
 - [ ] Components loader for Page Types (templates)
 
 ### Current
