@@ -1,5 +1,5 @@
 <?php
-namespace Scholar\API;
+namespace Grav\Theme\Scholar\API;
 
 require __DIR__ . '/../vendor/autoload.php';
 use PHPExtra\Sorter\Sorter;
@@ -20,9 +20,9 @@ class Utilities
      * @param array  $array  Array to search.
      * @param string $search Key to search for.
      * @param array  $keys   Reserved
-     * 
+     *
      * @see https://stackoverflow.com/a/40506009/603387
-     * 
+     *
      * @return array
      */
     public static function arraySearch($array, $search, $keys = array())
@@ -45,9 +45,9 @@ class Utilities
      *
      * @param array $array Array to collapse.
      * @param mixed $info  Data to add as value to last index.
-     * 
+     *
      * @see https://stackoverflow.com/a/16925154/603387
-     * 
+     *
      * @return array
      */
     public static function collapse($array, $info)
@@ -63,9 +63,9 @@ class Utilities
      *
      * @param array  $array Array to manipulate.
      * @param string $key   Key to unset.
-     * 
+     *
      * @see https://stackoverflow.com/a/46445227
-     * 
+     *
      * @return array
      */
     public static function removeKey(Array $array, String $key)
@@ -85,9 +85,9 @@ class Utilities
      *
      * @param array  $arr  Array to hold values, private.
      * @param string $path String to add.
-     * 
+     *
      * @see https://stackoverflow.com/a/15133284
-     * 
+     *
      * @return void
      */
     public static function assignArrayByPath(&$arr, $path)
@@ -99,11 +99,11 @@ class Utilities
     }
 
     /**
-     * Flatten an array to key == value
+     * Flatten an array to key => value
      *
      * @param array $array Array to flatten
      * @param array $keys  Array to store results, private.
-     * 
+     *
      * @return array
      */
     public static function arrayFlattenKeysAsValues($array, $keys = array())
@@ -121,9 +121,8 @@ class Utilities
 
     /**
      * Sort multidimensional array
-     * 
-     * @deprecated 1.0.0
-     * @see        https://stackoverflow.com/a/16788610
+     *
+     * @see https://stackoverflow.com/a/16788610
      *
      * @return array
      */
@@ -170,7 +169,7 @@ class Utilities
      * @param array  $array    Array to sort.
      * @param string $orderBy  Property to sort by.
      * @param string $orderDir Direction to sort.
-     * 
+     *
      * @return array
      */
     public static function sortLeaf(Array $array, String $orderBy = 'date', String $orderDir = 'asc')
@@ -194,7 +193,7 @@ class Utilities
      * Cast an array into an object, recursively
      *
      * @param array $array Array to cast.
-     * 
+     *
      * @return stdClass
      */
     public static function toObject($array)

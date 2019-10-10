@@ -1,4 +1,16 @@
 <?php
+/**
+ * Scholar Theme
+ *
+ * PHP version 7
+ *
+ * @category   Extensions
+ * @package    Grav
+ * @subpackage Scholar
+ * @author     Ole Vik <git@olevik.net>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/OleVik/grav-theme-scholar
+ */
 namespace Grav\Theme;
 
 use Grav\Common\Grav;
@@ -15,7 +27,19 @@ use RocketTheme\Toolbox\Event\Event;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
+use Grav\Theme\Scholar\API\Utilities;
 
+/**
+ * Scholar Theme
+ *
+ * Class Scholar
+ *
+ * @category Extensions
+ * @package  Grav\Theme
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
+ */
 class Scholar extends Theme
 {
     /**
@@ -79,21 +103,19 @@ class Scholar extends Theme
         }
     }
 
-    public function templates() {
-        // dump($this->config->get('themes.scholar'));
+    /**
+     * Register templates dynamically
+     *
+     * @return void
+     */
+    public function templates()
+    {
         $locator = $this->grav['locator'];
-        foreach ($this->config->get('themes.scholar.schema') as $component) {
-            $this->grav['twig']->twig_paths[] = $locator->findResource('theme://templates/components/' . $component['name']);
+        foreach ($this->config->get('themes.scholar.schema.types') as $type) {
+            $this->grav['twig']->twig_paths[] = $locator->findResource(
+                'theme://templates/components/' . $type['name']
+            );
         }
-        // dump($this->grav['twig']->twig_paths);
-        
-        // $array = Utils::arrayFilterRecursive(
-        //     (array) $this->config->get('themes.scholar.schema'),
-        //     function ($k, $v) {
-        //         return $v['name'] == 'book';
-        //     }
-        // );
-        // dump($array);
     }
 
     public function onGetPageTemplates(Event $event)
@@ -173,6 +195,8 @@ class Scholar extends Theme
         $ld = new LinkedData();
         $ld->buildSchema($this->grav['page']);
         dump($ld->data);
+        // print_r(json_encode($ld->data, JSON_PRETTY_PRINT));
+        // dump($ld->getSchemas());
         // $taxonomy = new TaxonomyMap();
         // dump(Grav::instance()['taxonomy']);
         // Grav::instance()['debugger']->addMessage(Grav::instance()['taxonomy']);

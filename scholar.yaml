@@ -14,18 +14,25 @@ routes:
   data: "/data"
   search: "/search"
 schema:
-  - name: blog
-    schema: Blog
-    children:
-      - name: post
-        schema: BlogPosting
-  - name: book
-    schema: Book
-    children:
-      - name: chapter
-        schema: Chapter
-  - name: sequence
-    schema: Drawing
+  default: CreativeWork
+  types:
+    - name: index
+      schema: CollectionPage
+      children: true
+    - name: article
+      schema: Article
+    - name: blog
+      schema: Blog
+      children:
+        - name: post
+          schema: BlogPosting
+    - name: book
+      schema: Book
+      children:
+        - name: chapter
+          schema: Chapter
+    - name: sequence
+      schema: Drawing
 flexsearch:
   enabled: true
   index:

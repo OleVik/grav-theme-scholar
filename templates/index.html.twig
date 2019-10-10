@@ -9,13 +9,25 @@
     } %}
     {{ block('content', 'partials/page/listing.html.twig') }}
 {% endwith %}
+{% if page.header.image %}
+    {% do assets.addInlineCss('
+    .page {
+        background-image: url("' ~ page.media[page.header.image.url ?? page.header.image].url ~ '");
+        background-size: ' ~ page.header.image.size ?? "cover" ~ ';
+        background-repeat: ' ~ page.header.image.repeat ?? "no-repeat" ~ ';
+    }
+    .page main {
+        margin-top: 10%;
+    }
+    ') %}
+{% endif %}
 <aside>
     <header>
-        {% if page.header.image %}
-            {% if page.media[page.header.image.url ?? page.header.image].extension == 'svg' %}
-                {{ rawcontent(page.media[page.header.image.url ?? page.header.image].filepath) }}
+        {% if page.header.logo %}
+            {% if page.media[page.header.logo.url ?? page.header.logo].extension == 'svg' %}
+                {{ rawcontent(page.media[page.header.logo.url ?? page.header.logo].filepath) }}
             {% else %}
-                <img src="{{ page.media[page.header.image.url ?? page.header.image].url }}" role="figure" />
+                <img src="{{ page.media[page.header.logo.url ?? page.header.logo].url }}" role="figure" />
             {% endif %}
         {% endif %}
         <h1>{{ page.title }}</h1>
