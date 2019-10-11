@@ -15,6 +15,7 @@ namespace Grav\Theme;
 
 use Grav\Common\Grav;
 use Grav\Common\Theme;
+use Grav\Common\Taxonomy;
 use Grav\Common\Utils;
 use Grav\Common\Inflector;
 use Grav\Common\Page\Page;
@@ -88,6 +89,7 @@ class Scholar extends Theme
                 // 'onPagesInitialized' => ['handleAPI', 0],
                 // 'onPageNotFound' => ['handleSearchPage', 0],
                 'onPageInitialized' => ['onPageInitialized', 0],
+                'onPageContentProcessed' => ['onPageContentProcessed', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
                 'onTwigTemplatePaths' => ['templates', 0],
                 'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0],
@@ -191,10 +193,12 @@ class Scholar extends Theme
 
     public function onPageInitialized()
     {
-        // dump((array) $this->grav['page']->header());
+        // dump('$this->grav[\'page\']->taxonomy()');
+        // dump((array) $this->grav['page']->taxonomy());
+        // dump(Utils::arrayFlattenDotNotation((array) $this->grav['page']->taxonomy()));
         $ld = new LinkedData();
         $ld->buildSchema($this->grav['page']);
-        dump($ld->data);
+        // dump($ld->data);
         // print_r(json_encode($ld->data, JSON_PRETTY_PRINT));
         // dump($ld->getSchemas());
         // $taxonomy = new TaxonomyMap();
@@ -204,6 +208,19 @@ class Scholar extends Theme
         // Grav::instance()['debugger']->addMessage(self::getTaxonomy('tags'));
         // Grav::instance()['debugger']->addMessage(self::getTaxonomy('tags', true));
         // Grav::instance()['debugger']->addMessage('result: ' . self::getDocsRoot($route));
+    }
+
+    public function onPageContentProcessed()
+    {
+        // $Taxonomy = $this->grav['taxonomy'];
+        // dump('$Taxonomy->taxonomy()');
+        // dump($Taxonomy->taxonomy());
+        // foreach ($Taxonomy->findTaxonomy(['tags' => 'article']) as $result) {
+        //     dump($result->title());
+        // }
+        // foreach ($this->grav['taxonomy']->findTaxonomy(['author.email' => 'hwms@bogus.tld']) as $result) {
+        //     dump($result->title());
+        // }
     }
 
     public static function getMenuRoute(string $route, string $type)

@@ -1,47 +1,11 @@
 {% apply spaceless %}
 
 {% if page.taxonomy %}
+{# {{ dump(page.taxonomy) }} #}
+{# <h1>{{ page.taxonomy.author[0].affiliation.organization }}</h1> #}
+{% import "macros/metadata.html.twig" as metadata %}
 <dl class="metadata">
-{% for type, value in page.taxonomy %}
-    <dt>{{ ('THEME_SCHOLAR.SCHEMA.' ~ type|upper)|t }}: </dt>
-    {% if value is iterable %}
-    <dd>
-        <ol>
-        {% for item in value %}
-            <li>
-                {% if item is iterable %}
-                    {% if type != 'author' %}
-                    {% for key, subitem in item %}
-                        <span>
-                            <a href="/meta/{{ type }}/{{ subitem }}">{{ subitem }}</a>
-                        </span>
-                    {% endfor %}
-                    {% else %}
-                        <span>
-                            {% if item.url %}<a href="{{ item.url }}">{% endif %}
-                            {{ item.name }}
-                            {% if item.url %}</a>{% endif %}
-                            {% if item.email %}
-                            , &lt;<a href="mailto:{{ item.email|safe_email }}">{{ item.email|safe_email }}</a>&gt;
-                            {% endif %}
-                            {% if item.affiliation %}
-                            , {{ item.affiliation }}
-                            {% endif %}
-                        </span>
-                    {% endif %}
-                {% else %}
-                <a href="/meta/{{ type }}/{{ item }}">{{ item }}</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-        </ol>
-    </dd>
-    {% else %}
-    <dd>
-        <a href="/meta/{{ type }}/{{ page.taxonomy }}">{{ page.taxonomy }}</a>
-    </dd>
-    {% endif %}
-{% endfor %}
+{{ metadata.iterate(page.taxonomy) }}
 </dl>
 {% endif %}
 

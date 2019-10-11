@@ -103,9 +103,13 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
     - [ ] Resolve header and primary color lack of contrast
   - [x] Print style
     - [ ] Print all, subset, or collection
-- [ ] API standardisation: All Page's must implement Linked Data and a REST endpoint
+- [ ] API standardisation
+  - [ ] All Page's must implement Linked Data
+  - [ ] All Page's should implement a REST endpoint?
+    - Better to test with API-plugin and leave it to that
   - [ ] WIP: Determine Type from templates?
 - [ ] Components loader for Page Types (templates)
+  - [ ] Separate metadata.html.twig into generalized and specific for templates
 
 ### Current
 
