@@ -103,8 +103,9 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
     - [ ] Resolve header and primary color lack of contrast
   - [x] Print style
     - [ ] Print all, subset, or collection
+  - [ ] Remove dependency on color-mod-function
 - [ ] API standardisation
-  - [ ] All Page's must implement Linked Data
+  - [x] All Page's must implement Linked Data
   - [ ] All Page's should implement a REST endpoint?
     - Better to test with API-plugin and leave it to that
   - [ ] WIP: Determine Type from templates?

@@ -1,4 +1,7 @@
 # Dependency directories
+local_modules/
+!local_modules/node_modules/postcss-wcag-contrast/index.js
+!local_modules/node_modules/stylelint-no-indistinguishable-colors/lib/index.js
 node_modules/
 jspm_packages/
 
