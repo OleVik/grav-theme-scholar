@@ -1,18 +1,7 @@
-const rgbHex = require("rgb-hex");
-
 module.exports = {
   map: { inline: true },
   plugins: [
     require("postcss-import"),
-    require("postcss-media-variables"),
-    require("postcss-color-mod-function")({
-      unresolved: "warn",
-      stringifier(color) {
-        return "#" + rgbHex(color.toRGBLegacy());
-      },
-      transformVars: false,
-    }),
-    require("postcss-media-variables"),
     require("postcss-nested"),
     require("stylelint")({
       configFile: "./stylelint.config.js",

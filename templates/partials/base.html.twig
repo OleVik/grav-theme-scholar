@@ -13,6 +13,7 @@
     {% endblock meta %}
     {% block stylesheets %}
         {% do assets.addCss('theme://css/theme.css', 100) %}
+        {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
         {% do assets.addCss('theme://css/styles/' ~ config.theme.style ~ '.css', 99) %}
         {% do assets.addCss('theme://css/custom.css', 98) %}
     {% endblock %}

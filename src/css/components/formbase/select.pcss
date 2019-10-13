@@ -22,14 +22,12 @@ select {
   font-size: 100%;
   line-height: 1.15;
   &:disabled {
-    border-color: color-mod(var(--formbase__border) contrast(5%));
+    border-color: var(--formbase__disabled_border);
     background-color: var(--formbase__background);
     box-shadow: none;
     cursor: not-allowed;
     &::placeholder {
-      color: color-mod(
-        var(--formbase__background) blend(var(--formbase__color) 75%)
-      );
+      color: var(--formbase__disabled_placeholder);
     }
   }
   &:focus {

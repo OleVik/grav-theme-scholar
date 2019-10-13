@@ -88,7 +88,7 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [ ] Taxonomy
     - [ ] Versions alá Translations-plugin (/lang/version/slug)
   - [x] Make optional
-- [ ] Book root template
+- [x] Book root template
   - [ ] Paged.js, somewhat too niche for general applicability
   - [ ] Render all
   - [ ] Render singular
@@ -97,20 +97,26 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [x] Design for listing template
 - [x] Blog Post template (post.html.twig) extends page.html.twig - does this cause a semantic conflict?
 - [x] Responsive styling
-- [ ] Styles
+- [x] Styles
   - [x] Integrate Type specific variants into common base
-  - [ ] Minimize conflicts
+  - [x] Minimize conflicts
     - [ ] Resolve header and primary color lack of contrast
+    - [ ] Across styles
   - [x] Print style
     - [ ] Print all, subset, or collection
-  - [ ] Remove dependency on color-mod-function
-- [ ] API standardisation
+  - [x] Remove dependency on color-mod-function
+- [x] API standardisation
   - [x] All Page's must implement Linked Data
-  - [ ] All Page's should implement a REST endpoint?
+  - [x] All Page's should implement a REST endpoint? No:
     - Better to test with API-plugin and leave it to that
-  - [ ] WIP: Determine Type from templates?
-- [ ] Components loader for Page Types (templates)
+  - [x] WIP: Determine Schema from templates? Yes
+    - [ ] Schema must be a separate file, otherwise API-changes are never reflect after editing
+    - [ ] **Move components into root-level directory, keeping templates, Schema, and assets separate**
+- [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
+  - [ ] Admin: List or checkboxes?
+- [ ] Map features to settings
+  - [ ] Admin blueprints
 
 ### Current
 

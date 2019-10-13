@@ -15,7 +15,13 @@ module.exports = {
         ignoreKeywords: ["currentColor", "transparent", "inherit"],
       },
     ],
-    "plugin/stylelint-no-indistinguishable-colors": true,
+    "plugin/stylelint-no-indistinguishable-colors": [
+      true,
+      {
+        threshold: 1,
+        allowEquivalentNotation: true,
+      },
+    ],
     "plugin/stylelint-selector-no-empty": true,
     "prettier/prettier": true,
     "string-quotes": "double",

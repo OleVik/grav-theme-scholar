@@ -22,8 +22,8 @@
     .selectr-option {
       &.active,
       &.active.selected {
-        color: contrast(var(--formbase__active));
-        background-color: var(--formbase__active);
+        color: var(--formbase__color);
+        background-color: var(--formbase__background);
       }
       &.selected {
         font-style: italic;
@@ -34,7 +34,7 @@
   .selectr-tag {
     margin: 0 5px 2px 0;
     color: var(--formbase__color);
-    background-color: transparent;
+    background-color: var(--formbase__background);
     border: 1px solid var(--formbase__border);
     border-radius: 0;
     .selectr-tag-remove {

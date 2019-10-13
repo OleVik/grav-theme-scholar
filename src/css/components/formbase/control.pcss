@@ -50,14 +50,12 @@ input[type="checkbox"] + label::after {
 input[type="radio"]:disabled + label,
 input[type="checkbox"]:disabled + label {
   cursor: not-allowed;
-  color: color-mod(var(--formbase__color, contrast(5%)));
+  color: var(--formbase__disabled_placeholder);
 }
 input[type="radio"]:disabled + label::before,
 input[type="checkbox"]:disabled + label::before {
-  border-color: color-mod(var(--formbase__color, contrast(5%)));
-  background-color: color-mod(
-    var(--formbase__background) blend(var(--formbase__color) 25%)
-  );
+  border-color: var(--formbase__disabled_border);
+  background-color: var(--formbase__background);
   box-shadow: none;
 }
 input:focus + label::before {

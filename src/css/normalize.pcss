@@ -151,6 +151,7 @@ abbr[title] {
    * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
    */
 
+/* stylelint-disable no-duplicate-selectors */
 b,
 strong {
   font-weight: inherit;
@@ -164,6 +165,7 @@ b,
 strong {
   font-weight: bolder;
 }
+/* stylelint-enable */
 
 /**
    * 1. Correct the inheritance and scaling of font size in all browsers.
@@ -191,10 +193,12 @@ dfn {
    * Add the correct background and color in IE 9-.
    */
 
+/* stylelint-disable scale-unlimited/declaration-strict-value */
 mark {
-  background-color: #ff0;
-  color: #000;
+  background-color: #ffff00;
+  color: #000000;
 }
+/* stylelint-enable */
 
 /**
    * Add the correct font size in all browsers.

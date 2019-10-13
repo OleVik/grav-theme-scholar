@@ -17,18 +17,12 @@ textarea {
   font-size: 100%;
   line-height: 1.15;
   &:disabled {
-    border-color: color-mod(
-      var(--formbase__border) blend(var(--formbase__background) 50%)
-    );
-    background-color: color-mod(
-      var(--formbase__background) blend(var(--formbase__color) 25%)
-    );
+    border-color: var(--formbase__disabled_border);
+    background-color: var(--formbase__disabled_background);
     box-shadow: none;
     cursor: not-allowed;
     &::placeholder {
-      color: color-mod(
-        var(--formbase__background) blend(var(--formbase__color) 75%)
-      );
+      color: var(--formbase__disabled_placeholder);
     }
   }
   &:focus {

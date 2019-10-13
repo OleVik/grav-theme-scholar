@@ -30,6 +30,8 @@ use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
 use Grav\Theme\Scholar\API\Utilities;
 
+use Grav\Framework\Cache\Adapter\FileCache;
+
 /**
  * Scholar Theme
  *
@@ -67,9 +69,6 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
-        // dump(new \SplFileInfo(GRAV_ROOT . '/system/pages/notfound.md'));
-        // dump(new \SplFileInfo(__FILE__));
-        // dump(new \SplFileObject(__FILE__));
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
@@ -113,9 +112,9 @@ class Scholar extends Theme
     public function templates()
     {
         $locator = $this->grav['locator'];
-        foreach ($this->config->get('themes.scholar.schema.types') as $type) {
+        foreach ($this->config->get('themes.scholar.components') as $component) {
             $this->grav['twig']->twig_paths[] = $locator->findResource(
-                'theme://templates/components/' . $type['name']
+                'theme://templates/components/' . $component
             );
         }
     }

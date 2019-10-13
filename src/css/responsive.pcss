@@ -1,4 +1,13 @@
-@media (max-width: var(--breakpoint-sm)) {
+/* 
+  --breakpoint-xs: 320px;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1600px;
+ */
+
+@media (max-width: 576px) {
   .page {
     header[role="banner"] {
       flex-direction: column;
@@ -20,7 +29,7 @@
     }
   }
 }
-@media (max-width: var(--breakpoint-md)) {
+@media (max-width: 768px) {
   header form[role="search"] {
     flex: 1;
     input[type="search"] {
@@ -43,7 +52,7 @@
       }
       .links {
         order: 2;
-        flex: 1 0 100%;
+        flex: 1 0 1|%;
       }
       .menu {
         order: 1;
@@ -112,7 +121,7 @@
   }
 }
 
-@media (max-width: var(--breakpoint-lg)) {
+@media (max-width: 992px) {
   .page {
     &.listing {
       main {
@@ -126,7 +135,7 @@
     }
   }
 }
-@media (min-width: var(--breakpoint-lg)) {
+@media (min-width: 992px) {
   .page {
     &.listing {
       main {
@@ -151,7 +160,7 @@
     }
   }
 }
-@media (min-width: var(--breakpoint-xxl)) {
+@media (min-width: 1600px) {
   .page {
     &.listing {
       main {
