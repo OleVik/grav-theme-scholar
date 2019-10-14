@@ -196,7 +196,6 @@ class Scholar extends Theme
     {
         $uri = $this->grav['uri'];
         $page = $this->grav['page'];
-        dump($page->template());
         $config = $this->config->get('themes.scholar');
         if ($uri->path() == $config['routes']['search']) {
             $this->handleSearchPage($event);
@@ -261,16 +260,6 @@ class Scholar extends Theme
         $ld = new LinkedData();
         $ld->buildSchema($this->grav['page']);
         dump($ld->data);
-        
-        // print_r(json_encode($ld->data, JSON_PRETTY_PRINT));
-        // dump($ld->getSchemas());
-        // $taxonomy = new TaxonomyMap();
-        // dump(Grav::instance()['taxonomy']);
-        // Grav::instance()['debugger']->addMessage(Grav::instance()['taxonomy']);
-        // Grav::instance()['debugger']->addMessage(self::getTaxonomy());
-        // Grav::instance()['debugger']->addMessage(self::getTaxonomy('tags'));
-        // Grav::instance()['debugger']->addMessage(self::getTaxonomy('tags', true));
-        // Grav::instance()['debugger']->addMessage('result: ' . self::getDocsRoot($route));
     }
 
     public function onPageContentProcessed()

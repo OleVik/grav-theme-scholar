@@ -194,7 +194,7 @@ class LinkedData
         if (isset($schema[$template]['children'])) {
             $iterable = true;
         }
-        return [$schema[0]['schema'] ?? $schemaConfig['default'] => $iterable];
+        return [$schema[$template]['schema'] ?? $schemaConfig['default'] => $iterable];
     }
 
     /**
