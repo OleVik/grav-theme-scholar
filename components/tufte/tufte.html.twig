@@ -3,14 +3,14 @@
 {% set body_classes = (body_classes|default('page')) %}
 
 {% block stylesheets %}
-    {% do assets.addCss('theme://css/tufte.min.css', 100) %}
+    {% do assets.addCss('theme://components/tufte/assets/tufte.min.css', 100) %}
 {% endblock %}
 
 {% block main %}
 
 <main>
     {% block article %}
-    <article typeof="schema:ScholarlyArticle">
+    <article typeof="schema:{{ schema_type(page.template) }}">
         {% block content %}
         <h1>{{ page.title }}</h1>
         {% if page.header.subtitle %}

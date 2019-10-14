@@ -1,0 +1,15 @@
+default: CreativeWork
+types:
+  page:
+    name: page
+    schema: WebPage
+  index:
+    name: index
+    schema: CollectionPage
+    children: true
+  article:
+    name: article
+    schema: Article
+  search:
+    name: search
+    schema: SearchResultsPage

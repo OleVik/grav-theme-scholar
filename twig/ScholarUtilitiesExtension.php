@@ -4,6 +4,7 @@ namespace Grav\Theme;
 use Grav\Common\Grav;
 use Grav\Common\Plugin;
 use Grav\Common\Theme;
+use Grav\Theme\Scholar\API\LinkedData;
 
 class ScholarUtilitiesExtension extends \Twig_Extension
 {
@@ -18,6 +19,7 @@ class ScholarUtilitiesExtension extends \Twig_Extension
             new \Twig_SimpleFunction('root_template', [$this, 'rootTemplate']),
             new \Twig_SimpleFunction('file_exists', [$this, 'fileExists']),
             new \Twig_SimpleFunction('rawcontent', [$this, 'getFileContent']),
+            new \Twig_SimpleFunction('schema_type', [$this, 'getSchemaType']),
         ];
     }
     public function getFilters()
@@ -55,5 +57,10 @@ class ScholarUtilitiesExtension extends \Twig_Extension
     public function getFileContent(string $path)
     {
         return file_get_contents($path);
+    }
+
+    public function getSchemaType(string $template)
+    {
+        return key(LinkedData::getType($template));
     }
 }

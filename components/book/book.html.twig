@@ -35,7 +35,7 @@ https://github.com/electricbookworks/paged-design
 
 <main>
     {% block article %}
-    <article typeof="schema:Book">
+    <article typeof="schema:{{ schema_type(page.template) }}">
         {% block content %}
         {% with {
             'title': page.title,

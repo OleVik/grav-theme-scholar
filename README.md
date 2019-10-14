@@ -77,6 +77,40 @@ If you want to set Scholar as the default theme, you can do so by following thes
 
 Once this is done, you should be able to see the new theme on the frontend. Keep in mind any customizations made to the previous theme will not be reflected as all of the theme- and templating-information is now being pulled from the **scholar** folder.
 
+### Components
+
+The Scholar theme uses modular components to let you choose what features you want. These are not the same as as [Modular Pages](https://learn.getgrav.org/16/content/modular) in Grav, but rather standalone Page types. The `components`-setting in the theme's configuration-file is a plain list of names of components to load.
+
+#### Architecture
+
+Each component exists in the theme, in the `/components`-folder, and contains needed templates, a schema, and any assets. Extensions to the theme, or child-themes, can deliver their own components by replicating this structure or overriding the existing structure. For example, the Tufte-article looks like this, in `/components/tufte`:
+
+```
+│   schema.yaml
+│   tufte.html.twig
+│
+├───assets
+│       tufte.min.css
+│
+├───partials
+│   └───tufte
+│           note.html.twig
+│
+└───shortcodes
+        CiteShortcode.php
+        NoteShortcode.php
+```
+
+Wherein `schema.yaml` holds basic data used for Linked Data and ARIA-attributes:
+
+```yaml
+tufte:
+  name: tufte
+  schema: ScholarlyArticle
+```
+
+`tufte.html.twig` defines how a `tufte.md`-file is rendered, `/assets` holds the necessary style in `tufte.min.css`, `/partials` holds template-pieces specific to this template, and `/shortcodes` shortcodes that can be used in `tufte.md`.
+
 ## Development
 
 ## TODO
@@ -85,6 +119,7 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [x] Meta-search Page (query params)
     - [x] Integrate into Global search-page
   - [ ] Generate data via Enduring, and in Admin
+    - [ ] Generate static, eg. ekstern.php onPageContentProcessed()
   - [ ] Taxonomy
     - [ ] Versions alá Translations-plugin (/lang/version/slug)
   - [x] Make optional
@@ -110,8 +145,10 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
   - [x] All Page's should implement a REST endpoint? No:
     - Better to test with API-plugin and leave it to that
   - [x] WIP: Determine Schema from templates? Yes
-    - [ ] Schema must be a separate file, otherwise API-changes are never reflect after editing
-    - [ ] **Move components into root-level directory, keeping templates, Schema, and assets separate**
+    - [x] Schema must be a separate file, otherwise API-changes are never reflect after editing
+    - [x] **Move components into root-level directory, keeping templates, Schema, and assets separate**
+      - Theme.css still remains collective
+    - [x] Schema-type in ARIA determined dynamically
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?

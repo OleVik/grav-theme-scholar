@@ -9,11 +9,56 @@ use PHPExtra\Sorter\Comparator\NumericComparator;
 use PHPExtra\Sorter\Comparator\DateTimeComparator;
 use PHPExtra\Sorter\Comparator\UnicodeCIComparator;
 
-/**
- * Utilities for Timeline-plugin
- */
 class Utilities
 {
+    /**
+     * Search for a file in multiple locations
+     *
+     * @param string $file      Filename.
+     * @param array  $locations List of folders.
+     *
+     * @return string
+     */
+    public static function fileFinder(string $file, array $locations)
+    {
+        $return = false;
+        foreach ($locations as $location) {
+            if (file_exists($location . '/' . $file)) {
+                $return = $location . '/' . $file;
+                break;
+            }
+        }
+        return $return;
+    }
+
+    /**
+     * Search for files in multiple locations
+     *
+     * @param string $directory Folder-name.
+     * @param string $types     File extensions.
+     *
+     * @return string
+     */
+    public static function filesFinder(string $directory, array $types)
+    {
+        $iterator = new \RecursiveDirectoryIterator(
+            $directory,
+            \RecursiveDirectoryIterator::SKIP_DOTS
+        );
+        $iterator = new \RecursiveIteratorIterator($iterator);
+        $files = [];
+        foreach ($iterator as $file) {
+            if (in_array(pathinfo($file, PATHINFO_EXTENSION), $types)) {
+                $files[] = $file;
+            }
+        }
+        if (count($files) > 0) {
+            return $files;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Find key in array
      *

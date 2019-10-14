@@ -30,8 +30,6 @@ use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
 use Grav\Theme\Scholar\API\Utilities;
 
-use Grav\Framework\Cache\Adapter\FileCache;
-
 /**
  * Scholar Theme
  *
@@ -69,6 +67,11 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
+        // dump('$this->grav[\'config\']');
+        $this->schemas();
+        // $this->grav['config']->set('asd.asd1', 1);
+        // dump($this->grav['config']);
+        dump($this->grav['config']->get('theme.schema'));
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
@@ -114,8 +117,67 @@ class Scholar extends Theme
         $locator = $this->grav['locator'];
         foreach ($this->config->get('themes.scholar.components') as $component) {
             $this->grav['twig']->twig_paths[] = $locator->findResource(
-                'theme://templates/components/' . $component
+                'theme://components/' . $component
             );
+        }
+    }
+
+    /**
+     * Register Schemas dynamically
+     *
+     * @return void
+     */
+    public function schemas()
+    {
+        $locator = $this->grav['locator'];
+        $formatter = new YamlFormatter;
+        $target = Utilities::fileFinder(
+            'schema.yaml',
+            [
+                'theme://components/',
+                'user://themes/scholar/components'
+            ]
+        );
+        $file = $locator->findResource(
+            $target,
+            true,
+            true
+        );
+        $YamlFile = new YamlFile(
+            $file,
+            $formatter
+        );
+        $data = $YamlFile->load();
+        if (isset($data['default'])) {
+            $this->grav['config']->set('theme.schema.default', $data['default']);
+        }
+        if (isset($data['types'])) {
+            foreach ($data['types'] as $schema => $data) {
+                $this->grav['config']->set('theme.schema.types.' . $schema, $data);
+            }
+        }
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $target = Utilities::fileFinder(
+                'schema.yaml',
+                [
+                    'theme://components/' . $component,
+                    'user://themes/scholar/components/' . $component
+                ]
+            );
+            $file = $locator->findResource(
+                $target,
+                true,
+                true
+            );
+            if (file_exists($file)) {
+                $YamlFile = new YamlFile(
+                    $file,
+                    $formatter
+                );
+                foreach ($YamlFile->load() as $schema => $data) {
+                    $this->grav['config']->set('theme.schema.types.' . $schema, $data);
+                }
+            }
         }
     }
 
@@ -195,9 +257,11 @@ class Scholar extends Theme
         // dump('$this->grav[\'page\']->taxonomy()');
         // dump((array) $this->grav['page']->taxonomy());
         // dump(Utils::arrayFlattenDotNotation((array) $this->grav['page']->taxonomy()));
+
         $ld = new LinkedData();
         $ld->buildSchema($this->grav['page']);
-        // dump($ld->data);
+        dump($ld->data);
+        
         // print_r(json_encode($ld->data, JSON_PRETTY_PRINT));
         // dump($ld->getSchemas());
         // $taxonomy = new TaxonomyMap();
@@ -381,5 +445,11 @@ class Scholar extends Theme
     public function onShortcodeHandlers()
     {
         $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
+        $locator = $this->grav['locator'];
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $this->grav['shortcode']->registerAllShortcodes(
+                'theme://components/' . $component . '/shortcodes'
+            );
+        }
     }
 }

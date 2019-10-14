@@ -13,42 +13,10 @@ cache:
 routes:
   data: "/data"
   search: "/search"
-schema:
-  default: CreativeWork
-  types:
-    - name: default
-      schema: CreativeWork
-    - name: page
-      schema: WebPage
-    - name: index
-      schema: CollectionPage
-      children: true
-    - name: article
-      schema: Article
-    - name: docs
-      schema: CollectionPage
-      children:
-        - name: page
-          schema: TechArticle
-    - name: search
-      schema: SearchResultsPage
-    - name: blog
-      schema: Blog
-      children:
-        - name: post
-          schema: BlogPosting
-    - name: book
-      schema: Book
-      children:
-        - name: chapter
-          schema: Chapter
-    - name: tufte
-      schema: ScholarlyArticle
-    - name: sequence
-      schema: Drawing
 components:
   - blog
   - book
+  - docs
   - sequence
   - tufte
 flexsearch:

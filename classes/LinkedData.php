@@ -180,7 +180,7 @@ class LinkedData
      */
     public static function getType(string $template): array
     {
-        $schemaConfig = Grav::instance()['config']->get('themes.scholar.schema');
+        $schemaConfig = Grav::instance()['config']->get('theme.schema');
         $schema = self::filterRecursive(
             $schemaConfig['types'],
             function ($value) use ($template) {
@@ -191,7 +191,7 @@ class LinkedData
             }
         );
         $iterable = false;
-        if (isset($schema[0]) && isset($schema[0]['children'])) {
+        if (isset($schema[$template]['children'])) {
             $iterable = true;
         }
         return [$schema[0]['schema'] ?? $schemaConfig['default'] => $iterable];

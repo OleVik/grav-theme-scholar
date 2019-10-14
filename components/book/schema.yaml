@@ -1,0 +1,7 @@
+book:
+  name: book
+  schema: Book
+  children:
+    chapter:
+      name: chapter
+      schema: Chapter

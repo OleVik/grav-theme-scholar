@@ -1,0 +1,7 @@
+blog:
+  name: blog
+  schema: Blog
+  children:
+    post:
+      name: post
+      schema: BlogPosting
