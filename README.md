@@ -119,7 +119,8 @@ tufte:
   - [x] Meta-search Page (query params)
     - [x] Integrate into Global search-page
   - [ ] Generate data via Enduring, and in Admin
-    - [ ] Generate static, eg. ekstern.php onPageContentProcessed()
+    - [x] Generate static, eg. ekstern.php onPageContentProcessed()
+      - [ ] Needs testing with broader collections
   - [ ] Taxonomy
     - [ ] Versions alá Translations-plugin (/lang/version/slug)
   - [x] Make optional
@@ -135,7 +136,7 @@ tufte:
 - [x] Styles
   - [x] Integrate Type specific variants into common base
   - [x] Minimize conflicts
-    - [ ] Resolve header and primary color lack of contrast
+    - [x] Resolve header and primary color lack of contrast
     - [ ] Across styles
   - [x] Print style
     - [ ] Print all, subset, or collection
