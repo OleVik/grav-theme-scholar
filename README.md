@@ -122,7 +122,8 @@ tufte:
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
   - [ ] Taxonomy
-    - [ ] Versions alá Translations-plugin (/lang/version/slug)
+    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**
+      - [ ] Also render (optional, when present)
   - [x] Make optional
 - [x] Book root template
   - [ ] Paged.js, somewhat too niche for general applicability
@@ -141,18 +142,28 @@ tufte:
   - [x] Print style
     - [ ] Print all, subset, or collection
   - [x] Remove dependency on color-mod-function
+- [ ] **Header- and paragraph-numbering (optional, via JS)**
+  - [ ] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
+    - [ ] Basic implementation in Tufte, generalize?
+      - [ ] Already used for most content-templates
+      - [ ] assignCounter()-method
+      - [ ] Style with CSS (data using `attr()`-property)
+    - [ ] Also footnotes, sidenotes, figures - as explicitly linked to tags as possible
+  - [x] A11y fails in CSS: https://thatdevgirl.com/blog/before-after-accessibility, https://tink.uk/accessibility-support-for-css-generated-content/, https://www.powermapper.com/tests/screen-readers/content/css-generated-content/
+    - [x] Implemented as a root-level class
 - [x] API standardisation
   - [x] All Page's must implement Linked Data
   - [x] All Page's should implement a REST endpoint? No:
     - Better to test with API-plugin and leave it to that
   - [x] WIP: Determine Schema from templates? Yes
     - [x] Schema must be a separate file, otherwise API-changes are never reflect after editing
-    - [x] **Move components into root-level directory, keeping templates, Schema, and assets separate**
+    - [x] Move components into root-level directory, keeping templates, Schema, and assets separate
       - Theme.css still remains collective
     - [x] Schema-type in ARIA determined dynamically
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
+- [ ] Move logic from Twig-extensions into API
 - [ ] Map features to settings
   - [ ] Admin blueprints
 
