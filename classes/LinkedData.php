@@ -20,10 +20,7 @@ use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 use Grav\Common\Page\Header;
 use RocketTheme\Toolbox\Event\Event;
-
-require __DIR__ . '/../vendor/autoload.php';
 use Spatie\SchemaOrg\Schema;
-
 
 /**
  * Linked Data API
@@ -47,6 +44,7 @@ class LinkedData
      */
     public function __construct($orderBy = 'date', $orderDir = 'desc')
     {
+        require __DIR__ . '/../vendor/autoload.php';
         $this->data = array();
         $this->index = array();
         $this->orderBy = $orderBy;

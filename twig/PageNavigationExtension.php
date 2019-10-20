@@ -1,82 +1,62 @@
 <?php
+/**
+ * Scholar Theme, Page Navigation Twig-Extension
+ *
+ * PHP version 7
+ *
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
+ */
 namespace Grav\Theme;
 
-use Grav\Common\Grav;
-use Grav\Common\Inflector;
-use Symfony\Component\DomCrawler\Crawler;
+use Grav\Theme\Scholar\API\Content;
 
+/**
+ * Scholar Theme, Page Navigation Twig-Extension
+ *
+ * @category Extensions
+ * @package  Grav\Theme
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
+ */
 class PageNavigationExtension extends \Twig_Extension
 {
+    /**
+     * Get Extension-name
+     *
+     * @return void
+     */
     public function getName()
     {
         return 'PageNavigationExtension';
     }
 
+    /**
+     * Get Extension-functions
+     *
+     * @return void
+     */
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('page_navigation', [$this, 'build']),
+            new \Twig_SimpleFunction('page_navigation', [$this, 'pageNavigation']),
         ];
     }
 
     /**
-     * Manipulate headings and build list
+     * Manipulate content and build list from headings
      *
      * @param string $content HTML-content
+     * @param bool   $itemize Assign indices to tags
      *
-     * @return array [Manipulated HTML, HTML Ordered List]
+     * @return object [content, headings]
      */
-    public function build($content)
+    public function pageNavigation(string $content, bool $itemize): object
     {
-        include __DIR__ . '/../vendor/autoload.php';
-        $headings = array();
-        $crawler = new Crawler();
-        $crawler->addHtmlContent($content);
-        $replacements = $crawler->filter('h1,h2,h3,h4,h5,h6')->each(
-            function (Crawler $node, $i) use (&$content, &$headings) {
-                $level = (int) str_replace('h', '', $node->nodeName());
-                $id = Inflector::hyphenize($node->text());
-                $old = '<' . $node->nodeName() . '>' . $node->text() . '</' . $node->nodeName() . '>';
-                $new = '<' . $node->nodeName() . '><a name="' . $id . '" href="#' . $id . '">' . $node->text() . '</a>' . '</' . $node->nodeName() . '>';
-                $content = str_replace($old, $new, $content);
-                $headings[$node->text()] = ['href' => $id, 'level' => $level];
-            }
-        );
-        $headings = self::buildList($headings);
-        return (object) ['content' => $content, 'headings' => $headings];
-    }
-    
-    /**
-     * Extract headings from HTML
-     *
-     * @param array $data Array of title => [href, level]
-     *
-     * @return string HTML ordered list
-     */
-    public static function buildList($data)
-    {
-        if (empty($data)) {
-            return '';
-        }
-        $output = '<ol>';
-        $keys = array_keys($data);
-        foreach (array_keys($keys) as $index) {
-            $title = current($keys);
-            $properties = $data[$title];
-            $href = $data[$title]['href'];
-            $level = $data[$title]['level'];
-            $nextLevel = $data[next($keys)]['level'] ?? null;
-        
-            if ($nextLevel > $level) {
-                $output .= '<li><a href="#' . $href . '">' . $title . '</a><ol>';
-            } else {
-                $output .= '<li><a href="#' . $href . '">' . $title . '</a></li>';
-            }
-            if ($nextLevel < $level) {
-                $output .= '</ol></li>';
-            }
-        }
-        $output .= '</ol>';
-        return $output;
+        return Content::pageNavigation($content, $itemize);
     }
 }

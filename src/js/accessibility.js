@@ -1,8 +1,8 @@
 /**
  * Initialize accessibility helpers
  */
-function init() {
-  const buttons = document.querySelectorAll('[role="button"]');
+function init(prefix = "") {
+  const buttons = document.querySelectorAll(`${prefix} [role="button"]`);
   for (var i = 0; i < buttons.length; ++i) {
     if ("target" in buttons[i].dataset) {
       buttons[i].addEventListener("click", toggleHandler);
@@ -14,7 +14,7 @@ function init() {
       buttons[i].addEventListener("keyup", buttonHandler);
     }
   }
-  const links = document.querySelectorAll("a[href]");
+  const links = document.querySelectorAll(`${prefix} a[href]`);
   for (var i = 0; i < links.length; ++i) {
     links[i].addEventListener("click", buttonHandler);
     links[i].addEventListener("keydown", buttonHandler);
@@ -50,6 +50,27 @@ function init() {
       },
       true
     );
+  }
+}
+
+function destruct(prefix = "") {
+  const buttons = document.querySelectorAll(`${prefix} [role="button"]`);
+  for (var i = 0; i < buttons.length; ++i) {
+    if ("target" in buttons[i].dataset) {
+      buttons[i].removeEventListener("click", toggleHandler);
+      buttons[i].removeEventListener("keydown", toggleHandler);
+      buttons[i].removeEventListener("keyup", toggleHandler);
+    } else {
+      buttons[i].removeEventListener("click", buttonHandler);
+      buttons[i].removeEventListener("keydown", buttonHandler);
+      buttons[i].removeEventListener("keyup", buttonHandler);
+    }
+  }
+  const links = document.querySelectorAll(`${prefix} a[href]`);
+  for (var i = 0; i < links.length; ++i) {
+    links[i].removeEventListener("click", buttonHandler);
+    links[i].removeEventListener("keydown", buttonHandler);
+    links[i].removeEventListener("keyup", buttonHandler);
   }
 }
 
@@ -94,7 +115,7 @@ function toggleHandler(event) {
 }
 
 /**
- * Toggles the button's  target's state
+ * Toggles the button's target's state
  *
  * @param {HTMLElement} targetElement
  * @param {Boolean} force
@@ -109,6 +130,17 @@ function toggleButtonState(targetElement, force = null) {
       targetElement.setAttribute("aria-checked", "false");
     } else if (targetElement.getAttribute("aria-checked") === "false") {
       targetElement.setAttribute("aria-checked", "true");
+    }
+  }
+  if (targetElement.hasAttribute("aria-expanded")) {
+    if (force) {
+      targetElement.setAttribute("aria-expanded", force);
+      return;
+    }
+    if (targetElement.getAttribute("aria-expanded") === "true") {
+      targetElement.setAttribute("aria-expanded", "false");
+    } else if (targetElement.getAttribute("aria-expanded") === "false") {
+      targetElement.setAttribute("aria-expanded", "true");
     }
   }
   if (targetElement.hasAttribute("aria-pressed")) {
@@ -126,6 +158,7 @@ function toggleButtonState(targetElement, force = null) {
 
 export {
   init as accessibilityInit,
+  destruct as accessibilityDestruct,
   buttonHandler,
   toggleHandler,
   toggleButtonState,

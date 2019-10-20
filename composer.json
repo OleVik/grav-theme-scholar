@@ -12,10 +12,7 @@
   "minimum-stability": "stable",
   "require": {
     "spatie/schema-org": "2.7.0",
-    "phpextra/sorter": "^1.0",
-    "masterminds/html5": "^2.6",
-    "symfony/css-selector": "^4.3",
-    "symfony/dom-crawler": "^4.3"
+    "phpextra/sorter": "^1.0"
   },
   "autoload": {
     "psr-4": {

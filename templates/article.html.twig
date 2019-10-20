@@ -1,7 +1,7 @@
 {% extends 'partials/base.html.twig' %}
 
 {% set body_classes = (body_classes|default('page')) %}
-{% set navigablePage = page_navigation(page.content) %}
+{% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 
 {% block stylesheets %}
     {% do assets.addCss('theme://css/theme.css', 100) %}
@@ -27,9 +27,7 @@
 </main>
 
 {% block footer %}
-<footer>
-    {% include 'partials/footer.html.twig' %}
-</footer>
+{% include 'partials/footer.html.twig' %}
 {% endblock %}
 
 {% endblock %}

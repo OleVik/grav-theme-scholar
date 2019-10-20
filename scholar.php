@@ -24,7 +24,7 @@ use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
 use Grav\Plugin\Taxonomylist;
 use RocketTheme\Toolbox\Event\Event;
-// use Scholar\API\Content;
+use Scholar\API\Content;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
@@ -71,7 +71,7 @@ class Scholar extends Theme
         $this->schemas();
         // $this->grav['config']->set('asd.asd1', 1);
         // dump($this->grav['config']);
-        dump($this->grav['config']->get('theme.schema'));
+        // dump($this->grav['config']->get('theme.schema'));
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
@@ -257,9 +257,9 @@ class Scholar extends Theme
         // dump((array) $this->grav['page']->taxonomy());
         // dump(Utils::arrayFlattenDotNotation((array) $this->grav['page']->taxonomy()));
 
-        $ld = new LinkedData();
-        $ld->buildSchema($this->grav['page']);
-        dump($ld->data);
+        // $ld = new LinkedData();
+        // $ld->buildSchema($this->grav['page']);
+        // dump($ld->data);
     }
 
     public function onPageContentProcessed()
@@ -273,27 +273,6 @@ class Scholar extends Theme
         // foreach ($this->grav['taxonomy']->findTaxonomy(['author.email' => 'hwms@bogus.tld']) as $result) {
         //     dump($result->title());
         // }
-    }
-
-    public static function getMenuRoute(string $route, string $type)
-    {
-        $page = Grav::instance()['page']->find($route);
-        if ($page->template() == $type) {
-            return $page->rawRoute();
-        } else {
-            return self::getMenuRoute($page->parent()->rawRoute(), $type);
-        }
-        return false;
-    }
-
-    public static function getRootTemplate(string $route)
-    {
-        $page = Grav::instance()['page']->find($route);
-        $parent = $page->topParent();
-        if ($parent) {
-            return $parent->template();
-        }
-        return false;
     }
 
     /**
@@ -410,20 +389,22 @@ class Scholar extends Theme
      */
     public function onTwigExtensions()
     {
-        include_once __DIR__ . '/twig/PageNavigationExtension.php';
-        $this->grav['twig']->twig->addExtension(new PageNavigationExtension());
-        include_once __DIR__ . '/twig/ScholarMenuExtension.php';
-        $this->grav['twig']->twig->addExtension(new ScholarMenuExtension());
-        include_once __DIR__ . '/twig/ScholarUtilitiesExtension.php';
-        $this->grav['twig']->twig->addExtension(new ScholarUtilitiesExtension());
-        include_once __DIR__ . '/twig/TruncateWordsExtension.php';
-        $this->grav['twig']->twig->addExtension(new TruncateWordsExtension());
-        include_once __DIR__ . '/twig/StripHTMLExtension.php';
-        $this->grav['twig']->twig->addExtension(new StripHTMLExtension());
-        include_once __DIR__ . '/twig/SectionWrapperExtension.php';
-        $this->grav['twig']->twig->addExtension(new SectionWrapperExtension());
-        include_once __DIR__ . '/twig/TaxonomyMapExtension.php';
-        $this->grav['twig']->twig->addExtension(new TaxonomyMapExtension());
+        // include_once __DIR__ . '/twig/PageNavigationExtension.php';
+        // $this->grav['twig']->twig->addExtension(new PageNavigationExtension());
+        // include_once __DIR__ . '/twig/ScholarMenuExtension.php';
+        // $this->grav['twig']->twig->addExtension(new ScholarMenuExtension());
+        // include_once __DIR__ . '/twig/ScholarUtilitiesExtension.php';
+        // $this->grav['twig']->twig->addExtension(new ScholarUtilitiesExtension());
+        // include_once __DIR__ . '/twig/TruncateWordsExtension.php';
+        // $this->grav['twig']->twig->addExtension(new TruncateWordsExtension());
+        // include_once __DIR__ . '/twig/StripHTMLExtension.php';
+        // $this->grav['twig']->twig->addExtension(new StripHTMLExtension());
+        // include_once __DIR__ . '/twig/SectionWrapperExtension.php';
+        // $this->grav['twig']->twig->addExtension(new SectionWrapperExtension());
+        // include_once __DIR__ . '/twig/TaxonomyMapExtension.php';
+        // $this->grav['twig']->twig->addExtension(new TaxonomyMapExtension());
+        include_once __DIR__ . '/twig/ScholarTwigExtensions.php';
+        $this->grav['twig']->twig->addExtension(new ScholarTwigExtensions());
     }
     
     /**

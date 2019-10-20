@@ -1,12 +1,12 @@
 {% apply spaceless %}
 
 {% if page.taxonomy %}
-{# {{ dump(page.taxonomy) }} #}
-{# <h1>{{ page.taxonomy.author[0].affiliation.organization }}</h1> #}
+
 {% import "macros/metadata.html.twig" as metadata %}
 <dl class="metadata">
 {{ metadata.iterate(page.taxonomy) }}
 </dl>
+
 {% endif %}
 
 {% endapply %}

@@ -8,6 +8,7 @@ dependencies:
 devDependencies:
   '@babel/cli': 7.6.2_@babel+core@7.6.2
   '@babel/core': 7.6.2
+  '@babel/plugin-transform-modules-umd': 7.2.0_@babel+core@7.6.2
   '@babel/preset-env': 7.6.2_@babel+core@7.6.2
   '@fullhuman/postcss-purgecss': 1.3.0
   '@khanacademy/tota11y': 0.2.0
@@ -28,6 +29,7 @@ devDependencies:
   paged-design: github.com/electricbookworks/paged-design/7b5466d86e5dde018c6246e8e277fb7606ea46a7
   pagedjs: 0.1.34
   parcel-bundler: 1.12.4
+  parcel-plugin-css-pretransform: 1.0.0
   postcss: 7.0.18
   postcss-cli: 6.1.3
   postcss-ignore: 0.1.4
@@ -207,7 +209,7 @@ packages:
       integrity: sha512-5qZ3D1uMclSNqYcXqiHoA0meVdv+xUEex9em2fqMnrk/scphGlGgg66zjMrPJESPwrFJ6sbfFQYUSa0Mz7FabA==
   /@babel/helper-module-imports/7.0.0:
     dependencies:
-      '@babel/types': 7.6.1
+      '@babel/types': 7.6.3
     dev: true
     resolution:
       integrity: sha512-aP/hlLq01DWNEiDg4Jn23i+CXxW/owM4WpDLFUbpjxe4NS3BhLVZQ5i7E0ZrxuQ/vwekIeciyamgB1UIYxxM6A==
@@ -217,7 +219,7 @@ packages:
       '@babel/helper-simple-access': 7.1.0
       '@babel/helper-split-export-declaration': 7.4.4
       '@babel/template': 7.6.0
-      '@babel/types': 7.6.1
+      '@babel/types': 7.6.3
       lodash: 4.17.15
     dev: true
     resolution:
@@ -260,7 +262,7 @@ packages:
   /@babel/helper-simple-access/7.1.0:
     dependencies:
       '@babel/template': 7.6.0
-      '@babel/types': 7.6.1
+      '@babel/types': 7.6.3
     dev: true
     resolution:
       integrity: sha512-Vk+78hNjRbsiu49zAPALxTb+JUQCz1aolpd8osOF16BGnLtseD21nbHgLPGUwrXEurZgiCOUmvs3ExTu4F5x6w==
@@ -5237,6 +5239,14 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-G+iZGGiPEXcRzw0fiRxWYCKxdt/F7l9a0xkiU4XbcVRJCSlBnioWEwJMutOCCpoQmaQtjB4RBHDGIHN85AIhLQ==
+  /parcel-plugin-css-pretransform/1.0.0:
+    dev: true
+    engines:
+      node: '>=8'
+    peerDependencies:
+      parcel-bundler: ^1.11.0
+    resolution:
+      integrity: sha512-Vvr80XBpsGpzmKPn7wRwCgkxS9KAxN0Hl6rI8IYiD49Caka5QquzTpD3WCah3+sBNKEjpG0P3IZG8aEs25gf8A==
   /parents/1.0.1:
     dependencies:
       path-platform: 0.11.15
@@ -8304,6 +8314,7 @@ packages:
 specifiers:
   '@babel/cli': ^7.5.5
   '@babel/core': ^7.5.5
+  '@babel/plugin-transform-modules-umd': ^7.2.0
   '@babel/preset-env': ^7.5.5
   '@fullhuman/postcss-purgecss': ^1.2.0
   '@khanacademy/tota11y': ^0.2.0
@@ -8330,6 +8341,7 @@ specifiers:
   paged-design: 'github:electricbookworks/paged-design'
   pagedjs: ^0.1.34
   parcel-bundler: ^1.12.3
+  parcel-plugin-css-pretransform: ^1.0.0
   postcss: ^7.0.17
   postcss-cli: ^6.1.2
   postcss-ignore: ^0.1.4

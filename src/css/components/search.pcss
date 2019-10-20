@@ -3,6 +3,17 @@ main {
     &.search {
       display: none;
       grid-column-end: span 12;
+      [role="button"] {
+        cursor: pointer;
+        position: absolute;
+        right: 1rem;
+        display: block;
+        width: 1.5rem;
+        height: 1.5rem;
+        svg {
+          pointer-events: none;
+        }
+      }
     }
   }
   .search-results {

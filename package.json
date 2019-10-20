@@ -10,7 +10,7 @@
     "metal": "postcss src/css/styles/metal.pcss --watch --verbose -c postcss.config.js -o css/styles/metal.css",
     "print": "postcss src/css/print.pcss --watch --verbose -c postcss.config.js -o css/print.css",
     "css": "concurrently --names \"Theme,Base,Styles,Print\" --prefix-colors \"blue,white,cyan,grey\" \"npm run theme\" \"npm run base\" \"npm run styles\" \"npm run print\"",
-    "scripts:babel": "babel src --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
+    "scripts:babel": "babel src/js --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
     "scripts:watch": "parcel watch src/js/theme.js --out-dir js --global Scholar",
     "scripts:build": "parcel build src/js/theme.js --out-dir js --global Scholar"
   },
@@ -28,6 +28,18 @@
         }
       ]
     ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-modules-umd",
+        {
+          "globals": {
+            "scholar": "Scholar"
+          },
+          "exactGlobals": true
+        }
+      ]
+    ],
+    "moduleId": "scholar",
     "comments": false
   },
   "author": "Ole Vik <git@olevik.net> (https://olevik.me/",
@@ -39,6 +51,7 @@
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-modules-umd": "^7.2.0",
     "@babel/preset-env": "^7.5.5",
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@khanacademy/tota11y": "^0.2.0",
@@ -59,6 +72,7 @@
     "paged-design": "github:electricbookworks/paged-design",
     "pagedjs": "^0.1.34",
     "parcel-bundler": "^1.12.3",
+    "parcel-plugin-css-pretransform": "^1.0.0",
     "postcss": "^7.0.17",
     "postcss-cli": "^6.1.2",
     "postcss-ignore": "^0.1.4",

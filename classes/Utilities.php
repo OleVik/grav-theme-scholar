@@ -1,7 +1,6 @@
 <?php
 namespace Grav\Theme\Scholar\API;
 
-require __DIR__ . '/../vendor/autoload.php';
 use PHPExtra\Sorter\Sorter;
 use PHPExtra\Sorter\Strategy\SimpleSortStrategy;
 use PHPExtra\Sorter\Strategy\ComplexSortStrategy;
@@ -219,6 +218,7 @@ class Utilities
      */
     public static function sortLeaf(Array $array, String $orderBy = 'date', String $orderDir = 'asc')
     {
+        require __DIR__ . '/../vendor/autoload.php';
         if ($orderBy == 'date') {
             $orderBy = 'datetime';
         }

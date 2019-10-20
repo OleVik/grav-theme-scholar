@@ -8,6 +8,7 @@
 @import "./components/header.pcss";
 @import "./components/drawer.pcss";
 @import "./components/formbase/main.pcss";
+@import "./components/selectr.pcss";
 @import "./components/sequence.pcss";
 @import "./responsive.pcss";
 
@@ -36,6 +37,7 @@ a[href] {
 }
 
 figure {
+  margin: 0;
   text-align: center;
 }
 
@@ -55,5 +57,18 @@ pre {
   }
   &.sf-dump {
     grid-column-end: span 12;
+  }
+}
+
+main {
+  article > [data-index] {
+    position: relative;
+    &:before {
+      content: attr(data-index);
+      position: absolute;
+      left: -2.5rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+    }
   }
 }

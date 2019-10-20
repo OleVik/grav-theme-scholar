@@ -4,10 +4,12 @@ import * as util from "./utilities.js";
  * Initialize metadata and content search
  * @param {object[]} data An array of objects, each representing a Page
  * @param {array} fields List of fields in each data-object
+ * @param {array} options List of options for FlexSearch
  */
 function searchFieldInit(data, fields, options) {
   const start = performance.now();
   var dataIndex;
+  toggleResults("main aside.search", "main section");
   const FlexSearchOptions = options;
   FlexSearchOptions.doc = {
     id: "url",
@@ -35,7 +37,7 @@ function searchFieldInit(data, fields, options) {
               performance.now() - start
             )}`
           );
-          renderResults(results);
+          renderResults(".search-results", results);
           console.debug(
             `FlexSearch render(n = ${results.length}): ${msToTime(
               performance.now() - start
@@ -45,28 +47,13 @@ function searchFieldInit(data, fields, options) {
       }, 200)
     );
     document.querySelector("#query").addEventListener("focus", function(event) {
-      event.srcElement.setAttribute("aria-checked", "true");
-      document
-        .querySelectorAll("main section")[0]
-        .style.setProperty("display", "none");
+      event.target.setAttribute("aria-expanded", "true");
       document
         .querySelector("main aside.search")
         .setAttribute("aria-expanded", "true");
-      document
-        .querySelector("main aside.search")
-        .style.setProperty("display", "block");
     });
     document.querySelector("#query").addEventListener("blur", function(event) {
-      event.srcElement.setAttribute("aria-checked", "false");
-      document
-        .querySelectorAll("main section")[0]
-        .style.removeProperty("display");
-      document
-        .querySelector("main aside.search")
-        .setAttribute("aria-expanded", "false");
-      document
-        .querySelector("main aside.search")
-        .style.removeProperty("display");
+      event.target.setAttribute("aria-expanded", "false");
     });
   } catch (error) {
     throw new Error(error);
@@ -242,7 +229,7 @@ function search(index, fields, query) {
           performance.now() - start
         )}`
       );
-      renderResults(results);
+      renderResults(".search-results", results);
       console.debug(
         `FlexSearch render(n = ${results.length}): ${msToTime(
           performance.now() - start
@@ -250,7 +237,7 @@ function search(index, fields, query) {
       );
     });
   } else if (query.title === "" && query.content === "") {
-    renderResults(data.slice(0, 9));
+    renderResults(".search-results", data.slice(0, 9));
     console.debug(
       `FlexSearch render(n = ${data.length}): ${msToTime(
         performance.now() - start
@@ -294,17 +281,44 @@ function limitSearch(query, doc) {
 }
 
 /**
+ * Toggle search results
+ * @param {string} target Target element
+ * @param {object} sibling Sibling element
+ */
+function toggleResults(target, sibling) {
+  const targetNode = document.querySelector(target);
+  const siblingNode = document.querySelector(sibling);
+  const searchObserver = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      const value = targetNode.getAttribute(mutation.attributeName);
+      if (value == "true") {
+        siblingNode.style.setProperty("display", "none");
+        targetNode.style.setProperty("display", "block");
+      } else if (value == "false") {
+        siblingNode.style.setProperty("display", "block");
+        targetNode.style.removeProperty("display");
+      }
+    });
+  });
+  searchObserver.observe(targetNode, {
+    attributes: true,
+  });
+}
+
+/**
  * Render search results
+ * @param {string} target  Target element
  * @param {object} results Search results
  */
-function renderResults(results) {
-  document.querySelector(".search-results").innerHTML = "";
+function renderResults(target, results) {
+  Scholar.accessibilityDestruct(target);
+  document.querySelector(target).innerHTML = "";
   if (results.length < 1) {
     const paragraph = document.createElement("p");
     paragraph.appendChild(
       document.createTextNode(ScholarTranslation.SEARCH.EMPTY)
     );
-    document.querySelector(".search-results").appendChild(paragraph);
+    document.querySelector(target).appendChild(paragraph);
   }
   for (let i = 0; i < results.length; i++) {
     var item = document.querySelector("#search-result");
@@ -330,8 +344,9 @@ function renderResults(results) {
     );
     paragraph.appendChild(document.createTextNode("."));
     paragraph.normalize();
-    document.querySelector(".search-results").appendChild(template);
+    document.querySelector(target).appendChild(template);
   }
+  Scholar.accessibilityInit(target);
 }
 
 /**

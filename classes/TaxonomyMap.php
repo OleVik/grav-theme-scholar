@@ -1,10 +1,31 @@
 <?php
+/**
+ * Scholar Theme, Taxonomy Map API
+ *
+ * PHP version 7
+ *
+ * @category   API
+ * @package    Grav\Theme\Scholar
+ * @subpackage Grav\Theme\Scholar\API
+ * @author     Ole Vik <git@olevik.net>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/OleVik/grav-plugin-scholar
+ */
 namespace Grav\Theme\Scholar\API;
 
 use Grav\Common\Grav;
 
 use Scholar\API\Utilities;
 
+/**
+ * Taxonomy Map
+ *
+ * @category Extensions
+ * @package  Grav\Theme\Scholar\API
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
+ */
 class TaxonomyMap
 {
     public function __construct()
@@ -23,9 +44,9 @@ class TaxonomyMap
      * @param string $type  Type of taxonomy to retrieve
      * @param bool   $array Output as array
      *
-     * @return array
+     * @return array Taxonomy map
      */
-    public function get(string $type = null, bool $array = null)
+    public function get(string $type = null, bool $array = null): array
     {
         if (empty($this->taxonomy)) {
             return array();
@@ -49,7 +70,7 @@ class TaxonomyMap
      *
      * @param string $route Route to Page
      *
-     * @return array
+     * @return array Taxonomy map
      */
     public function getPage(string $route)
     {
@@ -62,9 +83,9 @@ class TaxonomyMap
      *
      * @param string $route Route to Page
      *
-     * @return array
+     * @return array Taxonomy map
      */
-    public function getDescendants(string $route)
+    public function getDescendants(string $route): array
     {
         if ($route == '/') {
             $return = array();
@@ -100,9 +121,9 @@ class TaxonomyMap
      * @param array   $list   Associated array of taxonomy entries
      * @param boolean $unique Remove duplicates
      *
-     * @return array
+     * @return array Taxonomy map
      */
-    public static function pluralize(array $list, bool $unique = null)
+    public static function pluralize(array $list, bool $unique = null): array
     {
         if (isset($list['category']) && isset($list['categories'])) {
             $list['categories'] = array_merge_recursive($list['category'], $list['categories']);
@@ -132,13 +153,12 @@ class TaxonomyMap
      * @param array   $list   Array to slice
      * @param integer $length Maximum length
      *
-     * @return array
+     * @return array Taxonomy map
      */
-    public static function limit(array $list, int $length = 10)
+    public static function limit(array $list, int $length = 10): array
     {
         return array_slice($list, 0, $length, true);
     }
-
 
     /**
      * Limit the length of an array
@@ -146,9 +166,9 @@ class TaxonomyMap
      * @param array   $list      Array to filter
      * @param integer $threshold Minimum value
      *
-     * @return array
+     * @return array Taxonomy map
      */
-    public static function threshold(array $list, int $threshold = 10)
+    public static function threshold(array $list, int $threshold = 10): array
     {
         return array_filter(
             $list,

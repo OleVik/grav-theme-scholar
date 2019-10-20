@@ -13,6 +13,7 @@ cache:
 routes:
   data: "/data"
   search: "/search"
+itemize: true
 components:
   - blog
   - book

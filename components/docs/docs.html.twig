@@ -1,6 +1,6 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set navigablePage = page_navigation(page.content) %}
+{% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 {% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
 
 {% if navigablePage.content is empty %}
@@ -51,7 +51,7 @@
         {% else %}
             {% with {
                 'title': page.title,
-                'content': page_navigation(page.content).content
+                'content': page_navigation(page.content, page.header.itemize ?? theme.itemize ?? null).content
                 } %}
                 {{ block('content', 'partials/docs/content.html.twig') }}
             {% endwith %}

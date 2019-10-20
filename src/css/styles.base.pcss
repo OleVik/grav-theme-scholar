@@ -1,10 +1,18 @@
+:root {
+  --generic-border: rgba(160, 160, 160, 0.65);
+}
+a:any-link {
+  color: var(--text);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+  text-decoration: none;
+}
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+}
 .page {
   color: var(--text);
-  a:any-link {
-    color: var(--text);
-    transition: color 0.2s ease, border-bottom-color 0.2s ease;
-    text-decoration: none;
-  }
   a:hover,
   a:focus,
   a:active {
@@ -54,7 +62,7 @@
       background: var(--foreground);
       border: solid 1px var(--border-color);
       a:any-link {
-        border-bottom: 1px dotted rgba(160, 160, 160, 0.65);
+        border-bottom: 1px dotted var(--generic-border);
       }
       a:hover,
       a:focus,
@@ -150,8 +158,6 @@
       border: 0;
       [role="list"] {
         background: var(--foreground);
-        /* background: transparent; */
-        /* background: rgba(255, 255, 255, 0.25); */
         border: 1px solid var(--border-color);
         [role="listitem"] {
           border: 1px solid var(--border-color);
@@ -173,7 +179,7 @@
       background: var(--foreground);
       border: solid 1px var(--border-color);
       a:any-link {
-        border-bottom: 1px dotted rgba(160, 160, 160, 0.65);
+        border-bottom: 1px dotted var(--generic-border);
       }
       a:hover,
       a:focus,
@@ -214,14 +220,14 @@
 
 .docs {
   color: var(--text);
-  a:any-link {
-    color: var(--text);
+  /* a:any-link {
+    border-bottom: 1px dotted var(--border-color);
   }
   a:hover,
   a:focus,
   a:active {
-    text-decoration: underline;
-  }
+    border-bottom: 1px solid var(--border-color);
+  } */
   main {
     background-color: var(--background);
     > header[role="banner"] {
@@ -241,13 +247,13 @@
       .drawer {
         color: var(--text);
         a:any-link {
-          color: var(--text);
           filter: contrast(1.2);
+          border-bottom: 1px solid transparent;
         }
         a:hover,
         a:focus,
         a:active {
-          text-decoration: underline;
+          border-bottom: 1px solid var(--primary);
         }
       }
     }
@@ -255,6 +261,18 @@
     aside {
       a:any-link {
         filter: contrast(1);
+      }
+    }
+    section {
+      & > article {
+        a:any-link {
+          border-bottom: 1px dotted var(--border-color);
+        }
+        a:hover,
+        a:focus,
+        a:active {
+          border-bottom: 1px solid var(--border-color);
+        }
       }
     }
   }
@@ -298,7 +316,7 @@
     }
     footer {
       color: var(--aside-text);
-      a {
+      /* a {
         filter: contrast(1.2);
         &:hover {
           filter: contrast(1.5);
@@ -307,13 +325,32 @@
             filter: contrast(1.2);
           }
         }
-      }
+      } */
       svg {
         fill: var(--aside-text);
       }
     }
+    footer[role="contentinfo"] {
+      justify-content: flex-end;
+      a:any-link {
+        color: var(--aside-text);
+        text-decoration: none;
+        border-bottom: 1px dotted var(--primary);
+      }
+      a:hover,
+      a:focus,
+      a:active {
+        text-decoration: none;
+        border-bottom: 1px solid var(--primary);
+      }
+    }
   }
   .next-previous {
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: underline;
+    }
     border-top: 1px solid var(--background);
     border-bottom: 1px solid var(--background);
   }
@@ -332,15 +369,17 @@ header[role="banner"] {
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
-      opacity: 0;
-      color: var(--text);
+      color: var(--aside-text);
       background-color: transparent;
       -webkit-transition-delay: 99999s;
       box-shadow: none;
       &:focus {
-        opacity: 1;
+        &::placeholder {
+          opacity: 1;
+        }
       }
       &::placeholder {
+        opacity: 0;
         color: var(--aside-text);
       }
     }
@@ -359,5 +398,29 @@ header[role="banner"],
         filter: contrast(1.5);
       }
     }
+  }
+}
+.search {
+  [role="button"] {
+    svg {
+      fill: var(--text);
+      filter: contrast(1.2);
+      transition: fill 0.4s ease;
+    }
+    &:hover {
+      svg {
+        filter: contrast(1.5);
+      }
+    }
+  }
+}
+footer[role="contentinfo"] {
+  a:any-link {
+    border-bottom: 1px dotted var(--primary);
+  }
+  a:hover,
+  a:focus,
+  a:active {
+    border-bottom: 1px solid var(--primary);
   }
 }

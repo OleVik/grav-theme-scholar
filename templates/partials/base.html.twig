@@ -31,12 +31,6 @@
 </head>
 {% endblock %}
 {% block body %}
-{% if page.route and page.route is not empty %}
-    {{ dump('root_template ' ~ root_template(page.route)) }}
-{% endif %}
-{% if page.template and page.template is not empty %}
-    {{ dump('template ' ~ page.template) }}
-{% endif %}
 <body id="top" class="{{ page.header.classes }} {{ body_classes }}">
     {% block prepend %}{% endblock %}
     {% block main %}

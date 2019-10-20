@@ -86,19 +86,16 @@ The Scholar theme uses modular components to let you choose what features you wa
 Each component exists in the theme, in the `/components`-folder, and contains needed templates, a schema, and any assets. Extensions to the theme, or child-themes, can deliver their own components by replicating this structure or overriding the existing structure. For example, the Tufte-article looks like this, in `/components/tufte`:
 
 ```
-│   schema.yaml
-│   tufte.html.twig
-│
-├───assets
-│       tufte.min.css
-│
-├───partials
-│   └───tufte
-│           note.html.twig
-│
-└───shortcodes
-        CiteShortcode.php
-        NoteShortcode.php
+│  schema.yaml
+│  tufte.html.twig
+├──assets/
+│    tufte.min.css
+├──partials/
+│   └──tufte
+│        note.html.twig
+└──shortcodes/
+      CiteShortcode.php
+      NoteShortcode.php
 ```
 
 Wherein `schema.yaml` holds basic data used for Linked Data and ARIA-attributes:
@@ -142,12 +139,12 @@ tufte:
   - [x] Print style
     - [ ] Print all, subset, or collection
   - [x] Remove dependency on color-mod-function
-- [ ] **Header- and paragraph-numbering (optional, via JS)**
+- [x] Header- and paragraph-numbering (optional, via JS)
   - [ ] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
-    - [ ] Basic implementation in Tufte, generalize?
-      - [ ] Already used for most content-templates
-      - [ ] assignCounter()-method
-      - [ ] Style with CSS (data using `attr()`-property)
+    - [x] Basic implementation in Tufte, generalize?
+      - [x] Already used for most content-templates
+      - [x] assignCounter()-method
+      - [x] Style with CSS (data using `attr()`-property)
     - [ ] Also footnotes, sidenotes, figures - as explicitly linked to tags as possible
   - [x] A11y fails in CSS: https://thatdevgirl.com/blog/before-after-accessibility, https://tink.uk/accessibility-support-for-css-generated-content/, https://www.powermapper.com/tests/screen-readers/content/css-generated-content/
     - [x] Implemented as a root-level class
@@ -160,10 +157,12 @@ tufte:
     - [x] Move components into root-level directory, keeping templates, Schema, and assets separate
       - Theme.css still remains collective
     - [x] Schema-type in ARIA determined dynamically
+  - [x] Move logic from Twig-extensions into API
+- [x] JS: Search needs to be clickable, not focusable, for A11Y - disappears on tab
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
-- [ ] Move logic from Twig-extensions into API
+- [x] Git link logic
 - [ ] Map features to settings
   - [ ] Admin blueprints
 

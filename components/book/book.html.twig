@@ -5,7 +5,7 @@ https://gitlab.pagedmedia.org/tools/pagedjs/wikis/Your-first-document-with-paged
 https://github.com/electricbookworks/paged-design
 #}
 
-{% set navigablePage = page_navigation(page.content) %}
+{% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 {# {% set page.content = navigablePage.content %} #}
 {% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
 
@@ -68,9 +68,7 @@ https://github.com/electricbookworks/paged-design
 </main>
 
 {% block footer %}
-<footer>
-    {% include 'partials/footer.html.twig' %}
-</footer>
+{% include 'partials/footer.html.twig' %}
 {% endblock %}
 
 {% endblock %}

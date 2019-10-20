@@ -6,11 +6,6 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
-    'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
-    'Symfony\\Component\\DomCrawler\\' => array($vendorDir . '/symfony/dom-crawler'),
-    'Symfony\\Component\\CssSelector\\' => array($vendorDir . '/symfony/css-selector'),
     'Spatie\\SchemaOrg\\' => array($vendorDir . '/spatie/schema-org/src'),
-    'Masterminds\\' => array($vendorDir . '/masterminds/html5/src'),
     'Grav\\Theme\\Scholar\\API\\' => array($baseDir . '/classes'),
 );

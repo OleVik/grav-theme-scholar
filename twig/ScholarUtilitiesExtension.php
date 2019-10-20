@@ -18,7 +18,7 @@ class ScholarUtilitiesExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('root_template', [$this, 'rootTemplate']),
             new \Twig_SimpleFunction('file_exists', [$this, 'fileExists']),
-            new \Twig_SimpleFunction('rawcontent', [$this, 'getFileContent']),
+            new \Twig_SimpleFunction('rawcontent', [$this, 'getFileContents']),
             new \Twig_SimpleFunction('schema_type', [$this, 'getSchemaType']),
         ];
     }
@@ -50,11 +50,9 @@ class ScholarUtilitiesExtension extends \Twig_Extension
      *
      * @param string $path Absolute path to file
      *
-     * @return string
-     *
-     * @see https://github.com/gebeer/grav-plugin-twig-getfilecontents/
+     * @return string File contents
      */
-    public function getFileContent(string $path)
+    public function getFileContents(string $path)
     {
         return file_get_contents($path);
     }
