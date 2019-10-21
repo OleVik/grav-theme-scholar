@@ -121,6 +121,9 @@ tufte:
   - [ ] Taxonomy
     - [ ] **Versions alá Translations-plugin (/lang/version/slug)**
       - [ ] Also render (optional, when present)
+        - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
+        - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
+        - Read the Docs supports two workflows for versioning: based on tags or branches. **If you have at least one tag, tags will take preference over branches when selecting the stable version.**
   - [x] Make optional
 - [x] Book root template
   - [ ] Paged.js, somewhat too niche for general applicability
@@ -140,7 +143,7 @@ tufte:
     - [ ] Print all, subset, or collection
   - [x] Remove dependency on color-mod-function
 - [x] Header- and paragraph-numbering (optional, via JS)
-  - [ ] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
+  - [x] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
     - [x] Basic implementation in Tufte, generalize?
       - [x] Already used for most content-templates
       - [x] assignCounter()-method
@@ -163,6 +166,7 @@ tufte:
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
 - [x] Git link logic
+- [ ] MergeConfig
 - [ ] Map features to settings
   - [ ] Admin blueprints
 

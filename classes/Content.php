@@ -119,16 +119,22 @@ class Content
                 $id = Inflector::hyphenize($element->nodeValue);
                 $level = (int) str_replace('h', '', $element->nodeName);
                 $headings[$element->nodeValue] = ['href' => $id, 'level' => $level];
-                $element->setAttribute('data-ref', $id);
+                $fragment = $doc->createDocumentFragment();
+                $fragment->appendXML(
+                    '<a name="' . $id . '"><' . $element->nodeName
+                    . '>' . $element->textContent
+                    . '</' . $element->nodeName . '></a>'
+                );
+                $element->parentNode->replaceChild($fragment, $element);
             } else {
                 if ($itemize) {
-                    $element->setAttribute('data-index', '1.' . $index);
+                    $element->setAttribute('aria-label', '1.' . $index);
                     $index++;
                 }
             }
         }
         return (object) [
-            'content' => self::innerHTML(
+            'content' => self::getInnerHTML(
                 $doc->getElementsByTagName('body')[0],
                 false
             ),
@@ -164,7 +170,7 @@ class Content
             }
         }
         $node = $doc->getElementsByTagName('body')[0];
-        return self::innerHTML($node, false);
+        return self::getInnerHTML($node, false);
     }
 
     /**
@@ -201,7 +207,7 @@ class Content
             $segments[] = $element->nodeValue;
         }
         $node = $doc->getElementsByTagName('body')[0];
-        return self::innerHTML($node, false);
+        return self::getInnerHTML($node, false);
     }
     
     /**
@@ -248,7 +254,7 @@ class Content
      *
      * @return string Inner DOM node
      */
-    public static function innerHTML(\DOMNode $node, $wrap = true): string
+    public static function getInnerHTML(\DOMNode $node, $wrap = true): string
     {
         $doc = new \DOMDocument();
         $doc->appendChild($doc->importNode($node, true));

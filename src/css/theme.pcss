@@ -61,10 +61,10 @@ pre {
 }
 
 main {
-  article > [data-index] {
+  article > [aria-label] {
     position: relative;
     &:before {
-      content: attr(data-index);
+      content: attr(aria-label);
       position: absolute;
       left: -2.5rem;
       font-weight: 700;
