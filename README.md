@@ -124,6 +124,7 @@ tufte:
         - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
         - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
         - Read the Docs supports two workflows for versioning: based on tags or branches. **If you have at least one tag, tags will take preference over branches when selecting the stable version.**
+        - PubPub: https://discourse.knowledgefutures.org/t/feature-introduction-branches/157
   - [x] Make optional
 - [x] Book root template
   - [ ] Paged.js, somewhat too niche for general applicability
@@ -141,6 +142,9 @@ tufte:
     - [ ] Across styles
   - [x] Print style
     - [ ] Print all, subset, or collection
+    - From .print or print-template? Or collection-template?
+    - If print-collection defined, and requested `.print` custom content type, then render the collection
+      - Handled by `handler` in scholar.php, method in Content API
   - [x] Remove dependency on color-mod-function
 - [x] Header- and paragraph-numbering (optional, via JS)
   - [x] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
@@ -148,7 +152,7 @@ tufte:
       - [x] Already used for most content-templates
       - [x] assignCounter()-method
       - [x] Style with CSS (data using `attr()`-property)
-    - [ ] Also footnotes, sidenotes, figures - as explicitly linked to tags as possible
+    - [x] Also footnotes (done by Markdown Extra), sidenotes (done by Tufte itself), figures (done) - as explicitly linked to tags as possible
   - [x] A11y fails in CSS: https://thatdevgirl.com/blog/before-after-accessibility, https://tink.uk/accessibility-support-for-css-generated-content/, https://www.powermapper.com/tests/screen-readers/content/css-generated-content/
     - [x] Implemented as a root-level class
 - [x] API standardisation
@@ -169,6 +173,14 @@ tufte:
 - [ ] MergeConfig
 - [ ] Map features to settings
   - [ ] Admin blueprints
+
+### Version spec
+
+- Versions in Grav will render by taxonomy, eg. `name.tld/en/3.0.0/route-to-page` will render `route-to-page` at version 3.0.0 in English - This follows the standard Read The Docs uses (https://docs.readthedocs.io/en/stable/versions.html) - The taxonomy will allow both the `v`-prefix and keywords like `stable` and `latest` - `stable` corresponds to the `master`-branch by default, superceded by stable tags in Git if they exist - `latest` corresponds to the `develop`-branch by default, superceded by testing-tags in Git if they exist
+- As opposed to PubPub, all versions are mapped to the Git repository (https://discourse.knowledgefutures.org/t/feature-introduction-branches/157)
+- As opposed to Learn4, no shortcodes are used - every version is strictly tied to the document in the Git repository
+- As opposed to normal taxonomy, no endings are added to files - they are stored in `/user/pages` with `/keyword`, `/tag`, and as normal, symlinking as much as possible
+- Like multilanguage in Grav, the keywords can be optionally shown or hidden based on settings - like `name.tld/en/cpt363` being the same as `name.tld/cpt363`
 
 ### Current
 
