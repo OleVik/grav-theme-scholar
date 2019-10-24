@@ -7,12 +7,15 @@ toolbar:
   breadcrumbs: true
   search: true
   navigation: true
+css: true
+js: true
 cache:
   metadata: "persist"
   content: "persist"
 routes:
   data: "/data"
   search: "/search"
+  print: "/print"
 itemize: true
 components:
   - blog

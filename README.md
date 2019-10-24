@@ -119,7 +119,7 @@ tufte:
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
   - [ ] Taxonomy
-    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**
+    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**: Assign to extension
       - [ ] Also render (optional, when present)
         - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
         - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
@@ -140,7 +140,7 @@ tufte:
   - [x] Minimize conflicts
     - [x] Resolve header and primary color lack of contrast
     - [ ] Across styles
-  - [x] Print style
+  - [x] **Print style**
     - [ ] Print all, subset, or collection
     - From .print or print-template? Or collection-template?
     - If print-collection defined, and requested `.print` custom content type, then render the collection

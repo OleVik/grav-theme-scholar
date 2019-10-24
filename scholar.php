@@ -29,6 +29,7 @@ use Scholar\API\Content;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
 use Grav\Theme\Scholar\API\Utilities;
+use Grav\Theme\Scholar\API\Router;
 
 /**
  * Scholar Theme
@@ -67,14 +68,13 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
-        // dump('$this->grav[\'config\']');
-        $this->schemas();
-        // $this->grav['config']->set('asd.asd1', 1);
-        // dump($this->grav['config']);
-        // dump($this->grav['config']->get('theme.schema'));
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
+        $this->schemas();
+        $this->contentTypes();
+        // dump($this->grav['config']->get('system.pages.types'));
+        // dump(Utils::getSupportPageTypes());
         /* if ($this->isAdmin() && $this->config->get('plugins.admin')) {
             $this->enable(
                 [
@@ -86,10 +86,7 @@ class Scholar extends Theme
         } */
         $this->enable(
             [
-                // 'onPageInitialized' => ['pagePreCache', 0],
-                'onPagesInitialized' => ['handleSearchPage', 0],
-                // 'onPagesInitialized' => ['handleAPI', 0],
-                // 'onPageNotFound' => ['handleSearchPage', 0],
+                'onPagesInitialized' => ['handleAPI', 0],
                 'onPageInitialized' => ['onPageInitialized', 0],
                 'onPageContentProcessed' => ['onPageContentProcessed', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
@@ -98,10 +95,9 @@ class Scholar extends Theme
                 'onGetPageTemplates' => [
                     ['onGetPageTemplates', 0]
                 ],
-                // 'onAssetsInitialized' => ['onAssetsInitialized', 0],
-                // 'onShutdown' => ['onShutdown', 0]
             ]
         );
+        $this->schemas();
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->stopTimer('scholar');
         }
@@ -123,18 +119,33 @@ class Scholar extends Theme
     }
 
     /**
+     * Register custom content types
+     *
+     * @return void
+     */
+    public function contentTypes(): void
+    {
+        $contentTypes = $this->grav['config']->get('system.pages.types');
+        $contentTypes[] = 'print';
+        $this->grav['config']->set(
+            'system.pages.types',
+            $contentTypes
+        );
+    }
+
+    /**
      * Register Schemas dynamically
      *
      * @return void
      */
-    public function schemas()
+    public function schemas(): void
     {
         $locator = $this->grav['locator'];
         $formatter = new YamlFormatter;
         $target = Utilities::fileFinder(
             'schema.yaml',
             [
-                'theme://components/',
+                'theme://components',
                 'user://themes/scholar/components'
             ]
         );
@@ -194,40 +205,23 @@ class Scholar extends Theme
      */
     public function handleAPI(Event $event)
     {
+        // $grav = $this->grav;
+        // dump($grav);
         $uri = $this->grav['uri'];
-        $page = $this->grav['page'];
-        $config = $this->config->get('themes.scholar');
-        if ($uri->path() == $config['routes']['search']) {
-            $this->handleSearchPage($event);
-        } elseif ($uri->path() == $config['routes']['data']) {
-            $this->handleDataAPI();
-        }
-    }
-
-    /**
-     * Handle Search Page
-     *
-     * @return void
-     */
-    public function handleSearchPage(Event $event)
-    {
-        $pages = $this->grav['pages'];
-        $page = $pages->dispatch($this->config->get('themes.scholar.routes.search', '/search'));
-        if (!$page) {
-            $page = new Page();
-            $page->init(new \SplFileInfo(__DIR__ . '/pages/search.md'));
-            $page->slug(basename($this->config->get('themes.scholar.routes.search', '/search')));
-            $pages->addPage($page, $this->config->get('themes.scholar.routes.search', '/search'));
-        }
-
-        // $output = $this->grav['twig']->processTemplate(
-        //     'search.html.twig',
-        //     [
-        //         'content' => 'contentio',
-        //         'page' => $page ?? null
-        //     ]
-        // );
-        // echo $output;
+        // dump($uri);
+        // $page = $this->grav['page'];
+        // dump($page);
+        // $pages = $this->grav['pages'];
+        // dump($pages);
+        // $config = $this->grav['config'];
+        // dump($config);
+        $Router = new Router($this->grav);
+        // if ($uri->path() == $this->config->get('themes.scholar.routes.search')) {
+        //     $this->handleSearchPage($event);
+        //     // Router::handleSearch($this->grav['pages'], $this->config);
+        // } elseif ($uri->path() == $this->config->get('themes.scholar.routes.data')) {
+        //     $this->handleDataAPI();
+        // }
     }
 
     /**
@@ -264,15 +258,13 @@ class Scholar extends Theme
 
     public function onPageContentProcessed()
     {
-        // $Taxonomy = $this->grav['taxonomy'];
-        // dump('$Taxonomy->taxonomy()');
-        // dump($Taxonomy->taxonomy());
-        // foreach ($Taxonomy->findTaxonomy(['tags' => 'article']) as $result) {
-        //     dump($result->title());
-        // }
-        // foreach ($this->grav['taxonomy']->findTaxonomy(['author.email' => 'hwms@bogus.tld']) as $result) {
-        //     dump($result->title());
-        // }
+        // $contentTypes = $this->grav['config']->get('system.pages.types');
+        // $contentTypes[] = 'print';
+        // $this->grav['config']->set(
+        //     'system.pages.types',
+        //     $contentTypes
+        // );
+        // dump($this->grav['config']->get('system.pages.types'));
     }
 
     /**

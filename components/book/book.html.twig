@@ -6,7 +6,6 @@ https://github.com/electricbookworks/paged-design
 #}
 
 {% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
-{# {% set page.content = navigablePage.content %} #}
 {% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
 
 {% if navigablePage.content is empty %}
@@ -26,9 +25,9 @@ https://github.com/electricbookworks/paged-design
 
 {% block stylesheets %}
     {% do assets.addCss('theme://css/theme.css', 100) %}
-    {% do assets.addCss('theme://css/themes/metal.css', 99) %}
-    {% do assets.addCss('theme://css/custom.css', 98) %}
-    {# {% do assets.addCss('theme://css/tinyDrawer.min.css') %} #}
+            {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
+    {% do assets.addCss('theme://css/themes/metal.css', 98) %}
+    {% do assets.addCss('theme://css/custom.css', 97) %}
 {% endblock %}
 
 {% block main %}

@@ -12,15 +12,20 @@
     <link rel="canonical" href="{{ page.url(true, true) }}" />
     {% endblock meta %}
     {% block stylesheets %}
-        {% do assets.addCss('theme://css/theme.css', 100) %}
-        {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
-        {% do assets.addCss('theme://css/styles/' ~ config.theme.style ~ '.css', 99) %}
+        {% if config.theme.css %}
+            {% do assets.addCss('theme://css/theme.css', 100) %}
+            {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
+            {% do assets.addCss('theme://css/styles/' ~ config.theme.style ~ '.css', 99) %}
+        {% endif %}
         {% do assets.addCss('theme://css/custom.css', 98) %}
     {% endblock %}
+
+    {% if config.theme.js %}
+        {% do assets.addJs('theme://js/theme.js') %}
+        {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}
+        {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %}
+    {% endif %}
     {% block javascripts %}{% endblock %}
-    {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %}
-    {% do assets.addJs('theme://js/theme.js') %}
-    {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}
     {% block critical %}
         {{ assets.css('critical')|raw }}
         {{ assets.js('critical')|raw }}
@@ -31,7 +36,7 @@
 </head>
 {% endblock %}
 {% block body %}
-<body id="top" class="{{ page.header.classes }} {{ body_classes }}">
+<body class="{{ page.header.classes }} {{ body_classes }}">
     {% block prepend %}{% endblock %}
     {% block main %}
         {% block header %}{% endblock %}

@@ -60,13 +60,20 @@ pre {
   }
 }
 
+/* Itemize */
 main {
-  article > [aria-label] {
+  article > p[aria-label],
+  article > img[aria-label],
+  article > figure[aria-label] {
     position: relative;
     &:before {
       content: attr(aria-label);
       position: absolute;
-      left: -2.5rem;
+      left: -4rem;
+      width: 3.5rem;
+      max-width: 3.5rem;
+      text-align: right;
+      word-break: break-word;
     }
   }
 }

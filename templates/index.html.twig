@@ -3,8 +3,6 @@
 {% set body_classes = (body_classes|default('page listing')) %}
 
 {% block article %}
-{{ dump(grav.user.fullname) }}
-{{ dump(grav.user.translator) }}
 {% with {
     'page': page,
     'collection': page.collection
