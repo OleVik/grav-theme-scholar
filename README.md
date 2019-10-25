@@ -152,6 +152,7 @@ tufte:
         - Dump filenames or paths to check integrity
         - Page->content() cannot fire more than once ...
         - [ ] Optimize Source API for general- and special-case
+    - [ ] Compare time- and memory-performance of gathering Page-content() and exiting versus current iteration
   - [x] Remove dependency on color-mod-function
 - [x] Header- and paragraph-numbering (optional, via JS)
   - [x] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
