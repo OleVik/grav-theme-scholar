@@ -203,25 +203,9 @@ class Scholar extends Theme
      *
      * @return void
      */
-    public function handleAPI(Event $event)
+    public function handleAPI()
     {
-        // $grav = $this->grav;
-        // dump($grav);
-        $uri = $this->grav['uri'];
-        // dump($uri);
-        // $page = $this->grav['page'];
-        // dump($page);
-        // $pages = $this->grav['pages'];
-        // dump($pages);
-        // $config = $this->grav['config'];
-        // dump($config);
         $Router = new Router($this->grav);
-        // if ($uri->path() == $this->config->get('themes.scholar.routes.search')) {
-        //     $this->handleSearchPage($event);
-        //     // Router::handleSearch($this->grav['pages'], $this->config);
-        // } elseif ($uri->path() == $this->config->get('themes.scholar.routes.data')) {
-        //     $this->handleDataAPI();
-        // }
     }
 
     /**
@@ -247,10 +231,6 @@ class Scholar extends Theme
 
     public function onPageInitialized()
     {
-        // dump('$this->grav[\'page\']->taxonomy()');
-        // dump((array) $this->grav['page']->taxonomy());
-        // dump(Utils::arrayFlattenDotNotation((array) $this->grav['page']->taxonomy()));
-
         // $ld = new LinkedData();
         // $ld->buildSchema($this->grav['page']);
         // dump($ld->data);

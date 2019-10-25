@@ -17,6 +17,7 @@ namespace Grav\Theme\Scholar\API;
 use Grav\Common\Grav;
 use Grav\Common\Utils;
 use Grav\Common\Page\Page;
+use Grav\Theme\Scholar\API\Source;
 use Grav\Theme\Scholar\API\Utilities;
 
 /**
@@ -51,7 +52,8 @@ class Router
             ?? $this->grav['config']->get('themes.scholar.routes.print')
             ?? '/print';
         
-        $Page = $this->dispatch($path);
+        // unset($this->grav['page']);
+        $page = $this->dispatch($path);
 
         switch ('/' . basename($path)) {
             case $searchRoute:
@@ -59,24 +61,56 @@ class Router
             case $dataRoute:
                 break;
             case $printRoute:
-                $parent = $this->dispatch(
-                    str_replace('/' . basename($path), '', $path)
+                $page->parent(
+                    $this->grav['pages']->find(
+                        str_replace('/' . basename($path), '', $path)
+                    )
                 );
+                $collection = $page->parent()->collection('print');
+                $collectionRoot = $collection->current();
                 $content = '';
-                foreach ($parent->collection('print') as $item) {
-                    $content .= $item->content();
+                foreach ($collection as $item) {
+                    $Source = new Source($item, $this->grav['pages']);
+                    $raw = $item->rawMarkdown();
+                    foreach (array_keys($item->media()->all()) as $mediaItem) {
+                        $raw = str_replace(
+                            $mediaItem,
+                            $Source->render($mediaItem)['page']->route() . '/' . $mediaItem,
+                            $raw
+                        );
+                    }
+                    $content .= $raw;
                 }
-                $Page->title($parent->title());
-                $Page->content($content);
-                $new = $this->handlePrint($Page, $parent->template());
-                // $Page->content($new);
-                // dump($new);
-                $format = $parent->templateFormat();
-                header('Content-type: ' . Utils::getMimeByExtension($format));
-                echo $new;
-                exit();
+                $page->title($collectionRoot->title());
+                $page->slug(basename($path));
+                // $page->content($content);
+                $page->rawMarkdown($content);
+                $page->template($collectionRoot->template());
+                $this->grav['pages']->addPage($page, $path);
+                // dump($page);
+
+                // header(
+                //     'Content-type: ' . Utils::getMimeByExtension(
+                //         $collectionRoot->templateFormat()
+                //     )
+                // );
+                // echo $content;
+                // exit();
                 break;
         }
+    }
+
+    public function dispatch2($path)
+    {
+        $page = $this->grav['pages']->dispatch($path);
+        if (!$page) {
+            $page = new Page;
+            $page->init(new \SplFileInfo(__DIR__ . '/../pages/print.md'));
+            $page->slug(basename($path));
+            $page->template('article');
+            $this->grav['pages']->addPage($page, $path);
+        }
+        return $page;
     }
 
     /**
@@ -106,7 +140,6 @@ class Router
             $page->init(
                 new \SplFileInfo($file)
             );
-            $this->grav['pages']->addPage($page, $route);
         }
         return $page;
     }
@@ -118,7 +151,6 @@ class Router
      */
     public function handleSearch(): void
     {
-        // dump('handleSearch');
         $page = $this->grav['pages']->dispatch($this->grav['config']->get('themes.scholar.routes.search', '/search'));
         if (!$page) {
             $page = new Page();
@@ -138,8 +170,6 @@ class Router
      */
     public function handlePrint(Page $Page, string $template)
     {
-        // dump('handlePrint');
-        
         $content = $this->grav['twig']->processTemplate(
             $template . '.html.twig', 
             [

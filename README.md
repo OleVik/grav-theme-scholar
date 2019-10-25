@@ -140,11 +140,18 @@ tufte:
   - [x] Minimize conflicts
     - [x] Resolve header and primary color lack of contrast
     - [ ] Across styles
-  - [x] **Print style**
-    - [ ] Print all, subset, or collection
+  - [x] Print style
+    - [x] Print all, subset, or collection
     - From .print or print-template? Or collection-template?
     - If print-collection defined, and requested `.print` custom content type, then render the collection
       - Handled by `handler` in scholar.php, method in Content API
+    - [x] Router API: Print-collection in parent of `/print`
+      - [ ] **Inconsistent rendering**: Sherlock Holmes
+        - Using `print: items: "@self.descendants"` in book.md
+        - Eg., only one chapter renders, only some text
+        - Dump filenames or paths to check integrity
+        - Page->content() cannot fire more than once ...
+        - [ ] Optimize Source API for general- and special-case
   - [x] Remove dependency on color-mod-function
 - [x] Header- and paragraph-numbering (optional, via JS)
   - [x] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
@@ -181,6 +188,13 @@ tufte:
 - As opposed to Learn4, no shortcodes are used - every version is strictly tied to the document in the Git repository
 - As opposed to normal taxonomy, no endings are added to files - they are stored in `/user/pages` with `/keyword`, `/tag`, and as normal, symlinking as much as possible
 - Like multilanguage in Grav, the keywords can be optionally shown or hidden based on settings - like `name.tld/en/cpt363` being the same as `name.tld/cpt363`
+- Alternative branches, of the Git Flow variety (feature/something, bugfix/something)
+- Maintain folder-management? How can this be compliant with Git branches?
+- Up-to-date Git wrappers:
+  - http://gitonomy.com/doc/gitlib/master/ (bare)
+  - https://packagist.org/packages/cpliakas/git-wrapper (bare)
+  - https://packagist.org/packages/czproject/git-php (more none-bare method-coverage)
+  - https://packagist.org/packages/cypresslab/gitelephant (more none-bare method-coverage, also a Tree class, differ, tests)
 
 ### Current
 
