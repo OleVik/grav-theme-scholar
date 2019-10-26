@@ -118,8 +118,8 @@ tufte:
   - [ ] Generate data via Enduring, and in Admin
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
-  - [ ] Taxonomy
-    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**: Assign to extension
+  - [x] Taxonomy
+    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**: Delegate to extension
       - [ ] Also render (optional, when present)
         - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
         - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
@@ -146,7 +146,10 @@ tufte:
     - If print-collection defined, and requested `.print` custom content type, then render the collection
       - Handled by `handler` in scholar.php, method in Content API
     - [x] Router API: Print-collection in parent of `/print`
-      - [ ] **Inconsistent rendering**: Sherlock Holmes
+      - [ ] Data API: **Linked Data, or JSON?** Can LD include content?
+      - [ ] Embed-mode (chromeless)
+      - [x] Print-collection in parent of `/print`
+      - [x] **Inconsistent rendering**: Sherlock Holmes
         - Using `print: items: "@self.descendants"` in book.md
         - Eg., only one chapter renders, only some text
         - Dump filenames or paths to check integrity
@@ -203,10 +206,7 @@ tufte:
    - Maintain Grav-terminology of extensions as Themes or Plugins
      - Customizations _within_ this theme are Styles (color schemes) and Layouts (templates)
      - Extensions can add either, or features not strictly necessary for Scholar "Core"
-   - [ ] Implement hierarchical-taxonomy, per https://towardsdatascience.com/https-medium-com-noa-weiss-the-hitchhikers-guide-to-hierarchical-classification-f8428ea1e076
-1. Optimize blueprints and languages
-   - [x] Optimize fields
-   - [x] String-hierarchy in languages.yaml
+   - [x] Implement hierarchical-taxonomy, per https://towardsdatascience.com/https-medium-com-noa-weiss-the-hitchhikers-guide-to-hierarchical-classification-f8428ea1e076
 1. Layouts
    - [x] Must comply with [tota11y](https://github.com/Khan/tota11y)
      - See https://a11yproject.com/resources for ARIA-WAI
@@ -248,27 +248,6 @@ tufte:
          - https://gitlab.pagedmedia.org/tools/pagedjs
        - Breaking HTML into pages: https://alistapart.com/article/boom
        - Print Stylessheets: https://www.smashingmagazine.com/2015/01/designing-for-print-with-css/
-1. Styles
-
-   - [ ] Must comply with [tota11y](https://github.com/Khan/tota11y)
-   - [x] Unify to reduce customizations in core Styles
-     - [x] Arctic
-     - [x] Dark Ocean
-     - [x] Gold
-     - [x] Grey
-     - [x] Longyearbyen
-     - [x] Metal
-     - [x] Navy Sunrise
-     - [x] Spitsbergen
-     - [x] Sunrise
-   - [x] Join docs, pages, and book styles into one sheet
-     - Color-customization should be available globally, for page-hierarchies, and single pages
-   - [x] Add styles for docs
-     - Missing GitBooks-like, something like [Simon Halimonov](http://learn.simonhalimonov.de/)
-   - [x] Add styles for pages
-   - [x] Add styles for book
-     - See [GitBook](https://docs.gitbook.com/), [PressBooks](https://pressbooks.com/themes/)
-
 1. Extensions
    - [ ] Document modular-approach: Scholar as Core
    - [ ] Zen Editor

@@ -71,14 +71,9 @@ class Scholar extends Theme
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
-        $this->schemas();
-        $this->contentTypes();
-        // dump($this->grav['config']->get('system.pages.types'));
-        // dump(Utils::getSupportPageTypes());
         /* if ($this->isAdmin() && $this->config->get('plugins.admin')) {
             $this->enable(
                 [
-                    'onGetPageTemplates' => ['onGetPageTemplates', 0],
                     'onTwigSiteVariables' => ['twigBaseUrl', 0],
                     'onAssetsInitialized' => ['onAdminPagesAssetsInitialized', 0]
                 ]
@@ -86,15 +81,11 @@ class Scholar extends Theme
         } */
         $this->enable(
             [
-                'onPagesInitialized' => ['handleAPI', 0],
-                'onPageInitialized' => ['onPageInitialized', 0],
-                'onPageContentProcessed' => ['onPageContentProcessed', 0],
+                'onPagesInitialized' => ['onPagesInitialized', 0],
+                'onPageInitialized' => ['linkedData', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
                 'onTwigTemplatePaths' => ['templates', 0],
-                'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0],
-                'onGetPageTemplates' => [
-                    ['onGetPageTemplates', 0]
-                ],
+                'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0]
             ]
         );
         $this->schemas();
@@ -119,26 +110,11 @@ class Scholar extends Theme
     }
 
     /**
-     * Register custom content types
-     *
-     * @return void
-     */
-    public function contentTypes(): void
-    {
-        $contentTypes = $this->grav['config']->get('system.pages.types');
-        $contentTypes[] = 'print';
-        $this->grav['config']->set(
-            'system.pages.types',
-            $contentTypes
-        );
-    }
-
-    /**
      * Register Schemas dynamically
      *
      * @return void
      */
-    public function schemas(): void
+    public function schemas()
     {
         $locator = $this->grav['locator'];
         $formatter = new YamlFormatter;
@@ -192,59 +168,35 @@ class Scholar extends Theme
         }
     }
 
-    public function onGetPageTemplates(Event $event)
-    {
-        $types = $event->types;
-        $types->register('search');
-    }
-
     /**
      * Handle API
      *
      * @return void
      */
-    public function handleAPI()
+    public function onPagesInitialized()
     {
         $Router = new Router($this->grav);
     }
 
     /**
-     * Handle Data API
+     * Build Linked Data
      *
      * @return void
      */
-    public function handleDataAPI()
+    public function linkedData()
     {
-        try {
-            include __DIR__ . '/classes/Data.php';
-            $ld = new Data();
-            $ld->buildIndex('/learn');
-            header('Content-Type: application/json');
-            header("allow-control-access-origin: * ");
-            header('HTTP/1.1 200 OK');
-            echo json_encode($ld->index);
-        } catch (\Exception $e) {
-            echo $e;
+        if ($this->grav['config']->get('theme.linkeddata')) {
+            $ld = new LinkedData();
+            $ld->buildSchema($this->grav['page']);
+            $this->grav['assets']->addInlineJs(
+                LinkedData::getSchema(
+                    $ld->data,
+                    key(LinkedData::getType($this->grav['page']->template())),
+                    true
+                ),
+                ['type' => 'application/ld+json']
+            );
         }
-        exit();
-    }
-
-    public function onPageInitialized()
-    {
-        // $ld = new LinkedData();
-        // $ld->buildSchema($this->grav['page']);
-        // dump($ld->data);
-    }
-
-    public function onPageContentProcessed()
-    {
-        // $contentTypes = $this->grav['config']->get('system.pages.types');
-        // $contentTypes[] = 'print';
-        // $this->grav['config']->set(
-        //     'system.pages.types',
-        //     $contentTypes
-        // );
-        // dump($this->grav['config']->get('system.pages.types'));
     }
 
     /**
@@ -269,50 +221,6 @@ class Scholar extends Theme
             return $taxonomylist->get()[$type];
         } else {
             return $taxonomylist->get();
-        }
-    }
-
-    /**
-     * Creates page-structure recursively
-     *
-     * @param string  $route Route to page
-     * @param string  $mode  Reserved collection-mode for handling child-pages
-     * @param integer $depth Reserved placeholder for recursion depth
-     *
-     * @return array Page-structure with children
-     */
-    public static function buildTree(string $route, $mode = false, $depth = 0)
-    {
-        $page = Grav::instance()['page'];
-        $depth++;
-        $mode = '@page.self';
-        if ($depth > 1) {
-            $mode = '@page.children';
-        }
-        $pages = $page->evaluate([$mode => $route]);
-        $pages = $pages->published()->order('date', 'desc');
-        $paths = array();
-        foreach ($pages as $page) {
-            $route = $page->rawRoute();
-            $paths[$route]['depth'] = $depth;
-            $paths[$route]['title'] = $page->title();
-            $paths[$route]['route'] = $route;
-            $paths[$route]['template'] = $page->template();
-            if (!empty($paths[$route])) {
-                $children = self::buildTree($route, $mode, $depth);
-                if (!empty($children)) {
-                    $paths[$route]['children'] = $children;
-                }
-            }
-            $media = new Media($page->path());
-            foreach ($media->all() as $filename => $file) {
-                $paths[$route]['media'][$filename] = $file->items()['type'];
-            }
-        }
-        if (!empty($paths)) {
-            return $paths;
-        } else {
-            return null;
         }
     }
 
@@ -355,26 +263,12 @@ class Scholar extends Theme
     }
 
     /**
-     * Add Twig Extensions
+     * Initialize Twig Extensions
      *
      * @return void
      */
     public function onTwigExtensions()
     {
-        // include_once __DIR__ . '/twig/PageNavigationExtension.php';
-        // $this->grav['twig']->twig->addExtension(new PageNavigationExtension());
-        // include_once __DIR__ . '/twig/ScholarMenuExtension.php';
-        // $this->grav['twig']->twig->addExtension(new ScholarMenuExtension());
-        // include_once __DIR__ . '/twig/ScholarUtilitiesExtension.php';
-        // $this->grav['twig']->twig->addExtension(new ScholarUtilitiesExtension());
-        // include_once __DIR__ . '/twig/TruncateWordsExtension.php';
-        // $this->grav['twig']->twig->addExtension(new TruncateWordsExtension());
-        // include_once __DIR__ . '/twig/StripHTMLExtension.php';
-        // $this->grav['twig']->twig->addExtension(new StripHTMLExtension());
-        // include_once __DIR__ . '/twig/SectionWrapperExtension.php';
-        // $this->grav['twig']->twig->addExtension(new SectionWrapperExtension());
-        // include_once __DIR__ . '/twig/TaxonomyMapExtension.php';
-        // $this->grav['twig']->twig->addExtension(new TaxonomyMapExtension());
         include_once __DIR__ . '/twig/ScholarTwigExtensions.php';
         $this->grav['twig']->twig->addExtension(new ScholarTwigExtensions());
     }

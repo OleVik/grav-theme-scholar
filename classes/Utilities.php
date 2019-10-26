@@ -276,4 +276,31 @@ class Utilities
         }
         return $obj;
     }
+
+    /**
+     * Filters the elements of an array recursively, using a given callable
+     *
+     * Callable function must return a boolean, whether to accept or remove the value
+     *
+     * @param array    $array    Array to search
+     * @param callable $callback Function to call
+     *
+     * @return array
+     *
+     * @link https://github.com/lingtalfi/Bat/blob/master/ArrayTool.md#filterrecursive
+     */
+    public static function filterRecursive(array $array, callable $callback): array
+    {
+        foreach ($array as $k => $v) {
+            $res = call_user_func($callback, $v);
+            if (false === $res) {
+                unset($array[$k]);
+            } else {
+                if (is_array($v)) {
+                    $array[$k] = self::filterRecursive($v, $callback);
+                }
+            }
+        }
+        return $array;
+    }
 }

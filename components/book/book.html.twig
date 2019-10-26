@@ -1,10 +1,5 @@
 {% extends 'partials/base.html.twig' %}
 
-{# 
-https://gitlab.pagedmedia.org/tools/pagedjs/wikis/Your-first-document-with-paged.js
-https://github.com/electricbookworks/paged-design
-#}
-
 {% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 {% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
 
@@ -48,14 +43,20 @@ https://github.com/electricbookworks/paged-design
             {% if page.template == 'chapter' %}
                 {% with {
                     'page': page,
-                    'collection': collection
+                    'collection': collection.order(
+                        page.header.content.order.by ?? 'folder',
+                        page.header.content.order.dir ?? 'asc'
+                        )
                     } %}
                     {{ block('content', 'partials/book/chapter/listing.html.twig') }}
                 {% endwith %}
             {% else %}
                 {% with {
                     'page': page,
-                    'collection': collection
+                    'collection': collection.order(
+                        page.header.content.order.by ?? 'folder',
+                        page.header.content.order.dir ?? 'asc'
+                        )
                     } %}
                     {{ block('content', 'partials/book/listing.html.twig') }}
                 {% endwith %}

@@ -16,6 +16,7 @@ routes:
   data: "/data"
   search: "/search"
   print: "/print"
+linkeddata: true
 itemize: true
 components:
   - blog

@@ -1,7 +1,1 @@
-{% extends page.topParent.template == 'docs' ? 'docs.html.twig' : 'default.html.twig' %}
-
-{% block article %}
-{# {{ page.content }} #}
-{{ dump(page.parent.title) }}
-{{ page.parent.title }}
-{% endblock %}
+{% extends page.topParent.template ~ '.html.twig' %}

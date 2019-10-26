@@ -19,8 +19,11 @@ use Grav\Common\Utils;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 use Grav\Common\Page\Header;
+use Grav\Framework\File\YamlFile;
+use Grav\Framework\File\Formatter\YamlFormatter;
 use RocketTheme\Toolbox\Event\Event;
 use Spatie\SchemaOrg\Schema;
+use Grav\Theme\Scholar\API\Utilities;
 
 /**
  * Linked Data API
@@ -44,7 +47,7 @@ class LinkedData
      */
     public function __construct($orderBy = 'date', $orderDir = 'desc')
     {
-        require __DIR__ . '/../vendor/autoload.php';
+        include __DIR__ . '/../vendor/autoload.php';
         $this->data = array();
         $this->index = array();
         $this->orderBy = $orderBy;
@@ -117,6 +120,13 @@ class LinkedData
         }
     }
 
+    /**
+     * Get Page author
+     *
+     * @param array $header Page header
+     *
+     * @return array Author data
+     */
     public static function getAuthor(array $header): array
     {
         $data = array();
@@ -132,6 +142,14 @@ class LinkedData
         return $data;
     }
 
+    /**
+     * Get Page image
+     *
+     * @param array $header Page header
+     * @param array $media  Page media
+     *
+     * @return array Page Image
+     */
     public static function getImage(array $header, array $media): array
     {
         $data = array();
@@ -151,7 +169,7 @@ class LinkedData
      */
     public static function getCollections(array $header): array
     {
-        $collections = self::filterRecursive(
+        $collections = Utilities::filterRecursive(
             $header,
             function ($value) {
                 if (is_array($value)
@@ -179,7 +197,7 @@ class LinkedData
     public static function getType(string $template): array
     {
         $schemaConfig = Grav::instance()['config']->get('theme.schema');
-        $schema = self::filterRecursive(
+        $schema = Utilities::filterRecursive(
             $schemaConfig['types'],
             function ($value) use ($template) {
                 if (is_array($value) && array_key_exists('name', $value) && $value['name'] !== $template) {
@@ -193,33 +211,6 @@ class LinkedData
             $iterable = true;
         }
         return [$schema[$template]['schema'] ?? $schemaConfig['default'] => $iterable];
-    }
-
-    /**
-     * Filters the elements of an array recursively, using a given callable
-     *
-     * Callable function must return a boolean, whether to accept or remove the value
-     *
-     * @param array    $array    Array to search
-     * @param callable $callback Function to call
-     *
-     * @return array
-     *
-     * @link https://github.com/lingtalfi/Bat/blob/master/ArrayTool.md#filterrecursive
-     */
-    public static function filterRecursive(array $array, callable $callback): array
-    {
-        foreach ($array as $k => $v) {
-            $res = call_user_func($callback, $v);
-            if (false === $res) {
-                unset($array[$k]);
-            } else {
-                if (is_array($v)) {
-                    $array[$k] = self::filterRecursive($v, $callback);
-                }
-            }
-        }
-        return $array;
     }
 
     /**
