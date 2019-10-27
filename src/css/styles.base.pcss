@@ -92,11 +92,6 @@ a:active {
             border-bottom: 4px solid var(--border-color);
             transform: translateX(-50%);
           }
-          &:hover {
-            &:after {
-              border-bottom-color: var(--primary);
-            }
-          }
         }
       }
     }
@@ -140,11 +135,6 @@ a:active {
           &:after {
             border-bottom: 0;
           }
-        }
-      }
-      section {
-        div {
-          border: 1px solid hsla(0, 0%, 62.7%, 0.3);
         }
       }
     }
@@ -243,6 +233,17 @@ a:active {
       a:active {
         filter: contrast(1.5);
         text-decoration: underline;
+      }
+      .search {
+        input,
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus {
+          color: var(--aside-text);
+          &::placeholder {
+            color: var(--aside-text);
+          }
+        }
       }
       .drawer {
         color: var(--text);
@@ -357,6 +358,14 @@ a:active {
   &.listing {
     article {
       > article {
+        a:any-link {
+          border-bottom: 0;
+        }
+        a:hover,
+        a:focus,
+        a:active {
+          color: var(--primary);
+        }
         border-bottom: solid 1px var(--border-color);
       }
     }
@@ -369,18 +378,18 @@ header[role="banner"] {
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
-      color: var(--aside-text);
+      color: var(--text);
       background-color: transparent;
       -webkit-transition-delay: 99999s;
       box-shadow: none;
       &:focus {
         &::placeholder {
-          opacity: 1;
+          opacity: 0.8;
         }
       }
       &::placeholder {
         opacity: 0;
-        color: var(--aside-text);
+        color: var(--text);
       }
     }
   }

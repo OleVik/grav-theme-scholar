@@ -14,6 +14,7 @@ cache:
   content: "persist"
 routes:
   data: "/data"
+  embed: "/embed"
   search: "/search"
   print: "/print"
 linkeddata: true

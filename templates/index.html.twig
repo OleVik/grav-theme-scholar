@@ -21,6 +21,7 @@
     }
     ') %}
 {% endif %}
+{% include 'partials/components/search/wrapper.html.twig' %}
 <aside>
     <header>
         {% if page.header.logo %}
@@ -41,3 +42,6 @@
     {% endwith %}
 </aside>
 {% endblock %}
+
+
+{% block search_results %}{% endblock %}

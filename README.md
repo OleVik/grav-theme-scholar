@@ -146,10 +146,10 @@ tufte:
     - If print-collection defined, and requested `.print` custom content type, then render the collection
       - Handled by `handler` in scholar.php, method in Content API
     - [x] Router API: Print-collection in parent of `/print`
-      - [ ] Data API: **Linked Data, or JSON?** Can LD include content?
-      - [ ] Embed-mode (chromeless)
+      - [x] Data API: Linked Data in JSON including content
+      - [x] Embed API (chromeless)
       - [x] Print-collection in parent of `/print`
-      - [x] **Inconsistent rendering**: Sherlock Holmes
+      - [x] Inconsistent rendering: Sherlock Holmes
         - Using `print: items: "@self.descendants"` in book.md
         - Eg., only one chapter renders, only some text
         - Dump filenames or paths to check integrity
@@ -184,6 +184,7 @@ tufte:
 - [ ] MergeConfig
 - [ ] Map features to settings
   - [ ] Admin blueprints
+- [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) to CV-component
 
 ### Version spec
 

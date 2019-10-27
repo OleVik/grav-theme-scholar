@@ -1,5 +1,8 @@
 {% apply spaceless %}
 <p>
+
+<a href="{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
+
     <a href="/meta/date/{{ item.date|date("Y-m-d") }}">
         <time datetime="{{ item.date|date("c") }}">{{ item.date|date(system.pages.dateformat.default) }}</time>
     </a>

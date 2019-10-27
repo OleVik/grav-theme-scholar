@@ -20,6 +20,7 @@ use Grav\Common\Page\Page;
 use Grav\Common\Page\Collection;
 use Grav\Theme\Scholar\API\Content;
 use Grav\Theme\Scholar\API\Source;
+use Grav\Theme\Scholar\API\LinkedData;
 use Grav\Theme\Scholar\API\Utilities;
 
 /**
@@ -45,6 +46,9 @@ class Router
         $this->searchRoute = $this->grav['config']->get('theme.routes.search')
             ?? $this->grav['config']->get('themes.scholar.routes.search')
             ?? '/search';
+        $this->embedRoute = $this->grav['config']->get('theme.routes.embed')
+            ?? $this->grav['config']->get('themes.scholar.routes.embed')
+            ?? '/embed';
         $this->dataRoute = $this->grav['config']->get('theme.routes.data')
             ?? $this->grav['config']->get('themes.scholar.routes.data')
             ?? '/data';
@@ -57,19 +61,26 @@ class Router
             '/' . basename($path),
             [
                 $this->searchRoute,
+                $this->embedRoute,
                 $this->dataRoute,
                 $this->printRoute
             ]
         )
         ) {
             $page = $this->dispatch($path);
-        }
-        if ('/' . basename($path) == $this->printRoute) {
             $page->parent(
                 $this->grav['pages']->find(
                     str_replace('/' . basename($path), '', $path)
                 )
             );
+        } else {
+            return;
+        }
+        if ('/' . basename($path) == $this->embedRoute) {
+            $this->handleEmbed($page);
+        } elseif ('/' . basename($path) == $this->dataRoute) {
+            $this->handleData($page);
+        } elseif ('/' . basename($path) == $this->printRoute) {
             $template = $page->parent()->template();
             if (isset($page->parent()->header()->print['template'])) {
                 $template = $page->parent()->header()->print['template'];
@@ -120,6 +131,49 @@ class Router
             );
         }
         return $page;
+    }
+
+    /**
+     * Handle embed output
+     *
+     * @param Page $Page Page-instance
+     *
+     * @return void
+     */
+    public function handleEmbed(Page $Page): void
+    {
+        header(
+            'Content-type: ' . Utils::getMimeByExtension(
+                $Page->parent()->templateFormat()
+            )
+        );
+        echo $Page->parent()->content();
+        exit();
+    }
+
+    /**
+     * Handle data output
+     *
+     * @param Page $Page Page-instance
+     *
+     * @return void
+     */
+    public function handleData(Page $Page): void
+    {
+        $ld = new LinkedData($this->grav['language']);
+        $Page->title($Page->parent()->title());
+        $ld->buildSchema($Page->parent());
+        $data = [
+            'encodingFormat' => Utils::getMimeByExtension(
+                $Page->parent()->templateFormat()
+            ),
+            'header' => (array) $Page->parent()->header(),
+            'content' => $Page->parent()->content()
+        ];
+        $data = array_merge($ld->data, $data);
+        header('Content-Type: application/json');
+        echo json_encode($data);
+        exit();
     }
 
     /**

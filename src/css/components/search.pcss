@@ -27,6 +27,17 @@ main {
     }
   }
 }
+.page {
+  &.listing {
+    main {
+      aside {
+        &.search {
+          order: 1;
+        }
+      }
+    }
+  }
+}
 
 header {
   form[role="search"] {
@@ -45,8 +56,6 @@ header {
       line-height: 1.15;
       text-overflow: ellipsis;
       white-space: nowrap;
-      border-radius: 0.125rem 0 0 0.125rem;
-      border: 1px solid transparent;
       border: 0;
       overflow: hidden;
       outline: none;

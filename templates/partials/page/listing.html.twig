@@ -5,17 +5,15 @@
     {% for page in collection %}
     <article>
         <header>
-            <h2>
-                <a href="{{ page.url }}">{{ page.title }}</a>
-            </h2>
+            <a href="{{ page.url }}">
+            <h2>{{ page.title }}</h2>
             {% if page.header.subtitle %}
             <h3>{{ page.header.subtitle }}</h3>
             {% endif %}
             {% if page.header.image %}
-            <a href="{{ page.url }}">
                 {{ page.media[page.header.image].html(page.title, page.title) }}
-            </a>
             {% endif %}
+            </a>
         </header>
         <section>
             {{ page.summary|strip_html_tags('h1,h2,h3,h4,h5,h6') }}

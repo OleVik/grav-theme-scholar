@@ -155,26 +155,26 @@
       margin: 0 0 3rem 0;
       padding: 0;
       header {
-        display: flex;
-        flex-direction: column;
-        h1,
-        h2 {
-          order: 1;
-          margin: 2.5rem auto 1rem;
-          font-size: 4rem;
-        }
-        h3 {
-          order: 2;
-        }
-        img {
-          order: 0;
-          width: 100%;
-          height: 20rem;
-          object-fit: cover;
-          object-position: center;
-        }
         a {
+          display: flex;
+          flex-direction: column;
           border-bottom: 0;
+          h1,
+          h2 {
+            order: 1;
+            margin: 2.5rem auto 1rem;
+            font-size: 4rem;
+          }
+          h3 {
+            order: 2;
+          }
+          img {
+            order: 0;
+            width: 100%;
+            height: 20rem;
+            object-fit: cover;
+            object-position: center;
+          }
         }
       }
       section {
@@ -246,6 +246,7 @@
       }
       &.search {
         grid-column-end: span 12;
+        position: relative;
         margin: 0;
         padding: 2rem 4rem 1rem;
       }

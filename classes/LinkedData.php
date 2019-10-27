@@ -19,6 +19,7 @@ use Grav\Common\Utils;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 use Grav\Common\Page\Header;
+use Grav\Common\Language\Language;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
 use RocketTheme\Toolbox\Event\Event;
@@ -42,14 +43,16 @@ class LinkedData
     /**
      * Initialize class
      *
-     * @param string $orderBy  Property to order by.
-     * @param string $orderDir Direction to order.
+     * @param Language $Language Language-instance.
+     * @param string   $orderBy  Property to order by.
+     * @param string   $orderDir Direction to order.
      */
-    public function __construct($orderBy = 'date', $orderDir = 'desc')
+    public function __construct(Language $Language, $orderBy = 'date', $orderDir = 'desc')
     {
         include __DIR__ . '/../vendor/autoload.php';
         $this->data = array();
         $this->index = array();
+        $this->language = $Language;
         $this->orderBy = $orderBy;
         $this->orderDir = $orderDir;
     }
@@ -70,7 +73,18 @@ class LinkedData
         $data = [
             'name' => $page->title(),
             'datePublished' => $date,
-            'url' => $page->url(true, true, true)
+            'url' => $page->url(true, true, true),
+            'inLanguage' => $page->language(),
+            'accessibilityAPI' => 'ARIA',
+            'accessibilityFeature' => [
+                'highContrastDisplay/CSSEnabled',
+                'bookmarks'
+            ],
+            'accessibilityControl' => [
+                'fullKeyboardControl',
+                'fullMouseControl',
+                'fullTouchControl'
+            ]
         ];
         if (!empty(self::getAuthor($header))) {
             $data['author'] = self::getAuthor($header);
@@ -94,6 +108,13 @@ class LinkedData
             }
         }
         $schema = self::getType($page->template());
+        if ($page->language() !== $this->language->getDefault()) {
+            $data['translationOfWork'] = [
+                '@type' => key($schema),
+                'url' => $page->canonical(false),
+                'inLanguage' => $this->language->getDefault()
+            ];
+        }
         if ($slave) {
             return self::getSchema(
                 $data,
