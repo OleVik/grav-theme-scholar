@@ -1,0 +1,24 @@
+{% block content %}
+
+<header>
+    <h1 itemprop="name">{{ header.title }}</h1>
+    <h2>{{ header.subtitle }}</h2>
+    <div class="details">
+    {% for key, item in header.items if item is not empty %}
+        {% if key == 'location' %}
+            {% set itemprop = 'homeLocation' %}
+        {% elseif key == 'phone' %}
+            {% set itemprop = 'telephone' %}
+        {% elseif key == 'email' %}
+            {% set itemprop = 'email' %}
+        {% endif %}
+        {% if item is iterable %}
+            <a href="{{ item.url }}" itemprop="url">{{ item.name }}</a>
+        {% else %}
+            <span itemprop="{{ itemprop }}">{{ item }}</span>
+        {% endif %}
+    {% endfor %}
+    </div>
+</header>
+
+{% endblock %}

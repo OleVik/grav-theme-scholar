@@ -1,0 +1,82 @@
+.cv {
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-align: left;
+  }
+  main {
+    article {
+      header {
+        display: grid;
+        h1,
+        h2 {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          text-align: left;
+        }
+        h1 {
+          grid-column-end: span 12;
+        }
+        h2 {
+          grid-column-end: span 8;
+        }
+        .details {
+          grid-column-end: span 4;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          * {
+            width: min-content;
+          }
+        }
+      }
+      [itemprop="description"] {
+        margin-top: 2rem;
+      }
+      section {
+        display: grid;
+        align-items: baseline;
+        margin-top: 0rem;
+        h3 {
+          grid-column-end: span 10;
+          grid-column-start: 3;
+        }
+        span {
+          grid-column-end: span 2;
+          justify-self: right;
+          margin-right: 1.875rem;
+          font-size: 1.2rem;
+        }
+        .entry {
+          grid-column-end: span 10;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: baseline;
+          h4,
+          em {
+            font-size: 1.2rem;
+            font-family: inherit;
+            line-height: inherit;
+          }
+          h4 {
+            margin: 0;
+            font-weight: 600;
+            &:after {
+              content: ", ";
+              margin-right: 0.35rem;
+            }
+          }
+          p {
+            flex-basis: 100%;
+          }
+        }
+        > p {
+          grid-column-end: span 10;
+          grid-column-start: 3;
+        }
+      }
+    }
+  }
+}

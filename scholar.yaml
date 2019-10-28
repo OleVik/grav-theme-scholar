@@ -22,6 +22,7 @@ itemize: true
 components:
   - blog
   - book
+  - cv
   - docs
   - sequence
   - tufte

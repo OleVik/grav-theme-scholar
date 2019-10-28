@@ -119,7 +119,7 @@ tufte:
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
   - [x] Taxonomy
-    - [ ] **Versions alá Translations-plugin (/lang/version/slug)**: Delegate to extension
+    - [ ] Versions alá Translations-plugin (/lang/version/slug): Delegate to extension
       - [ ] Also render (optional, when present)
         - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
         - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
@@ -181,14 +181,21 @@ tufte:
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
 - [x] Git link logic
-- [ ] MergeConfig
+- [x] MergeConfig: Page- and Theme-settings onPage, via `theme`-FrontMatter variable
 - [ ] Map features to settings
   - [ ] Admin blueprints
-- [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) to CV-component
+- [x] Port [PAW](https://github.com/OleVik/personal-academic-website) to CV-component
+  - https://gist.github.com/danielantelo/218015d40f346b964aac
+  - https://jsonresume.org/schema/
+  - [ ] Test JSONLD
 
 ### Version spec
 
 - Versions in Grav will render by taxonomy, eg. `name.tld/en/3.0.0/route-to-page` will render `route-to-page` at version 3.0.0 in English - This follows the standard Read The Docs uses (https://docs.readthedocs.io/en/stable/versions.html) - The taxonomy will allow both the `v`-prefix and keywords like `stable` and `latest` - `stable` corresponds to the `master`-branch by default, superceded by stable tags in Git if they exist - `latest` corresponds to the `develop`-branch by default, superceded by testing-tags in Git if they exist
+  - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
+  - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
+  - Read the Docs supports two workflows for versioning: based on tags or branches. **If you have at least one tag, tags will take preference over branches when selecting the stable version.**
+  - PubPub: https://discourse.knowledgefutures.org/t/feature-introduction-branches/157
 - As opposed to PubPub, all versions are mapped to the Git repository (https://discourse.knowledgefutures.org/t/feature-introduction-branches/157)
 - As opposed to Learn4, no shortcodes are used - every version is strictly tied to the document in the Git repository
 - As opposed to normal taxonomy, no endings are added to files - they are stored in `/user/pages` with `/keyword`, `/tag`, and as normal, symlinking as much as possible

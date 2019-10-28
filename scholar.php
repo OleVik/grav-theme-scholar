@@ -82,7 +82,7 @@ class Scholar extends Theme
         $this->enable(
             [
                 'onPagesInitialized' => ['onPagesInitialized', 0],
-                'onPageInitialized' => ['linkedData', 0],
+                'onPageInitialized' => ['onPageInitialized', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
                 'onTwigTemplatePaths' => ['templates', 0],
                 'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0]
@@ -102,7 +102,7 @@ class Scholar extends Theme
     public function templates()
     {
         $locator = $this->grav['locator'];
-        foreach ($this->config->get('themes.scholar.components') as $component) {
+        foreach ($this->config->get('theme.components') as $component) {
             $this->grav['twig']->twig_paths[] = $locator->findResource(
                 'theme://components/' . $component
             );
@@ -179,12 +179,23 @@ class Scholar extends Theme
     }
 
     /**
-     * Build Linked Data
+     * Handle current Page
      *
      * @return void
      */
-    public function linkedData()
+    public function onPageInitialized()
     {
+        if (isset($this->grav['page']->header()->theme)
+            && !empty($this->grav['page']->header()->theme)
+        ) {
+            $this->grav['config']->set(
+                'theme',
+                array_merge(
+                    $this->grav['config']->get('theme'),
+                    $this->grav['page']->header()->theme
+                )
+            );
+        }
         if ($this->grav['config']->get('theme.linkeddata')) {
             $ld = new LinkedData($this->grav['language']);
             $ld->buildSchema($this->grav['page']);
@@ -282,7 +293,7 @@ class Scholar extends Theme
     {
         $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
         $locator = $this->grav['locator'];
-        foreach ($this->config->get('themes.scholar.components') as $component) {
+        foreach ($this->config->get('theme.components') as $component) {
             $this->grav['shortcode']->registerAllShortcodes(
                 'theme://components/' . $component . '/shortcodes'
             );

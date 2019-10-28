@@ -1,0 +1,52 @@
+{% extends 'partials/base.html.twig' %}
+
+{% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
+{% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
+
+{% if navigablePage.content is empty %}
+    {% if page.evaluate([{'@self.children': ''}])|length > 0 %}
+        {% set mode = 'children' %}
+        {% set collection = page.evaluate([{'@self.children': ''}]) %}
+    {% elseif page.evaluate([{'@self.siblings': ''}])|length > 0 %}
+        {% set mode = 'siblings' %}
+        {% set collection = page.evaluate([{'@self.siblings': ''}]) %}
+    {% else %}
+        {% set mode = 'blank' %}
+    {% endif %}
+    {% set body_classes = (body_classes|default('cv page listing ' ~ mode)) %}
+{% else %}
+    {% set body_classes = (body_classes|default('cv page')) %}
+{% endif %}
+
+{% block main %}
+
+<main>
+    {% block article %}
+    <article typeof="schema:{{ schema_type(page.template) }}">
+        {% block content %}
+        {% with {
+            'header': page.header.header,
+            'subtitle': page.header.subtitle ?? null,
+            'metadata': true,
+            'content': navigablePage.content|strip_html_tags(['h1'])
+            } %}
+            {{ block('content', 'partials/cv/header.html.twig') }}
+        {% endwith %}
+        <div itemprop="description">
+            {{ page.content }}
+        </div>
+        {% with {
+            'listing': page.header.listing
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+        {% endblock %}
+    </article>
+    {% endblock %}
+</main>
+
+{% block footer %}
+{% include 'partials/footer.html.twig' %}
+{% endblock %}
+
+{% endblock %}

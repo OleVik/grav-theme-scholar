@@ -1,0 +1,37 @@
+{% block content %}
+
+{% block section %}
+<section>
+    {% for key, item in listing if item is not empty %}
+        <h3>{{ key|capitalize }}</h3>
+        {% if item is iterable %}
+            {% for entry in item %}
+            <span>{{ entry.years }}</span>
+            <div class="entry">
+            {% if key == 'experience' %}
+                <h4 itemprop="jobTitle" itemscope itemtype="http://schema.org/Organization">{{ entry.name }}</h4>
+                <em itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">{{ entry.location }}</em>
+                <p itemprop="description" itemscope itemtype="http://schema.org/Organization">{{ entry.description }}</p>
+            {% elseif key == 'education' %}
+                <h4 itemprop="name" itemscope itemtype="http://schema.org/EducationalOccupationalCredential">{{ entry.name }}</h4>
+                <em itemprop="alumniOf" itemscope itemtype="http://schema.org/EducationalOrganization">{{ entry.location }}</em>
+                <p itemprop="description" itemscope itemtype="http://schema.org/EducationalOccupationalCredential">{{ entry.description }}</p>
+            {% elseif key == 'positions' %}
+                <h4 itemprop="roleName" itemscope itemtype="http://schema.org/OrganizationRole">{{ entry.name }}</h4>
+                <em itemprop="name" itemscope itemtype="http://schema.org/Organization">{{ entry.location }}</em>
+                <p itemprop="description" itemscope itemtype="http://schema.org/OrganizationRole">{{ entry.description }}</p>
+            {% else %}
+                <h4>{{ entry.name }}</h4>
+                <em>{{ entry.location }}</em>
+                <p>{{ entry.description }}</p>
+            {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>{{ item }}</p>
+        {% endif %}
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% endblock %}
