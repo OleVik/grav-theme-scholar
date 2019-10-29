@@ -176,6 +176,9 @@ tufte:
       - Theme.css still remains collective
     - [x] Schema-type in ARIA determined dynamically
   - [x] Move logic from Twig-extensions into API
+  - [ ] Decoupled API: https://engagedphp.com/2018/04/implementing-abstract-classes-and-interfaces-with-traits/
+    - [ ] PageLinkedData
+    - [ ] CVLinkedData
 - [x] JS: Search needs to be clickable, not focusable, for A11Y - disappears on tab
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates

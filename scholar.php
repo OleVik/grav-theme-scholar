@@ -28,6 +28,7 @@ use Scholar\API\Content;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 use Grav\Theme\Scholar\API\LinkedData;
+use Grav\Theme\Scholar\LinkedData\PageLinkedData;
 use Grav\Theme\Scholar\API\Utilities;
 use Grav\Theme\Scholar\API\Router;
 
@@ -197,12 +198,12 @@ class Scholar extends Theme
             );
         }
         if ($this->grav['config']->get('theme.linkeddata')) {
-            $ld = new LinkedData($this->grav['language']);
+            $ld = new PageLinkedData($this->grav['language']);
             $ld->buildSchema($this->grav['page']);
             $this->grav['assets']->addInlineJs(
-                LinkedData::getSchema(
+                PageLinkedData::getSchema(
                     $ld->data,
-                    key(LinkedData::getType($this->grav['page']->template())),
+                    key(PageLinkedData::getType($this->grav['page']->template())),
                     true
                 ),
                 ['type' => 'application/ld+json']

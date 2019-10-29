@@ -14,6 +14,7 @@ class ComposerStaticInit785cb74a939a47c9971b9fe8f0e7ca59
         'G' => 
         array (
             'Grav\\Theme\\Scholar\\API\\' => 23,
+            'Grav\\Theme\\Scholar\\' => 19,
         ),
     );
 
@@ -23,6 +24,10 @@ class ComposerStaticInit785cb74a939a47c9971b9fe8f0e7ca59
             0 => __DIR__ . '/..' . '/spatie/schema-org/src',
         ),
         'Grav\\Theme\\Scholar\\API\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/classes',
+        ),
+        'Grav\\Theme\\Scholar\\' => 
         array (
             0 => __DIR__ . '/../..' . '/classes',
         ),
