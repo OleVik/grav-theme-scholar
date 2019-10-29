@@ -27,7 +27,7 @@ use RocketTheme\Toolbox\Event\Event;
 use Scholar\API\Content;
 // use Scholar\API\Data;
 use Grav\Theme\Scholar\API\TaxonomyMap;
-use Grav\Theme\Scholar\API\LinkedData;
+// use Grav\Theme\Scholar\API\LinkedData;
 use Grav\Theme\Scholar\LinkedData\PageLinkedData;
 use Grav\Theme\Scholar\API\Utilities;
 use Grav\Theme\Scholar\API\Router;
@@ -186,6 +186,10 @@ class Scholar extends Theme
      */
     public function onPageInitialized()
     {
+        $call = 'Grav\Theme\Scholar\LinkedData\PageLinkedData';
+        if ($this->grav['page']->template() == 'cv') {
+            $call = 'Grav\Theme\Scholar\LinkedData\CVLinkedData';
+        }
         if (isset($this->grav['page']->header()->theme)
             && !empty($this->grav['page']->header()->theme)
         ) {
@@ -198,12 +202,12 @@ class Scholar extends Theme
             );
         }
         if ($this->grav['config']->get('theme.linkeddata')) {
-            $ld = new PageLinkedData($this->grav['language']);
+            $ld = new $call($this->grav['language']);
             $ld->buildSchema($this->grav['page']);
             $this->grav['assets']->addInlineJs(
-                PageLinkedData::getSchema(
+                $call::getSchema(
                     $ld->data,
-                    key(PageLinkedData::getType($this->grav['page']->template())),
+                    key($call::getType($this->grav['page']->template())),
                     true
                 ),
                 ['type' => 'application/ld+json']

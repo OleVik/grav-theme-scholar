@@ -1,6 +1,6 @@
 <?php
 /**
- * Scholar Theme, Linked Data for Page
+ * Scholar Theme, Linked Data for CV
  *
  * PHP version 7
  *
@@ -18,15 +18,15 @@ use Grav\Common\Language\Language;
 use Grav\Theme\Scholar\API\TaxonomyMap;
 
 /**
- * Linked Data for Page
+ * Linked Data for CV
  *
  * @category LinkedData
- * @package  Grav\Theme\Scholar\LinkedData\PageLinkedData
+ * @package  Grav\Theme\Scholar\LinkedData\CVLinkedData
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
  */
-class PageLinkedData extends AbstractLinkedData
+class CVLinkedData extends AbstractLinkedData
 {
     public $data;
 
