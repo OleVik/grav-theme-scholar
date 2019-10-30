@@ -21,6 +21,7 @@
         }
         h2 {
           grid-column-end: span 8;
+          align-self: baseline;
         }
         .details {
           grid-column-end: span 4;
@@ -29,6 +30,13 @@
           align-items: flex-end;
           * {
             width: min-content;
+            white-space: nowrap;
+          }
+          > div {
+            display: inherit;
+            flex-direction: inherit;
+            align-items: inherit;
+            margin-bottom: 1rem;
           }
         }
       }
@@ -43,9 +51,9 @@
           grid-column-end: span 10;
           grid-column-start: 3;
         }
-        span {
+        .date {
           grid-column-end: span 2;
-          justify-self: right;
+          text-align: right;
           margin-right: 1.875rem;
           font-size: 1.2rem;
         }
@@ -63,10 +71,6 @@
           h4 {
             margin: 0;
             font-weight: 600;
-            &:after {
-              content: ", ";
-              margin-right: 0.35rem;
-            }
           }
           p {
             flex-basis: 100%;

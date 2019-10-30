@@ -55,8 +55,7 @@ class PageLinkedData extends AbstractLinkedData
      */
     public function buildSchema(Page $page, bool $slave = false)
     {
-        $date = $page->date();
-        $date = \DateTime::createFromFormat('U', $date)->format('Y-m-d H:i:s');
+        $date = \DateTime::createFromFormat('U', $page->date())->format('Y-m-d H:i:s');
         $header = (array) $page->header();
         $data = [
             'name' => $page->title(),

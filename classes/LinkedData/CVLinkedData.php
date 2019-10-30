@@ -55,24 +55,13 @@ class CVLinkedData extends AbstractLinkedData
      */
     public function buildSchema(Page $page, bool $slave = false)
     {
-        $date = $page->date();
-        $date = \DateTime::createFromFormat('U', $date)->format('Y-m-d H:i:s');
+        $date = \DateTime::createFromFormat('U', $page->date())->format('Y-m-d H:i:s');
         $header = (array) $page->header();
         $data = [
             'name' => $page->title(),
             'datePublished' => $date,
             'url' => $page->url(true, true, true),
-            'inLanguage' => $page->language(),
-            'accessibilityAPI' => 'ARIA',
-            'accessibilityFeature' => [
-                'highContrastDisplay/CSSEnabled',
-                'bookmarks'
-            ],
-            'accessibilityControl' => [
-                'fullKeyboardControl',
-                'fullMouseControl',
-                'fullTouchControl'
-            ]
+            'inLanguage' => $page->language() ?? $this->language->getDefault()
         ];
         if (!empty(self::getAuthor($header))) {
             $data['author'] = self::getAuthor($header);

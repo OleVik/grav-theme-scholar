@@ -1,22 +1,6 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
-{% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
-
-{% if navigablePage.content is empty %}
-    {% if page.evaluate([{'@self.children': ''}])|length > 0 %}
-        {% set mode = 'children' %}
-        {% set collection = page.evaluate([{'@self.children': ''}]) %}
-    {% elseif page.evaluate([{'@self.siblings': ''}])|length > 0 %}
-        {% set mode = 'siblings' %}
-        {% set collection = page.evaluate([{'@self.siblings': ''}]) %}
-    {% else %}
-        {% set mode = 'blank' %}
-    {% endif %}
-    {% set body_classes = (body_classes|default('cv page listing ' ~ mode)) %}
-{% else %}
-    {% set body_classes = (body_classes|default('cv page')) %}
-{% endif %}
+{% set body_classes = (body_classes|default('cv page')) %}
 
 {% block main %}
 
@@ -24,22 +8,98 @@
     {% block article %}
     <article typeof="schema:{{ schema_type(page.template) }}">
         {% block content %}
-        {% with {
-            'header': page.header.header,
-            'subtitle': page.header.subtitle ?? null,
-            'metadata': true,
-            'content': navigablePage.content|strip_html_tags(['h1'])
-            } %}
-            {{ block('content', 'partials/cv/header.html.twig') }}
-        {% endwith %}
-        <div itemprop="description">
+
+        {% if page.header.basics and page.header.basics is not empty %}
+            {% with {
+                'basics': page.header.basics
+                } %}
+                {{ block('content', 'partials/cv/header.html.twig') }}
+            {% endwith %}
+        {% endif %}
+
+        <div>
+        {% if page.content is not empty %}
             {{ page.content }}
+        {% elseif page.header.basics.summary is not empty %}
+            {{  page.header.basics.summary|markdown }}
+        {% endif %}
         </div>
-        {% with {
-            'listing': page.header.listing
-            } %}
-            {{ block('content', 'partials/cv/listing.html.twig') }}
-        {% endwith %}
+
+        <section>
+        {% if page.header.work and page.header.work is not empty %}
+            {% with {
+                'name': 'Work',
+                'listing': page.header.work
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.volunteer and page.header.volunteer is not empty %}
+            {% with {
+                'name': 'Volunteer',
+                'listing': page.header.volunteer
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.education and page.header.education is not empty %}
+            {% with {
+                'name': 'Education',
+                'listing': page.header.education
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.awards and page.header.awards is not empty %}
+            {% with {
+                'name': 'Awards',
+                'listing': page.header.awards
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.publications and page.header.publications is not empty %}
+            {% with {
+                'name': 'Publications',
+                'listing': page.header.publications
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.skills and page.header.skills is not empty %}
+            {% with {
+                'name': 'Skills',
+                'listing': page.header.skills
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.languages and page.header.languages is not empty %}
+            {% with {
+                'name': 'Languages',
+                'listing': page.header.languages
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.interests and page.header.interests is not empty %}
+            {% with {
+                'name': 'Interests',
+                'listing': page.header.interests
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.references and page.header.references is not empty %}
+            {% with {
+                'name': 'References',
+                'listing': page.header.references
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        </section>
+
         {% endblock %}
     </article>
     {% endblock %}

@@ -191,6 +191,9 @@ tufte:
   - https://gist.github.com/danielantelo/218015d40f346b964aac
   - https://jsonresume.org/schema/
   - [ ] Test JSONLD
+  - Validate JSONLD
+    - https://github.com/swaggest/php-json-schema
+    - https://github.com/opis/json-schema
 
 ### Version spec
 

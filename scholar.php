@@ -177,6 +177,7 @@ class Scholar extends Theme
     public function onPagesInitialized()
     {
         $Router = new Router($this->grav);
+        // dump($this->grav['page']->translatedLanguages(true));
     }
 
     /**

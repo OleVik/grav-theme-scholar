@@ -1,24 +1,55 @@
 {% block content %}
 
 <header>
-    <h1 itemprop="name">{{ header.title }}</h1>
-    <h2>{{ header.subtitle }}</h2>
+    <h1>{{ basics.name }}</h1>
+    {% if basics.label %}<h2>{{ basics.label }}</h2>{% endif %}
+
+    {% block details %}
     <div class="details">
-    {% for key, item in header.items if item is not empty %}
-        {% if key == 'location' %}
-            {% set itemprop = 'homeLocation' %}
-        {% elseif key == 'phone' %}
-            {% set itemprop = 'telephone' %}
-        {% elseif key == 'email' %}
-            {% set itemprop = 'email' %}
-        {% endif %}
+
+    {% block basics %}
+    <div>
+    {% if basics.email %}<span>
+        <a href="mailto:{{ basics.email|safe_email }}">{{ basics.email|safe_email }}</a>
+    </span>{% endif %}
+    {% if basics.phone %}<span>
+        <a href="tel:{{ basics.phone }}">{{ basics.phone }}</a>
+    </span>{% endif %}
+    {% if basics.website %}<span>
+        <a href="{{ basics.website }}">{{ basics.website }}</a>
+    </span>{% endif %}
+    </div>
+    {% endblock %}
+
+    {% block location %}
+    <div>
+    {% if basics.location and basics.location is iterable %}
+        {% if basics.location.address %}<span>{{ basics.location.address }}</span>{% endif %}
+        {% if basics.location.postalCode %}<span>{{ basics.location.postalCode }}</span>{% endif %}
+        {% set group = [basics.location.city, basics.location.region, basics.location.countryCode] %}
+        <span>{{ group|filter(v => v != null)|join(', ') }}</span>
+    {% elseif basics.location and basics.location is not iterable %}
+        <span>{{ basics.location }}</span>
+    {% endif %}
+    </div>
+    {% endblock %}
+
+    {% block profiles %}
+    <div>
+    {% for key, item in basics.profiles if item is not empty %}
         {% if item is iterable %}
-            <a href="{{ item.url }}" itemprop="url">{{ item.name }}</a>
+            <a href="{{ item.url }}" title="{{ item.username }} {{ "THEME_SCHOLAR.GENERIC.AT"|t }} {{ item.network }}">{{ item.url }}</a>
         {% else %}
-            <span itemprop="{{ itemprop }}">{{ item }}</span>
+            <span>
+                <a href="{{ item }}">{{ item }}</a>
+            </span>
         {% endif %}
     {% endfor %}
     </div>
+    {% endblock %}
+
+    </div>
+    {% endblock %}
 </header>
 
 {% endblock %}
