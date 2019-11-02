@@ -20,12 +20,20 @@
         <div>
         {% if page.content is not empty %}
             {{ page.content }}
-        {% elseif page.header.basics.summary is not empty %}
-            {{  page.header.basics.summary|markdown }}
+        {% elseif page.header.basics.description is not empty %}
+            {{  page.header.basics.description|markdown }}
         {% endif %}
         </div>
 
         <section>
+        {% if page.header.competencies and page.header.competencies is not empty %}
+            {% with {
+                'name': 'Competencies',
+                'listing': page.header.competencies
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
         {% if page.header.work and page.header.work is not empty %}
             {% with {
                 'name': 'Work',
@@ -58,30 +66,6 @@
                 {{ block('content', 'partials/cv/listing.html.twig') }}
             {% endwith %}
         {% endif %}
-        {% if page.header.publications and page.header.publications is not empty %}
-            {% with {
-                'name': 'Publications',
-                'listing': page.header.publications
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.skills and page.header.skills is not empty %}
-            {% with {
-                'name': 'Skills',
-                'listing': page.header.skills
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.languages and page.header.languages is not empty %}
-            {% with {
-                'name': 'Languages',
-                'listing': page.header.languages
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
         {% if page.header.interests and page.header.interests is not empty %}
             {% with {
                 'name': 'Interests',
@@ -90,10 +74,18 @@
                 {{ block('content', 'partials/cv/listing.html.twig') }}
             {% endwith %}
         {% endif %}
-        {% if page.header.references and page.header.references is not empty %}
+        {% if page.header.publications and page.header.publications is not empty %}
             {% with {
-                'name': 'References',
-                'listing': page.header.references
+                'name': 'Publications',
+                'listing': page.header.publications
+                } %}
+                {{ block('content', 'partials/cv/listing.html.twig') }}
+            {% endwith %}
+        {% endif %}
+        {% if page.header.languages and page.header.languages is not empty %}
+            {% with {
+                'name': 'Languages',
+                'listing': page.header.languages
                 } %}
                 {{ block('content', 'partials/cv/listing.html.twig') }}
             {% endwith %}

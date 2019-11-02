@@ -205,6 +205,7 @@ class Scholar extends Theme
         if ($this->grav['config']->get('theme.linkeddata')) {
             $ld = new $call($this->grav['language']);
             $ld->buildSchema($this->grav['page']);
+            dump($ld->data);
             $this->grav['assets']->addInlineJs(
                 $call::getSchema(
                     $ld->data,

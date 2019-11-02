@@ -165,7 +165,7 @@ abstract class AbstractLinkedData implements LinkedDataInterface
      */
     public function getSchemas(): string
     {
-        $data = array();
+        $data = array('@context' => 'http://schema.org');
         foreach ($this->data as $route => $params) {
             $data[] = self::getSchema($params, $params['@type'], true);
         }

@@ -13,6 +13,7 @@
  */
 namespace Grav\Theme\Scholar\LinkedData;
 
+use Grav\Common\Inflector;
 use Grav\Common\Page\Page;
 use Grav\Common\Language\Language;
 use Grav\Theme\Scholar\API\TaxonomyMap;
@@ -58,30 +59,102 @@ class CVLinkedData extends AbstractLinkedData
         $date = \DateTime::createFromFormat('U', $page->date())->format('Y-m-d H:i:s');
         $header = (array) $page->header();
         $data = [
-            'name' => $page->title(),
+            '@id' => $header['basics']['name'] ? '#' . Inflector::hyphenize($header['basics']['name']) : '#' . $page->slug(),
             'datePublished' => $date,
             'url' => $page->url(true, true, true),
             'inLanguage' => $page->language() ?? $this->language->getDefault()
         ];
-        if (!empty(self::getAuthor($header))) {
-            $data['author'] = self::getAuthor($header);
+        if (isset($header['basics']['name'])) {
+            $data['name'] = $header['basics']['name'];
         }
-        if (!empty(self::getImage($header, $page->media()->all()))) {
-            $data['image'] = self::getImage($header, $page->media()->all());
+        if (isset($header['basics']['label'])) {
+            $data['jobTitle'] = $header['basics']['label'];
         }
-        if (isset($header['taxonomy'])) {
-            $taxonomy = TaxonomyMap::pluralize($header['taxonomy']);
-            if (isset($taxonomy['categories'])) {
-                if (is_array($taxonomy['categories'])) {
-                    $taxonomy['categories'] = implode(",", $taxonomy['categories']);
-                }
-                $data['articleSection'] = $taxonomy['categories'];
+        if (isset($header['basics']['email'])) {
+            $data['email'] = $header['basics']['email'];
+        }
+        if (isset($header['basics']['phone'])) {
+            $data['telephone'] = $header['basics']['phone'];
+        }
+        if (isset($header['basics']['url'])) {
+            $data['url'] = $header['basics']['url'];
+        }
+        if (isset($header['basics']['description'])) {
+            $data['description'] = $header['basics']['description'];
+        }
+        if (isset($header['basics']['location']) && is_array($header['basics']['location'])) {
+            $data['address'] = array('@type' => 'PostalAddress');
+            if (isset($header['basics']['location']['address'])) {
+                $data['address']['streetAddress'] = $header['basics']['location']['address'];
             }
-            if (isset($taxonomy['tags'])) {
-                if (is_array($taxonomy['tags'])) {
-                    $taxonomy['tags'] = implode(",", $taxonomy['tags']);
+            if (isset($header['basics']['location']['postalCode'])) {
+                $data['address']['postalCode'] = $header['basics']['location']['postalCode'];
+            }
+            if (isset($header['basics']['location']['city'])) {
+                $data['address']['addressLocality'] = $header['basics']['location']['city'];
+            }
+            if (isset($header['basics']['location']['region'])) {
+                $data['address']['addressRegion'] = $header['basics']['location']['region'];
+            }
+        } elseif (isset($header['basics']['location']) && is_string($header['basics']['location'])) {
+            $data['homeLocation'] = $header['basics']['location'];
+        }
+        if (isset($header['basics']['profiles']) && is_array($header['basics']['profiles'])) {
+            $data['contactPoint'] = array();
+            foreach ($header['basics']['profiles'] as $profile) {
+                $contactPoint = array('@type' => 'ContactPoint');
+                if (isset($profile['network']) && is_string($profile['network'])) {
+                    $contactPoint['contactType'] = $profile['network'];
                 }
-                $data['keywords'] = $taxonomy['tags'];
+                if (isset($profile['username']) && is_string($profile['username'])) {
+                    $contactPoint['identifier'] = $profile['username'];
+                }
+                if (isset($profile['url']) && is_string($profile['url'])) {
+                    $contactPoint['url'] = $profile['url'];
+                }
+                if (count(array_keys($contactPoint)) > 1) {
+                    $data['contactPoint'][] = $contactPoint;
+                }
+            }
+        }
+        $data['alumniOf'] = array();
+        if (isset($header['work'])) {
+            $work = self::alumni($header, $data, 'work');
+            if (isset($work['worksFor'])) {
+                $data['worksFor'] = $work['worksFor'];
+            }
+            if (isset($work['alumniOf'])) {
+                $data['alumniOf'] = array_merge($data['alumniOf'], $work['alumniOf']);
+            }
+        }
+        if (isset($header['volunteer'])) {
+            $volunteer = self::alumni($header, $data, 'volunteer');
+            if (isset($volunteer['alumniOf'])) {
+                $data['alumniOf'] = array_merge($data['alumniOf'], $volunteer['alumniOf']);
+            }
+        }
+        if (isset($header['education'])) {
+            $education = self::alumni($header, $data, 'education');
+            if (isset($education['alumniOf'])) {
+                $data['alumniOf'] = array_merge($data['alumniOf'], $education['alumniOf']);
+            }
+        }
+        if (isset($header['awards'])) {
+            $awards = self::award($header, $data, 'awards');
+            if (!empty($awards)) {
+                $data['award'] = $awards;
+            }
+        }
+        if (isset($header['competencies'])) {
+            $competencies = self::competency($header, $data, 'competencies');
+            if (!empty($competencies)) {
+                $data['knowsAbout'] = $competencies;
+            }
+        }
+        if (isset($header['languages'])) {
+            $languages = self::competency($header, $data, 'languages');
+            if (!empty($languages)) {
+                $data['knowsLanguage'] = $languages;
             }
         }
         $schema = self::getType($page->template());
@@ -116,5 +189,147 @@ class CVLinkedData extends AbstractLinkedData
                 $this->data['mainEntity'][] = $schemaCollection;
             }
         }
+    }
+
+    /**
+     * Parse Alumni-data
+     *
+     * @param array  $header Page-header
+     * @param array  $data   Data-container
+     * @param string $type   Which header-property to parse
+     *
+     * @return void|array Alumni-data
+     */
+    public static function alumni(array $header, array $data, string $type)
+    {
+        $return = array();
+        if (is_array($header[$type]) && count($header[$type]) > 0) {
+            if ($type == 'work') {
+                if (isset($header[$type][0]) && !empty($header[$type][0])) {
+                    $worksFor = array('@type' => 'Organization');
+                    if (isset($header[$type][0]['name']) && is_string($header[$type][0]['name'])) {
+                        $worksFor['name'] = $header[$type][0]['name'];
+                    }
+                    if (isset($header[$type][0]['url']) && is_string($header[$type][0]['url'])) {
+                        $worksFor['url'] = $header[$type][0]['url'];
+                    }
+                }
+                $return['worksFor'] = $worksFor;
+                unset($header[$type][0]);
+            }
+            if (count($header[$type]) >= 1) {
+                foreach ($header[$type] as $item) {
+                    $Organization = array('@type' => 'Organization');
+                    if (isset($item['name']) && is_string($item['name'])) {
+                        $Organization['name'] = $item['name'];
+                    }
+                    if (isset($item['url']) && is_string($item['url'])) {
+                        $Organization['url'] = $item['url'];
+                    }
+                    if (isset($item['title']) && is_string($item['title'])) {
+                        $Organization['employee'] = array(
+                            '@type' => 'Person',
+                            'sameAs' => $data['@id'],
+                            'hasOccupation' => ['@type' => 'OrganizationRole']
+                        );
+                        $Organization['employee']['hasOccupation']['roleName'] = $item['title'];
+                        if (isset($item['startDate']) && is_string($item['startDate'])) {
+                            $Organization['employee']['hasOccupation']['startDate'] = $item['startDate'];
+                        }
+                        if (isset($item['endDate']) && is_string($item['endDate'])) {
+                            $Organization['employee']['hasOccupation']['endDate'] = $item['endDate'];
+                        }
+                        if (isset($item['description']) && is_string($item['description'])) {
+                            $Organization['employee']['hasOccupation']['description'] = $item['description'];
+                        }
+                    }
+                    $return['alumniOf'][] = $Organization;
+                }
+            }
+            if (!empty($return)) {
+                return $return;
+            }
+        }
+        return;
+    }
+
+    /**
+     * Parse Award-data
+     *
+     * @param array  $header Page-header
+     * @param array  $data   Data-container
+     * @param string $type   Which header-property to parse
+     *
+     * @return void|string Awards
+     */
+    public static function award(array $header, array $data, string $type)
+    {
+        $award = '';
+        if (is_array($header[$type]) && count($header[$type]) > 0) {
+            foreach ($header[$type] as $item) {
+                if (isset($item['title']) && is_string($item['title'])) {
+                    $award .= $item['title'];
+                }
+                if (isset($item['date']) && is_string($item['date'])) {
+                    $award .= ' (' . $item['date'] . ')';
+                }
+                if (isset($item['name']) && is_string($item['name'])) {
+                    $award .= ': ' . $item['name'];
+                }
+                if (isset($item['description']) && is_string($item['description'])) {
+                    $award .= ', ' . $item['description'];
+                }
+                $award .= '; ';
+            }
+        }
+        if (!empty($award)) {
+            return rtrim($award, '; ');
+        }
+        return;
+    }
+
+    /**
+     * Parse Skills-data
+     *
+     * @param array  $header Page-header
+     * @param array  $data   Data-container
+     * @param string $type   Which header-property to parse
+     *
+     * @return void|string Skills
+     */
+    public static function competency(array $header, array $data, string $type)
+    {
+        $competency = '';
+        if (is_array($header[$type]) && count($header[$type]) > 0) {
+            foreach ($header[$type] as $item) {
+                if (isset($item['title']) && is_string($item['title'])) {
+                    $competency .= $item['title'];
+                }
+                if (isset($item['date']) && is_string($item['date'])) {
+                    $competency .= ' (' . $item['date'] . ')';
+                }
+                if (isset($item['level']) && is_string($item['level'])) {
+                    $competency .= ' (' . $item['level'] . ')';
+                }
+                if (isset($item['name']) && is_string($item['name'])) {
+                    $competency .= ': ' . $item['name'];
+                }
+                if (isset($item['description']) && is_string($item['description'])) {
+                    $competency .= ', ' . $item['description'];
+                }
+                if (isset($item['keywords']) && is_array($item['keywords']) && count($item['keywords']) > 0) {
+                    $keywords = '';
+                    foreach ($item['keywords'] as $keyword) {
+                        $keywords .= $keyword . ', ';
+                    }
+                    $competency .= ': ' . rtrim($keywords, ', ');
+                }
+                $competency .= '; ';
+            }
+            if (!empty($competency)) {
+                return rtrim($competency, '; ');
+            }
+        }
+        return;
     }
 }

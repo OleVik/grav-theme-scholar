@@ -19,24 +19,18 @@
     </div>
     {% if item is iterable %}
         <div class="entry">
-            <h4>{{ item.position ?? item.area ?? item.title ?? item.name ?? item.language }}</h4>
-            {% if item.company is defined 
-                or item.organization is defined 
-                or item.institution is defined 
-                or item.awarder is defined 
-                or item.publisher is defined 
-                or item.level is defined 
-                or item.fluency is defined 
-            %}
+            {% if item.title is defined %}
+            <h4>{{ item.title }}</h4>
+            {% endif %}
+            {% if item.name is defined or item.level is defined %}
             <em>, 
-                {% if item.website %}<a href="{{ item.website }}">{% endif %}
-                {{ item.company ?? item.organization ?? item.institution ?? item.awarder ?? item.publisher ?? item.level ?? item.fluency }}
-                {% if item.website %}</a>{% endif %}
+                {% if item.url %}<a href="{{ item.url }}">{% endif %}
+                {{ item.name ?? item.level }}
+                {% if item.url %}</a>{% endif %}
             </em>
             {% endif %}
-            {% if item.summary %}<p>{{ item.summary }}</p>{% endif %}
-            {% if item.keywords %}<p>{{ item.keywords|join(", ") }}</p>{% endif %}
-            {% if item.reference %}<p>{{ item.reference }}</p>{% endif %}
+            {% if item.description is defined %}{{ item.description|markdown }}{% endif %}
+            {% if item.keywords is defined %}{{ item.keywords|join(', ')|markdown }}{% endif %}
         </div>
     {% else %}
         <p>{{ item }}</p>
