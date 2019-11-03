@@ -17,7 +17,7 @@ use Grav\Common\Grav;
 use Grav\Common\Page\Page;
 use Grav\Common\Language\Language;
 use Spatie\SchemaOrg\Schema;
-use Grav\Theme\Scholar\API\Utilities;
+use Grav\Theme\Scholar\Utilities;
 use Grav\Theme\Scholar\LinkedData\LinkedDataInterface;
 
 /**

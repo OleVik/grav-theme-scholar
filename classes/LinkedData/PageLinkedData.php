@@ -15,7 +15,7 @@ namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Page\Page;
 use Grav\Common\Language\Language;
-use Grav\Theme\Scholar\API\TaxonomyMap;
+use Grav\Theme\Scholar\TaxonomyMap;
 
 /**
  * Linked Data for Page

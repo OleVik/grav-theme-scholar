@@ -17,7 +17,6 @@ routes:
   embed: "/embed"
   search: "/search"
   print: "/print"
-linkeddata: true
 itemize: true
 components:
   - blog
@@ -26,6 +25,10 @@ components:
   - docs
   - sequence
   - tufte
+linkeddata:
+  enabled: true
+  default: 'Grav\Theme\Scholar\LinkedData\PageLinkedData'
+  cv: 'Grav\Theme\Scholar\LinkedData\CVLinkedData'
 flexsearch:
   enabled: true
   index:

@@ -113,87 +113,18 @@ tufte:
 ## TODO
 
 - [x] Global search-page, adapting to root templates
-  - [x] Meta-search Page (query params)
-    - [x] Integrate into Global search-page
   - [ ] Generate data via Enduring, and in Admin
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
-  - [x] Taxonomy
-    - [ ] Versions alá Translations-plugin (/lang/version/slug): Delegate to extension
-      - [ ] Also render (optional, when present)
-        - As Read The Docs: Latest (develop-branch or default branch), Stable (master-branch or latest tag), version-specific (tag) - https://docs.readthedocs.io/en/stable/versions.html
-        - URL/lang/version/route - version can be keyword (`latest`/`default`, `stable`/none defined, tag with/without `v`-prefix)
-        - Read the Docs supports two workflows for versioning: based on tags or branches. **If you have at least one tag, tags will take preference over branches when selecting the stable version.**
-        - PubPub: https://discourse.knowledgefutures.org/t/feature-introduction-branches/157
-  - [x] Make optional
-- [x] Book root template
-  - [ ] Paged.js, somewhat too niche for general applicability
-  - [ ] Render all
-  - [ ] Render singular
-  - [x] Listing
-- [x] Docs keyboard navigation (prev next, accessibility)
-  - [x] Design for listing template
-- [x] Blog Post template (post.html.twig) extends page.html.twig - does this cause a semantic conflict?
 - [x] Responsive styling
+  - [ ] **CV**
 - [x] Styles
-  - [x] Integrate Type specific variants into common base
-  - [x] Minimize conflicts
-    - [x] Resolve header and primary color lack of contrast
-    - [ ] Across styles
-  - [x] Print style
-    - [x] Print all, subset, or collection
-    - From .print or print-template? Or collection-template?
-    - If print-collection defined, and requested `.print` custom content type, then render the collection
-      - Handled by `handler` in scholar.php, method in Content API
-    - [x] Router API: Print-collection in parent of `/print`
-      - [x] Data API: Linked Data in JSON including content
-      - [x] Embed API (chromeless)
-      - [x] Print-collection in parent of `/print`
-      - [x] Inconsistent rendering: Sherlock Holmes
-        - Using `print: items: "@self.descendants"` in book.md
-        - Eg., only one chapter renders, only some text
-        - Dump filenames or paths to check integrity
-        - Page->content() cannot fire more than once ...
-        - [ ] Optimize Source API for general- and special-case
-    - [ ] Compare time- and memory-performance of gathering Page-content() and exiting versus current iteration
-  - [x] Remove dependency on color-mod-function
-- [x] Header- and paragraph-numbering (optional, via JS)
-  - [x] Basic data in data-attribute/ARIA-attribute (`aria-label` = counter + title, not `aria-level`)
-    - [x] Basic implementation in Tufte, generalize?
-      - [x] Already used for most content-templates
-      - [x] assignCounter()-method
-      - [x] Style with CSS (data using `attr()`-property)
-    - [x] Also footnotes (done by Markdown Extra), sidenotes (done by Tufte itself), figures (done) - as explicitly linked to tags as possible
-  - [x] A11y fails in CSS: https://thatdevgirl.com/blog/before-after-accessibility, https://tink.uk/accessibility-support-for-css-generated-content/, https://www.powermapper.com/tests/screen-readers/content/css-generated-content/
-    - [x] Implemented as a root-level class
-- [x] API standardisation
-  - [x] All Page's must implement Linked Data
-  - [x] All Page's should implement a REST endpoint? No:
-    - Better to test with API-plugin and leave it to that
-  - [x] WIP: Determine Schema from templates? Yes
-    - [x] Schema must be a separate file, otherwise API-changes are never reflect after editing
-    - [x] Move components into root-level directory, keeping templates, Schema, and assets separate
-      - Theme.css still remains collective
-    - [x] Schema-type in ARIA determined dynamically
-  - [x] Move logic from Twig-extensions into API
-  - [ ] Decoupled API: https://engagedphp.com/2018/04/implementing-abstract-classes-and-interfaces-with-traits/
-    - [ ] PageLinkedData
-    - [ ] CVLinkedData
-- [x] JS: Search needs to be clickable, not focusable, for A11Y - disappears on tab
+  - [ ] Minimize conflicts across styles
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
-- [x] Git link logic
-- [x] MergeConfig: Page- and Theme-settings onPage, via `theme`-FrontMatter variable
 - [ ] Map features to settings
   - [ ] Admin blueprints
-- [x] Port [PAW](https://github.com/OleVik/personal-academic-website) to CV-component
-  - https://gist.github.com/danielantelo/218015d40f346b964aac
-  - https://jsonresume.org/schema/
-  - [ ] Test JSONLD
-  - Validate JSONLD
-    - https://github.com/swaggest/php-json-schema
-    - https://github.com/opis/json-schema
 
 ### Version spec
 
@@ -268,5 +199,4 @@ tufte:
      - WYSIWYG, not WYSIWYM. Currently only [CKEditor](https://ckeditor.com/docs/ckeditor5/latest/features/markdown.html)?
        - Features like [Gutenberg](https://wordpress.org/gutenberg/), [VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor)?
      - Lightweight Admin-implementation
-   - [ ] Port [PAW](https://github.com/OleVik/personal-academic-website) as personal page
-   - [ ] Implement a PowerPoint-equivalent using [Fullpage](https://github.com/OleVik/grav-plugin-fullpage)
+  - [ ] Paged.js, somewhat too niche for general applicability

@@ -44,24 +44,21 @@
         margin-top: 2rem;
       }
       section {
-        display: grid;
         align-items: baseline;
         margin-top: 0rem;
-        h3 {
-          grid-column-end: span 10;
-          grid-column-start: 3;
-        }
-        .date {
-          grid-column-end: span 2;
-          text-align: right;
-          margin-right: 1.875rem;
-          font-size: 1.2rem;
-        }
         .entry {
-          grid-column-end: span 10;
           display: flex;
           flex-wrap: wrap;
           align-items: baseline;
+          justify-content: space-between;
+          .date {
+            margin-right: 1.875rem;
+            text-align: left;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            flex-basis: 6.25rem;
+            order: 1;
+          }
           h4,
           em {
             font-size: 1.2rem;
@@ -71,9 +68,15 @@
           h4 {
             margin: 0;
             font-weight: 600;
+            order: 2;
+          }
+          em {
+            flex: 1;
+            order: 3;
           }
           p {
             flex-basis: 100%;
+            order: 4;
           }
         }
         > p {

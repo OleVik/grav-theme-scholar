@@ -1,17 +1,16 @@
 <?php
 /**
- * Scholar Theme, Content API
+ * Scholar Theme, Content
  *
  * PHP version 7
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-plugin-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
  */
-namespace Grav\Theme\Scholar\API;
+namespace Grav\Theme\Scholar;
 
 use Grav\Common\Grav;
 use Grav\Common\Plugin;
@@ -21,13 +20,13 @@ use Grav\Common\Page\Media;
 use Grav\Common\Page\Header;
 use Grav\Common\Page\Collection;
 use RocketTheme\Toolbox\Event\Event;
-use Grav\Theme\Scholar\API\Utilities;
+use Grav\Theme\Scholar\Utilities;
 
 /**
- * Content API
+ * Content
  *
  * @category Extensions
- * @package  Grav\Theme\Scholar\API
+ * @package  Grav\Theme\Scholar\Content
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar

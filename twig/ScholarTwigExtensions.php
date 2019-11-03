@@ -5,7 +5,7 @@
  * PHP version 7
  *
  * @category API
- * @package  Grav\Theme\Scholar
+ * @package  Grav\Theme
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
@@ -13,15 +13,15 @@
 namespace Grav\Theme;
 
 use Grav\Common\Grav;
-use Grav\Theme\Scholar\API\Content;
-use Grav\Theme\Scholar\API\TaxonomyMap;
-use Grav\Theme\Scholar\API\LinkedData;
+use Grav\Theme\Scholar\Content;
+use Grav\Theme\Scholar\TaxonomyMap;
+use Grav\Theme\Scholar\LinkedData\AbstractLinkedData;
 
 /**
  * Scholar Theme, Twig Extensions
  *
  * @category Extensions
- * @package  Grav\Theme
+ * @package  Grav\Theme\ScholarTwigExtensions
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
@@ -145,7 +145,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public function getSchemaType(string $template): string
     {
-        return key(LinkedData::getType($template));
+        return key(AbstractLinkedData::getType($template));
     }
 
     /**
@@ -231,7 +231,6 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function getTaxonomyMap(): array
     {
-        // include __DIR__ . '/../vendor/autoload.php';
         $TaxonomyMap = new TaxonomyMap();
         return $TaxonomyMap->get();
     }
@@ -245,7 +244,6 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public function getPageTaxonomyMap(string $route): array
     {
-        // include __DIR__ . '/../vendor/autoload.php';
         $TaxonomyMap = new TaxonomyMap();
         return $TaxonomyMap->getPage($route);
     }
@@ -259,7 +257,6 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public function getDescendantsTaxonomyMap(string $route): array
     {
-        // include __DIR__ . '/../vendor/autoload.php';
         $TaxonomyMap = new TaxonomyMap();
         return $TaxonomyMap->getDescendants($route);
     }
@@ -274,7 +271,6 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public function limit(array $list, int $length = 10)
     {
-        // include __DIR__ . '/../vendor/autoload.php';
         return TaxonomyMap::limit($list, $length);
     }
 
@@ -288,7 +284,6 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public function threshold(array $list, int $threshold = 10)
     {
-        // include __DIR__ . '/../vendor/autoload.php';
         return TaxonomyMap::threshold($list, $threshold);
     }
 

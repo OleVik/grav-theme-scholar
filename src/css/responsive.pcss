@@ -28,6 +28,19 @@
       }
     }
   }
+  .cv {
+    main {
+      article {
+        section {
+          .entry {
+            .date {
+              flex-basis: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 @media (max-width: 768px) {
   header form[role="search"] {
@@ -52,7 +65,7 @@
       }
       .links {
         order: 2;
-        flex: 1 0 1|%;
+        flex: 1 0 1%;
       }
       .menu {
         order: 1;
@@ -119,6 +132,20 @@
       grid-column-end: span 12;
     }
   }
+  .cv {
+    main {
+      article {
+        padding: 2rem;
+        section {
+          .entry {
+            .date {
+              order: 4;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 992px) {
@@ -157,6 +184,23 @@
     }
     .sidebar {
       grid-column-end: span 3;
+    }
+  }
+  .cv {
+    main {
+      article {
+        padding: 2rem;
+        section {
+          h3 {
+            margin-left: 8.125rem;
+          }
+          .entry {
+            p {
+              margin-left: 8.125rem;
+            }
+          }
+        }
+      }
     }
   }
 }

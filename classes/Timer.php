@@ -4,25 +4,23 @@
  *
  * PHP version 7
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-theme-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-theme-scholar
  */
 
-namespace Grav\Theme\Scholar\API;
+namespace Grav\Theme\Scholar;
 
 /**
  * Class Generic Timer
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-theme-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar\Timer
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-theme-scholar
  */
 class Timer
 {

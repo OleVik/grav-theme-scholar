@@ -1,17 +1,16 @@
 <?php
 /**
- * Scholar Theme, Utilities API
+ * Scholar Theme, Utilities
  *
  * PHP version 7
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-plugin-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-scholar
  */
-namespace Grav\Theme\Scholar\API;
+namespace Grav\Theme\Scholar;
 
 use PHPExtra\Sorter\Sorter;
 use PHPExtra\Sorter\Strategy\SimpleSortStrategy;
@@ -21,10 +20,10 @@ use PHPExtra\Sorter\Comparator\DateTimeComparator;
 use PHPExtra\Sorter\Comparator\UnicodeCIComparator;
 
 /**
- * Utilities API
+ * Utilities
  *
  * @category Extensions
- * @package  Grav\Theme\Scholar\API
+ * @package  Grav\Theme\Scholar\Utilities
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar

@@ -13,24 +13,12 @@
  */
 namespace Grav\Theme;
 
-use Grav\Common\Grav;
 use Grav\Common\Theme;
-use Grav\Common\Taxonomy;
 use Grav\Common\Utils;
-use Grav\Common\Inflector;
-use Grav\Common\Page\Page;
-use Grav\Common\Page\Media;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
-use Grav\Plugin\Taxonomylist;
-use RocketTheme\Toolbox\Event\Event;
-use Scholar\API\Content;
-// use Scholar\API\Data;
-use Grav\Theme\Scholar\API\TaxonomyMap;
-// use Grav\Theme\Scholar\API\LinkedData;
-use Grav\Theme\Scholar\LinkedData\PageLinkedData;
-use Grav\Theme\Scholar\API\Utilities;
-use Grav\Theme\Scholar\API\Router;
+use Grav\Theme\Scholar\Utilities;
+use Grav\Theme\Scholar\Router;
 
 /**
  * Scholar Theme
@@ -187,25 +175,27 @@ class Scholar extends Theme
      */
     public function onPageInitialized()
     {
-        $call = 'Grav\Theme\Scholar\LinkedData\PageLinkedData';
-        if ($this->grav['page']->template() == 'cv') {
-            $call = 'Grav\Theme\Scholar\LinkedData\CVLinkedData';
-        }
-        if (isset($this->grav['page']->header()->theme)
-            && !empty($this->grav['page']->header()->theme)
-        ) {
-            $this->grav['config']->set(
-                'theme',
-                array_merge(
-                    $this->grav['config']->get('theme'),
-                    $this->grav['page']->header()->theme
-                )
+        if ($this->grav['config']->get('theme.linkeddata.enabled')) {
+            $call = $this->grav['config']->get(
+                'theme.linkeddata.default',
+                'themes.scholar.linkeddata.default'
             );
-        }
-        if ($this->grav['config']->get('theme.linkeddata')) {
+            if ($this->grav['page']->template() == 'cv') {
+                $call = $this->grav['config']->get('theme.linkeddata.cv', $call);
+            }
+            if (isset($this->grav['page']->header()->theme)
+                && !empty($this->grav['page']->header()->theme)
+            ) {
+                $this->grav['config']->set(
+                    'theme',
+                    array_merge(
+                        $this->grav['config']->get('theme'),
+                        $this->grav['page']->header()->theme
+                    )
+                );
+            }
             $ld = new $call($this->grav['language']);
             $ld->buildSchema($this->grav['page']);
-            dump($ld->data);
             $this->grav['assets']->addInlineJs(
                 $call::getSchema(
                     $ld->data,
@@ -214,31 +204,6 @@ class Scholar extends Theme
                 ),
                 ['type' => 'application/ld+json']
             );
-        }
-    }
-
-    /**
-     * Get Taxonomy
-     *
-     * @param string  $type  Type of taxonomy to retrieve
-     * @param boolean $array Output as array
-     *
-     * @return void
-     */
-    public static function getTaxonomy($type = false, $array = false)
-    {
-        $taxonomylist = new Taxonomylist();
-        if ($type && $array) {
-            $taxonomies = array();
-            foreach (array_keys($taxonomylist->get()[$type]) as $taxonomy) {
-                array_push($taxonomies, ['text' => $taxonomy, 'value' => $taxonomy]);
-            }
-            return $taxonomies;
-        }
-        if ($type) {
-            return $taxonomylist->get()[$type];
-        } else {
-            return $taxonomylist->get();
         }
     }
 
@@ -254,8 +219,9 @@ class Scholar extends Theme
         $dateFormats = $this->config->get('system.pages.dateformat');
         $dateFormatsJS = function () use ($dateFormats) {
             $return = '';
-            foreach ($dateFormats as $key => $value)
+            foreach ($dateFormats as $key => $value) {
                 $return .= $key . ': "' . $value . '", ';
+            }
             return rtrim($return, ", ");
         };
         $locator = $this->grav['locator'];
@@ -292,7 +258,7 @@ class Scholar extends Theme
     }
     
     /**
-     * Initialize shortcodes
+     * Initialize Shortcodes
      *
      * @return void
      */

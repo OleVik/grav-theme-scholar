@@ -1,17 +1,16 @@
 <?php
 /**
- * Scholar Theme, Source API
+ * Scholar Theme, Source
  *
  * PHP version 7
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-plugin-imgcaptions
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-plugin-imgcaptions
  */
-namespace Grav\Theme\Scholar\API;
+namespace Grav\Theme\Scholar;
 
 use Grav\Common\Utils;
 use Grav\Common\Page\Page;
@@ -19,10 +18,10 @@ use Grav\Common\Page\Pages;
 use Grav\Common\Page\Media;
 
 /**
- * Source API
+ * Source
  *
  * @category Extensions
- * @package  Grav\Theme\Scholar\API
+ * @package  Grav\Theme\Scholar\Source
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-imgcaptions
@@ -30,7 +29,7 @@ use Grav\Common\Page\Media;
 class Source
 {
     /**
-     * Instantiate Markdown API
+     * Instantiate class
      *
      * @param Page  $page  Page-instance
      * @param Pages $pages Pages-instance

@@ -3,22 +3,20 @@
 <h3>{{ name|capitalize }}</h3>
 {% apply spaceless %}
 {% for item in listing if item is not empty %}
-    <div class="date">
-    {% if item.endDate %}
-        {{ item.startDate|date("Y") }}
-    {% elseif item.date %}
-        {{ item.date|date("Y") }}
-    {% elseif item.releaseDate %}
-        {{ item.releaseDate|date("Y") }}
-    {% else %}
-        &nbsp;
-    {% endif %}
-    {% if item.endDate %}
-        -{{ item.endDate|date("Y") }}
-    {% endif %}
-    </div>
     {% if item is iterable %}
         <div class="entry">
+            <div class="date">
+            {% if item.startDate %}
+                {{ item.startDate|date("Y") }}-
+            {% elseif item.date %}
+                {{ item.date|date("Y") }}
+            {% elseif item.releaseDate %}
+                {{ item.releaseDate|date("Y") }}
+            {% endif %}
+            {% if item.endDate %}
+                {{ item.endDate|date("Y") }}
+            {% endif %}
+            </div>
             {% if item.title is defined %}
             <h4>{{ item.title }}</h4>
             {% endif %}

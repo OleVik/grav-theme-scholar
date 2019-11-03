@@ -1,37 +1,35 @@
 <?php
 /**
- * Scholar Theme, Router API
+ * Scholar Theme, Router
  *
  * PHP version 7
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-theme-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-theme-scholar
  */
 
-namespace Grav\Theme\Scholar\API;
+namespace Grav\Theme\Scholar;
 
 use Grav\Common\Grav;
 use Grav\Common\Utils;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Collection;
-use Grav\Theme\Scholar\API\Content;
-use Grav\Theme\Scholar\API\Source;
-use Grav\Theme\Scholar\API\LinkedData;
-use Grav\Theme\Scholar\API\Utilities;
+use Grav\Theme\Scholar\Content;
+use Grav\Theme\Scholar\Source;
+use Grav\Theme\Scholar\LinkedData;
+use Grav\Theme\Scholar\Utilities;
 
 /**
  * Router API
  *
- * @category   API
- * @package    Grav\Theme\Scholar
- * @subpackage Grav\Theme\Scholar\API
- * @author     Ole Vik <git@olevik.net>
- * @license    http://www.opensource.org/licenses/mit-license.html MIT License
- * @link       https://github.com/OleVik/grav-theme-scholar
+ * @category API
+ * @package  Grav\Theme\Scholar\Router
+ * @author   Ole Vik <git@olevik.net>
+ * @license  http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link     https://github.com/OleVik/grav-theme-scholar
  */
 class Router
 {

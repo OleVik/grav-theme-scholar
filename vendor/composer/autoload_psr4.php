@@ -7,6 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Spatie\\SchemaOrg\\' => array($vendorDir . '/spatie/schema-org/src'),
-    'Grav\\Theme\\Scholar\\API\\' => array($baseDir . '/classes'),
     'Grav\\Theme\\Scholar\\' => array($baseDir . '/classes'),
 );
