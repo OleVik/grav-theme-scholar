@@ -1,7 +1,4 @@
 enabled: true
-order:
-  by: folder
-  dir: asc
 style: metal
 toolbar:
   breadcrumbs: true
@@ -25,7 +22,7 @@ components:
   - docs
   - sequence
   - tufte
-linkeddata:
+linked_data:
   enabled: true
   default: 'Grav\Theme\Scholar\LinkedData\PageLinkedData'
   cv: 'Grav\Theme\Scholar\LinkedData\CVLinkedData'

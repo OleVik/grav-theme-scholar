@@ -6,7 +6,49 @@ en:
       WITH: with
       BY: by
       CLOSE: close
-    BREADCRUMBS: Breadcrumbs
+    ADMIN:
+      TOOLBAR:
+        BREADCRUMBS: Breadcrumbs
+        SEARCH: Search
+        NAVIGATION: Navigation
+      ITEMIZE: Itemize elements
+      CSS: Theme CSS
+      JS: Theme JS
+      CACHE:
+        METADATA: Cache Metadata
+        CONTENT: Cache Content
+        OPTIONS:
+          PERSIST: Persist
+          TRANSIENT: Transient
+          NATIVE: Native
+          DISABLED: Disabled
+      ROUTES:
+        DATA: Data route
+        EMBED: Embed route
+        SEARCH: Search route
+        PRINT: Print route
+      LINKED_DATA:
+        ENABLED: Linked Data
+        DEFAULT: Linked Data Default Class
+        CV: Linked Data CV Class
+      FLEXSEARCH: FlexSearch
+      DESCRIPTION:
+        TOOLBAR: Show in toolbar.
+        ITEMIZE: Assign indices to tags.
+        CACHE: Native for /user/themes/scholar/data, Persist for /user/data/persist, Transient for /cache/scholar, Disabled for no caching.
+        ROUTES:
+          DATA: Route suffixed to Page-route to retrieve JSON-data.
+          EMBED: Route suffixed to Page-route to retrieve embeddable HTML.
+          SEARCH: Route for virtual Page for searching.
+          PRINT: 'Route suffixed to Page-route to render its "print"-collection.'
+        LINKED_DATA:
+          ENABLED: Render Linked Data output.
+          DEFAULT: FQCN for default-class to use for Linked Data.
+          CV: FQCN for CV-class to use for Linked Data.
+        FLEXSEARCH: Render and run FlexSearch.
+      WARNING:
+        TITLE: Warning
+        EXPERT: These options can break the plugin if used incorrectly.
     SITE_CONTENTS: Site Contents
     PAGE_CONTENTS: Page Contents
     SCHEMA:

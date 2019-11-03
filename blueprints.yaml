@@ -12,19 +12,158 @@ bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/develop/README.md
 license: MIT
 dependencies:
-  - { name: grav, version: ">=1.6" }
+  - { name: grav, version: ">=1.7" }
   - { name: breadcrumbs, version: ">=1.5.1" }
 
 form:
-  validation: loose
+  validation: strict
   fields:
-    dropdown.enabled:
-      type: toggle
-      label: Dropdown in Menu
-      highlight: 1
-      default: 1
-      options:
-        1: PLUGIN_ADMIN.ENABLED
-        0: PLUGIN_ADMIN.DISABLED
-      validate:
-        type: bool
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        options:
+          type: tab
+          title: PLUGIN_ADMIN.OPTIONS
+          fields:
+            enabled:
+              type: toggle
+              label: PLUGIN_ADMIN.PLUGIN_STATUS
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            toolbar.breadcrumbs:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.TOOLBAR.BREADCRUMBS
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            toolbar.search:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.TOOLBAR.SEARCH
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            toolbar.navigation:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.TOOLBAR.NAVIGATION
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            linked_data.enabled:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.ENABLED
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.ENABLED
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            flexsearch.enabled:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.FLEXSEARCH
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.FLEXSEARCH
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            css:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.CSS
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            js:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.JS
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            itemize:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.ITEMIZE
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ITEMIZE
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+        advanced:
+          type: tab
+          title: PLUGIN_ADMIN.ADVANCED
+          fields:
+            routes.data:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.ROUTES.DATA
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.DATA
+            routes.embed:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.ROUTES.EMBED
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.EMBED
+            routes.search:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.ROUTES.SEARCH
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.SEARCH
+            routes.print:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.ROUTES.PRINT
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.PRINT
+        expert:
+          type: tab
+          title: PLUGIN_ADMIN.EXPERT
+          fields:
+            warning:
+              type: spacer
+              title: THEME_SCHOLAR.ADMIN.WARNING.TITLE
+              text: THEME_SCHOLAR.ADMIN.WARNING.EXPERT
+              underline: true
+            cache.metadata:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.CACHE.METADATA
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.CACHE
+              highlight: native
+              default: native
+              options:
+                native: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.NATIVE
+                persist: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.PERSIST
+                transient: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.TRANSIENT
+                disabled: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.DISABLED
+              validate:
+                type: bool
+            cache.content:
+              type: toggle
+              label: THEME_SCHOLAR.ADMIN.CACHE.CONTENT
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.CACHE
+              highlight: native
+              default: native
+              options:
+                native: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.NATIVE
+                persist: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.PERSIST
+                transient: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.TRANSIENT
+                disabled: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.DISABLED
+              validate:
+                type: bool
+            linked_data.default:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.DEFAULT
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.DEFAULT
+            linked_data.cv:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.CV
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.CV
