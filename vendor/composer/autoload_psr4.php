@@ -6,6 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'hanneskod\\classtools\\' => array($vendorDir . '/hanneskod/classtools/src'),
+    'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
     'Spatie\\SchemaOrg\\' => array($vendorDir . '/spatie/schema-org/src'),
+    'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
+    'HaydenPierce\\ClassFinder\\UnitTest\\' => array($vendorDir . '/haydenpierce/class-finder/test/unit'),
+    'HaydenPierce\\ClassFinder\\' => array($vendorDir . '/haydenpierce/class-finder/src'),
     'Grav\\Theme\\Scholar\\' => array($baseDir . '/classes'),
 );

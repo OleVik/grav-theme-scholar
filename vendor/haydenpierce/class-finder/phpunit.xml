@@ -1,0 +1,33 @@
+<phpunit
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/6.3/phpunit.xsd"
+        bootstrap="./test/bootstrap.php"
+>
+
+    <!-- "./vendor/bin/phpunit" \-\-testsuite psr4 -->
+    <testsuites>
+        <testsuite name="all">
+            <file>test/app1/src/ClassFinderTest.php</file>
+            <file>test/app1/src/ClassmapTest.php</file>
+            <file>test/app1/src/PSR4Test.php</file>
+            <file>test/app1/src/FilesTest.php</file>
+            <directory>test/unit</directory>
+        </testsuite>
+        <testsuite name="psr4">
+            <file>test/app1/src/PSR4Test.php</file>
+            <directory>test/unit/PSR4</directory>
+        </testsuite>
+        <testsuite name="classmap">
+            <file>test/app1/src/ClassmapTest.php</file>
+            <directory>test/unit/Classmap</directory>
+        </testsuite>
+        <testsuite name="files">
+            <file>test/app1/src/FilesTest.php</file>
+            <directory>test/unit/Files</directory>
+        </testsuite>
+        <testsuite name="noAutoload">
+            <file>test/app2/PSR4NoAutoloadTest.php</file>
+            <file>test/app2/ClassmapNoAutoloadTest.php</file>
+        </testsuite>
+    </testsuites>
+</phpunit>

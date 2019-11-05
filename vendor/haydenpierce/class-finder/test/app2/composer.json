@@ -1,0 +1,16 @@
+{
+  "name": "HaydenPierce/testApp",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hayden Pierce",
+      "email": "hayden@haydenpierce.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "4.8.36",
+    "haydenpierce/class-finder": "0.0.1",
+    "haydenpierce/sandbox-app":"0.3.0"
+  }
+}

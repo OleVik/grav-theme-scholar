@@ -26,6 +26,8 @@ use Grav\Theme\Scholar\TaxonomyMap;
 use Grav\Theme\Scholar\Timer;
 use Grav\Theme\Scholar\Utilities;
 
+use HaydenPierce\ClassFinder\ClassFinder;
+
 /**
  * Scholar Theme
  *
@@ -60,6 +62,7 @@ class Scholar extends Theme
      */
     public function onThemeInitialized()
     {
+        dump(self::getClassNames('Content'));
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
@@ -67,6 +70,7 @@ class Scholar extends Theme
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
         if ($this->isAdmin() && $this->config->get('plugins.admin')) {
+            // Grav::instance()['debugger']->addMessage(self::getClassNames('Content'));
             // Grav::instance()['debugger']->addMessage(self::getComponentsBlueprint());
             // $this->enable(
             //     [
@@ -77,6 +81,7 @@ class Scholar extends Theme
         }
         $this->enable(
             [
+                // 'onOutputGenerated ' => ['debug ', 0],
                 'onPagesInitialized' => ['onPagesInitialized', 0],
                 'onPageInitialized' => ['onPageInitialized', 0],
                 'onTwigExtensions' => ['onTwigExtensions', 0],
@@ -88,6 +93,20 @@ class Scholar extends Theme
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->stopTimer('scholar');
         }
+    }
+
+    public function debug()
+    {
+        // include __DIR__ . '/vendor/autoload.php';
+
+        // $asd = new \Grav\Theme\Scholar\Content\StaticContent();
+        // $r = new \ReflectionClass('Grav\Theme\Scholar\Content\StaticContent');
+        // $r->newInstanceWithoutConstructor();
+
+        dump(self::getClassNames('Content'));
+        dump(get_declared_classes());
+        // dump(ClassFinder::getClassesInNamespace('Grav\Theme\Scholar', ClassFinder::RECURSIVE_MODE));
+        // dump(ClassFinder::getClassesInNamespace('Grav\Theme\Scholar\LinkedData', ClassFinder::RECURSIVE_MODE));
     }
 
     /**
@@ -332,10 +351,15 @@ class Scholar extends Theme
      *
      * @return mixed Class instance
      */
-    public function getInstance(string $class, ...$args)
+    public static function getInstance(string $class, ...$args)
     {
         $caller = '\Grav\Theme\Scholar\\' . $class;
         return new $caller(...$args);
+    }
+
+    public static function getComposerClasses()
+    {
+        return ClassFinder::getClassesInNamespace('Grav\Theme\Scholar', ClassFinder::RECURSIVE_MODE);
     }
 
     /**
@@ -347,15 +371,20 @@ class Scholar extends Theme
      */
     public static function getClassNames(string $key)
     {
-        // dump(get_declared_classes());
+        // include __DIR__ . '/vendor/autoload.php';
+        // return get_declared_classes();
+        dump(get_declared_classes());
         $regex = '/Grav\\\\Theme\\\\Scholar\\\\(?<api>.*)/i';
         $classes = preg_grep($regex, get_declared_classes());
+        // dump(get_declared_classes());
         // dump($classes);
         $matches = preg_grep('/' . $key . '/i', $classes);
         // dump($matches);
+        // Grav::instance()['debugger']->addMessage(get_declared_classes());
+        // Grav::instance()['debugger']->addMessage($matches);
         $options = [
             '' => 'None',
-            $key => $key
+            // $key => $key
         ];
         foreach ($matches as $match) {
             $match = str_replace('Grav\Theme\Scholar\\', '', $match);

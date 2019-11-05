@@ -30,6 +30,7 @@ en:
         PRINT: Print route
       LINKED_DATA: Linked Data
       API:
+        CONTENT: Content Class
         LINKED_DATA:
           DEFAULT: Linked Data Default Class
           CV: Linked Data CV Class
@@ -46,6 +47,7 @@ en:
           PRINT: 'Route suffixed to Page-route to render its "print"-collection.'
         LINKED_DATA: Render Linked Data output.
         API:
+          CONTENT: Class to use for Content-parsing.
           LINKED_DATA:
             DEFAULT: FQCN for default-class to use for Linked Data.
             CV: FQCN for CV-class to use for Linked Data.

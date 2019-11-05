@@ -7,9 +7,23 @@ namespace Composer\Autoload;
 class ComposerStaticInit785cb74a939a47c9971b9fe8f0e7ca59
 {
     public static $prefixLengthsPsr4 = array (
+        'h' => 
+        array (
+            'hanneskod\\classtools\\' => 21,
+        ),
         'S' => 
         array (
+            'Symfony\\Component\\Finder\\' => 25,
             'Spatie\\SchemaOrg\\' => 17,
+        ),
+        'P' => 
+        array (
+            'PhpParser\\' => 10,
+        ),
+        'H' => 
+        array (
+            'HaydenPierce\\ClassFinder\\UnitTest\\' => 34,
+            'HaydenPierce\\ClassFinder\\' => 25,
         ),
         'G' => 
         array (
@@ -18,9 +32,29 @@ class ComposerStaticInit785cb74a939a47c9971b9fe8f0e7ca59
     );
 
     public static $prefixDirsPsr4 = array (
+        'hanneskod\\classtools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/hanneskod/classtools/src',
+        ),
+        'Symfony\\Component\\Finder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
+        ),
         'Spatie\\SchemaOrg\\' => 
         array (
             0 => __DIR__ . '/..' . '/spatie/schema-org/src',
+        ),
+        'PhpParser\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'HaydenPierce\\ClassFinder\\UnitTest\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/haydenpierce/class-finder/test/unit',
+        ),
+        'HaydenPierce\\ClassFinder\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/haydenpierce/class-finder/src',
         ),
         'Grav\\Theme\\Scholar\\' => 
         array (

@@ -31,18 +31,6 @@ use Grav\Theme\Scholar\Content\ContentInterface;
 class Content implements ContentInterface
 {
     /**
-     * Initialize class
-     *
-     * @param string $orderBy  Property to order by.
-     * @param string $orderDir Direction to order.
-     */
-    public function __construct($orderBy = 'date', $orderDir = 'desc')
-    {
-        $this->orderBy = $orderBy;
-        $this->orderDir = $orderDir;
-    }
-
-    /**
      * Create menu-structure recursively
      *
      * @param string  $route Route to page

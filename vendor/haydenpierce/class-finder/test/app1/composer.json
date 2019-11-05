@@ -1,0 +1,24 @@
+{
+  "name": "HaydenPierce/testApp",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Hayden Pierce",
+      "email": "hayden@haydenpierce.com"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "4.8.36",
+    "haydenpierce/class-finder": "0.0.1",
+    "haydenpierce/sandbox-app":"0.3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TestApp1\\": "src/",
+      "TestApp1\\Multi\\": [ "multi/Jik/", "multi/Jiu/" ]
+    },
+    "classmap": ["classmap/woc/", "classmap/wop/", "classmap/woj/" ],
+    "files": ["files/files1.php", "files/files2.php", "files/more_files/Boom.php" ]
+  }
+}

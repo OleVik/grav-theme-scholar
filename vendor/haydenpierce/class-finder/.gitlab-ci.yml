@@ -1,0 +1,7 @@
+PHP 5.3 - PHPUnit:
+  script: "ci/php53.sh $CI_PROJECT_DIR"
+  image: "registry.gitlab.com/hpierce1102/classfinder/php53"
+
+PHP 7.2 - PHPUnit:
+  script: "ci/php72.sh $CI_PROJECT_DIR"
+  image: "registry.gitlab.com/hpierce1102/classfinder/php72"

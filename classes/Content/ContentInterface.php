@@ -25,14 +25,6 @@ namespace Grav\Theme\Scholar\Content;
 interface ContentInterface
 {
     /**
-     * Initialize class
-     *
-     * @param string $orderBy  Property to order by.
-     * @param string $orderDir Direction to order.
-     */
-    public function __construct($orderBy = 'date', $orderDir = 'desc');
-
-    /**
      * Create menu-structure recursively
      *
      * @param string  $route Route to page

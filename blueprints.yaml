@@ -170,11 +170,37 @@ form:
                 disabled: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.DISABLED
               validate:
                 type: bool
-            linked_data.default:
+            api.content:
               type: text
-              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.DEFAULT
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.DEFAULT
-            linked_data.cv:
-              type: text
-              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.CV
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.CV
+              label: THEME_SCHOLAR.ADMIN.API.CONTENT
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.CONTENT
+            api.contents:
+              type: select
+              label: Contents
+              data-options@:
+                - "\\Grav\\Theme\\Scholar::getClassNames"
+                - Content
+            api.linkeddatas:
+              type: select
+              label: LinkedDatas
+              data-options@:
+                - "\\Grav\\Theme\\Scholar::getClassNames"
+                - LinkedData
+            api.routers:
+              type: select
+              label: Routers
+              data-options@:
+                - "\\Grav\\Theme\\Scholar::getClassNames"
+                - Router
+            api.sources:
+              type: select
+              label: Sources
+              data-options@:
+                - "\\Grav\\Theme\\Scholar::getClassNames"
+                - Source
+            api.taxonomy_maps:
+              type: select
+              label: TaxMaps
+              data-options@:
+                - "\\Grav\\Theme\\Scholar::getClassNames"
+                - TaxonomyMap
