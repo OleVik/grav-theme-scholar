@@ -13,6 +13,7 @@
  */
 namespace Grav\Theme;
 
+use Grav\Common\Grav;
 use Grav\Common\Theme;
 use Grav\Common\Utils;
 use Grav\Framework\File\YamlFile;
@@ -60,14 +61,15 @@ class Scholar extends Theme
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
-        /* if ($this->isAdmin() && $this->config->get('plugins.admin')) {
-            $this->enable(
-                [
-                    'onTwigSiteVariables' => ['twigBaseUrl', 0],
-                    'onAssetsInitialized' => ['onAdminPagesAssetsInitialized', 0]
-                ]
-            );
-        } */
+        if ($this->isAdmin() && $this->config->get('plugins.admin')) {
+            // Grav::instance()['debugger']->addMessage(self::getComponentsBlueprint());
+            // $this->enable(
+            //     [
+            //         'onTwigSiteVariables' => ['twigBaseUrl', 0],
+            //         'onAssetsInitialized' => ['onAdminPagesAssetsInitialized', 0]
+            //     ]
+            // );
+        }
         $this->enable(
             [
                 'onPagesInitialized' => ['onPagesInitialized', 0],
@@ -84,79 +86,27 @@ class Scholar extends Theme
     }
 
     /**
-     * Register templates dynamically
+     * Get enabled components
      *
-     * @return void
+     * @return array
      */
-    public function templates()
+    public static function getComponentsBlueprint(): array
     {
-        $locator = $this->grav['locator'];
-        foreach ($this->config->get('theme.components') as $component) {
-            $this->grav['twig']->twig_paths[] = $locator->findResource(
-                'theme://components/' . $component
-            );
-        }
-    }
-
-    /**
-     * Register Schemas dynamically
-     *
-     * @return void
-     */
-    public function schemas()
-    {
-        $locator = $this->grav['locator'];
-        $formatter = new YamlFormatter;
-        $target = Utilities::fileFinder(
-            'schema.yaml',
+        $componentFolders = Utilities::foldersFinder(
             [
                 'theme://components',
                 'user://themes/scholar/components'
             ]
         );
-        $file = $locator->findResource(
-            $target,
-            true,
-            true
-        );
-        $YamlFile = new YamlFile(
-            $file,
-            $formatter
-        );
-        $data = $YamlFile->load();
-        if (isset($data['default'])) {
-            $this->grav['config']->set('theme.schema.default', $data['default']);
+        $components = array();
+        foreach (array_unique($componentFolders) as $component) {
+            $components[] = [
+                'text' => ucfirst($component),
+                'value' => $component
+            ];
         }
-        if (isset($data['types'])) {
-            foreach ($data['types'] as $schema => $data) {
-                $this->grav['config']->set('theme.schema.types.' . $schema, $data);
-            }
-        }
-        foreach ($this->config->get('themes.scholar.components') as $component) {
-            $target = Utilities::fileFinder(
-                'schema.yaml',
-                [
-                    'theme://components/' . $component,
-                    'user://themes/scholar/components/' . $component
-                ]
-            );
-            $file = $locator->findResource(
-                $target,
-                true,
-                true
-            );
-            if (file_exists($file)) {
-                $YamlFile = new YamlFile(
-                    $file,
-                    $formatter
-                );
-                foreach ($YamlFile->load() as $schema => $data) {
-                    $this->grav['config']->set('theme.schema.types.' . $schema, $data);
-                }
-            }
-        }
+        return $components;
     }
-
     /**
      * Handle API
      *
@@ -244,6 +194,85 @@ class Scholar extends Theme
             'const searchRoute = "' . $searchRoute . '";' . "\n" .
             'const ScholarTranslation = ' . json_encode(Utils::arrayUnflattenDotNotation($translationStrings)['THEME_SCHOLAR']) . ';'
         );
+    }
+
+    /**
+     * Register templates dynamically
+     *
+     * @return void
+     */
+    public function templates()
+    {
+        $locator = $this->grav['locator'];
+        foreach ($this->config->get('theme.components') as $component) {
+            $target = Utilities::folderFinder(
+                $component,
+                [
+                    'theme://components',
+                    'user://themes/scholar/components'
+                ]
+            );
+            $this->grav['twig']->twig_paths[] = $locator->findResource($target);
+        }
+    }
+
+    /**
+     * Register Schemas dynamically
+     *
+     * @return void
+     */
+    public function schemas()
+    {
+        $locator = $this->grav['locator'];
+        $formatter = new YamlFormatter;
+        $target = Utilities::fileFinder(
+            'schema.yaml',
+            [
+                'theme://components',
+                'user://themes/scholar/components'
+            ]
+        );
+        $file = $locator->findResource(
+            $target,
+            true,
+            true
+        );
+        $YamlFile = new YamlFile(
+            $file,
+            $formatter
+        );
+        $data = $YamlFile->load();
+        if (isset($data['default'])) {
+            $this->grav['config']->set('theme.schema.default', $data['default']);
+        }
+        if (isset($data['types'])) {
+            foreach ($data['types'] as $schema => $data) {
+                $this->grav['config']->set('theme.schema.types.' . $schema, $data);
+            }
+        }
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $target = Utilities::fileFinder(
+                'schema.yaml',
+                [
+                    'theme://components/' . $component,
+                    'user://themes/scholar/components/' . $component
+                ]
+            );
+            $file = $locator->findResource(
+                $target,
+                true,
+                true
+            );
+            if (file_exists($file)) {
+                $YamlFile = new YamlFile(
+                    $file,
+                    $formatter
+                );
+                foreach ($YamlFile->load() as $schema => $data) {
+                    $this->grav['config']->set('theme.schema.types.' . $schema, $data);
+                }
+            }
+        }
     }
 
     /**

@@ -108,6 +108,17 @@ form:
           type: tab
           title: PLUGIN_ADMIN.ADVANCED
           fields:
+            components:
+              type: selectize
+              label: THEME_SCHOLAR.ADMIN.COMPONENTS
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.COMPONENTS
+              allowEmptyOption: true
+              merge_items: true
+              selectize:
+                create: false
+                data-options@: '\Grav\Theme\Scholar::getComponentsBlueprint'
+              validate:
+                type: commalist
             routes.data:
               type: text
               label: THEME_SCHOLAR.ADMIN.ROUTES.DATA

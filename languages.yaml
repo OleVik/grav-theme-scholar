@@ -12,6 +12,7 @@ en:
         SEARCH: Search
         NAVIGATION: Navigation
       ITEMIZE: Itemize elements
+      COMPONENTS: Components
       CSS: Theme CSS
       JS: Theme JS
       CACHE:
@@ -35,6 +36,7 @@ en:
       DESCRIPTION:
         TOOLBAR: Show in toolbar.
         ITEMIZE: Assign indices to tags.
+        COMPONENTS: Components, meaning templates and assets, to enable in the theme.
         CACHE: Native for /user/themes/scholar/data, Persist for /user/data/persist, Transient for /cache/scholar, Disabled for no caching.
         ROUTES:
           DATA: Route suffixed to Page-route to retrieve JSON-data.
@@ -48,7 +50,7 @@ en:
         FLEXSEARCH: Render and run FlexSearch.
       WARNING:
         TITLE: Warning
-        EXPERT: These options can break the plugin if used incorrectly.
+        EXPERT: These options can break the theme and site if used incorrectly.
     SITE_CONTENTS: Site Contents
     PAGE_CONTENTS: Page Contents
     SCHEMA:

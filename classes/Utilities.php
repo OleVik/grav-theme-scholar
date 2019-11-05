@@ -34,7 +34,7 @@ class Utilities
      * Search for a file in multiple locations
      *
      * @param string $file      Filename.
-     * @param array  $locations List of folders.
+     * @param array  $locations List of locations.
      *
      * @return string
      */
@@ -44,6 +44,26 @@ class Utilities
         foreach ($locations as $location) {
             if (file_exists($location . '/' . $file)) {
                 $return = $location . '/' . $file;
+                break;
+            }
+        }
+        return $return;
+    }
+
+    /**
+     * Search for a folder in multiple locations
+     *
+     * @param string $folder    Folder name..
+     * @param array  $locations List of locations.
+     *
+     * @return string
+     */
+    public static function folderFinder(string $folder, array $locations)
+    {
+        $return = false;
+        foreach ($locations as $location) {
+            if (is_dir($location . '/' . $folder)) {
+                $return = $location . '/' . $folder;
                 break;
             }
         }
@@ -76,6 +96,27 @@ class Utilities
         } else {
             return false;
         }
+    }
+
+    /**
+     * Search for a folders in multiple locations
+     *
+     * @param array $locations List of locations.
+     *
+     * @return string
+     */
+    public static function foldersFinder(array $locations)
+    {
+        $return = array();
+        foreach ($locations as $location) {
+            $folders = new \DirectoryIterator($location);
+            foreach ($folders as $folder) {
+                if ($folder->isDir() && !$folder->isDot()) {
+                    $return[] = $folder->getFilename();
+                }
+            }
+        }
+        return $return;
     }
 
     /**

@@ -20,13 +20,14 @@
             {% if item.title is defined %}
             <h4>{{ item.title }}</h4>
             {% endif %}
+            <em>
             {% if item.name is defined or item.level is defined %}
-            <em>, 
+            , 
                 {% if item.url %}<a href="{{ item.url }}">{% endif %}
                 {{ item.name ?? item.level }}
                 {% if item.url %}</a>{% endif %}
-            </em>
             {% endif %}
+            </em>
             {% if item.description is defined %}{{ item.description|markdown }}{% endif %}
             {% if item.keywords is defined %}{{ item.keywords|join(', ')|markdown }}{% endif %}
         </div>
