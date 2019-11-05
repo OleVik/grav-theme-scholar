@@ -22,10 +22,15 @@ components:
   - docs
   - sequence
   - tufte
-linked_data:
-  enabled: true
-  default: 'Grav\Theme\Scholar\LinkedData\PageLinkedData'
-  cv: 'Grav\Theme\Scholar\LinkedData\CVLinkedData'
+linked_data: true
+api:
+  content: 'Content\Content'
+  linked_data:
+    default: 'LinkedData\PageLinkedData'
+    cv: 'LinkedData\CVLinkedData'
+  router: 'Router\Router'
+  source: 'Source\Source'
+  taxonomy_map: 'TaxonomyMap\TaxonomyMap'
 flexsearch:
   enabled: true
   index:

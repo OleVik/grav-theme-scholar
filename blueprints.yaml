@@ -61,10 +61,10 @@ form:
                 0: PLUGIN_ADMIN.DISABLED
               validate:
                 type: bool
-            linked_data.enabled:
+            linked_data:
               type: toggle
-              label: THEME_SCHOLAR.ADMIN.LINKED_DATA.ENABLED
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA.ENABLED
+              label: THEME_SCHOLAR.ADMIN.LINKED_DATA
+              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED

@@ -28,10 +28,11 @@ en:
         EMBED: Embed route
         SEARCH: Search route
         PRINT: Print route
-      LINKED_DATA:
-        ENABLED: Linked Data
-        DEFAULT: Linked Data Default Class
-        CV: Linked Data CV Class
+      LINKED_DATA: Linked Data
+      API:
+        LINKED_DATA:
+          DEFAULT: Linked Data Default Class
+          CV: Linked Data CV Class
       FLEXSEARCH: FlexSearch
       DESCRIPTION:
         TOOLBAR: Show in toolbar.
@@ -43,11 +44,12 @@ en:
           EMBED: Route suffixed to Page-route to retrieve embeddable HTML.
           SEARCH: Route for virtual Page for searching.
           PRINT: 'Route suffixed to Page-route to render its "print"-collection.'
-        LINKED_DATA:
-          ENABLED: Render Linked Data output.
-          DEFAULT: FQCN for default-class to use for Linked Data.
-          CV: FQCN for CV-class to use for Linked Data.
-        FLEXSEARCH: Render and run FlexSearch.
+        LINKED_DATA: Render Linked Data output.
+        API:
+          LINKED_DATA:
+            DEFAULT: FQCN for default-class to use for Linked Data.
+            CV: FQCN for CV-class to use for Linked Data.
+        FLEXSEARCH: Run FlexSearch and assets.
       WARNING:
         TITLE: Warning
         EXPERT: These options can break the theme and site if used incorrectly.

@@ -4,34 +4,31 @@
  *
  * PHP version 7
  *
- * @category API
- * @package  Grav\Theme\Scholar
- * @author   Ole Vik <git@olevik.net>
- * @license  http://www.opensource.org/licenses/mit-license.html MIT License
- * @link     https://github.com/OleVik/grav-plugin-scholar
+ * @category   API
+ * @package    Grav\Theme\Scholar
+ * @subpackage Grav\Theme\Scholar\Content
+ * @author     Ole Vik <git@olevik.net>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/OleVik/grav-plugin-scholar
  */
-namespace Grav\Theme\Scholar;
+namespace Grav\Theme\Scholar\Content;
 
 use Grav\Common\Grav;
-use Grav\Common\Plugin;
 use Grav\Common\Inflector;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
-use Grav\Common\Page\Header;
-use Grav\Common\Page\Collection;
-use RocketTheme\Toolbox\Event\Event;
-use Grav\Theme\Scholar\Utilities;
+use Grav\Theme\Scholar\Content\ContentInterface;
 
 /**
  * Content
  *
  * @category Extensions
- * @package  Grav\Theme\Scholar\Content
+ * @package  Grav\Theme\Scholar\Content\Content
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
  */
-class Content
+class Content implements ContentInterface
 {
     /**
      * Initialize class
@@ -278,7 +275,7 @@ class Content
      *
      * @see https://alanwhipple.com/2011/05/25/php-truncate-string-preserving-html-tags-words/
      */
-    public static function truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true)
+    public static function truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true): string
     {
         if ($considerHtml) {
             if (strlen(preg_replace('/<.*?>/', '', $text)) <= $length) {

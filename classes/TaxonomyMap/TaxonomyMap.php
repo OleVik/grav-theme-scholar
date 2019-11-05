@@ -4,23 +4,22 @@
  *
  * PHP version 7
  *
- * @category API
- * @package  Grav\Theme\Scholar
- * @author   Ole Vik <git@olevik.net>
- * @license  http://www.opensource.org/licenses/mit-license.html MIT License
- * @link     https://github.com/OleVik/grav-plugin-scholar
+ * @category   API
+ * @package    Grav\Theme\Scholar
+ * @subpackage Grav\Theme\Scholar\TaxonomyMap
+ * @author     Ole Vik <git@olevik.net>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/OleVik/grav-plugin-scholar
  */
-namespace Grav\Theme\Scholar;
+namespace Grav\Theme\Scholar\TaxonomyMap;
 
 use Grav\Common\Grav;
-
-use Scholar\Utilities;
 
 /**
  * Taxonomy Map
  *
  * @category Extensions
- * @package  Grav\Theme\Scholar\TaxonomyMap
+ * @package  Grav\Theme\Scholar\TaxonomyMap\TaxonomyMap
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar

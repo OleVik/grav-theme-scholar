@@ -16,7 +16,6 @@ namespace Grav\Theme\Scholar\LinkedData;
 use Grav\Common\Inflector;
 use Grav\Common\Page\Page;
 use Grav\Common\Language\Language;
-use Grav\Theme\Scholar\TaxonomyMap;
 
 /**
  * Linked Data for CV
@@ -35,15 +34,11 @@ class CVLinkedData extends AbstractLinkedData
      * Initialize class
      *
      * @param Language $Language Language-instance.
-     * @param string   $orderBy  Property to order by.
-     * @param string   $orderDir Direction to order.
      */
-    public function __construct(Language $Language, $orderBy = 'date', $orderDir = 'desc')
+    public function __construct(Language $Language)
     {
         $this->data = array();
         $this->language = $Language;
-        $this->orderBy = $orderBy;
-        $this->orderDir = $orderDir;
     }
 
     /**

@@ -125,6 +125,7 @@ tufte:
   - [ ] Admin: List or checkboxes?
 - [ ] Map features to settings
   - [ ] Admin blueprints
+- [ ] Replicate Presentation-getters, for calling class through setting
 
 ### Version spec
 
@@ -199,4 +200,5 @@ tufte:
      - WYSIWYG, not WYSIWYM. Currently only [CKEditor](https://ckeditor.com/docs/ckeditor5/latest/features/markdown.html)?
        - Features like [Gutenberg](https://wordpress.org/gutenberg/), [VisualEditor](https://www.mediawiki.org/wiki/Extension:VisualEditor)?
      - Lightweight Admin-implementation
-  - [ ] Paged.js, somewhat too niche for general applicability
+
+- [ ] Paged.js, somewhat too niche for general applicability

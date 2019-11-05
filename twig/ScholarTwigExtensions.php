@@ -13,8 +13,6 @@
 namespace Grav\Theme;
 
 use Grav\Common\Grav;
-use Grav\Theme\Scholar\Content;
-use Grav\Theme\Scholar\TaxonomyMap;
 use Grav\Theme\Scholar\LinkedData\AbstractLinkedData;
 
 /**
@@ -89,7 +87,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string|bool Template name if true, otherwise false
      */
-    public function rootTemplate(string $route)
+    public static function rootTemplate(string $route)
     {
         $page = Grav::instance()['page']->find($route);
         $parent = $page->topParent();
@@ -106,7 +104,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return boolean File existence
      */
-    public function fileExists(string $path): bool
+    public static function fileExists(string $path): bool
     {
         $path = Grav::instance()['locator']->findResource($path, true, true);
         return file_exists($path);
@@ -119,7 +117,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string Processed content
      */
-    public function unwrapParagraph(string $content): string
+    public static function unwrapParagraph(string $content): string
     {
         return str_replace(['<p>', '</p>'], '', $content);
     }
@@ -131,7 +129,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string File contents
      */
-    public function getFileContents(string $path)
+    public static function getFileContents(string $path)
     {
         return file_get_contents($path);
     }
@@ -143,7 +141,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string Template name
      */
-    public function getSchemaType(string $template): string
+    public static function getSchemaType(string $template): string
     {
         return key(AbstractLinkedData::getType($template));
     }
@@ -156,9 +154,15 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return object [content, headings]
      */
-    public function pageNavigation(string $content, bool $itemize): object
+    public static function pageNavigation(string $content, bool $itemize): object
     {
-        return Content::pageNavigation($content, $itemize);
+        $Content = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.content',
+                'themes.scholar.api.content'
+            )
+        );
+        return $Content::pageNavigation($content, $itemize);
     }
 
     /**
@@ -169,7 +173,7 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string|bool Page route if true, otherwise false
      */
-    public function menuRoute(string $route, string $type = '')
+    public static function menuRoute(string $route, string $type = '')
     {
         $page = Grav::instance()['page']->find($route);
         if ($page->template() == $type) {
@@ -187,12 +191,18 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string Rendered template
      */
-    public function menu(string $route): string
+    public static function menu(string $route): string
     {
+        $Content = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.content',
+                'themes.scholar.api.content'
+            )
+        );
         return Grav::instance()['twig']->processTemplate(
             'partials/docs/menu.html.twig',
             [
-                'pages' => Content::buildMenu($route)
+                'pages' => $Content::buildMenu($route)
             ]
         );
     }
@@ -208,7 +218,13 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function sectionWrapper(string $content, string $wrapper, array $targets)
     {
-        return Content::wrapHTML($content, $wrapper, $targets);
+        $Content = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.content',
+                'themes.scholar.api.content'
+            )
+        );
+        return $Content::wrapHTML($content, $wrapper, $targets);
     }
 
     /**
@@ -221,7 +237,13 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function stripHTML(string $content, $tags)
     {
-        return Content::stripHTML($content, $tags);
+        $Content = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.content',
+                'themes.scholar.api.content'
+            )
+        );
+        return $Content::stripHTML($content, $tags);
     }
 
     /**
@@ -231,7 +253,12 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function getTaxonomyMap(): array
     {
-        $TaxonomyMap = new TaxonomyMap();
+        $TaxonomyMap = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
         return $TaxonomyMap->get();
     }
 
@@ -242,9 +269,14 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return array Taxonomy map
      */
-    public function getPageTaxonomyMap(string $route): array
+    public static function getPageTaxonomyMap(string $route): array
     {
-        $TaxonomyMap = new TaxonomyMap();
+        $TaxonomyMap = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
         return $TaxonomyMap->getPage($route);
     }
 
@@ -255,9 +287,14 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return array Taxonomy map
      */
-    public function getDescendantsTaxonomyMap(string $route): array
+    public static function getDescendantsTaxonomyMap(string $route): array
     {
-        $TaxonomyMap = new TaxonomyMap();
+        $TaxonomyMap = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
         return $TaxonomyMap->getDescendants($route);
     }
 
@@ -269,9 +306,15 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return array Taxonomy map
      */
-    public function limit(array $list, int $length = 10)
+    public static function limit(array $list, int $length = 10)
     {
-        return TaxonomyMap::limit($list, $length);
+        $TaxonomyMap = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
+        return $TaxonomyMap::limit($list, $length);
     }
 
     /**
@@ -282,9 +325,15 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return array Taxonomy map
      */
-    public function threshold(array $list, int $threshold = 10)
+    public static function threshold(array $list, int $threshold = 10)
     {
-        return TaxonomyMap::threshold($list, $threshold);
+        $TaxonomyMap = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
+        return $TaxonomyMap::threshold($list, $threshold);
     }
 
     /**
@@ -299,8 +348,14 @@ class ScholarTwigExtensions extends \Twig_Extension
      *
      * @return string Truncated string.
      */
-    public function truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true)
+    public static function truncate($text, $length = 100, $ending = '...', $exact = false, $considerHtml = true)
     {
-        return Content::truncate($text, $length, $ending, $exact, $considerHtml);
+        $Content = Scholar::getInstance(
+            Grav::instance()['config']->get(
+                'theme.api.content',
+                'themes.scholar.api.content'
+            )
+        );
+        return $Content::truncate($text, $length, $ending, $exact, $considerHtml);
     }
 }

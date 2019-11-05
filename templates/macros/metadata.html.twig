@@ -1,4 +1,4 @@
-{% macro iterate(taxonomy, theme) %}
+{% macro iterate(taxonomy, theme, base_url_absolute) %}
     {% import _self as metadata %}
 
     {% for type, value in taxonomy %}
@@ -8,14 +8,14 @@
     {% if value is iterable %}
         {% if value|length == 1 %}
             <dd>
-                <a href="{{ theme.routes.search }}/?{{ type }}={{ value[0] }}">{{ value[0] }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value[0] }}">{{ value[0] }}</a>
             </dd>
         {% else %}
             {{ metadata.list(value, type) }}
         {% endif %}
     {% else %}
     <dd>
-        <a href="{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
+        <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
     </dd>
     {% endif %}
 {% endfor %}
@@ -35,7 +35,7 @@
             {% elseif key is same as('url') %}
                 <a href="{{ value }}">{{ value }}</a>
             {% else %}
-                <a href="{{ theme.routes.search }}/{{ type }}={{ value }}">{{ value }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/{{ type }}={{ value }}">{{ value }}</a>
             {% endif %}
             </dd>
         {% endif %}
