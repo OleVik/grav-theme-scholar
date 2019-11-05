@@ -13,9 +13,10 @@
  */
 namespace Grav\Theme\Scholar\LinkedData;
 
+use Grav\Theme\Scholar;
 use Grav\Common\Page\Page;
 use Grav\Common\Language\Language;
-use Grav\Theme\Scholar\TaxonomyMap;
+use Grav\Common\Config\Config;
 
 /**
  * Linked Data for Page
@@ -34,15 +35,18 @@ class PageLinkedData extends AbstractLinkedData
      * Initialize class
      *
      * @param Language $Language Language-instance.
-     * @param string   $orderBy  Property to order by.
-     * @param string   $orderDir Direction to order.
+     * @param Config   $Config   Config-instance.
      */
-    public function __construct(Language $Language, $orderBy = 'date', $orderDir = 'desc')
+    public function __construct(Language $Language, Config $Config)
     {
         $this->data = array();
-        $this->language = $Language;
-        $this->orderBy = $orderBy;
-        $this->orderDir = $orderDir;
+        $this->Language = $Language;
+        $this->TaxonomyMap = Scholar::getInstance(
+            $Config->get(
+                'theme.api.taxonomy_map',
+                'themes.scholar.api.taxonomy_map'
+            )
+        );
     }
 
     /**
@@ -80,7 +84,7 @@ class PageLinkedData extends AbstractLinkedData
             $data['image'] = self::getImage($header, $page->media()->all());
         }
         if (isset($header['taxonomy'])) {
-            $taxonomy = TaxonomyMap::pluralize($header['taxonomy']);
+            $taxonomy = $this->TaxonomyMap::pluralize($header['taxonomy']);
             if (isset($taxonomy['categories'])) {
                 if (is_array($taxonomy['categories'])) {
                     $taxonomy['categories'] = implode(",", $taxonomy['categories']);
@@ -95,11 +99,11 @@ class PageLinkedData extends AbstractLinkedData
             }
         }
         $schema = self::getType($page->template());
-        if ($page->language() !== $this->language->getDefault()) {
+        if ($page->language() !== $this->Language->getDefault()) {
             $data['translationOfWork'] = [
                 '@type' => key($schema),
                 'url' => $page->canonical(false),
-                'inLanguage' => $this->language->getDefault()
+                'inLanguage' => $this->Language->getDefault()
             ];
         }
         if ($slave) {

@@ -4,29 +4,28 @@
  *
  * PHP version 7
  *
- * @category API
- * @package  Grav\Theme\Scholar
- * @author   Ole Vik <git@olevik.net>
- * @license  http://www.opensource.org/licenses/mit-license.html MIT License
- * @link     https://github.com/OleVik/grav-theme-scholar
+ * @category   API
+ * @package    Grav\Theme\Scholar
+ * @subpackage Grav\Theme\Scholar\Router
+ * @author     Ole Vik <git@olevik.net>
+ * @license    http://www.opensource.org/licenses/mit-license.html MIT License
+ * @link       https://github.com/OleVik/grav-plugin-scholar
  */
 
-namespace Grav\Theme\Scholar;
+namespace Grav\Theme\Scholar\Router;
 
+use Grav\Theme\Scholar;
 use Grav\Common\Grav;
 use Grav\Common\Utils;
 use Grav\Common\Page\Page;
 use Grav\Common\Page\Collection;
-use Grav\Theme\Scholar\Content;
-use Grav\Theme\Scholar\Source;
-use Grav\Theme\Scholar\LinkedData;
 use Grav\Theme\Scholar\Utilities;
 
 /**
  * Router API
  *
  * @category API
- * @package  Grav\Theme\Scholar\Router
+ * @package  Grav\Theme\Scholar\Router\Router
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-theme-scholar
@@ -74,7 +73,9 @@ class Router
         } else {
             return;
         }
-        if ('/' . basename($path) == $this->embedRoute) {
+        if ('/' . basename($path) == $this->searchRoute) {
+            $this->grav['pages']->addPage($page, $path);
+        } elseif ('/' . basename($path) == $this->embedRoute) {
             $this->handleEmbed($page);
         } elseif ('/' . basename($path) == $this->dataRoute) {
             $this->handleData($page);
@@ -158,9 +159,15 @@ class Router
      */
     public function handleData(Page $Page): void
     {
-        $ld = new LinkedData($this->grav['language']);
+        $LinkedData = Scholar::getInstance(
+            $this->grav['config']->get(
+                'theme.api.linked_data.default',
+                'themes.scholar.api.linked_data.default'
+            ),
+            $this->grav['language']
+        );
         $Page->title($Page->parent()->title());
-        $ld->buildSchema($Page->parent());
+        $LinkedData->buildSchema($Page->parent());
         $data = [
             'encodingFormat' => Utils::getMimeByExtension(
                 $Page->parent()->templateFormat()
@@ -168,7 +175,7 @@ class Router
             'header' => (array) $Page->parent()->header(),
             'content' => $Page->parent()->content()
         ];
-        $data = array_merge($ld->data, $data);
+        $data = array_merge($LinkedData->data, $data);
         header('Content-Type: application/json');
         echo json_encode($data);
         exit();
@@ -187,7 +194,13 @@ class Router
     {
         $content = '';
         foreach ($Collection as $item) {
-            $Source = new Source($item, $this->grav['pages']);
+            $Source = Scholar::getInstance(
+                $this->grav['config']->get(
+                    'theme.api.source',
+                    'themes.scholar.api.source'
+                ),
+                $this->grav['pages']
+            );
             $raw = $item->rawMarkdown();
             foreach (array_keys($item->media()->all()) as $mediaItem) {
                 $raw = str_replace(

@@ -4,7 +4,7 @@
 
 {% import "macros/metadata.html.twig" as metadata %}
 <dl class="metadata">
-{{ metadata.iterate(page.taxonomy, theme) }}
+{{ metadata.iterate(page.taxonomy, theme, base_url_absolute) }}
 </dl>
 
 {% endif %}

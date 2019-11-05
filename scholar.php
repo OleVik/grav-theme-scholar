@@ -17,8 +17,13 @@ use Grav\Common\Theme;
 use Grav\Common\Utils;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
-use Grav\Theme\Scholar\Utilities;
+use Grav\Theme\Scholar\Content;
+use Grav\Theme\Scholar\LinkedData;
 use Grav\Theme\Scholar\Router;
+use Grav\Theme\Scholar\Source;
+use Grav\Theme\Scholar\TaxonomyMap;
+use Grav\Theme\Scholar\Timer;
+use Grav\Theme\Scholar\Utilities;
 
 /**
  * Scholar Theme
@@ -164,7 +169,13 @@ class Scholar extends Theme
      */
     public function onPagesInitialized()
     {
-        $Router = new Router($this->grav);
+        $Router = self::getInstance(
+            $this->config->get(
+                'theme.api.router',
+                'themes.scholar.router'
+            ),
+            $this->grav
+        );
         // dump($this->grav['page']->translatedLanguages(true));
     }
 
@@ -175,13 +186,24 @@ class Scholar extends Theme
      */
     public function onPageInitialized()
     {
-        if ($this->grav['config']->get('theme.linkeddata.enabled')) {
-            $call = $this->grav['config']->get(
-                'theme.linkeddata.default',
-                'themes.scholar.linkeddata.default'
+        if ($this->grav['config']->get('theme.linked_data')) {
+            $call = self::getInstance(
+                $this->grav['config']->get(
+                    'theme.api.linked_data.default',
+                    'themes.scholar.api.linked_data.default'
+                ),
+                $this->grav['language'],
+                $this->grav['config']
             );
             if ($this->grav['page']->template() == 'cv') {
-                $call = $this->grav['config']->get('theme.linkeddata.cv', $call);
+                $call = self::getInstance(
+                    $this->grav['config']->get(
+                        'theme.api.linked_data.cv',
+                        'themes.scholar.api.linked_data.cv'
+                    ),
+                    $this->grav['language'],
+                    $this->grav['config']
+                );
             }
             if (isset($this->grav['page']->header()->theme)
                 && !empty($this->grav['page']->header()->theme)
@@ -194,11 +216,11 @@ class Scholar extends Theme
                     )
                 );
             }
-            $ld = new $call($this->grav['language']);
-            $ld->buildSchema($this->grav['page']);
+            // $ld = new $call($this->grav['language']);
+            $call->buildSchema($this->grav['page']);
             $this->grav['assets']->addInlineJs(
                 $call::getSchema(
-                    $ld->data,
+                    $call->data,
                     key($call::getType($this->grav['page']->template())),
                     true
                 ),
@@ -271,5 +293,45 @@ class Scholar extends Theme
                 'theme://components/' . $component . '/shortcodes'
             );
         }
+    }
+
+    /**
+     * Get class instance
+     *
+     * @param string $class   Class name
+     * @param mixed  ...$args Class arguments
+     *
+     * @return mixed Class instance
+     */
+    public function getInstance(string $class, ...$args)
+    {
+        $caller = '\Grav\Theme\Scholar\\' . $class;
+        return new $caller(...$args);
+    }
+
+    /**
+     * Get class names for blueprints
+     *
+     * @param string $key Needle to search for
+     *
+     * @return array Blueprint-friendly list of class names
+     */
+    public static function getClassNames(string $key)
+    {
+        // dump(get_declared_classes());
+        $regex = '/Grav\\\\Theme\\\\Scholar\\\\(?<api>.*)/i';
+        $classes = preg_grep($regex, get_declared_classes());
+        // dump($classes);
+        $matches = preg_grep('/' . $key . '/i', $classes);
+        // dump($matches);
+        $options = [
+            '' => 'None',
+            $key => $key
+        ];
+        foreach ($matches as $match) {
+            $match = str_replace('Grav\Theme\Scholar\\', '', $match);
+            $options[$match] = $match;
+        }
+        return $options;
     }
 }

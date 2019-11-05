@@ -1,6 +1,6 @@
 {% apply spaceless %}
 <p>
-    <a href="{{ theme.routes.search }}?date={{ item.date|date("Y-m-d") }}">
+    <a href="{{ base_url_absolute }}{{ theme.routes.search }}?date={{ item.date|date("Y-m-d") }}">
         <time datetime="{{ item.date|date("c") }}">{{ item.date|date(system.pages.dateformat.default) }}</time>
     </a>
 {% if page.taxonomy.categories %}
@@ -8,16 +8,16 @@
     {% if page.taxonomy.categories is iterable %}
         {% for category in page.taxonomy.categories %}
             {% if category is iterable %}
-                <a href="{{ theme.routes.search }}?category={{ category.name }}" class="category">{{ category.name|capitalize }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?category={{ category.name }}" class="category">{{ category.name|capitalize }}</a>
             {% else %}
-                <a href="{{ theme.routes.search }}?category={{ category }}" class="category">{{ category|capitalize }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?category={{ category }}" class="category">{{ category|capitalize }}</a>
             {% endif %}
             {% if not loop.last %}
                 <span>, </span>
             {% endif %}
         {% endfor %}
     {% else %}
-        <a href="{{ theme.routes.search }}?" class="category">{{ page.taxonomy.categories|capitalize }}</a>
+        <a href="{{ base_url_absolute }}{{ theme.routes.search }}?" class="category">{{ page.taxonomy.categories|capitalize }}</a>
     {% endif %}
 {% endif %}
 {% if page.taxonomy.tags %}
@@ -25,16 +25,16 @@
     {% if page.taxonomy.tags is iterable %}
         {% for tag in page.taxonomy.tags %}
             {% if tag is iterable %}
-                <a href="{{ theme.routes.search }}?tag={{ tag.name }}" class="tag">{{ tag.name|capitalize }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?tag={{ tag.name }}" class="tag">{{ tag.name|capitalize }}</a>
             {% else %}
-                <a href="{{ theme.routes.search }}?tag={{ tag }}" class="tag">{{ tag|capitalize }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?tag={{ tag }}" class="tag">{{ tag|capitalize }}</a>
             {% endif %}
             {% if not loop.last %}
                 <span>, </span>
             {% endif %}
         {% endfor %}
     {% else %}
-        <a href="{{ theme.routes.search }}?" class="tag">{{ page.taxonomy.tags|capitalize }}</a>
+        <a href="{{ base_url_absolute }}{{ theme.routes.search }}?" class="tag">{{ page.taxonomy.tags|capitalize }}</a>
     {% endif %}
 {% endif %}
 {% if page.taxonomy.author %}
@@ -42,16 +42,16 @@
     {% if page.taxonomy.author is iterable %}
         {% for author in page.taxonomy.author %}
             {% if author is iterable %}
-                <a href="{{ theme.routes.search }}?author={{ author.name }}" class="author">{{ author.name }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?author={{ author.name }}" class="author">{{ author.name }}</a>
             {% else %}
-                <a href="{{ theme.routes.search }}?author={{ author }}" class="author">{{ author }}</a>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}?author={{ author }}" class="author">{{ author }}</a>
             {% endif %}
             {% if not loop.last %}
                 <span>, </span>
             {% endif %}
         {% endfor %}
     {% else %}
-        <a href="{{ theme.routes.search }}?author={{ author.taxonomy.author }}" class="author">{{ page.taxonomy.author }}</a>
+        <a href="{{ base_url_absolute }}{{ theme.routes.search }}?author={{ author.taxonomy.author }}" class="author">{{ page.taxonomy.author }}</a>
     {% endif %}
 {% endif %}
 </span>.</span>
