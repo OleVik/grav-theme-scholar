@@ -44,7 +44,7 @@ class PageLinkedData extends AbstractLinkedData
         $this->TaxonomyMap = Scholar::getInstance(
             $Config->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
     }

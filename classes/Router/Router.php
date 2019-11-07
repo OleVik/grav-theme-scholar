@@ -162,7 +162,7 @@ class Router
         $LinkedData = Scholar::getInstance(
             $this->grav['config']->get(
                 'theme.api.linked_data.default',
-                'themes.scholar.api.linked_data.default'
+                'LinkedData\PageLinkedData'
             ),
             $this->grav['language']
         );
@@ -197,7 +197,7 @@ class Router
             $Source = Scholar::getInstance(
                 $this->grav['config']->get(
                     'theme.api.source',
-                    'themes.scholar.api.source'
+                    'Source\Source'
                 ),
                 $this->grav['pages']
             );

@@ -117,7 +117,7 @@ tufte:
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
 - [x] Responsive styling
-  - [ ] **CV**
+  - [x] **CV**
 - [x] Styles
   - [ ] Minimize conflicts across styles
 - [x] Components loader for Page Types (templates)
@@ -125,7 +125,9 @@ tufte:
   - [ ] Admin: List or checkboxes?
 - [ ] Map features to settings
   - [ ] Admin blueprints
-- [ ] Replicate Presentation-getters, for calling class through setting
+    - [ ] Style-picker
+    - [ ] Deprecate `cache`, belongs to Static Generator
+- [x] Replicate Presentation-getters, for calling class through setting
 
 ### Version spec
 

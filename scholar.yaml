@@ -6,15 +6,8 @@ toolbar:
   navigation: true
 css: true
 js: true
-cache:
-  metadata: "persist"
-  content: "persist"
-routes:
-  data: "/data"
-  embed: "/embed"
-  search: "/search"
-  print: "/print"
 itemize: true
+linked_data: true
 components:
   - blog
   - book
@@ -22,7 +15,14 @@ components:
   - docs
   - sequence
   - tufte
-linked_data: true
+routes:
+  data: "/data"
+  embed: "/embed"
+  search: "/search"
+  print: "/print"
+cache:
+  metadata: "persist"
+  content: "persist"
 api:
   content: 'Content\Content'
   linked_data:

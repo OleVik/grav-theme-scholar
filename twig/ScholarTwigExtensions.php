@@ -159,7 +159,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',
-                'themes.scholar.api.content'
+                'Content\Content'
             )
         );
         return $Content::pageNavigation($content, $itemize);
@@ -196,7 +196,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',
-                'themes.scholar.api.content'
+                'Content\Content'
             )
         );
         return Grav::instance()['twig']->processTemplate(
@@ -221,7 +221,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',
-                'themes.scholar.api.content'
+                'Content\Content'
             )
         );
         return $Content::wrapHTML($content, $wrapper, $targets);
@@ -240,7 +240,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',
-                'themes.scholar.api.content'
+                'Content\Content'
             )
         );
         return $Content::stripHTML($content, $tags);
@@ -256,7 +256,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $TaxonomyMap = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
         return $TaxonomyMap->get();
@@ -274,7 +274,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $TaxonomyMap = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
         return $TaxonomyMap->getPage($route);
@@ -292,7 +292,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $TaxonomyMap = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
         return $TaxonomyMap->getDescendants($route);
@@ -311,7 +311,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $TaxonomyMap = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
         return $TaxonomyMap::limit($list, $length);
@@ -330,7 +330,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $TaxonomyMap = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.taxonomy_map',
-                'themes.scholar.api.taxonomy_map'
+                'TaxonomyMap\TaxonomyMap'
             )
         );
         return $TaxonomyMap::threshold($list, $threshold);
@@ -353,7 +353,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',
-                'themes.scholar.api.content'
+                'Content\Content'
             )
         );
         return $Content::truncate($text, $length, $ending, $exact, $considerHtml);

@@ -206,7 +206,7 @@ class Utilities
     /**
      * Flatten an array to key => value
      *
-     * @param array $array Array to flatten
+     * @param array $array Array to flatten.
      * @param array $keys  Array to store results, private.
      *
      * @return array

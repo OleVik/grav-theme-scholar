@@ -34,6 +34,9 @@ en:
         LINKED_DATA:
           DEFAULT: Linked Data Default Class
           CV: Linked Data CV Class
+        ROUTER: Router
+        SOURCE: Source
+        TAXONOMY_MAP: Taxonomy Map
       FLEXSEARCH: FlexSearch
       DESCRIPTION:
         TOOLBAR: Show in toolbar.
@@ -47,10 +50,13 @@ en:
           PRINT: 'Route suffixed to Page-route to render its "print"-collection.'
         LINKED_DATA: Render Linked Data output.
         API:
-          CONTENT: Class to use for Content-parsing.
+          CONTENT: Class to use for content-parsing.
           LINKED_DATA:
-            DEFAULT: FQCN for default-class to use for Linked Data.
-            CV: FQCN for CV-class to use for Linked Data.
+            DEFAULT: Default class to use for Linked Data generation.
+            CV: Class to use for Linked Data generation for CV.
+          ROUTER: Class to use to handle theme-routing.
+          SOURCE: Class to use to handle source-parsing.
+          TAXONOMY_MAP: Class to use for Taxonomy Map generation.
         FLEXSEARCH: Run FlexSearch and assets.
       WARNING:
         TITLE: Warning
