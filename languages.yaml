@@ -43,6 +43,7 @@ en:
         ITEMIZE: Assign indices to tags.
         COMPONENTS: Components, meaning templates and assets, to enable in the theme.
         CACHE: Native for /user/themes/scholar/data, Persist for /user/data/persist, Transient for /cache/scholar, Disabled for no caching.
+        ROUTER: Let theme handle specialized routes.
         ROUTES:
           DATA: Route suffixed to Page-route to retrieve JSON-data.
           EMBED: Route suffixed to Page-route to retrieve embeddable HTML.

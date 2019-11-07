@@ -120,13 +120,15 @@ class Scholar extends Theme
      */
     public function onPagesInitialized()
     {
-        $Router = self::getInstance(
-            $this->config->get(
-                'theme.api.router',
-                'Router\Router'
-            ),
-            $this->grav
-        );
+        if ($this->grav['config']->get('theme.router')) {
+            $Router = self::getInstance(
+                $this->config->get(
+                    'theme.api.router',
+                    'Router\Router'
+                ),
+                $this->grav
+            );
+        }
         // dump($this->grav['page']->translatedLanguages(true));
     }
 

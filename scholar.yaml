@@ -15,6 +15,7 @@ components:
   - docs
   - sequence
   - tufte
+router: true
 routes:
   data: "/data"
   embed: "/embed"
