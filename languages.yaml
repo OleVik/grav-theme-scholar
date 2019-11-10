@@ -7,6 +7,7 @@ en:
       BY: by
       CLOSE: close
     ADMIN:
+      STYLE: Style
       TOOLBAR:
         BREADCRUMBS: Breadcrumbs
         SEARCH: Search
@@ -15,14 +16,6 @@ en:
       COMPONENTS: Components
       CSS: Theme CSS
       JS: Theme JS
-      CACHE:
-        METADATA: Cache Metadata
-        CONTENT: Cache Content
-        OPTIONS:
-          PERSIST: Persist
-          TRANSIENT: Transient
-          NATIVE: Native
-          DISABLED: Disabled
       ROUTES:
         DATA: Data route
         EMBED: Embed route
@@ -39,10 +32,10 @@ en:
         TAXONOMY_MAP: Taxonomy Map
       FLEXSEARCH: FlexSearch
       DESCRIPTION:
+        STYLE: Style to use with theme.
         TOOLBAR: Show in toolbar.
         ITEMIZE: Assign indices to tags.
         COMPONENTS: Components, meaning templates and assets, to enable in the theme.
-        CACHE: Native for /user/themes/scholar/data, Persist for /user/data/persist, Transient for /cache/scholar, Disabled for no caching.
         ROUTER: Let theme handle specialized routes.
         ROUTES:
           DATA: Route suffixed to Page-route to retrieve JSON-data.
@@ -59,8 +52,12 @@ en:
           SOURCE: Class to use to handle source-parsing.
           TAXONOMY_MAP: Class to use for Taxonomy Map generation.
         FLEXSEARCH: Run FlexSearch and assets.
-      WARNING:
-        TITLE: Warning
+      TITLES:
+        BASIC: Scholar Basic Options
+        ADVANCED: Scholar Advanced Options
+        EXPERT: Scholar Expert Options
+      NOTICE:
+        TITLE: Note
         EXPERT: These options can break the theme and site if used incorrectly.
     SITE_CONTENTS: Site Contents
     PAGE_CONTENTS: Page Contents

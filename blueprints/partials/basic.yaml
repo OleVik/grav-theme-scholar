@@ -1,0 +1,83 @@
+enabled:
+  type: toggle
+  label: PLUGIN_ADMIN.PLUGIN_STATUS
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+style:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.STYLE
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.STYLE
+  data-options@: '\Grav\Theme\Scholar::getStylesBlueprint'
+toolbar.breadcrumbs:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.TOOLBAR.BREADCRUMBS
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+toolbar.search:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.TOOLBAR.SEARCH
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+toolbar.navigation:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.TOOLBAR.NAVIGATION
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+css:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.CSS
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+js:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.JS
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+itemize:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.ITEMIZE
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ITEMIZE
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+linked_data:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.LINKED_DATA
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+flexsearch.enabled:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.FLEXSEARCH
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.FLEXSEARCH
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool

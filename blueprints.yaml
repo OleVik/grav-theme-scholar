@@ -25,199 +25,24 @@ form:
         options:
           type: tab
           title: PLUGIN_ADMIN.OPTIONS
-          fields:
-            enabled:
-              type: toggle
-              label: PLUGIN_ADMIN.PLUGIN_STATUS
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            toolbar.breadcrumbs:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.TOOLBAR.BREADCRUMBS
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            toolbar.search:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.TOOLBAR.SEARCH
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            toolbar.navigation:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.TOOLBAR.NAVIGATION
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            css:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.CSS
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            js:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.JS
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            itemize:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.ITEMIZE
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ITEMIZE
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            linked_data:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.LINKED_DATA
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.LINKED_DATA
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            flexsearch.enabled:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.FLEXSEARCH
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.FLEXSEARCH
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
+          data-fields@:
+            [
+              '\Grav\Theme\Scholar::getConfigBlueprintFields',
+              "user://themes/scholar/blueprints/partials/basic.yaml",
+            ]
         advanced:
           type: tab
           title: PLUGIN_ADMIN.ADVANCED
-          fields:
-            components:
-              type: selectize
-              label: THEME_SCHOLAR.ADMIN.COMPONENTS
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.COMPONENTS
-              allowEmptyOption: true
-              merge_items: true
-              selectize:
-                create: false
-                data-options@: '\Grav\Theme\Scholar::getComponentsBlueprint'
-              validate:
-                type: commalist
-            router:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.API.ROUTER
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTER
-              options:
-                1: PLUGIN_ADMIN.ENABLED
-                0: PLUGIN_ADMIN.DISABLED
-              validate:
-                type: bool
-            routes.data:
-              type: text
-              label: THEME_SCHOLAR.ADMIN.ROUTES.DATA
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.DATA
-            routes.embed:
-              type: text
-              label: THEME_SCHOLAR.ADMIN.ROUTES.EMBED
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.EMBED
-            routes.search:
-              type: text
-              label: THEME_SCHOLAR.ADMIN.ROUTES.SEARCH
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.SEARCH
-            routes.print:
-              type: text
-              label: THEME_SCHOLAR.ADMIN.ROUTES.PRINT
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.PRINT
+          data-fields@:
+            [
+              '\Grav\Theme\Scholar::getConfigBlueprintFields',
+              "user://themes/scholar/blueprints/partials/advanced.yaml",
+            ]
         expert:
           type: tab
           title: PLUGIN_ADMIN.EXPERT
-          fields:
-            warning:
-              type: spacer
-              title: THEME_SCHOLAR.ADMIN.WARNING.TITLE
-              text: THEME_SCHOLAR.ADMIN.WARNING.EXPERT
-              underline: true
-            cache.metadata:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.CACHE.METADATA
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.CACHE
-              highlight: native
-              default: native
-              options:
-                native: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.NATIVE
-                persist: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.PERSIST
-                transient: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.TRANSIENT
-                disabled: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.DISABLED
-              validate:
-                type: bool
-            cache.content:
-              type: toggle
-              label: THEME_SCHOLAR.ADMIN.CACHE.CONTENT
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.CACHE
-              highlight: native
-              default: native
-              options:
-                native: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.NATIVE
-                persist: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.PERSIST
-                transient: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.TRANSIENT
-                disabled: THEME_SCHOLAR.ADMIN.CACHE.OPTIONS.DISABLED
-              validate:
-                type: bool
-            api.content:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.CONTENT
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.CONTENT
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - Content
-            api.linked_data.default:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.LINKED_DATA.DEFAULT
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.LINKED_DATA.DEFAULT
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - LinkedData
-            api.linked_data.cv:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.LINKED_DATA.CV
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.LINKED_DATA.CV
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - LinkedData
-            api.router:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.ROUTER
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.ROUTER
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - Router
-            api.source:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.SOURCE
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.SOURCE
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - Source
-            api.taxonomy_map:
-              type: select
-              label: THEME_SCHOLAR.ADMIN.API.TAXONOMY_MAP
-              description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.TAXONOMY_MAP
-              data-options@:
-                - "\\Grav\\Theme\\Scholar::getClassNames"
-                - TaxonomyMap
+          data-fields@:
+            [
+              '\Grav\Theme\Scholar::getConfigBlueprintFields',
+              "user://themes/scholar/blueprints/partials/expert.yaml",
+            ]

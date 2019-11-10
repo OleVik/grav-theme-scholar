@@ -16,6 +16,7 @@ namespace Grav\Theme;
 use Grav\Common\Grav;
 use Grav\Common\Theme;
 use Grav\Common\Utils;
+use Grav\Common\Inflector;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
 use Grav\Theme\Scholar\Content;
@@ -26,6 +27,9 @@ use Grav\Theme\Scholar\TaxonomyMap;
 use Grav\Theme\Scholar\Timer;
 use Grav\Theme\Scholar\Utilities;
 use Grav\Theme\Scholar\Autoload;
+
+use RocketTheme\Toolbox\Event\Event;
+use Grav\Plugin\StaticGeneratorPlugin as StaticGenerator;
 
 /**
  * Scholar Theme
@@ -64,17 +68,18 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
+        // dump(Utilities::filesFinder('user://data/persist', ['js']));
+        // dump(StaticGenerator::getSearchFiles('index'));
         $this->autoload();
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
         if ($this->isAdmin() && $this->config->get('plugins.admin')) {
-            // $this->enable(
-            //     [
-            //         'onTwigSiteVariables' => ['twigBaseUrl', 0],
-            //         'onAssetsInitialized' => ['onAdminPagesAssetsInitialized', 0]
-            //     ]
-            // );
+            $this->enable(
+                [
+                    'onAdminSave' => ['debug', 0]
+                ]
+            );
         }
         $this->enable(
             [
@@ -89,6 +94,76 @@ class Scholar extends Theme
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->stopTimer('scholar');
         }
+    }
+
+    public function debug(Event $e)
+    {
+        $page = $e['object'];
+        error_log(var_export($page->header(), true));
+        error_log(var_export($page->frontmatter(), true));
+        error_log(var_export($_POST['data'], true));
+    }
+
+    /**
+     * Get configuration blueprints
+     *
+     * @param string $path   Path to blueprint
+     * @param string $prefix Optional key-prefix
+     *
+     * @return array Associative, nested array of settings
+     */
+    public static function getConfigBlueprintFields(string $path, string $prefix = ''): array
+    {
+        $config = Grav::instance()['config'];
+        $locator = Grav::instance()['locator'];
+        $formatter = new YamlFormatter;
+        $file = new YamlFile($locator->findResource($path, true, true), $formatter);
+        $return = array();
+        foreach ($file->load() as $name => $data) {
+            foreach ($data as $key => $property) {
+                if (Utils::contains($key, '@')) {
+                    $key = str_replace(['data-', '@'], '', $key);
+                    if (is_string($property)) {
+                        $data[$key] = call_user_func_array(
+                            $property,
+                            []
+                        );
+                    } elseif (is_array($property)) {
+                        $data[$key] = call_user_func_array(
+                            $property[0],
+                            array_slice($property, 1, count($property)-1, true)
+                        );
+                    }
+                }
+            }
+            if (!isset($data['name'])) {
+                $data['name'] = $prefix . $name;
+            }
+            if (!isset($data['default']) && $config->get('theme.' . $name)) {
+                $data['default'] = $config->get('theme.' . $name);
+            }
+            $return [$prefix . $name] = $data;
+        }
+        return $return;
+    }
+
+    /**
+     * Get styles
+     *
+     * @return array Associative array of styles
+     */
+    public static function getStylesBlueprint(): array
+    {
+        $stylesFolders = Utils::arrayMergeRecursiveUnique(
+            Utilities::filesFinder('theme://css/styles', ['css']),
+            Utilities::filesFinder('user://themes/scholar/css/styles', ['css'])
+        );
+        $styles = array();
+        foreach (array_unique($stylesFolders) as $style) {
+            $name = $style->getBasename('.' . $style->getExtension());
+            $styles[$name] = Inflector::titleize($name);
+        }
+        return $styles;
     }
 
     /**
@@ -331,12 +406,12 @@ class Scholar extends Theme
      */
     public function onShortcodeHandlers()
     {
-        $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
-        $locator = $this->grav['locator'];
+        // $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
         foreach ($this->config->get('theme.components') as $component) {
-            $this->grav['shortcode']->registerAllShortcodes(
-                'theme://components/' . $component . '/shortcodes'
-            );
+            $path = 'theme://components/' . $component . '/shortcodes';
+            if (is_dir($this->grav['locator']->findResource($path))) {
+                $this->grav['shortcode']->registerAllShortcodes($path);
+            }
         }
     }
 

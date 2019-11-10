@@ -116,18 +116,21 @@ tufte:
   - [ ] Generate data via Enduring, and in Admin
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
-- [x] Responsive styling
-  - [x] **CV**
 - [x] Styles
   - [ ] Minimize conflicts across styles
+  - [ ] Naive night-mode: https://dev.to/wgao19/night-mode-with-mix-blend-mode-difference-23lm
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
 - [ ] Map features to settings
+  - [ ] Deprecate `cache`, belongs to Static Generator
   - [ ] Admin blueprints
-    - [ ] Style-picker
-    - [ ] Deprecate `cache`, belongs to Static Generator
-- [x] Replicate Presentation-getters, for calling class through setting
+    - [ ] Content- and index-generator via SG
+    - [x] Style-picker
+    - [x] Lightweight-options in Page-blueprint, extending/including a common set?
+      - Might require separating tabs into separate files
+      - [x] Unset default taxonomies, use restrictive set from ProjectSpace
+        - Site.yaml is not manipulated, only pluralized in TaxonomyMap
 
 ### Version spec
 

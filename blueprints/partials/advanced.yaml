@@ -1,0 +1,36 @@
+components:
+  type: selectize
+  label: THEME_SCHOLAR.ADMIN.COMPONENTS
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.COMPONENTS
+  allowEmptyOption: true
+  merge_items: true
+  selectize:
+    create: false
+    data-options@: '\Grav\Theme\Scholar::getComponentsBlueprint'
+  validate:
+    type: commalist
+router:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.API.ROUTER
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTER
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
+routes.data:
+  type: text
+  label: THEME_SCHOLAR.ADMIN.ROUTES.DATA
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.DATA
+routes.embed:
+  type: text
+  label: THEME_SCHOLAR.ADMIN.ROUTES.EMBED
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.EMBED
+routes.search:
+  type: text
+  label: THEME_SCHOLAR.ADMIN.ROUTES.SEARCH
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.SEARCH
+routes.print:
+  type: text
+  label: THEME_SCHOLAR.ADMIN.ROUTES.PRINT
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ROUTES.PRINT

@@ -36,11 +36,11 @@ class Utilities
      * @param string $file      Filename.
      * @param array  $locations List of locations.
      *
-     * @return string
+     * @return string File location.
      */
-    public static function fileFinder(string $file, array $locations)
+    public static function fileFinder(string $file, array $locations): string
     {
-        $return = false;
+        $return = '';
         foreach ($locations as $location) {
             if (file_exists($location . '/' . $file)) {
                 $return = $location . '/' . $file;
@@ -56,11 +56,11 @@ class Utilities
      * @param string $folder    Folder name..
      * @param array  $locations List of locations.
      *
-     * @return string
+     * @return string Folder location.
      */
-    public static function folderFinder(string $folder, array $locations)
+    public static function folderFinder(string $folder, array $locations): string
     {
-        $return = false;
+        $return = '';
         foreach ($locations as $location) {
             if (is_dir($location . '/' . $folder)) {
                 $return = $location . '/' . $folder;
@@ -74,11 +74,11 @@ class Utilities
      * Search for files in multiple locations
      *
      * @param string $directory Folder-name.
-     * @param string $types     File extensions.
+     * @param array  $types     File extensions.
      *
-     * @return string
+     * @return array List of file locations.
      */
-    public static function filesFinder(string $directory, array $types)
+    public static function filesFinder(string $directory, array $types): array
     {
         $iterator = new \RecursiveDirectoryIterator(
             $directory,
@@ -94,7 +94,7 @@ class Utilities
         if (count($files) > 0) {
             return $files;
         } else {
-            return false;
+            return [];
         }
     }
 
@@ -103,9 +103,9 @@ class Utilities
      *
      * @param array $locations List of locations.
      *
-     * @return string
+     * @return array List of folder locations.
      */
-    public static function foldersFinder(array $locations)
+    public static function foldersFinder(array $locations): array
     {
         $return = array();
         foreach ($locations as $location) {
@@ -124,13 +124,13 @@ class Utilities
      *
      * @param array  $array  Array to search.
      * @param string $search Key to search for.
-     * @param array  $keys   Reserved
+     * @param array  $keys   Reserved.
      *
      * @see https://stackoverflow.com/a/40506009/603387
      *
-     * @return array
+     * @return array Matches.
      */
-    public static function arraySearch($array, $search, $keys = array())
+    public static function arraySearch($array, $search, $keys = array()): array
     {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
@@ -153,9 +153,9 @@ class Utilities
      *
      * @see https://stackoverflow.com/a/16925154/603387
      *
-     * @return array
+     * @return array Collapsed array.
      */
-    public static function collapse($array, $info)
+    public static function collapse($array, $info): array
     {
         $max = count($array)-1;
         $result = array($array[$max] => $info);
@@ -171,9 +171,9 @@ class Utilities
      *
      * @see https://stackoverflow.com/a/46445227
      *
-     * @return array
+     * @return array Manipulated array.
      */
-    public static function removeKey(Array $array, String $key)
+    public static function removeKey(array $array, string $key): array
     {
         foreach ($array as $k => $v) {
             if (is_array($v) && $k != $key) {
@@ -193,9 +193,9 @@ class Utilities
      *
      * @see https://stackoverflow.com/a/15133284
      *
-     * @return void
+     * @return array Manipulated array.
      */
-    public static function assignArrayByPath(&$arr, $path)
+    public static function assignArrayByPath(&$arr, $path): array
     {
         $keys = explode('\\', $path);
         while ($key = array_shift($keys)) {
@@ -209,9 +209,9 @@ class Utilities
      * @param array $array Array to flatten.
      * @param array $keys  Array to store results, private.
      *
-     * @return array
+     * @return array Manipulated array.
      */
-    public static function arrayFlattenKeysAsValues($array, $keys = array())
+    public static function arrayFlattenKeysAsValues($array, $keys = array()): array
     {
         foreach ($array as $key => $value) {
             if (is_array($value)) {
@@ -229,9 +229,9 @@ class Utilities
      *
      * @see https://stackoverflow.com/a/16788610
      *
-     * @return array
+     * @return array Manipulated array.
      */
-    public static function make_comparer()
+    public static function make_comparer(): array
     {
         // Normalize criteria up front so that the comparer finds everything tidy
         $criteria = func_get_args();
@@ -275,9 +275,9 @@ class Utilities
      * @param string $orderBy  Property to sort by.
      * @param string $orderDir Direction to sort.
      *
-     * @return array
+     * @return array Manipulated array.
      */
-    public static function sortLeaf(Array $array, String $orderBy = 'date', String $orderDir = 'asc')
+    public static function sortLeaf(Array $array, String $orderBy = 'date', String $orderDir = 'asc'): array
     {
         require __DIR__ . '/../vendor/autoload.php';
         if ($orderBy == 'date') {
@@ -325,7 +325,7 @@ class Utilities
      * @param array    $array    Array to search
      * @param callable $callback Function to call
      *
-     * @return array
+     * @return array Manipulated array.
      *
      * @link https://github.com/lingtalfi/Bat/blob/master/ArrayTool.md#filterrecursive
      */

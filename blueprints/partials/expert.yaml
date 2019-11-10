@@ -1,0 +1,47 @@
+notice:
+  type: spacer
+  title: THEME_SCHOLAR.ADMIN.NOTICE.TITLE
+  text: THEME_SCHOLAR.ADMIN.NOTICE.EXPERT
+  underline: true
+api.content:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.CONTENT
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.CONTENT
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - Content
+api.linked_data.default:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.LINKED_DATA.DEFAULT
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.LINKED_DATA.DEFAULT
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - LinkedData
+api.linked_data.cv:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.LINKED_DATA.CV
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.LINKED_DATA.CV
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - LinkedData
+api.router:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.ROUTER
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.ROUTER
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - Router
+api.source:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.SOURCE
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.SOURCE
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - Source
+api.taxonomy_map:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.API.TAXONOMY_MAP
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.API.TAXONOMY_MAP
+  data-options@:
+    - "\\Grav\\Theme\\Scholar::getClassNames"
+    - TaxonomyMap

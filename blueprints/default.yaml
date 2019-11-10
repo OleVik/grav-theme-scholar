@@ -1,0 +1,23 @@
+title: Scholar Options
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      fields:
+        options:
+          type: tab
+          fields:
+            scholar_basic:
+              type: section
+              title: THEME_SCHOLAR.ADMIN.TITLES.BASIC
+              underline: true
+              data-fields@:
+                [
+                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
+                  "theme://blueprints/partials/basic.yaml",
+                  "header.theme.",
+                ]

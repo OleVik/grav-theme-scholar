@@ -21,9 +21,6 @@ routes:
   embed: "/embed"
   search: "/search"
   print: "/print"
-cache:
-  metadata: "persist"
-  content: "persist"
 api:
   content: 'Content\Content'
   linked_data:

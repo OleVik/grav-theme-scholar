@@ -1,0 +1,6 @@
+form:
+  fields:
+    gallery.images:
+      type: section
+      title: My section
+      underline: true
