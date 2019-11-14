@@ -114,6 +114,12 @@ tufte:
 
 - [x] Global search-page, adapting to root templates
   - [ ] Generate data via Enduring, and in Admin
+    - [ ] Task in Admin
+      - [ ] Normal mode: Run, confirm, finish
+      - [ ] Extended/debug mode: Progress through SSE
+        - https://www.html5rocks.com/en/tutorials/eventsource/basics/
+        - https://www.strehle.de/tim/weblog/archives/2017/06/02/1619
+        - https://chrisblackwell.me/server-sent-events-using-laravel-vue/
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
 - [x] Styles
