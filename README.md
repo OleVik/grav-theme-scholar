@@ -121,16 +121,6 @@ tufte:
   - [ ] Naive night-mode: https://dev.to/wgao19/night-mode-with-mix-blend-mode-difference-23lm
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
-  - [ ] Admin: List or checkboxes?
-- [x] Map features to settings
-  - [x] Deprecate `cache`, belongs to Static Generator
-  - [x] Admin blueprints
-    - [x] Content- and index-generator via SG
-    - [x] Style-picker
-    - [x] Lightweight-options in Page-blueprint, extending/including a common set?
-      - Might require separating tabs into separate files
-      - [x] Unset default taxonomies, use restrictive set from ProjectSpace
-        - Site.yaml is not manipulated, only pluralized in TaxonomyMap
 
 ### Version spec
 
