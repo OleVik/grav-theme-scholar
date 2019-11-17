@@ -114,11 +114,6 @@ tufte:
 
 - [x] Global search-page, adapting to root templates
   - [x] Generate data via Static Generator, and in Admin
-    - [x] Task in Admin
-      - [x] Progress through SSE
-        - https://www.html5rocks.com/en/tutorials/eventsource/basics/
-        - https://www.strehle.de/tim/weblog/archives/2017/06/02/1619
-        - https://chrisblackwell.me/server-sent-events-using-laravel-vue/
     - [x] Generate static, eg. ekstern.php onPageContentProcessed()
       - [ ] Needs testing with broader collections
 - [x] Styles
@@ -127,10 +122,10 @@ tufte:
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates
   - [ ] Admin: List or checkboxes?
-- [ ] Map features to settings
-  - [ ] Deprecate `cache`, belongs to Static Generator
-  - [ ] Admin blueprints
-    - [ ] Content- and index-generator via SG
+- [x] Map features to settings
+  - [x] Deprecate `cache`, belongs to Static Generator
+  - [x] Admin blueprints
+    - [x] Content- and index-generator via SG
     - [x] Style-picker
     - [x] Lightweight-options in Page-blueprint, extending/including a common set?
       - Might require separating tabs into separate files
