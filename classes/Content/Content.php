@@ -130,14 +130,14 @@ class Content implements ContentInterface
      * Remove given HTML tags
      *
      * @param string $content HTML-content
-     * @param mixed  $tags    Tags to strip, comma-separated
+     * @param mixed  $tags    Tags to strip, array or comma-separated
      *
      * @return string Manipulated HTML, UTF-8 encoded
      */
     public static function stripHTML(string $content, $tags)
     {
         if (strlen($content) < 1) {
-            return;
+            return $content;
         }
         if (is_string($tags)) {
             $tags = explode(',', $tags);

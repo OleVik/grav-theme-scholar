@@ -237,6 +237,9 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function stripHTML(string $content, $tags)
     {
+        if (empty($tags)) {
+            return $content;
+        }
         $Content = Scholar::getInstance(
             Grav::instance()['config']->get(
                 'theme.api.content',

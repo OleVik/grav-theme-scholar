@@ -112,10 +112,7 @@ tufte:
 
 ## TODO
 
-- [x] Global search-page, adapting to root templates
-  - [x] Generate data via Static Generator, and in Admin
-    - [x] Generate static, eg. ekstern.php onPageContentProcessed()
-      - [ ] Needs testing with broader collections
+- [ ] Static Generator: Simplify options, add Page button
 - [x] Styles
   - [ ] Minimize conflicts across styles
   - [ ] Naive night-mode: https://dev.to/wgao19/night-mode-with-mix-blend-mode-difference-23lm

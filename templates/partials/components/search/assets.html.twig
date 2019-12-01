@@ -7,14 +7,19 @@
         {% if mode == 'field' %}
             {% if page.header.search.index and file_exists(page.header.search.index) %}
                 {% do assets.addJs(page.header.search.index) %}
+                {% set seachFile = true %}
             {% elseif page.topParent.header.search.index and file_exists(page.topParent.header.search.index) %}
                 {% do assets.addJs(page.topParent.header.search.index) %}
+                {% set seachFile = true %}
             {% elseif file_exists('user://data/persist/index.js') %}
                 {% do assets.addJs('user://data/persist/index.js') %}
+                {% set seachFile = true %}
             {% endif %}
-            {% do assets.addInlineJs('
-                Scholar.searchFieldInit(GravMetadataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "media"], ' ~ json_encode(config.theme.flexsearch.index) ~ ');
-            ', {group: 'bottom'}) %}
+            {% if seachFile %}
+                {% do assets.addInlineJs('
+                    Scholar.searchFieldInit(GravMetadataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "media"], ' ~ json_encode(config.theme.flexsearch.index) ~ ');
+                ', {group: 'bottom'}) %}
+            {% endif %}
         {% elseif mode == 'form' %}
             {% do assets.addCss('theme://node_modules/mobius1-selectr/dist/selectr.min.css') %}
             {% do assets.addJs('theme://node_modules/mobius1-selectr/dist/selectr.min.js') %}

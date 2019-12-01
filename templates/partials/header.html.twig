@@ -1,11 +1,11 @@
 {% block title %}
 <h1>
-    <a href="{{ uri.rootUrl(true) }}">{{ site.title }}</a>
+    <a href="{{ uri.rootUrl(true) }}" role="navigation"  aria-label="{{ "THEME_SCHOLAR.HOME"|t }}">{{ site.title }}</a>
 </h1>
 {% endblock %}
 
 {% block links %}
-<nav class="links" role="navigation">
+<nav class="links" role="navigation" aria-label="{{ "THEME_SCHOLAR.LINKS"|t }}">
 <div>
 {% for page in page.collection({ items: {'@root.children': ''}}) %}
     <a href="{{ page.url }}">{{ page.title }}</a>
@@ -16,7 +16,7 @@
 
 {% block menu %}
 
-<nav class="menu" role="navigation">
+<nav class="menu" role="navigation" aria-label="{{ "THEME_SCHOLAR.MENU"|t }}">
 
     {% block search %}
     {% if config.theme.flexsearch.enabled %}
