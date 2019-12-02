@@ -9,18 +9,12 @@ describe("Accessibility: " + "/", () => {
     cy.checkA11y();
   });
   it("/" + " has no active violations", function() {
-    // cy.get('header[role="banner"] h1 a').focus();
-    // cy.get('header[role="banner"] .links a:first-of-type').focus();
-    cy.get('header[role="banner"] h1 a').trigger("mouseenter");
-    cy.get('header[role="banner"] h1 a').trigger("mouseover");
-    // cy.get('header[role="banner"] .links a:first-of-type').trigger("mouseover");
-    // cy.get("aside article:first-of-type header a:first-of-type").trigger(
-    //   "mouseover"
-    // );
-    // cy.get("aside article:first-of-type footer a:first-of-type").trigger(
-    //   "mouseover"
-    // );
-    // cy.get('header[role="banner"] .menu .search-button').trigger("click");
+    Cypress.env("testElementsIndex").forEach(element => {
+      cy.get(element).invoke("attr", "class", "active");
+    });
+    cy.get('header[role="banner"] .menu .search input[type="search"]')
+      .focus()
+      .type("Hello World");
     cy.checkA11y();
   });
   /* Cypress.env("styles").forEach(style => {

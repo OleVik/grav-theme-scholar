@@ -23,5 +23,13 @@ module.exports = (on, config) => {
     styles.push(file);
   });
   config.env.styles = styles;
+  config.env.testElementsIndex = [
+    'header[role="banner"] h1 a',
+    'header[role="banner"] .links a:first-of-type',
+    "aside article:first-of-type header a:first-of-type",
+    "aside article:first-of-type footer a:first-of-type",
+    'header[role="banner"] .menu .search-button',
+    "footer p a",
+  ];
   return config;
 };
