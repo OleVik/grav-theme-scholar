@@ -1,1 +1,32 @@
-{ "baseUrl": "http://127.0.0.1:8000/", "numTestsKeptInMemory": 100 }
+{
+  "baseUrl": "http://127.0.0.1:8000/",
+  "numTestsKeptInMemory": 1000,
+  "env": {
+    "context": {
+      "exclude": [["#query"], ["label[for=\"query\"]"], [".search-button"]]
+    },
+    "config": {
+      "runOnly": ["wcag2a", "section508", "best-practice"],
+      "rules": {
+        "landmark-complementary-is-top-level": { "enabled": false }
+      }
+    },
+    "routes": {
+      "docs": "/docs"
+    },
+    "routesBack": {
+      "index": "/",
+      "article": "/article",
+      "blog": "/blog",
+      "cv": "/cv",
+      "docs": "/docs"
+    },
+    "elements": {
+      "index": ["header[role=\"banner\"] .menu .search-button", "a"],
+      "article": ["a"],
+      "blog": ["a"],
+      "cv": ["a"],
+      "docs": ["a"]
+    }
+  }
+}

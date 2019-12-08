@@ -61,21 +61,23 @@ class TinyDrawer {
       },
       true
     );
-    this.elementBackdrop.addEventListener(
-      "click",
-      function(event) {
-        if (
-          Scholar.tinyDrawerObj.elementDrawer.getAttribute("aria-checked") ===
-          "true"
-        ) {
-          Scholar.toggleButtonState(
-            Scholar.tinyDrawerObj.elementDrawer,
-            "false"
-          );
-        }
-      },
-      true
-    );
+    this.elementClose.forEach(item => {
+      item.addEventListener(
+        "click",
+        function(event) {
+          if (
+            Scholar.tinyDrawerObj.elementDrawer.getAttribute("aria-checked") ===
+            "true"
+          ) {
+            Scholar.toggleButtonState(
+              Scholar.tinyDrawerObj.elementDrawer,
+              "false"
+            );
+          }
+        },
+        true
+      );
+    });
     this.observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
         if (mutation.type == "attributes") {

@@ -114,7 +114,7 @@ tufte:
 
 - [ ] Static Generator: Simplify options, add Page button
 - [x] Styles
-  - [ ] Minimize conflicts across styles
+  - [ ] Minimize conflicts across Styles
   - [ ] Naive night-mode: https://dev.to/wgao19/night-mode-with-mix-blend-mode-difference-23lm
 - [x] Components loader for Page Types (templates)
   - [ ] Separate metadata.html.twig into generalized and specific for templates

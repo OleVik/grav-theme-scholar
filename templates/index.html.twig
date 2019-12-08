@@ -3,6 +3,7 @@
 {% set body_classes = (body_classes|default('page listing')) %}
 
 {% block article %}
+
 {% with {
     'page': page,
     'collection': page.collection
@@ -41,7 +42,5 @@
         {{ block('content', 'partials/page/listing.html.twig') }}
     {% endwith %}
 </aside>
+
 {% endblock %}
-
-
-{% block search_results %}{% endblock %}

@@ -293,8 +293,7 @@ a:active,
     }
     a:hover,
     a:focus,
-    a:active,
-    .active {
+    a:active {
       filter: contrast(1.2);
       text-decoration: underline;
     }
@@ -420,21 +419,8 @@ header[role="banner"] {
   }
 }
 header[role="banner"],
+.search,
 .drawer {
-  [role="button"] {
-    svg {
-      fill: var(--aside-text);
-      filter: contrast(1.2);
-      transition: fill 0.4s ease;
-    }
-    &:hover {
-      svg {
-        filter: contrast(1.5);
-      }
-    }
-  }
-}
-.search {
   [role="button"] {
     svg {
       fill: var(--text);

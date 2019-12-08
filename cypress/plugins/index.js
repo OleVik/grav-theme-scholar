@@ -15,21 +15,12 @@ const path = require("path");
 const fs = require("fs");
 
 module.exports = (on, config) => {
-  config.env.routes = ["/", "/article", "/blog", "/cv", "/docs"];
-  config.env.stylesFolder = path.join(__dirname, "../../css/styles");
+  // config.env.stylesFolder = path.join(__dirname, "../../css/styles");
   let styles = [];
-  var files = fs.readdirSync(config.env.stylesFolder);
+  var files = fs.readdirSync(path.join(__dirname, "../../css/styles"));
   files.forEach(function(file) {
     styles.push(file);
   });
   config.env.styles = styles;
-  config.env.testElementsIndex = [
-    'header[role="banner"] h1 a',
-    'header[role="banner"] .links a:first-of-type',
-    "aside article:first-of-type header a:first-of-type",
-    "aside article:first-of-type footer a:first-of-type",
-    'header[role="banner"] .menu .search-button',
-    "footer p a",
-  ];
   return config;
 };

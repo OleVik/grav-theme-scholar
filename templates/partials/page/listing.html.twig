@@ -11,7 +11,7 @@
             <h3>{{ page.header.subtitle }}</h3>
             {% endif %}
             {% if page.header.image %}
-                {{ page.media[page.header.image].html(page.title, page.title) }}
+                {{ page.media[page.header.image].html(null, null) }}
             {% endif %}
             </a>
         </header>
