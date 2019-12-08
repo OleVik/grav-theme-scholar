@@ -1,7 +1,7 @@
 {% macro loop(pages) %}
     {% for page in pages.children.published %}
         {% if page.active or page.activeChild %}
-            <li class="item {% if page.active %}current{% endif %} active">
+            <li class="item {% if page.active %}current{% endif %} current-group">
                 <a href="{{ page.url }}">{{ page.title }}</a>
                 {% if page.children.count > 0 %}
                 <ol>

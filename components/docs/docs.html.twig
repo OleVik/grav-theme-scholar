@@ -19,7 +19,7 @@
 {% endif %}
 
 {% block javascripts %}
-    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
         {% do assets.addInlineJs('Scholar.drawerInit();') %}
     {% endif %}
     {% with {
@@ -97,7 +97,7 @@
 {% endblock %}
 
 {% block append %}
-    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
         {% include 'partials/drawer.html.twig' with {headings: navigablePage.headings} %}
     {% endif %}
     {% include 'partials/components/search/result.html.twig' %}

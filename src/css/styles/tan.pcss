@@ -8,16 +8,29 @@
   --background: #eee8e3;
   --foreground: #ffffff;
   --border-color: rgba(114, 126, 128, 0.6);
-  --header-background: #85776b;
-  --aside-text: #c3c3c3;
-  --aside-text-active: #929292;
-  --aside-background: #85776b;
-  --aside-background-active: #beaa94;
-  --aside-background-active-state: #a1907f;
+  --header-background: #634d36;
+  --aside-text: #f3f3f3;
+  --aside-text-active: #f3f3f3;
+  --aside-background: var(--header-background);
+  --aside-background-active: #524022;
+  --aside-background-active-state: #715538;
 }
 
 .docs {
   main {
     background-color: var(--text-alt);
+  }
+}
+header[role="banner"] {
+  .search {
+    input,
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      color: var(--text-alt);
+      &::placeholder {
+        color: var(--text-alt);
+      }
+    }
   }
 }

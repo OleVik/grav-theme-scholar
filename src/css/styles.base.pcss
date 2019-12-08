@@ -1,6 +1,10 @@
 :root {
   --generic-border: rgba(160, 160, 160, 0.65);
 }
+::selection {
+  color: var(--text-alt);
+  background: var(--primary);
+}
 a:any-link {
   color: var(--text);
   transition: color 0.2s ease, border-bottom-color 0.2s ease;
@@ -214,15 +218,6 @@ a:active,
 
 .docs {
   color: var(--text);
-  /* a:any-link {
-    border-bottom: 1px dotted var(--border-color);
-  }
-  a:hover,
-  a:focus,
-  a:active,
-  .active {
-    border-bottom: 1px solid var(--border-color);
-  } */
   main {
     background-color: var(--background);
     > header[role="banner"] {
@@ -239,17 +234,6 @@ a:active,
       .active {
         filter: contrast(1.5);
         text-decoration: underline;
-      }
-      .search {
-        input,
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus {
-          color: var(--aside-text);
-          &::placeholder {
-            color: var(--aside-text);
-          }
-        }
       }
       .drawer {
         color: var(--text);
@@ -289,11 +273,12 @@ a:active,
     color: var(--aside-text);
     background-color: var(--aside-background);
     a:any-link {
-      color: var(--aside-text);
+      color: var(--aside-text-active);
     }
     a:hover,
     a:focus,
-    a:active {
+    a:active,
+    .active {
       filter: contrast(1.2);
       text-decoration: underline;
     }
@@ -301,7 +286,7 @@ a:active,
       background-color: var(--aside-background-active);
       box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.3);
       h1 {
-        color: var(--aside-text);
+        color: var(--aside-text-active);
         filter: contrast(1.2);
       }
     }
@@ -315,7 +300,7 @@ a:active,
           }
         }
       }
-      .active {
+      .current-group {
         background-color: var(--aside-background-active);
       }
       .current {
@@ -402,7 +387,7 @@ header[role="banner"] {
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
-      color: var(--text);
+      color: var(--aside-text);
       background-color: transparent;
       -webkit-transition-delay: 99999s;
       box-shadow: none;
@@ -413,7 +398,7 @@ header[role="banner"] {
       }
       &::placeholder {
         opacity: 0;
-        color: var(--text);
+        color: var(--aside-text);
       }
     }
   }
@@ -423,13 +408,18 @@ header[role="banner"],
 .drawer {
   [role="button"] {
     svg {
-      fill: var(--text);
+      fill: var(--aside-text);
       filter: contrast(1.2);
       transition: fill 0.4s ease;
     }
     &:hover {
       svg {
         filter: contrast(1.5);
+      }
+    }
+    &.search-close {
+      svg {
+        fill: var(--text);
       }
     }
   }

@@ -9,7 +9,7 @@
     <h{{ level ?? 1 + 1 }}>{{ page.header.subtitle }}</h{{ level ?? 1 + 1 }}>
     {% endif %}
     {% if metadata %}
-        {% include 'partials/components/metadata.html.twig' with {'page': page} %}
+        {% include 'partials/book/metadata.html.twig' with {'page': page} %}
     {% endif %}
 </header>
 {% if content %}

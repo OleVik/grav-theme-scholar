@@ -4,7 +4,7 @@
 {% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 
 {% block javascripts %}
-    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
         {% do assets.addInlineJs('Scholar.drawerInit();') %}
     {% endif %}
     {% with {
@@ -30,6 +30,7 @@
             <header>
                 <h1>{{ page.title }}</h1>
             </header>
+            {% include 'partials/components/default/metadata.html.twig' with {'page': page} %}
             {{ navigablePage.content }}
             {% endblock %}
         </article>
@@ -47,7 +48,7 @@
 {% endblock %}
 
 {% block append %}
-    {% if config.theme.toolbar.navigation and navigablePage.headings|length > 0 %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
         {% include 'partials/drawer.html.twig' with {headings: navigablePage.headings} %}
     {% endif %}
     {% include 'partials/components/search/result.html.twig' %}

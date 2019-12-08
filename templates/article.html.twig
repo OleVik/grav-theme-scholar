@@ -13,7 +13,7 @@
         {% if page.header.subtitle %}
         <p class="subtitle">{{ page.header.subtitle }}</p>
         {% endif %}
-        {% include 'partials/components/metadata.html.twig' with {'page': page} %}
+        {% include 'partials/components/article/metadata.html.twig' with {'page': page} %}
         {{ navigablePage.content|strip_html_tags(['h1']) }}
         {% endblock %}
     </article>
@@ -24,4 +24,11 @@
 {% include 'partials/footer.html.twig' %}
 {% endblock %}
 
+{% endblock %}
+
+{% block append %}
+    {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
+        {% include 'partials/drawer.html.twig' with {headings: navigablePage.headings} %}
+    {% endif %}
+    {% include 'partials/components/search/result.html.twig' %}
 {% endblock %}

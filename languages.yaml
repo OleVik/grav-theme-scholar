@@ -5,7 +5,11 @@ en:
       IN: in
       WITH: with
       BY: by
+      OPEN: open
       CLOSE: close
+      NEXT: next
+      PREVIOUS: previous
+      AND: and
     ADMIN:
       STYLE: Style
       TOOLBAR:

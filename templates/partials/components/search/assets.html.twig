@@ -7,15 +7,15 @@
         {% if mode == 'field' %}
             {% if page.header.search.index and file_exists(page.header.search.index) %}
                 {% do assets.addJs(page.header.search.index) %}
-                {% set seachFile = true %}
+                {% set searchFile = true %}
             {% elseif page.topParent.header.search.index and file_exists(page.topParent.header.search.index) %}
                 {% do assets.addJs(page.topParent.header.search.index) %}
-                {% set seachFile = true %}
+                {% set searchFile = true %}
             {% elseif file_exists('user://data/persist/index.js') %}
                 {% do assets.addJs('user://data/persist/index.js') %}
-                {% set seachFile = true %}
+                {% set searchFile = true %}
             {% endif %}
-            {% if seachFile %}
+            {% if searchFile %}
                 {% do assets.addInlineJs('
                     Scholar.searchFieldInit(GravMetadataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "media"], ' ~ json_encode(config.theme.flexsearch.index) ~ ');
                 ', {group: 'bottom'}) %}

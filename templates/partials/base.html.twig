@@ -7,7 +7,7 @@
     <title>{% if page.title %}{{ page.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% include 'partials/metadata.html.twig' %}
+    {% include 'partials/head.metadata.html.twig' %}
     <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
     {% endblock meta %}
@@ -23,7 +23,7 @@
     {% if config.theme.js %}
         {% do assets.addJs('theme://js/theme.js') %}
         {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}
-        {# {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %} #}
+        {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %}
     {% endif %}
     {% block javascripts %}{% endblock %}
     {% block critical %}

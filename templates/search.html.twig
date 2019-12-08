@@ -1,4 +1,4 @@
-{% extends page.topParent.template == 'docs' ? 'docs.html.twig' : 'default.html.twig' %}
+{% extends page.topParent.template ~ '.html.twig' %}
 
 {% block javascripts %}
     {% with {
@@ -8,11 +8,22 @@
     {% endwith %}
 {% endblock %}
 
+{% block header %}
+<header role="banner">
+    {% with {
+        'page': page,
+        'navigablePage': navigablePage
+        } %}
+        {{ block('links', 'partials/docs/header.html.twig') }}
+    {% endwith %}
+</header>
+{% endblock %}
+
 {% block article %}
-<article>
+<article class="search">
     <h1>{{ "THEME_SCHOLAR.SEARCH.ADVANCED"|t }}</h1>
     {% include 'partials/components/search/form.html.twig' %}
     <h2>{{ "THEME_SCHOLAR.SEARCH.RESULTS"|t }}</h2>
-    <aside class="search-results"></aside>
+    <aside class="search-results" aria-label="{{ "THEME_SCHOLAR.SEARCH.RESULTS"|t }}"></aside>
 </article>
 {% endblock %}

@@ -8,10 +8,16 @@
     "config": {
       "runOnly": ["wcag2a", "section508", "best-practice"],
       "rules": {
-        "landmark-complementary-is-top-level": { "enabled": false }
+        "landmark-complementary-is-top-level": { "enabled": false },
+        "landmark-no-duplicate-banner": { "enabled": false },
+        "landmark-banner-is-top-level": { "enabled": false }
       }
     },
     "routes": {
+      "index": "/",
+      "article": "/article",
+      "blog": "/blog",
+      "cv": "/cv",
       "docs": "/docs"
     },
     "routesBack": {

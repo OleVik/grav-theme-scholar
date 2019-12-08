@@ -67,7 +67,7 @@ function searchFieldInit(data, fields, options) {
  */
 function searchPageInit(data, fields, options) {
   const start = performance.now();
-  var dataIndex;
+  var dataIndex, categoriesSelector, tagsSelector;
   const FlexSearchOptions = options;
   FlexSearchOptions.doc = {
     id: "url",
@@ -321,7 +321,7 @@ function renderResults(target, results) {
     document.querySelector(target).appendChild(paragraph);
   }
   for (let i = 0; i < results.length; i++) {
-    var item = document.querySelector("#search-result");
+    var item = document.querySelector(".search-result-template");
     var template = document.importNode(item.content, true);
     template.querySelector("h3 a").textContent = results[i].title;
     template.querySelector("h3 a").setAttribute("href", results[i].url);

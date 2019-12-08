@@ -9,11 +9,11 @@
 {% set previous = collection.nextSibling(page.path) %}
 {% set next = collection.prevSibling(page.path) %}
 {% if previous.url or next.url %}
-<aside class="next-previous">
+<aside class="next-previous" aria-label="{{ "THEME_SCHOLAR.GENERIC.NEXT"|t|capitalize }} {{ "THEME_SCHOLAR.GENERIC.AND"|t }} {{ "THEME_SCHOLAR.GENERIC.PREVIOUS"|t }}">
     <article>
     {% if previous.url %}
     <h2>
-        <a href="{{ previous.url }}">
+        <a href="{{ previous.url }}" aria-label="{{ "THEME_SCHOLAR.GENERIC.PREVIOUS"|t|capitalize }}">
             {{ previous.title }}
         </a>
     </h2>
@@ -22,7 +22,7 @@
     <article>
     {% if next.url %}
     <h2>
-        <a href="{{ next.url }}">
+        <a href="{{ next.url }}" aria-label="{{ "THEME_SCHOLAR.GENERIC.NEXT"|t|capitalize }}">
             {{ next.title }}
         </a>
     </h2>

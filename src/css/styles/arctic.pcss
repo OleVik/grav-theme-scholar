@@ -2,17 +2,17 @@
 
 :root {
   --primary: #4a4a4c;
-  --secondary: #77b6d3;
+  --secondary: #2A7F98;
   --text: #6a6a6d;
-  --text-alt: #ffffff;
+  --text-alt: #525252;
   --background: #cccccc;
   --foreground: #ffffff;
   --border-color: rgba(154, 194, 211, 0.4);
   --header-background: #86d2dd;
-  --aside-text: #e4e4e4;
-  --aside-text-active: #ececec;
+  --aside-text: #fefefe;
+  --aside-text-active: var(--aside-text);
   --aside-background: var(--secondary);
-  --aside-background-active: #56a7ca;
+  --aside-background-active: #1E6E81;
   --aside-background-active-state: #404042;
 }
 
@@ -20,6 +20,7 @@
   main {
     background-color: var(--foreground);
     > header[role="banner"] {
+      color: var(--text-alt);
       a:any-link {
         color: var(--text-alt);
       }

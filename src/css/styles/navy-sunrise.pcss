@@ -4,14 +4,40 @@
   --primary: #d3ab72;
   --secondary: #24353a;
   --text: #545454;
-  --text-alt: #ffffff;
+  --text-alt: #272727;
   --background: #f4f4f4;
   --foreground: #ffffff;
   --border-color: rgba(114, 126, 128, 0.6);
-  --header-background: #24353a;
+  --header-background: var(--primary);
   --aside-text: #c3c3c3;
-  --aside-text-active: #929292;
+  --aside-text-active: #f4f4f4;
   --aside-background: var(--secondary);
   --aside-background-active: #1e2b2f;
-  --aside-background-active-state: #b29262;
+  --aside-background-active-state: #4e452c;
+}
+
+.docs {
+  main {
+    > header[role="banner"] {
+      color: var(--text-alt);
+      a:any-link {
+        color: var(--text-alt);
+      }
+    }
+  }
+}
+header[role="banner"],
+.search,
+.drawer {
+  [role="button"] {
+    svg {
+      fill: var(--text-alt);
+    }
+  }
+  input,
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus {
+    color: var(--text-alt);
+  }
 }
