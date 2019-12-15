@@ -32,12 +32,14 @@ api:
 flexsearch:
   enabled: true
   index:
+    limit: 10
     profile: speed
     encode: icase
     tokenize: strict
     cache: true
     async: true
   full:
+    limit: 10
     profile: balance
     encode: advanced
     tokenize: full

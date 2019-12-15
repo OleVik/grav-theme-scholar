@@ -25,8 +25,8 @@ use Grav\Theme\Scholar\Router;
 use Grav\Theme\Scholar\Source;
 use Grav\Theme\Scholar\TaxonomyMap;
 use Grav\Theme\Scholar\Timer;
-use Grav\Theme\Scholar\Utilities;
 use Grav\Theme\Scholar\Autoload;
+use Grav\Theme\Scholar\Utilities;
 
 use RocketTheme\Toolbox\Event\Event;
 use Grav\Plugin\StaticGeneratorPlugin as StaticGenerator;
@@ -53,8 +53,7 @@ class Scholar extends Theme
     {
         include __DIR__ . '/vendor/autoload.php';
         return [
-            'onThemeInitialized' => ['onThemeInitialized', 0],
-            'onShortcodeHandlers' => ['onShortcodeHandlers', 0]
+            'onThemeInitialized' => ['onThemeInitialized', 0]
         ];
     }
 
@@ -91,6 +90,9 @@ class Scholar extends Theme
             ]
         );
         $this->schemas();
+        if (isset($this->grav['shortcode'])) {
+            $this->registerShortcodes();
+        }
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->stopTimer('scholar');
         }
@@ -154,6 +156,7 @@ class Scholar extends Theme
      */
     public static function getStylesBlueprint(): array
     {
+        include __DIR__ . '/vendor/autoload.php';
         $stylesFolders = Utils::arrayMergeRecursiveUnique(
             Utilities::filesFinder('theme://css/styles', ['css']),
             Utilities::filesFinder('user://themes/scholar/css/styles', ['css'])
@@ -173,6 +176,7 @@ class Scholar extends Theme
      */
     public static function getComponentsBlueprint(): array
     {
+        include __DIR__ . '/vendor/autoload.php';
         $componentFolders = Utilities::foldersFinder(
             [
                 'theme://components',
@@ -404,9 +408,9 @@ class Scholar extends Theme
      *
      * @return void
      */
-    public function onShortcodeHandlers()
+    public function registerShortcodes()
     {
-        // $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
+        $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
         foreach ($this->config->get('theme.components') as $component) {
             $path = 'theme://components/' . $component . '/shortcodes';
             if (is_dir($this->grav['locator']->findResource($path))) {
@@ -448,11 +452,12 @@ class Scholar extends Theme
      */
     public static function getClassNames(string $key)
     {
+        $language = Grav::instance()['language'];
         $regex = '/Grav\\\\Theme\\\\Scholar\\\\(?<api>.*)/i';
         $classes = preg_grep($regex, get_declared_classes());
         $matches = preg_grep('/' . $key . '/i', $classes);
         $options = [
-            '' => 'None'
+            '' => $language->translate(['THEME_SCHOLAR.GENERIC.NONE'])
         ];
         foreach ($matches as $match) {
             if (Utils::contains($match, 'Abstract') || Utils::contains($match, 'Interface')) {

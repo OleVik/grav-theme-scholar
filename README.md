@@ -114,8 +114,8 @@ tufte:
 
 - [ ] Static Generator: Simplify options, add Page button
 - [x] Components loader for Page Types (templates)
-  - [ ] Separate metadata.html.twig into generalized and specific for templates
-
+  - [x] Separate metadata.html.twig into generalized and specific for templates
+<!--  -->
 ### Version spec
 
 - Versions in Grav will render by taxonomy, eg. `name.tld/en/3.0.0/route-to-page` will render `route-to-page` at version 3.0.0 in English - This follows the standard Read The Docs uses (https://docs.readthedocs.io/en/stable/versions.html) - The taxonomy will allow both the `v`-prefix and keywords like `stable` and `latest` - `stable` corresponds to the `master`-branch by default, superceded by stable tags in Git if they exist - `latest` corresponds to the `develop`-branch by default, superceded by testing-tags in Git if they exist

@@ -1,29 +1,12 @@
 <form class="search-query" role="search" aria-label="{{ "THEME_SCHOLAR.SEARCH.TITLE"|t }}">
-    {% if page.topParent.route and page.topParent.route is not empty %}
-        {% set taxonomyMap = taxonomy_map_descendants(page.topParent.route) %}
-    {% else %}
-        {% set taxonomyMap = taxonomy_map_descendants('/') %}
-    {% endif %}
     <div class="nested">
         <input class="three" type="text" id="title" name="title" placeholder="{{ "THEME_SCHOLAR.SEARCH.FIELDS.TITLE"|t }}" aria-label="{{ "THEME_SCHOLAR.SEARCH.FIELDS.TITLE"|t }}" />
         <input class="three" type="date" id="date" name="date" aria-label="{{ "THEME_SCHOLAR.SEARCH.FIELDS.DATE"|t }}" />
-        {% do assets.addInlineJs('const categoriesSelector = new Selectr(".categories-select", Object.assign(selectrOptions, { placeholder: "Categories" }));') %}
         <select class="categories-select three" aria-label="{{ "THEME_SCHOLAR.SEARCH.FIELDS.CATEGORIES"|t }}">
             <option value=""></option>
-            {% if taxonomyMap.categories|length > 0 %}
-            {% for key, value in taxonomyMap.categories|limit %}
-            <option value="{{ key }}">{{ key|capitalize }}</option>
-            {% endfor %}
-            {% endif %}
         </select>
-        {% do assets.addInlineJs('const tagsSelector = new Selectr(".tags-select", Object.assign(selectrOptions, { placeholder: "Tags" }));') %}
         <select class="tags-select three" aria-label="{{ "THEME_SCHOLAR.SEARCH.FIELDS.FIELDS.TAGS"|t }}">
             <option value=""></option>
-            {% if taxonomyMap.tags|length > 0 %}
-            {% for key, value in taxonomyMap.tags|limit %}
-            <option value="{{ key }}">{{ key|capitalize }}</option>
-            {% endfor %}
-            {% endif %}
         </select>
         <input class="twelve" type="text" id="content" name="content" placeholder="{{ "THEME_SCHOLAR.SEARCH.FIELDS.CONTENT"|t }}" aria-label="{{ "THEME_SCHOLAR.SEARCH.FIELDS.CONTENT"|t }}" />
     </div>

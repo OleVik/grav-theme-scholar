@@ -17,6 +17,7 @@
 import "./commands";
 import "cypress-axe";
 import "cypress-plugin-tab";
+import "leader-line";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')

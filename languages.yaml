@@ -10,6 +10,7 @@ en:
       NEXT: next
       PREVIOUS: previous
       AND: and
+      NONE: none
     ADMIN:
       STYLE: Style
       TOOLBAR:

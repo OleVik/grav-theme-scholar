@@ -15,23 +15,19 @@ function searchFieldInit(data, fields, options) {
     id: "url",
     field: fields,
   };
-  try {
-    dataIndex = new FlexSearch(FlexSearchOptions);
-    dataIndex.add(data);
-    console.debug(
-      `FlexSearch add(n = ${data.length}): ${msToTime(
-        performance.now() - start
-      )}`
-    );
-  } catch (error) {
-    throw new Error(error);
-  }
-  try {
-    document.querySelector("#query").addEventListener(
-      "keyup",
-      debounce(function(event) {
-        const start = performance.now();
-        dataIndex.search(event.srcElement.value, 10).then(function(results) {
+  dataIndex = new FlexSearch(FlexSearchOptions);
+  dataIndex.add(data);
+  console.debug(
+    `FlexSearch add(n = ${data.length}): ${msToTime(performance.now() - start)}`
+  );
+  document.querySelector("#query").addEventListener(
+    "keyup",
+    debounce(function(event) {
+      const start = performance.now();
+      const searchQuery = event.srcElement.value;
+      dataIndex
+        .search(searchQuery, FlexSearchOptions.limit)
+        .then(function(results) {
           console.debug(
             `FlexSearch search(n = ${results.length}): ${msToTime(
               performance.now() - start
@@ -44,20 +40,17 @@ function searchFieldInit(data, fields, options) {
             )}`
           );
         });
-      }, 200)
-    );
-    document.querySelector("#query").addEventListener("focus", function(event) {
-      event.target.setAttribute("aria-expanded", "true");
-      document
-        .querySelector("main aside.search")
-        .setAttribute("aria-expanded", "true");
-    });
-    document.querySelector("#query").addEventListener("blur", function(event) {
-      event.target.setAttribute("aria-expanded", "false");
-    });
-  } catch (error) {
-    throw new Error(error);
-  }
+    }, 200)
+  );
+  document.querySelector("#query").addEventListener("focus", function(event) {
+    event.target.setAttribute("aria-expanded", "true");
+    document
+      .querySelector("main aside.search")
+      .setAttribute("aria-expanded", "true");
+  });
+  document.querySelector("#query").addEventListener("blur", function(event) {
+    event.target.setAttribute("aria-expanded", "false");
+  });
 }
 
 /**
@@ -66,8 +59,13 @@ function searchFieldInit(data, fields, options) {
  * @param {array} fields List of fields in each data-object
  */
 function searchPageInit(data, fields, options) {
+  assignSelectrOptions(
+    window.categoriesSelector,
+    getSelectOptions("categories", data)
+  );
+  assignSelectrOptions(window.tagsSelector, getSelectOptions("tags", data));
   const start = performance.now();
-  var dataIndex, categoriesSelector, tagsSelector;
+  var dataIndex;
   const FlexSearchOptions = options;
   FlexSearchOptions.doc = {
     id: "url",
@@ -79,98 +77,91 @@ function searchPageInit(data, fields, options) {
     categories: util.findGetParameter("category", ""),
     tags: util.findGetParameter("tag", ""),
     content: decodeURIComponent(util.findGetParameter("content", "")),
+    limit: FlexSearchOptions.limit || 10,
   };
-  try {
-    dataIndex = new FlexSearch(FlexSearchOptions);
-    dataIndex.add(data);
-    console.debug(
-      `FlexSearch add(n = ${data.length}): ${msToTime(
-        performance.now() - start
-      )}`
-    );
-    if (query.title !== "") {
-      document.querySelector(".search-query #title").value = query.title;
-    }
-    if (query.date !== "") {
-      document.querySelector(".search-query #date").value = query.date;
-    }
-    if (query.categories !== "") {
-      query.categories = query.categories.split(",");
-      categoriesSelector.setValue(query.categories);
-    } else {
-      query.categories = [];
-    }
-    if (query.tags !== "") {
-      query.tags = query.tags.split(",");
-      tagsSelector.setValue(query.tags);
-    } else {
-      query.tags = [];
-    }
-    if (query.content !== "") {
-      document.querySelector(".search-query #content").value = query.content;
-    }
-    if (util.has(query)) {
+  dataIndex = new FlexSearch(FlexSearchOptions);
+  dataIndex.add(data);
+  console.debug(
+    `FlexSearch add(n = ${data.length}): ${msToTime(performance.now() - start)}`
+  );
+  if (query.title !== "") {
+    document.querySelector(".search-query #title").value = query.title;
+  }
+  if (query.date !== "") {
+    document.querySelector(".search-query #date").value = query.date;
+  }
+  if (query.categories !== "") {
+    query.categories = query.categories.split(",");
+    window.categoriesSelector.setValue(query.categories);
+  } else {
+    query.categories = [];
+  }
+  if (query.tags !== "") {
+    query.tags = query.tags.split(",");
+    window.tagsSelector.setValue(query.tags);
+  } else {
+    query.tags = [];
+  }
+  if (query.content !== "") {
+    document.querySelector(".search-query #content").value = query.content;
+  }
+  const queryParams = Object.assign({}, query);
+  delete queryParams.limit;
+  if (!util.isEmpty(queryParams)) {
+    search(dataIndex, fields, query);
+  }
+  document.querySelector(".search-query #title").addEventListener(
+    "keyup",
+    debounce(function(event) {
+      query.title = event.srcElement.value;
       search(dataIndex, fields, query);
-    }
-  } catch (error) {
-    throw new Error(error);
+    }, 200)
+  );
+  document
+    .querySelector(".search-query #date")
+    .addEventListener("change", function(event) {
+      query.date = event.srcElement.value;
+      search(dataIndex, fields, query);
+    });
+  if (typeof window.categoriesSelector !== "undefined") {
+    window.categoriesSelector.on("selectr.select", function(option) {
+      if (option.selected) {
+        query.categories.push(option.value);
+        search(dataIndex, fields, query);
+      }
+    });
+    window.categoriesSelector.on("selectr.deselect", function(option) {
+      if (!option.selected) {
+        if (dataIndex !== -1) {
+          query.categories.splice(query.categories.indexOf(option.value), 1);
+        }
+        search(dataIndex, fields, query);
+      }
+    });
   }
-  try {
-    document.querySelector(".search-query #title").addEventListener(
-      "keyup",
-      debounce(function(event) {
-        query.title = event.srcElement.value;
+  if (typeof window.tagsSelector !== "undefined") {
+    window.tagsSelector.on("selectr.select", function(option) {
+      if (option.selected) {
+        query.tags.push(option.value);
         search(dataIndex, fields, query);
-      }, 200)
-    );
-    document
-      .querySelector(".search-query #date")
-      .addEventListener("change", function(event) {
-        query.date = event.srcElement.value;
+      }
+    });
+    window.tagsSelector.on("selectr.deselect", function(option) {
+      if (!option.selected) {
+        if (dataIndex !== -1) {
+          query.tags.splice(query.tags.indexOf(option.value), 1);
+        }
         search(dataIndex, fields, query);
-      });
-    if (typeof categoriesSelector !== "undefined") {
-      categoriesSelector.on("selectr.select", function(option) {
-        if (option.selected) {
-          query.categories.push(option.value);
-          search(dataIndex, fields, query);
-        }
-      });
-      categoriesSelector.on("selectr.deselect", function(option) {
-        if (!option.selected) {
-          if (dataIndex !== -1) {
-            query.categories.splice(query.categories.indexOf(option.value), 1);
-          }
-          search(dataIndex, fields, query);
-        }
-      });
-    }
-    if (typeof tagsSelector !== "undefined") {
-      tagsSelector.on("selectr.select", function(option) {
-        if (option.selected) {
-          query.tags.push(option.value);
-          search(dataIndex, fields, query);
-        }
-      });
-      tagsSelector.on("selectr.deselect", function(option) {
-        if (!option.selected) {
-          if (dataIndex !== -1) {
-            query.tags.splice(query.tags.indexOf(option.value), 1);
-          }
-          search(dataIndex, fields, query);
-        }
-      });
-    }
-    document.querySelector(".search-query #content").addEventListener(
-      "keyup",
-      debounce(function(event) {
-        query.content = event.srcElement.value;
-        search(dataIndex, fields, query);
-      }, 200)
-    );
-  } catch (error) {
-    throw new Error(error);
+      }
+    });
   }
+  document.querySelector(".search-query #content").addEventListener(
+    "keyup",
+    debounce(function(event) {
+      query.content = event.srcElement.value;
+      search(dataIndex, fields, query);
+    }, 200)
+  );
 }
 
 /**
@@ -178,10 +169,12 @@ function searchPageInit(data, fields, options) {
  * @param {object} index Data to search
  * @param {array} fields List of fields in each data-object
  * @param {object} query Field constraints
+ * @param {object} options FlexSearc options
  */
 function search(index, fields, query) {
   const start = performance.now();
-  const data = index.where(function(doc) {
+  var data;
+  data = index.where(function(doc) {
     return limitSearch(query, doc);
   });
   console.debug(
@@ -190,20 +183,6 @@ function search(index, fields, query) {
     )}`
   );
   if (query.title !== "" || query.content !== "") {
-    var contentIndex = new FlexSearch({
-      profile: "balance",
-      encode: "advanced",
-      tokenize: "full",
-      cache: true,
-      async: true,
-      doc: {
-        id: "url",
-        field: fields,
-      },
-    });
-    for (let i = 0; i < data.length; i++) {
-      contentIndex.add(data[i]);
-    }
     var fieldQuery;
     if (query.title !== "" && query.content === "") {
       fieldQuery = [{ field: "title", query: query.title }];
@@ -223,7 +202,7 @@ function search(index, fields, query) {
         },
       ];
     }
-    contentIndex.search(fieldQuery, 10).then(function(results) {
+    index.search(fieldQuery, query.limit).then(function(results) {
       console.debug(
         `FlexSearch search(n = ${results.length}): ${msToTime(
           performance.now() - start
@@ -237,7 +216,7 @@ function search(index, fields, query) {
       );
     });
   } else if (query.title === "" && query.content === "") {
-    renderResults(".search-results", data.slice(0, 9));
+    renderResults(".search-results", data.slice(0, query.limit));
     console.debug(
       `FlexSearch render(n = ${data.length}): ${msToTime(
         performance.now() - start
@@ -321,11 +300,15 @@ function renderResults(target, results) {
     document.querySelector(target).appendChild(paragraph);
   }
   for (let i = 0; i < results.length; i++) {
-    var item = document.querySelector(".search-result-template");
-    var template = document.importNode(item.content, true);
-    template.querySelector("h3 a").textContent = results[i].title;
-    template.querySelector("h3 a").setAttribute("href", results[i].url);
-    const paragraph = template.querySelector("p");
+    const wrapper = document.createElement("div");
+    const header = document.createElement("h3");
+    const anchor = document.createElement("a");
+    const paragraph = document.createElement("p");
+    wrapper.appendChild(header);
+    wrapper.appendChild(paragraph);
+    header.appendChild(anchor);
+    anchor.textContent = results[i].title;
+    anchor.setAttribute("href", results[i].url);
     paragraph.appendChild(
       document.createTextNode(ScholarTranslation.GENERIC.AT + " ")
     );
@@ -344,7 +327,7 @@ function renderResults(target, results) {
     );
     paragraph.appendChild(document.createTextNode("."));
     paragraph.normalize();
-    document.querySelector(target).appendChild(template);
+    document.querySelector(target).appendChild(wrapper);
   }
   Scholar.accessibilityInit(target);
 }
@@ -400,6 +383,44 @@ function renderTaxonomy(paragraph, data, name, separator) {
     }
     paragraph.appendChild(taxonomy);
   }
+}
+
+/**
+ * Add Taxonomy-data to Selectr-instance.
+ * @param {object} target Selectr-handle.
+ * @param {array} data Taxonomy-data.
+ */
+function assignSelectrOptions(target, data) {
+  for (let i = 0; i < data.length; i++) {
+    target.add({
+      value: data[i],
+      text: data[i].charAt(0).toUpperCase() + data[i].slice(1),
+    });
+  }
+}
+
+/**
+ * Filter taxonomy from Search-data
+ * @param {string} target Type of taxonomy.
+ * @param {array} data Search-data.
+ * @returns {array}
+ */
+function getSelectOptions(target, data) {
+  var options = [];
+  for (let i = 0; i < data.length; i++) {
+    if (
+      typeof data[i].taxonomy !== "undefined" &&
+      typeof data[i].taxonomy[target] !== "undefined" &&
+      data[i].taxonomy[target].length > 0
+    ) {
+      for (let n = 0; n < data[i].taxonomy[target].length; n++) {
+        if (!options.includes(data[i].taxonomy[target][n])) {
+          options.push(data[i].taxonomy[target][n]);
+        }
+      }
+    }
+  }
+  return options;
 }
 
 /**

@@ -21,7 +21,7 @@
     {% endblock %}
 
     {% if config.theme.js %}
-        {% do assets.addJs('theme://js/theme.js') %}
+        {% do assets.addJs('theme://js/theme.js', {group: 'bottom'}) %}
         {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}
         {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %}
     {% endif %}

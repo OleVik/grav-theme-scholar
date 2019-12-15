@@ -1,4 +1,4 @@
-{% extends page.topParent.template ~ '.html.twig' %}
+{% extends page.topParent.template ?? 'default' ~ '.html.twig' %}
 
 {% block javascripts %}
     {% with {

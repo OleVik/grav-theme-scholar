@@ -1,8 +1,7 @@
-import has from "has-values";
-
 /**
  * Get value from GET-parameter.
  * @param {string} parameterName GET-query parameter name.
+ * @returns {string}
  */
 function findGetParameter(parameterName, type = null) {
   var result = null,
@@ -23,4 +22,14 @@ function findGetParameter(parameterName, type = null) {
   }
 }
 
-export { findGetParameter, has };
+/**
+ * Check whether object is empty
+ * @param {object} o Object to check.
+ * @returns {boolean}
+ * @see https://stackoverflow.com/a/51207685/603387
+ */
+function isEmpty(obj) {
+  return Object.keys(obj).every(k => !Object.keys(obj[k]).length);
+}
+
+export { findGetParameter, isEmpty };
