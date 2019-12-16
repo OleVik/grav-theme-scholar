@@ -13,7 +13,6 @@ components:
   - book
   - cv
   - docs
-  - sequence
   - tufte
 router: true
 routes:

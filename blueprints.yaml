@@ -1,7 +1,7 @@
 name: Scholar
-version: 0.1.0
+version: 1.0.0
 description: An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav.
-icon: rebel
+icon: book
 author:
   name: Ole Vik
   email: git@olevik.net
@@ -13,7 +13,11 @@ readme: https://github.com/OleVik/grav-theme-scholar/blob/develop/README.md
 license: MIT
 dependencies:
   - { name: grav, version: ">=1.7" }
+  - { name: error, version: ">=1.6.2" }
+  - { name: problems, version: ">=2.0.3" }
   - { name: breadcrumbs, version: ">=1.5.1" }
+  - { name: shortcode-core, version: ">=4.1.7" }
+  - { name: static-generator, version: ">=1.0.0" }
 
 form:
   validation: strict
