@@ -121,6 +121,7 @@ function toggleHandler(event) {
  * @param {Boolean} force
  */
 function toggleButtonState(targetElement, force = null) {
+  console.log(targetElement);
   if (targetElement.hasAttribute("aria-checked")) {
     if (force) {
       targetElement.setAttribute("aria-checked", force);

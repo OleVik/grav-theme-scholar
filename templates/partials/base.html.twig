@@ -15,7 +15,7 @@
         {% if config.theme.css %}
             {% do assets.addCss('theme://css/theme.css', 100) %}
             {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
-            {% do assets.addCss('theme://css/styles/' ~ uri.query('theme') ?? page.header.theme ?? config.theme.style ~ '.css', 99) %}
+            {% do assets.addCss('theme://css/styles/' ~ uri.query('theme') ?? page.header.theme.style ?? config.theme.style ~ '.css', 99) %}
         {% endif %}
         {% do assets.addCss('theme://css/custom.css', 98) %}
     {% endblock %}
@@ -23,7 +23,7 @@
     {% if config.theme.js %}
         {% do assets.addJs('theme://js/theme.js', {group: 'bottom'}) %}
         {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}
-        {# {% do assets.addJs('theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js') %} #}
+        {% do assets.addInlineJs('Scholar.mobileInit();', {group: 'bottom'}) %}
     {% endif %}
     {% block javascripts %}{% endblock %}
     {% block critical %}

@@ -20,7 +20,7 @@
 
 {% block javascripts %}
     {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
-        {% do assets.addInlineJs('Scholar.drawerInit();') %}
+        {% do assets.addInlineJs('Scholar.drawerInit();', {group: 'bottom'}) %}
     {% endif %}
     {% with {
         'mode': 'field'
@@ -66,7 +66,16 @@
 </main>
 
 {% block sidebar %}
-<aside class="sidebar">
+<aside class="sidebar" aria-checked="false">
+
+    {% block mobile %}
+        {% if config.theme.toolbar.navigation %}
+            <div  mobile-menu-close role="button" tabindex="0" data-target=".sidebar" aria-label="{{ "THEME_SCHOLAR.GENERIC.OPEN"|t|capitalize }} {{ "THEME_SCHOLAR.MENU"|t }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"><path d="M 4 7 L 4 9 L 28 9 L 28 7 L 4 7 z M 4 15 L 4 17 L 28 17 L 28 15 L 4 15 z M 4 23 L 4 25 L 28 25 L 28 23 L 4 23 z"/></svg>
+            </div>
+        {% endif %}
+    {% endblock %}
+
     <header>
         <h1>
             <a href="{{ uri.rootUrl(true) }}">{{ site.title }}</a>

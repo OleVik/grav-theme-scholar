@@ -18,21 +18,47 @@
       "article": "/article",
       "blog": "/blog",
       "cv": "/cv",
-      "docs": "/docs"
+      "docs": "/docs/features"
     },
-    "routesBack": {
-      "index": "/",
-      "article": "/article",
-      "blog": "/blog",
-      "cv": "/cv",
-      "docs": "/docs"
+    "landmarks": {
+      "index": {
+        "body": "body",
+        "navigation-header": "header[role=\"banner\"]",
+        "main-article": "main section article",
+        "sidebar-header": "aside header",
+        "sidebar-article": "aside section article"
+      },
+      "article": {
+        "body": "body"
+      },
+      "blog": {
+        "body": "body"
+      },
+      "cv": {
+        "body": "body"
+      },
+      "docs": {
+        "body": "body",
+        "navigation-header": "header[role=\"banner\"]",
+        "main-article": "main section article",
+        "sidebar": "aside.sidebar"
+      }
     },
-    "elements": {
+    "breakpoints": {
+      "xs": 320,
+      "sm": 576,
+      "md": 768,
+      "lg": 992,
+      "xl": 1200,
+      "xxl": 1600
+    },
+    "activeElements": {
       "index": ["header[role=\"banner\"] .menu .search-button", "a"],
       "article": ["a"],
       "blog": ["a"],
       "cv": ["a"],
       "docs": ["a"]
-    }
+    },
+    "tabElements": "button, a[href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])"
   }
 }

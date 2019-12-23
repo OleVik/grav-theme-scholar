@@ -5,7 +5,7 @@
 
 {% block javascripts %}
     {% if config.theme.toolbar.navigation and navigablePage.headings is not empty %}
-        {% do assets.addInlineJs('Scholar.drawerInit();') %}
+        {% do assets.addInlineJs('Scholar.drawerInit();', {group: 'bottom'}) %}
     {% endif %}
     {% with {
         'mode': 'field'

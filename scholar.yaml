@@ -28,6 +28,7 @@ api:
   router: 'Router\Router'
   source: 'Source\Source'
   taxonomy_map: 'TaxonomyMap\TaxonomyMap'
+debug: false
 flexsearch:
   enabled: true
   index:

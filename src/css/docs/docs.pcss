@@ -13,19 +13,33 @@
     display: flex;
     flex-direction: column;
     order: 1;
-    grid-column-end: span 10;
+    /* grid-column-end: span 10; */
+    grid-column-end: span 12;
   }
   .sidebar {
-    display: flex;
-    grid-column-end: span 2;
+    display: none;
+    grid-column-end: span 12;
+    /* display: flex; */
+    /* grid-column-end: span 2; */
   }
   .next-previous {
-    display: grid;
+    display: none;
+    /* display: grid; */
     grid-gap: 0;
     grid-template-columns: repeat(12, 1fr);
     grid-column-end: span 12;
     article {
       grid-column-end: span 6;
+    }
+  }
+  header[role="banner"] .links > div {
+    a:not(:first-of-type) {
+      margin-left: 0.5rem;
+    }
+    a:not(:last-of-type):after {
+      content: " \00BB ";
+      position: absolute;
+      margin-left: 0.5rem;
     }
   }
 }

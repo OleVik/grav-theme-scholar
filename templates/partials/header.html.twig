@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block links %}
-<nav class="links" role="navigation" aria-label="{{ "THEME_SCHOLAR.LINKS"|t }}">
+<nav class="links" role="navigation" aria-label="{{ "THEME_SCHOLAR.LINKS"|t }}" aria-checked="false">
 <div>
 {% for page in page.collection({ items: {'@root.children': ''}}) if not page.home() %}
     <a href="{{ page.url }}">{{ page.header.menu ?? page.title ?? page.slug }}</a>
@@ -17,6 +17,14 @@
 {% block menu %}
 
 <nav class="menu" role="navigation" aria-label="{{ "THEME_SCHOLAR.MENU"|t }}">
+
+    {% block mobile %}
+        {% if config.theme.toolbar.navigation %}
+            <div mobile-menu-open role="button" tabindex="0" data-target="nav[role='navigation'].links" aria-label="{{ "THEME_SCHOLAR.GENERIC.OPEN"|t|capitalize }} {{ "THEME_SCHOLAR.MENU"|t }}">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true"><path d="M 4 7 L 4 9 L 28 9 L 28 7 L 4 7 z M 4 15 L 4 17 L 28 17 L 28 15 L 4 15 z M 4 23 L 4 25 L 28 25 L 28 23 L 4 23 z"/></svg>
+            </div>
+        {% endif %}
+    {% endblock %}
 
     {% block search %}
     {% if config.theme.flexsearch.enabled %}

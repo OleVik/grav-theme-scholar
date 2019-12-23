@@ -14,6 +14,7 @@ license: MIT
 dependencies:
   - { name: grav, version: ">=1.7" }
   - { name: error, version: ">=1.6.2" }
+  - { name: swiper, version: ">=1.0.0" }
   - { name: problems, version: ">=2.0.3" }
   - { name: breadcrumbs, version: ">=1.5.1" }
   - { name: shortcode-core, version: ">=4.1.7" }

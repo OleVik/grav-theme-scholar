@@ -2,7 +2,7 @@
     {% if config.theme.toolbar.breadcrumbs %}
     <div>
         {% for breadcrumb in breadcrumbs.get() %}
-            <a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>{% if not loop.last %} &raquo; {% endif %}
+            <a href="{{ breadcrumb.url }}">{{ breadcrumb.title }}</a>
         {% endfor %}
     </div>
     {% endif %}

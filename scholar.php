@@ -40,7 +40,7 @@ use Grav\Plugin\StaticGeneratorPlugin as StaticGenerator;
  * @package  Grav\Theme
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
- * @link     https://github.com/OleVik/grav-plugin-scholar
+ * @link     https://github.com/OleVik/grav-theme-scholar
  */
 class Scholar extends Theme
 {
@@ -67,8 +67,6 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
-        // dump(Utilities::filesFinder('user://data/persist', ['js']));
-        // dump(StaticGenerator::getSearchFiles('index'));
         $this->autoload();
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
@@ -218,6 +216,26 @@ class Scholar extends Theme
      */
     public function onPageInitialized()
     {
+        if (isset($this->grav['page']->header()->theme)
+            && !empty($this->grav['page']->header()->theme)
+        ) {
+            $this->grav['config']->set(
+                'theme',
+                array_merge(
+                    $this->grav['config']->get('theme'),
+                    $this->grav['page']->header()->theme
+                )
+            );
+        }
+        if ($this->grav['config']->get('theme.debug')) {
+            $this->grav['assets']->addJs(
+                $this->grav['locator']->findResource(
+                    'theme://node_modules/@khanacademy/tota11y/dist/tota11y.min.js',
+                    false,
+                    true
+                )
+            );
+        }
         if ($this->grav['config']->get('theme.linked_data')) {
             $call = self::getInstance(
                 $this->grav['config']->get(
@@ -237,18 +255,6 @@ class Scholar extends Theme
                     $this->grav['config']
                 );
             }
-            if (isset($this->grav['page']->header()->theme)
-                && !empty($this->grav['page']->header()->theme)
-            ) {
-                $this->grav['config']->set(
-                    'theme',
-                    array_merge(
-                        $this->grav['config']->get('theme'),
-                        $this->grav['page']->header()->theme
-                    )
-                );
-            }
-            // $ld = new $call($this->grav['language']);
             $call->buildSchema($this->grav['page']);
             $this->grav['assets']->addInlineJs(
                 $call::getSchema(

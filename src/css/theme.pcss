@@ -21,6 +21,25 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+h1 {
+  font-size: 1.802rem;
+}
+h2 {
+  font-size: 1.602rem;
+}
+h3 {
+  font-size: 1.424rem;
+}
+h4 {
+  font-size: 1.266rem;
+}
+h5 {
+  font-size: 1.125rem;
+}
+h6 {
+  font-size: 1rem;
+}
+
 b,
 strong {
   font-weight: 600;
@@ -51,6 +70,13 @@ p {
   line-height: 1.5;
 }
 
+code,
+kbd,
+samp {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  overflow: auto;
+}
 pre {
   word-break: break-all;
   code {
@@ -64,19 +90,47 @@ pre {
 main {
   width: 100%;
   margin: 0 auto;
-  /* Itemize */
-  article > p[aria-label],
-  article > img[aria-label],
-  article > figure[aria-label] {
-    position: relative;
-    &:before {
-      content: attr(aria-label);
-      position: absolute;
-      left: -4rem;
-      width: 3.5rem;
-      max-width: 3.5rem;
-      text-align: right;
-      word-break: break-word;
+}
+
+/* Itemize */
+article > p[aria-label],
+article > img[aria-label],
+article > figure[aria-label] {
+  position: relative;
+  &:before {
+    content: attr(aria-label);
+    position: absolute;
+    left: -4rem;
+    width: 3.5rem;
+    max-width: 3.5rem;
+    text-align: right;
+    word-break: break-word;
+  }
+}
+
+/* Notes */
+.margin-toggle {
+  width: auto;
+}
+
+/* Slider */
+.swiper-container {
+  max-height: 80vh;
+  .swiper-wrapper {
+    height: 100%;
+    .swiper-slide {
+      width: 100%;
+      height: 60vh;
+      min-height: 40vh;
+      max-height: 80%;
+      max-height: 80vh;
+      text-align: center;
+      img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
   }
 }

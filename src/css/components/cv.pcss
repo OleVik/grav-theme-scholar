@@ -1,8 +1,10 @@
 .cv {
+  max-width: 50rem;
   h3,
   h4,
   h5,
   h6 {
+    margin-top: 2rem;
     text-align: left;
   }
   main {
@@ -28,6 +30,7 @@
           display: flex;
           flex-direction: column;
           align-items: flex-end;
+          margin-top: 1rem;
           * {
             width: min-content;
             white-space: nowrap;
@@ -49,34 +52,32 @@
         .entry {
           display: flex;
           flex-wrap: wrap;
+          flex-direction: column;
           align-items: baseline;
           justify-content: space-between;
           .date {
-            margin-right: 1.875rem;
             text-align: left;
             font-size: 1.2rem;
             white-space: nowrap;
-            flex-basis: 6.25rem;
-            order: 1;
+            flex-basis: 0;
+            order: 4;
           }
-          h4,
           em {
+            display: inline;
+            flex: 1;
+            order: 2;
             font-size: 1.2rem;
             font-family: inherit;
             line-height: inherit;
           }
           h4 {
-            margin: 0;
+            display: inline;
             font-weight: 600;
-            order: 2;
-          }
-          em {
-            flex: 1;
-            order: 3;
+            order: 1;
           }
           p {
             flex-basis: 100%;
-            order: 4;
+            order: 3;
           }
         }
         > p {

@@ -31,7 +31,7 @@ a:active,
     h1 {
       color: var(--text);
       a {
-        border-right: solid 1px var(--border-color);
+        border-right-color: var(--border-color);
       }
     }
     .links {
@@ -42,7 +42,7 @@ a:active,
         bottom: 0.75rem;
         left: -0.15rem;
         width: 3px;
-        border-right: solid 1px var(--border-color);
+        border-right-color: var(--border-color);
       }
       a:after {
         background: var(--primary);
@@ -268,6 +268,31 @@ a:active,
       }
     }
   }
+  header[role="banner"] {
+    .search {
+      input,
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus {
+        color: var(--aside-text);
+      }
+    }
+  }
+  header[role="banner"],
+  .search,
+  .drawer,
+  .sidebar {
+    [role="button"] {
+      svg {
+        filter: contrast(1.2);
+      }
+      &:hover {
+        svg {
+          filter: contrast(1.5);
+        }
+      }
+    }
+  }
   > aside,
   .drawer {
     color: var(--aside-text);
@@ -309,16 +334,6 @@ a:active,
     }
     footer {
       color: var(--aside-text);
-      /* a {
-        filter: contrast(1.2);
-        &:hover {
-          filter: contrast(1.5);
-          svg {
-            fill: var(--aside-text);
-            filter: contrast(1.2);
-          }
-        }
-      } */
       svg {
         fill: var(--aside-text);
       }
@@ -338,6 +353,9 @@ a:active,
         border-bottom: 1px solid var(--primary);
       }
     }
+  }
+  img {
+    border: solid 1px var(--border-color);
   }
   .next-previous {
     a:hover,
@@ -387,7 +405,7 @@ header[role="banner"] {
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus {
-      color: var(--aside-text);
+      color: var(--text);
       background-color: transparent;
       -webkit-transition-delay: 99999s;
       box-shadow: none;
@@ -405,16 +423,17 @@ header[role="banner"] {
 }
 header[role="banner"],
 .search,
-.drawer {
+.drawer,
+.sidebar {
   [role="button"] {
     svg {
       fill: var(--aside-text);
-      filter: contrast(1.2);
+      filter: contrast(0.2);
       transition: fill 0.4s ease;
     }
     &:hover {
       svg {
-        filter: contrast(1.5);
+        filter: contrast(0.5);
       }
     }
     &.search-close {
@@ -433,5 +452,21 @@ footer[role="contentinfo"] {
   a:active,
   .active {
     border-bottom: 1px solid var(--primary);
+  }
+}
+
+/* Slider */
+.swiper-container {
+  .swiper-pagination-bullet-active,
+  .swiper-pagination-progressbar-fill {
+    background-color: var(--primary);
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: var(--primary);
+    filter: contrast(1.2);
+    &:hover {
+      filter: contrast(1.5);
+    }
   }
 }

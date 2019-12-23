@@ -8,6 +8,9 @@
   margin: 0 auto;
   height: 100%;
   height: 100vh;
+  &:not(.listing) {
+    max-width: 50rem;
+  }
   header {
     grid-column-end: span 12;
     display: flex;
@@ -18,55 +21,33 @@
       margin: 0;
       padding: 1rem;
       font-family: var(--Raleway);
-      font-size: 0.825rem;
       font-weight: 800;
-      letter-spacing: 0.25rem;
+      letter-spacing: 0.15rem;
       text-transform: uppercase;
       order: 0;
       a {
         padding: 1rem;
       }
     }
-    .links {
-      display: block;
-      flex: 1;
-      min-width: 0;
-      max-width: 100%;
-      max-height: 2.825rem;
-      overflow: hidden;
-      > div {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        align-items: center;
-        a {
-          flex-grow: 0;
-          flex-shrink: 1;
-          flex-basis: auto;
-          width: max-content;
-          position: relative;
-          padding: 1rem 0.5rem;
-          text-align: center;
-          font-family: var(--Raleway);
-          font-size: 0.825rem;
-          font-weight: 400;
-          line-height: 1;
-          text-transform: uppercase;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-        }
-      }
+  }
+  header[role="banner"] .links > div a {
+    &:not(:last-of-type):after {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      right: 0.4rem;
+      bottom: 0.4rem;
+      height: 0.188rem;
+      opacity: 0;
+      transition-property: opacity;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-out;
     }
-    .menu {
-      display: flex;
-      flex-basis: 18rem;
-      margin: 0 1rem 0 0;
-      svg {
-        display: block;
-        width: 1.5rem;
-        height: 1.5rem;
-        cursor: pointer;
+    &:hover,
+    &.active,
+    &:focus {
+      &:after {
+        opacity: 1;
       }
     }
   }
@@ -78,6 +59,7 @@
     }
   }
   article {
+    overflow: auto;
     width: 80%;
     margin: 2rem auto;
     padding: 2rem 4rem;
@@ -86,7 +68,6 @@
       flex-direction: column;
       h1 {
         margin: 3rem auto 4rem auto;
-        font-size: 5rem;
       }
     }
   }
@@ -113,24 +94,6 @@
       padding: 2rem 0;
     }
   }
-  h1 {
-    font-size: 3.25rem;
-  }
-  h2 {
-    font-size: 2.55rem;
-  }
-  h3 {
-    font-size: 2.15rem;
-  }
-  h4 {
-    font-size: 1.8rem;
-  }
-  h5 {
-    font-size: 1.4rem;
-  }
-  h6 {
-    font-size: 0.9rem;
-  }
   aside {
     &.search {
       grid-column-end: span 12;
@@ -147,7 +110,7 @@
     grid-template-columns: repeat(12, 1fr);
     grid-column-end: span 12;
     width: 80%;
-    margin: 2rem auto 0;
+    margin: 0 auto 0;
     section {
       order: 1;
       grid-column-end: span 9;
@@ -160,12 +123,12 @@
         a {
           display: flex;
           flex-direction: column;
+          width: 100%;
           border-bottom: 0;
           h1,
           h2 {
             order: 1;
             margin: 2.5rem auto 1rem;
-            font-size: 4rem;
           }
           h3 {
             order: 2;
@@ -210,15 +173,15 @@
         }
         > h1 {
           width: 100%;
+          max-width: 100%;
           padding: 1rem 0;
-          font-size: 2rem;
           text-align: left;
           word-break: break-word;
         }
         > p {
           width: 100%;
           font-family: var(--Raleway);
-          font-size: 1.2rem;
+          font-size: 1.25rem;
         }
       }
       section {
@@ -249,7 +212,7 @@
     }
   }
   &.blog {
-    .search {
+    article.search {
       grid-column-end: span 12;
       padding: 2rem 4rem;
     }

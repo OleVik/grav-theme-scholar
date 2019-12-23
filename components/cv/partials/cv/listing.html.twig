@@ -22,7 +22,6 @@
             {% endif %}
             <em>
             {% if item.name is defined or item.level is defined %}
-            , 
                 {% if item.url %}<a href="{{ item.url }}">{% endif %}
                 {{ item.name ?? item.level }}
                 {% if item.url %}</a>{% endif %}
