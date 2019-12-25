@@ -26,19 +26,22 @@
         list-style-position: inside;
         li {
           display: block;
-          margin: 0.25rem 0;
-          padding: 0.25rem 1rem;
+          margin: 0.25rem 0 0 0;
+          padding: 0.5rem 1rem 0.5rem 1rem;
           &:before {
             content: counters(item, ".") " ";
             counter-increment: item;
           }
           > ol {
-            margin: 0.5rem 0;
+            margin: 0.5rem 0 0 0;
           }
         }
       }
       > ol > .active {
         padding: 0.5rem 0 0.5rem 1rem;
+      }
+      .current {
+        padding-bottom: 0.5rem;
       }
       .current-group {
         padding-top: 0.5rem;

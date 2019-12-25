@@ -80,24 +80,7 @@ class Router
         } elseif ('/' . basename($path) == $this->dataRoute) {
             $this->handleData($page);
         } elseif ('/' . basename($path) == $this->printRoute) {
-            $template = $page->parent()->template();
-            if (isset($page->parent()->header()->print['template'])) {
-                $template = $page->parent()->header()->print['template'];
-            }
-            if (isset($page->parent()->header()->print['items'])) {
-                $collection = $page->parent()->collection('print')->published();
-                if ($collection
-                    && isset($page->parent()->header()->print['process'])
-                    && $page->parent()->header()->print['process'] === true
-                ) {
-                    $this->handleProcessedContent($page, $template);
-                } elseif ($collection) {
-                    $page = $this->handleRawContent($page, $collection, $template);
-                }
-            } else {
-                $page = $page->parent();
-            }
-            $this->grav['pages']->addPage($page, $path);
+            $this->handlePrint($page, $path);
         }
     }
 
@@ -141,12 +124,19 @@ class Router
      */
     public function handleEmbed(Page $Page): void
     {
+        $Parent = $Page->parent();
+        if (!$Parent) {
+            $Parent = $Page->topParent();
+        }
+        if (!$Parent) {
+            $Parent = $Page->find("/");
+        }
         header(
             'Content-type: ' . Utils::getMimeByExtension(
-                $Page->parent()->templateFormat()
+                $Parent->templateFormat()
             )
         );
-        echo $Page->parent()->content();
+        echo $Parent->content();
         exit();
     }
 
@@ -164,21 +154,58 @@ class Router
                 'theme.api.linked_data.default',
                 'LinkedData\PageLinkedData'
             ),
-            $this->grav['language']
+            $this->grav['language'],
+            $this->grav['config']
         );
-        $Page->title($Page->parent()->title());
-        $LinkedData->buildSchema($Page->parent());
+        $Parent = $Page->parent();
+        if (!$Parent) {
+            $Parent = $Page->topParent();
+        }
+        if (!$Parent) {
+            $Parent = $Page->find("/");
+        }
+        $Page->title($Parent->title());
+        $LinkedData->buildSchema($Parent);
         $data = [
             'encodingFormat' => Utils::getMimeByExtension(
-                $Page->parent()->templateFormat()
+                $Parent->templateFormat()
             ),
-            'header' => (array) $Page->parent()->header(),
-            'content' => $Page->parent()->content()
+            'header' => (array) $Parent->header(),
+            'content' => $Parent->content()
         ];
         $data = array_merge($LinkedData->data, $data);
         header('Content-Type: application/json');
         echo json_encode($data);
         exit();
+    }
+
+    public function handlePrint(Page $Page, string $path): void
+    {
+        $Parent = $Page->parent();
+        if (!$Parent) {
+            $Parent = $Page->topParent();
+        }
+        if (!$Parent) {
+            $Parent = $Page->find("/");
+        }
+        $template = $Parent->template();
+        if (isset($Parent->header()->print['template'])) {
+            $template = $Parent->header()->print['template'];
+        }
+        if (isset($Parent->header()->print['items'])) {
+            $collection = $Parent->collection('print')->published();
+            if ($collection
+                && isset($Parent->header()->print['process'])
+                && $Parent->header()->print['process'] === true
+            ) {
+                $this->handleProcessedContent($page, $template);
+            } elseif ($collection) {
+                $page = $this->handleRawContent($page, $collection, $template);
+            }
+        } else {
+            $page = $Parent;
+        }
+        $this->grav['pages']->addPage($page, $path);
     }
 
     /**

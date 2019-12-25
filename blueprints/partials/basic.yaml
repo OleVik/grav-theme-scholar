@@ -72,6 +72,15 @@ linked_data:
     0: PLUGIN_ADMIN.DISABLED
   validate:
     type: bool
+highlighter:
+  type: toggle
+  label: THEME_SCHOLAR.ADMIN.HIGHLIGHTER
+  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.HIGHLIGHTER
+  options:
+    1: PLUGIN_ADMIN.ENABLED
+    0: PLUGIN_ADMIN.DISABLED
+  validate:
+    type: bool
 flexsearch.enabled:
   type: toggle
   label: THEME_SCHOLAR.ADMIN.FLEXSEARCH

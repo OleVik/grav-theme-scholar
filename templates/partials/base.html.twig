@@ -11,13 +11,13 @@
     <link rel="icon" type="image/png" href="{{ url('theme://images/logo.png') }}" />
     <link rel="canonical" href="{{ page.url(true, true) }}" />
     {% endblock meta %}
+    {% if config.theme.css %}
+        {% do assets.addCss('theme://css/theme.css', 100) %}
+        {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
+        {% do assets.addCss('theme://css/styles/' ~ uri.query('style') ?? page.header.theme.style ?? config.theme.style ~ '.css', 99) %}
+    {% endif %}
+    {% do assets.addCss('theme://css/custom.css', 97) %}
     {% block stylesheets %}
-        {% if config.theme.css %}
-            {% do assets.addCss('theme://css/theme.css', 100) %}
-            {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
-            {% do assets.addCss('theme://css/styles/' ~ uri.query('theme') ?? page.header.theme.style ?? config.theme.style ~ '.css', 99) %}
-        {% endif %}
-        {% do assets.addCss('theme://css/custom.css', 98) %}
     {% endblock %}
 
     {% if config.theme.js %}
@@ -30,6 +30,7 @@
         {{ assets.css('critical')|raw }}
         {{ assets.js('critical')|raw }}
     {% endblock %}
+    {% include 'partials/components/highlighter.html.twig' %}
     {% block assets deferred %}
         {{ assets.css()|raw }}
     {% endblock %}

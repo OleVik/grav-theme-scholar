@@ -1,0 +1,21 @@
+{% if config.theme.css and config.theme.highlighter %}
+    {% do assets.addCss('theme://css/highlighter/enlighterjs.' ~ config.theme.highligher_theme ~ '.min.css', 98) %}
+    {% do assets.addInlineCss('
+    .enlighter-default .enlighter-toolbar .enlighter-btn-window,
+    .enlighter-default .enlighter-toolbar .enlighter-btn-website {
+        display: none;
+    }
+    ') %}
+{% endif %}
+{% if config.theme.js and config.theme.highlighter %}
+    {% do assets.addJs('theme://js/enlighterjs.min.js', {group: 'bottom'}) %}
+    {% do assets.addInlineJs("
+    EnlighterJS.init('pre code', {
+        language: 'javascript',
+        theme: 'enlighter',
+        indent: 2,
+        rawButton: false,
+        infoButton: false
+    });
+    ", {group: 'bottom'}) %}
+{% endif %}

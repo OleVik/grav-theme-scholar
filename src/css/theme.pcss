@@ -92,6 +92,23 @@ main {
   margin: 0 auto;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  thead {
+    border-bottom: 2px solid transparent;
+  }
+  tr {
+    border-bottom: 1px solid transparent;
+  }
+  th,
+  td {
+    padding: 0.25rem;
+    text-align: left;
+  }
+}
+
 /* Itemize */
 article > p[aria-label],
 article > img[aria-label],
@@ -101,6 +118,7 @@ article > figure[aria-label] {
     content: attr(aria-label);
     position: absolute;
     left: -4rem;
+    opacity: 0.65;
     width: 3.5rem;
     max-width: 3.5rem;
     text-align: right;

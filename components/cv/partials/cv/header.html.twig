@@ -25,7 +25,7 @@
     <div>
     {% if basics.location and basics.location is iterable %}
         {% if basics.location.address %}<span>{{ basics.location.address }}</span>{% endif %}
-        {% if basics.location.postalCode %}<span>{{ basics.location.postalCode }}</span>{% endif %}
+        {% if basics.location.postal_code %}<span>{{ basics.location.postal_code }}</span>{% endif %}
         {% set group = [basics.location.city, basics.location.region, basics.location.countryCode] %}
         <span>{{ group|filter(v => v != null)|join(', ') }}</span>
     {% elseif basics.location and basics.location is not iterable %}

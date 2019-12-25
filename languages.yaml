@@ -18,6 +18,8 @@ en:
         SEARCH: Search
         NAVIGATION: Navigation
       ITEMIZE: Itemize elements
+      HIGHLIGHTER: Highlighter
+      HIGHLIGHTER_THEME: Highlighter theme
       COMPONENTS: Components
       CSS: Theme CSS
       JS: Theme JS
@@ -48,6 +50,7 @@ en:
           SEARCH: Route for virtual Page for searching.
           PRINT: 'Route suffixed to Page-route to render its "print"-collection.'
         LINKED_DATA: Render Linked Data output.
+        HIGHLIGHTER: Highlight code.
         API:
           CONTENT: Class to use for content-parsing.
           LINKED_DATA:
@@ -64,6 +67,30 @@ en:
       NOTICE:
         TITLE: Note
         EXPERT: These options can break the theme and site if used incorrectly.
+      CV:
+        START_DATE: Start date
+        END_DATE: End date
+        BASICS:
+          TITLE: Basics
+          PHONE: Phone
+          LOCATION:
+            TITLE: Location
+            ADDRESS: Address
+            POSTAL_CODE: Postal code
+            CITY: City
+            REGION: Region
+          PROFILES:
+            TITLE: Profiles
+            NETWORK: Network
+        COMPETENCIES: Competencies
+        WORK: Work
+        VOLUNTEER: Volunteer
+        EDUCATION: Education
+        AWARDS: Awards
+        PUBLICATIONS: Publications
+        INTERESTS: Interests
+        LANGUAGES:
+          LEVEL: Level
     SITE_CONTENTS: Site Contents
     PAGE_CONTENTS: Page Contents
     SCHEMA:

@@ -18,6 +18,10 @@ router:
     0: PLUGIN_ADMIN.DISABLED
   validate:
     type: bool
+highlighter_theme:
+  type: select
+  label: THEME_SCHOLAR.ADMIN.HIGHLIGHTER_THEME
+  data-options@: '\Grav\Theme\Scholar::getHighlighterThemeBlueprint'
 routes.data:
   type: text
   label: THEME_SCHOLAR.ADMIN.ROUTES.DATA

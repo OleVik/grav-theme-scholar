@@ -2,7 +2,7 @@
 
 ## Components and Page Types
 
-The Scholar theme is stricter than most themes in that the Page Types, that is templates, it offers, and how they must are structured. The theme expects Page Types to be declared as high-level structures, with lower-level structures beneath. For example, for a set of Documentation Pages, `docs.html.twig` would be the uppermost template. Below there will be hierarchical folders of Pages, using `page.html.twig` for each.
+The Scholar theme is stricter than most themes in how the Pages and Page Types, that is templates it offers, must be structured. The theme expects Page Types to be declared as high-level structures, with lower-level structures beneath. For example, for a set of Documentation Pages, `docs.html.twig` would be the uppermost template. Below there will be hierarchical folders of Pages, using `page.html.twig` for each.
 
 The theme uses modular components to let you choose what features you want. These are not the same as as [Modular Pages](https://learn.getgrav.org/16/content/modular) in Grav. The `components`-setting in the theme's configuration-file is a plain list of names of Components to load.
 

@@ -20,10 +20,16 @@
       "cv": "/cv",
       "docs": "/docs/features"
     },
+    "dynamicRoutes": {
+      "data": "/data",
+      "embed": "/embed",
+      "search": "/search",
+      "print": "/print"
+    },
     "landmarks": {
       "index": {
         "body": "body",
-        "navigation-header": "header[role=\"banner\"]",
+        "header": "header[role=\"banner\"]",
         "main-article": "main section article",
         "sidebar-header": "aside header",
         "sidebar-article": "aside section article"
@@ -39,9 +45,9 @@
       },
       "docs": {
         "body": "body",
-        "navigation-header": "header[role=\"banner\"]",
-        "main-article": "main section article",
-        "sidebar": "aside.sidebar"
+        "header": "header[role=\"banner\"]",
+        "sidebar": "aside.sidebar",
+        "main-article": "main section article"
       }
     },
     "breakpoints": {

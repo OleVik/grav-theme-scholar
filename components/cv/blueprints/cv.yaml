@@ -1,0 +1,188 @@
+title: CV Options
+extends@:
+  type: default
+  context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+      fields:
+        content:
+          type: tab
+          fields:
+            content:
+              unset@: true
+            header.media_order:
+              unset@: true
+            header.description:
+              type: text
+              label: PLUGIN_ADMIN.DESCRIPTION
+            header.basics.name:
+              type: text
+              label: PLUGIN_ADMIN.NAME
+            header.basics.label:
+              type: text
+              label: PLUGIN_ADMIN.TITLE
+            header.basics.email:
+              type: text
+              label: PLUGIN_ADMIN.EMAIL
+              validate:
+                type: email
+            header.basics.phone:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.PHONE
+            header.basics.url:
+              type: text
+              label: PLUGIN_ADMIN.LINK
+            header.basics.location.address:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.LOCATION.ADDRESS
+            header.basics.location.postal_code:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.LOCATION.POSTAL_CODE
+            header.basics.location.city:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.LOCATION.CITY
+            header.basics.location.region:
+              type: text
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.LOCATION.REGION
+            header.basics.profiles:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.BASICS.PROFILES.TITLE
+              fields:
+                .network:
+                  type: text
+                  label: THEME_SCHOLAR.ADMIN.CV.BASICS.PROFILES.NETWORK
+                .username:
+                  type: text
+                  label: PLUGIN_ADMIN.USERNAME
+                .url:
+                  type: text
+                  label: PLUGIN_ADMIN.LINK
+            header.competencies:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.COMPETENCIES
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .keywords:
+                  type: selectize
+                  label: PLUGIN_ADMIN.KEYWORDS
+            header.work:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.WORK
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .url:
+                  type: text
+                  label: PLUGIN_ADMIN.LINK
+                .start_date:
+                  type: datetime
+                  label: THEME_SCHOLAR.ADMIN.CV.START_DATE
+                .description:
+                  type: text
+                  label: PLUGIN_ADMIN.DESCRIPTION
+            header.volunteer:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.VOLUNTEER
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .url:
+                  type: text
+                  label: PLUGIN_ADMIN.LINK
+                .start_date:
+                  type: datetime
+                  label: THEME_SCHOLAR.ADMIN.CV.START_DATE
+                .end_date:
+                  type: datetime
+                  label: THEME_SCHOLAR.ADMIN.CV.END_DATE
+            header.education:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.EDUCATION
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .start_date:
+                  type: datetime
+                  label: THEME_SCHOLAR.ADMIN.CV.START_DATE
+                .end_date:
+                  type: datetime
+                  label: THEME_SCHOLAR.ADMIN.CV.END_DATE
+            header.awards:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.AWARDS
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .date:
+                  type: datetime
+                  label: PLUGIN_ADMIN.DATE
+            header.publications:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.PUBLICATIONS
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .name:
+                  type: text
+                  label: PLUGIN_ADMIN.NAME
+                .date:
+                  type: datetime
+                  label: PLUGIN_ADMIN.DATE
+                .url:
+                  type: text
+                  label: PLUGIN_ADMIN.LINK
+            header.interests:
+              type: list
+              style: vertical
+              label: THEME_SCHOLAR.ADMIN.CV.INTERESTS
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .keywords:
+                  type: selectize
+                  label: PLUGIN_ADMIN.KEYWORDS
+            header.languages:
+              type: list
+              style: vertical
+              label: PLUGIN_ADMIN.LANGUAGES
+              fields:
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                .level:
+                  type: text
+                  label: THEME_SCHOLAR.ADMIN.CV.LANGUAGES.LEVEL

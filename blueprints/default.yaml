@@ -21,3 +21,26 @@ form:
                   "theme://blueprints/partials/basic.yaml",
                   "header.theme.",
                 ]
+        advanced:
+          type: tab
+          fields:
+            scholar_advanced:
+              type: section
+              title: THEME_SCHOLAR.ADMIN.TITLES.ADVANCED
+              underline: true
+              data-fields@:
+                [
+                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
+                  "theme://blueprints/partials/advanced.yaml",
+                  "header.theme.",
+                ]
+            scholar_expert:
+              type: section
+              title: THEME_SCHOLAR.ADMIN.TITLES.EXPERT
+              underline: true
+              data-fields@:
+                [
+                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
+                  "theme://blueprints/partials/expert.yaml",
+                  "header.theme.",
+                ]

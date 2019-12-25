@@ -74,7 +74,7 @@ class Scholar extends Theme
         if ($this->isAdmin() && $this->config->get('plugins.admin')) {
             $this->enable(
                 [
-                    'onAdminSave' => ['debug', 0]
+                    'onGetPageBlueprints' => ['onGetPageBlueprints', 0]
                 ]
             );
         }
@@ -94,14 +94,6 @@ class Scholar extends Theme
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->stopTimer('scholar');
         }
-    }
-
-    public function debug(Event $e)
-    {
-        $page = $e['object'];
-        error_log(var_export($page->header(), true));
-        error_log(var_export($page->frontmatter(), true));
-        error_log(var_export($_POST['data'], true));
     }
 
     /**
@@ -190,6 +182,57 @@ class Scholar extends Theme
         }
         return $components;
     }
+
+    /**
+     * Get Highlighter themes
+     *
+     * @return array Associative array of styles
+     */
+    public static function getHighlighterThemeBlueprint(): array
+    {
+        $stylesFolders = Utils::arrayMergeRecursiveUnique(
+            Utilities::filesFinder('theme://css/highlighter', ['css']),
+            Utilities::filesFinder('user://themes/scholar/css/highlighter', ['css'])
+        );
+        $styles = array();
+        foreach (array_unique($stylesFolders) as $style) {
+            $name = $style->getBasename('.' . $style->getExtension());
+            $name = str_replace(['enlighterjs.', '.min'], '', $name);
+            $styles[$name] = Inflector::titleize($name);
+        }
+        return $styles;
+    }
+
+    /**
+     * Register blueprints
+     *
+     * @param Event $event Instance of RocketTheme\Toolbox\Event\Event.
+     *
+     * @return void
+     */
+    public function onGetPageBlueprints(Event $event)
+    {
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $componentFolder = Utilities::folderFinder(
+                'blueprints',
+                [
+                    'theme://components/' . $component,
+                    'user://themes/scholar/components/' . $component
+                ]
+            );
+            if ($componentFolder) {
+                $folder = $this->grav['locator']->findResource(
+                    $componentFolder,
+                    true,
+                    true
+                );
+                if (is_dir($folder)) {
+                    $event->types->scanBlueprints($folder);
+                }
+            }
+        }
+    }
+
     /**
      * Handle API
      *
@@ -206,7 +249,6 @@ class Scholar extends Theme
                 $this->grav
             );
         }
-        // dump($this->grav['page']->translatedLanguages(true));
     }
 
     /**
@@ -295,7 +337,8 @@ class Scholar extends Theme
         if ($this->grav['page']->template() == 'search') {
             $searchRoute = $this->grav['page']->url(true, true, true);
         } else {
-            $searchRoute = $this->grav['uri']->rootUrl(true) . $this->config->get('themes.scholar.routes.search');
+            $searchRoute = $this->grav['uri']->rootUrl(true) .
+            $this->config->get('themes.scholar.routes.search');
         }
         $this->grav['assets']->addInlineJs(
             'const systemLanguage = "' . $language . '";' . "\n" .

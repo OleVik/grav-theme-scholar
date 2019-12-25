@@ -28,10 +28,8 @@ function init() {
       mutations.forEach(function(mutation) {
         if (mutation.type == "attributes") {
           if (mutation.target.getAttribute("aria-checked") === "true") {
-            console.log("open links", mutation.target);
             links.style.display = "block";
           } else if (mutation.target.getAttribute("aria-checked") === "false") {
-            console.log("close links", mutation.target);
             links.style.display = "none";
           }
         }

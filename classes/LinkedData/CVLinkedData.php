@@ -82,8 +82,8 @@ class CVLinkedData extends AbstractLinkedData
             if (isset($header['basics']['location']['address'])) {
                 $data['address']['streetAddress'] = $header['basics']['location']['address'];
             }
-            if (isset($header['basics']['location']['postalCode'])) {
-                $data['address']['postalCode'] = $header['basics']['location']['postalCode'];
+            if (isset($header['basics']['location']['postal_code'])) {
+                $data['address']['postal_code'] = $header['basics']['location']['postal_code'];
             }
             if (isset($header['basics']['location']['city'])) {
                 $data['address']['addressLocality'] = $header['basics']['location']['city'];
@@ -228,11 +228,11 @@ class CVLinkedData extends AbstractLinkedData
                             'hasOccupation' => ['@type' => 'OrganizationRole']
                         );
                         $Organization['employee']['hasOccupation']['roleName'] = $item['title'];
-                        if (isset($item['startDate']) && is_string($item['startDate'])) {
-                            $Organization['employee']['hasOccupation']['startDate'] = $item['startDate'];
+                        if (isset($item['start_date']) && is_string($item['start_date'])) {
+                            $Organization['employee']['hasOccupation']['start_date'] = $item['start_date'];
                         }
-                        if (isset($item['endDate']) && is_string($item['endDate'])) {
-                            $Organization['employee']['hasOccupation']['endDate'] = $item['endDate'];
+                        if (isset($item['end_date']) && is_string($item['end_date'])) {
+                            $Organization['employee']['hasOccupation']['end_date'] = $item['end_date'];
                         }
                         if (isset($item['description']) && is_string($item['description'])) {
                             $Organization['employee']['hasOccupation']['description'] = $item['description'];

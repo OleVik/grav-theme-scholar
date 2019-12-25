@@ -16,6 +16,18 @@ a:active,
 .active {
   text-decoration: none;
 }
+:not(pre) > code {
+  color: var(--primary);
+}
+table {
+  thead,
+  tr {
+    border-bottom-color: var(--border-color);
+  }
+  tr:hover {
+    background-color: var(--secondary);
+  }
+}
 .page {
   color: var(--text);
   a:hover,
