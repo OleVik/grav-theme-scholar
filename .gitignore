@@ -11,6 +11,9 @@ node_modules/
 !node_modules/@khanacademy/tota11y/dist/tota11y.min.js
 jspm_packages/
 
+# Test results
+cypress/screenshots
+
 ### Node ###
 # Logs
 logs
