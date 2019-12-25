@@ -98,8 +98,10 @@ en:
       PUBLISHED: Published
       RIGHTS: Rights
       CANONICAL: Canonical
-      CATEGORIES: Category
-      TAGS: Tag
+      CATEGORY: Category
+      CATEGORIES: Categories
+      TAG: Tag
+      TAGS: Tags
     PAGE:
       BLANK: This page intentionally left blank.
       EMPTY: Empty page

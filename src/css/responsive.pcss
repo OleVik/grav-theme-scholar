@@ -261,7 +261,7 @@
     &.listing main {
       grid-gap: 0;
       width: 100%;
-      margin-top: 0;
+      margin-top: 2rem;
       article {
         width: 100%;
         margin: 0 0 1rem;
@@ -364,12 +364,20 @@
         aside.search {
           grid-column-end: span 8;
         }
+        aside.search {
+          padding: 1rem 2rem;
+        }
         aside {
           grid-column-end: span 4;
         }
         aside:not([class]) {
           display: block;
         }
+      }
+    }
+    &.article {
+      main {
+        width: 80%;
       }
     }
     article {

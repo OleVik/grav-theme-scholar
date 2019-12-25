@@ -4,6 +4,12 @@
 
 {% block main %}
 
+{% block header %}
+<header role="banner">
+    {% include 'partials/header.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
+</header>
+{% endblock %}
+
 <main>
     {% block article %}
     <article typeof="schema:{{ schema_type(page.template) }}">

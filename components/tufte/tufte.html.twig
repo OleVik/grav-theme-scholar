@@ -1,6 +1,6 @@
 {% extends 'article.html.twig' %}
 
-{% set body_classes = (body_classes|default('page')) %}
+{% set body_classes = (body_classes|default('page article tufte')) %}
 
 {% block stylesheets %}
     {% do assets.addCss('theme://components/tufte/assets/tufte.min.css', 100) %}

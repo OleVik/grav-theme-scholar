@@ -1,9 +1,15 @@
 {% extends 'partials/base.html.twig' %}
 
-{% set body_classes = (body_classes|default('page')) %}
+{% set body_classes = (body_classes|default('page article')) %}
 {% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 
 {% block main %}
+
+{% block header %}
+<header role="banner">
+    {% include 'partials/header.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
+</header>
+{% endblock %}
 
 <main>
     {% block article %}

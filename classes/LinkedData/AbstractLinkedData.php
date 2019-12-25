@@ -74,7 +74,11 @@ abstract class AbstractLinkedData implements LinkedDataInterface
     public static function getImage(array $header, array $media): array
     {
         $data = array();
-        if (isset($header['image']) && is_string($header['image'])) {
+        if (isset($header['image'])
+            && is_string($header['image'])
+            && !empty($header['image'])
+            && isset($media[$header['image']])
+        ) {
             $data['@type'] = 'ImageObject';
             $data['url'] = $media[$header['image']]->url();
         }

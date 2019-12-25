@@ -7,8 +7,8 @@
 {% block links %}
 <nav class="links" role="navigation" aria-label="{{ "THEME_SCHOLAR.LINKS"|t }}" aria-checked="false">
 <div>
-{% for page in page.collection({ items: {'@root.children': ''}}) if not page.home() %}
-    <a href="{{ page.url }}">{{ page.header.menu ?? page.title ?? page.slug }}</a>
+{% for page in page.collection({ items: {'@root.children': ''}}) if not page.home() and page.header.menu %}
+    <a href="{{ page.url }}">{{ page.header.menu }}</a>
 {% endfor %}
 </div>
 </nav>

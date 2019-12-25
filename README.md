@@ -4,6 +4,7 @@ Scholar is a theme made for academics, for publishing papers, articles, books, d
 
 ## Features
 
+- Extensible Components, Layouts and template-partials, Styles, API
 - Responsive Layouts, multiple Styles
   - Print-friendly styles
 - Performant, light on resources
@@ -13,7 +14,6 @@ Scholar is a theme made for academics, for publishing papers, articles, books, d
   - Clean, declarative HTML-structure with semantic labels
 - Automated Evergreen-browser compatibility
 - Compatible with a static setup
-- Extensible Components, Layouts and template-partials, Styles, API
 - Dynamic functionality for Data, Embed, Print, and Search Pages
 
 ## Usage
@@ -57,3 +57,9 @@ You should now have all the theme files under
     /your/site/grav/user/themes/scholar
 
 This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
+
+## [Advanced Usage](https://github.com/OleVik/grav-theme-scholar/blob/master/ADVANCED.md)
+
+## [Development](https://github.com/OleVik/grav-theme-scholar/blob/master/DEVELOPMENT.md)
+
+## [Contributing](https://github.com/OleVik/grav-theme-scholar/blob/master/CONTRIBUTING.md)

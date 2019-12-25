@@ -2,15 +2,17 @@
 
 {% set body_classes = (body_classes|default('blog post page')) %}
 
-{% if page.header.image %}
-    {% do assets.addInlineCss('
-    .page main {
-        background-image: url("' ~ page.media[page.header.image.url ?? page.header.image].url ~ '");
-        background-size: ' ~ page.header.image.size ?? "contain" ~ ';
-        background-repeat: ' ~ page.header.image.repeat ?? "repeat-x" ~ ';
-    }
-    .page main article {
-        margin-top: 10%;
-    }
-    ') %}
-{% endif %}
+{% block article %}
+<section>
+    <img alt="Hero image for {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
+    <article>
+        {% block content %}
+        <header>
+            <h1>{{ page.title }}</h1>
+        </header>
+        {% include 'partials/components/default/metadata.html.twig' with {'page': page} %}
+        {{ navigablePage.content }}
+        {% endblock %}
+    </article>
+</section>
+{% endblock %}
