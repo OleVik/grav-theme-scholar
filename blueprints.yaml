@@ -6,8 +6,8 @@ author:
   name: Ole Vik
   email: git@olevik.net
 homepage: https://github.com/OleVik/grav-theme-scholar
-demo: http://demo.yoursite.com
-keywords: grav, theme, etc
+demo: https://olevik.me/staging/grav-skeleton-scholar
+keywords: grav, theme, academic, paper, papers, article, articles, book, books, docs, documentation, resume, cv
 bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/develop/README.md
 license: MIT
