@@ -1,8 +1,14 @@
 # Dependency directories
 local_modules/
-!local_modules/node_modules/postcss-wcag-contrast/index.js
-!local_modules/node_modules/stylelint-no-indistinguishable-colors/lib/index.js
 node_modules/
+!node_modules/fontfaceobserver/fontfaceobserver.js
+!node_modules/dayjs/dayjs.min.js
+!node_modules/dayjs/plugin/advancedFormat.js
+!node_modules/dayjs/locale/**/*.js
+!node_modules/flexsearch/dist/flexsearch.min.js
+!node_modules/mobius1-selectr/dist/**/*
+!node_modules/leader-line/leader-line.min.js
+!node_modules/@khanacademy/tota11y/dist/tota11y.min.js
 jspm_packages/
 
 ### Node ###
