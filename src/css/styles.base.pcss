@@ -80,7 +80,7 @@ table {
       background: var(--foreground);
       border: solid 1px var(--border-color);
       a:any-link {
-        border-bottom: 1px dotted var(--generic-border);
+        border-bottom: 1px solid var(--generic-border);
       }
       a:hover,
       a:focus,
@@ -146,13 +146,18 @@ table {
   }
 }
 
-.book {
+.book,
+.book.listing {
   main {
     article {
       header {
-        h2 {
+        h2,
+        .metadata {
           &:after {
             border-bottom: 0;
+          }
+          a {
+            border-bottom: 1px solid var(--border-color);
           }
         }
       }
@@ -188,7 +193,7 @@ table {
       background: var(--foreground);
       border: solid 1px var(--border-color);
       a:any-link {
-        border-bottom: 1px dotted var(--generic-border);
+        border-bottom: 1px solid var(--generic-border);
       }
       a:hover,
       a:focus,
@@ -269,20 +274,30 @@ table {
     section {
       & > article {
         a:any-link {
-          border-bottom: 1px dotted var(--border-color);
+          border-bottom: 1px solid var(--border-color);
         }
         a:hover,
         a:focus,
         a:active,
         .active {
-          border-bottom: 1px solid var(--border-color);
+          border-bottom-width: 2px;
         }
       }
     }
   }
   header[role="banner"] {
-    .search {
-      input,
+    form[role="search"] {
+      input[type="search"] {
+        color: var(--aside-text);
+        &:focus {
+          &::placeholder {
+            opacity: 0.6;
+          }
+        }
+        &::placeholder {
+          color: var(--aside-text);
+        }
+      }
       input:-webkit-autofill,
       input:-webkit-autofill:hover,
       input:-webkit-autofill:focus {
@@ -355,7 +370,7 @@ table {
       a:any-link {
         color: var(--aside-text);
         text-decoration: none;
-        border-bottom: 1px dotted var(--primary);
+        border-bottom: 1px solid var(--primary);
       }
       a:hover,
       a:focus,
@@ -376,8 +391,10 @@ table {
     .active {
       text-decoration: underline;
     }
-    border-top: 1px solid var(--background);
-    border-bottom: 1px solid var(--background);
+    article,
+    article:first-of-type {
+      border-color: var(--border-color);
+    }
   }
   &.listing {
     article {
@@ -412,14 +429,11 @@ table {
 }
 
 header[role="banner"] {
-  .search {
-    input,
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus {
+  form[role="search"] {
+    input[type="search"] {
       color: var(--text);
       background-color: transparent;
-      -webkit-transition-delay: 99999s;
+      transition-delay: 99999s;
       box-shadow: none;
       &:focus {
         &::placeholder {
@@ -431,8 +445,14 @@ header[role="banner"] {
         color: var(--text);
       }
     }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus {
+      -webkit-transition-delay: 99999s;
+    }
   }
 }
+
 header[role="banner"],
 .search,
 .drawer,
@@ -457,7 +477,7 @@ header[role="banner"],
 }
 footer[role="contentinfo"] {
   a:any-link {
-    border-bottom: 1px dotted var(--primary);
+    border-bottom: 1px solid var(--primary);
   }
   a:hover,
   a:focus,

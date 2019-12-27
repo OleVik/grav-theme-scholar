@@ -61,6 +61,7 @@
 </main>
 
 {% block footer %}
+{% include 'partials/components/related.html.twig' with {'page': page} %}
 {% include 'partials/footer.html.twig' %}
 {% endblock %}
 

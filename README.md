@@ -1,6 +1,6 @@
 # Scholar Theme
 
-Scholar is a theme made for academics, for publishing papers, articles, books, documentation, their resumé or other content with [Grav](https://getgrav.org/).
+Scholar is an academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé, with [Grav](https://getgrav.org/).
 
 ## Features
 

@@ -1,0 +1,42 @@
+{% macro iterate(taxonomy, theme, base_url_absolute) %}
+    {% import _self as metadata %}
+    {% for type, value in taxonomy %}
+    {% if type|of_type('string') == true %}
+    <dt>{{ ('THEME_SCHOLAR.SCHEMA.' ~ type|upper)|t }}: </dt>
+    {% endif %}
+    {% if value is iterable %}
+        {% if value|length == 1 %}
+            <dd>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value[0] }}">{{ value[0] }}</a>
+            </dd>
+        {% else %}
+            {{ metadata.list(value, type) }}
+        {% endif %}
+    {% else %}
+    <dd>
+        <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
+    </dd>
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
+{% macro list(item, type = '') %}
+    {% import _self as metadata %}
+    {% for key, value in item %}
+        {% if value is iterable %}
+            <dl>
+                {{ metadata.list(value, key) }}
+            </dl>
+        {% else %}
+            <dd>
+            {% if key is same as('email') %}
+                <a href="mailto:{{ value|safe_email }}">{{ value|safe_email }}</a>
+            {% elseif key is same as('url') %}
+                <a href="{{ value }}">{{ value }}</a>
+            {% else %}
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/{{ type }}={{ value }}">{{ value }}</a>
+            {% endif %}
+            </dd>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}

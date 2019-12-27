@@ -1,5 +1,5 @@
 {% if config.theme.css and config.theme.highlighter %}
-    {% do assets.addCss('theme://css/highlighter/enlighterjs.' ~ config.theme.highligher_theme ~ '.min.css', 98) %}
+    {% do assets.addCss('theme://css/highlighter/enlighterjs.' ~ config.theme.highlighter_theme ?? 'enlighter' ~ '.min.css') %}
     {% do assets.addInlineCss('
     .enlighter-default .enlighter-toolbar .enlighter-btn-window,
     .enlighter-default .enlighter-toolbar .enlighter-btn-website {

@@ -1,6 +1,6 @@
 name: Scholar
-version: 1.0.0
-description: An academic-focused theme, for publishing papers, articles, books, documentation, your resumé or other content with Grav.
+version: 1.0.1
+description: An academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé. Features include high accessibility, fast performance, print-friendly styles and more.
 icon: book
 author:
   name: Ole Vik

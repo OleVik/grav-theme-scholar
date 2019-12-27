@@ -13,7 +13,7 @@ style:
   data-options@: '\Grav\Theme\Scholar::getStylesBlueprint'
 toolbar.breadcrumbs:
   type: toggle
-  label: THEME_SCHOLAR.ADMIN.TOOLBAR.BREADCRUMBS
+  label: THEME_SCHOLAR.TOOLBAR.BREADCRUMBS
   description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
   options:
     1: PLUGIN_ADMIN.ENABLED
@@ -22,7 +22,7 @@ toolbar.breadcrumbs:
     type: bool
 toolbar.search:
   type: toggle
-  label: THEME_SCHOLAR.ADMIN.TOOLBAR.SEARCH
+  label: THEME_SCHOLAR.TOOLBAR.SEARCH
   description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
   options:
     1: PLUGIN_ADMIN.ENABLED
@@ -31,7 +31,7 @@ toolbar.search:
     type: bool
 toolbar.navigation:
   type: toggle
-  label: THEME_SCHOLAR.ADMIN.TOOLBAR.NAVIGATION
+  label: THEME_SCHOLAR.TOOLBAR.NAVIGATION
   description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
   options:
     1: PLUGIN_ADMIN.ENABLED

@@ -1,0 +1,21 @@
+.next-previous {
+  display: none;
+  grid-gap: 0;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-end: span 12;
+  flex: 1;
+  align-content: flex-end;
+  article {
+    grid-column-end: span 6;
+    border-top: 1px solid transparent;
+    svg {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      vertical-align: middle;
+    }
+    &:first-of-type {
+      border-right: 1px solid transparent;
+    }
+  }
+}

@@ -15,32 +15,27 @@ form:
               type: section
               title: THEME_SCHOLAR.ADMIN.TITLES.BASIC
               underline: true
-              data-fields@:
-                [
-                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
-                  "theme://blueprints/partials/basic.yaml",
-                  "header.theme.",
-                ]
-        advanced:
-          type: tab
-          fields:
-            scholar_advanced:
-              type: section
-              title: THEME_SCHOLAR.ADMIN.TITLES.ADVANCED
-              underline: true
-              data-fields@:
-                [
-                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
-                  "theme://blueprints/partials/advanced.yaml",
-                  "header.theme.",
-                ]
-            scholar_expert:
-              type: section
-              title: THEME_SCHOLAR.ADMIN.TITLES.EXPERT
-              underline: true
-              data-fields@:
-                [
-                  '\Grav\Theme\Scholar::getConfigBlueprintFields',
-                  "theme://blueprints/partials/expert.yaml",
-                  "header.theme.",
-                ]
+              fields:
+                header.theme.style:
+                  type: select
+                  label: THEME_SCHOLAR.ADMIN.STYLE
+                  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.STYLE
+                  data-options@: '\Grav\Theme\Scholar::getStylesBlueprint'
+                header.theme.itemize:
+                  type: toggle
+                  label: THEME_SCHOLAR.ADMIN.ITEMIZE
+                  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.ITEMIZE
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool
+                header.theme.highlighter:
+                  type: toggle
+                  label: THEME_SCHOLAR.ADMIN.HIGHLIGHTER
+                  description: THEME_SCHOLAR.ADMIN.DESCRIPTION.HIGHLIGHTER
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  validate:
+                    type: bool

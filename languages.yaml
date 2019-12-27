@@ -11,12 +11,12 @@ en:
       PREVIOUS: previous
       AND: and
       NONE: none
+    TOOLBAR:
+      BREADCRUMBS: Breadcrumbs
+      SEARCH: Search
+      NAVIGATION: Navigation
     ADMIN:
       STYLE: Style
-      TOOLBAR:
-        BREADCRUMBS: Breadcrumbs
-        SEARCH: Search
-        NAVIGATION: Navigation
       ITEMIZE: Itemize elements
       HIGHLIGHTER: Highlighter
       HIGHLIGHTER_THEME: Highlighter theme
@@ -39,9 +39,9 @@ en:
         TAXONOMY_MAP: Taxonomy Map
       FLEXSEARCH: FlexSearch
       DESCRIPTION:
-        STYLE: Style to use with theme.
+        STYLE: Style to use.
         TOOLBAR: Show in toolbar.
-        ITEMIZE: Assign indices to tags.
+        ITEMIZE: Assign indices to paragraphs, figures, and images.
         COMPONENTS: Components, meaning templates and assets, to enable in the theme.
         ROUTER: Let theme handle specialized routes.
         ROUTES:

@@ -286,7 +286,7 @@
         }
       }
     }
-    aside:first-of-type {
+    aside.search {
       display: none;
     }
   }
@@ -314,9 +314,6 @@
           flex: 1;
         }
       }
-      .next-previous {
-        display: grid;
-      }
     }
     .sidebar {
       display: flex;
@@ -324,6 +321,13 @@
       header h1 {
         flex-basis: 100%;
       }
+    }
+  }
+  .next-previous {
+    display: grid;
+    article svg {
+      width: calc(1.602rem * 1.25);
+      height: calc(1.602rem * 1.25);
     }
   }
   [data-drawer-open] {
@@ -420,6 +424,10 @@
       }
     }
   }
+  .next-previous article svg {
+    width: calc(1.602rem * 1.5);
+    height: calc(1.602rem * 1.5);
+  }
   main {
     article > p[aria-label],
     article > img[aria-label],
@@ -473,5 +481,9 @@
     .sidebar {
       grid-column-end: span 2;
     }
+  }
+  .next-previous article svg {
+    width: calc(1.602rem * 1.65);
+    height: calc(1.602rem * 1.65);
   }
 }
