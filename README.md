@@ -16,6 +16,8 @@ Scholar is an academic-focused theme, for publishing papers, articles, books, do
 - Compatible with a static setup
 - Dynamic functionality for Data, Embed, Print, and Search Pages
 
+A demonstration is available at [OleVik.me/staging/grav-skeleton-scholar](https://olevik.me/staging/grav-skeleton-scholar), and its full contents are on [GitHub](https://github.com/OleVik/grav-skeleton-scholar).
+
 ## Usage
 
 ### Configuration
