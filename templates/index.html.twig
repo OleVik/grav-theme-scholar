@@ -10,18 +10,6 @@
     } %}
     {{ block('content', 'partials/page/listing.html.twig') }}
 {% endwith %}
-{% if page.header.image %}
-    {% do assets.addInlineCss('
-    .page {
-        background-image: url("' ~ page.media[page.header.image.url ?? page.header.image].url ~ '");
-        background-size: ' ~ page.header.image.size ?? "cover" ~ ';
-        background-repeat: ' ~ page.header.image.repeat ?? "no-repeat" ~ ';
-    }
-    .page main {
-        margin-top: 10%;
-    }
-    ') %}
-{% endif %}
 <aside>
     <header>
         {% if page.header.logo %}

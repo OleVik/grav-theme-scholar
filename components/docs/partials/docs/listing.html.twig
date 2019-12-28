@@ -4,9 +4,10 @@
     <p>{{ "THEME_SCHOLAR.PAGE.EMPTY"|t }}, {{ "THEME_SCHOLAR.PAGE.CHILDREN"|t }}:</p>
 {% elseif mode == 'children' %}
     <p>{{ "THEME_SCHOLAR.PAGE.EMPTY"|t }}, {{ "THEME_SCHOLAR.PAGE.SIBLINGS"|t }}:</p>
-{% elseif mode == 'blank' %}
-    <p>{{ "THEME_SCHOLAR.PAGE.BLANK"|t }}</p>
 {% endif %} #}
+{% if mode == 'blank' %}
+    <p>{{ "THEME_SCHOLAR.PAGE.BLANK"|t }}</p>
+{% endif %}
 {% if collection %}
     {% for item in collection %}
     <article>

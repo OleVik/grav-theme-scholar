@@ -1,24 +1,17 @@
 {% macro iterate(taxonomy, theme, base_url_absolute) %}
     {% import _self as metadata %}
-
     {% for type, value in taxonomy %}
-    {% if type|of_type('string') == true %}
-    <dt>{{ ('THEME_SCHOLAR.SCHEMA.' ~ type|upper)|t }}: </dt>
-    {% endif %}
-    {% if value is iterable %}
-        {% if value|length == 1 %}
-            <dd>
-                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value[0] }}">{{ value[0] }}</a>
-            </dd>
-        {% else %}
-            {{ metadata.list(value, type) }}
+        {% if type|of_type('string') == true %}
+        <dt>{{ ('THEME_SCHOLAR.SCHEMA.' ~ type|upper)|t }}: </dt>
         {% endif %}
-    {% else %}
-    <dd>
-        <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
-    </dd>
-    {% endif %}
-{% endfor %}
+        {% if value is iterable %}
+            {{ metadata.list(value, type) }}
+        {% else %}
+            <dd>
+                <a href="{{ base_url_absolute }}{{ theme.routes.search }}/?{{ type }}={{ value }}">{{ value }}</a>
+            </dd>
+        {% endif %}
+    {% endfor %}
 {% endmacro %}
 
 {% macro list(item, type = '') %}
@@ -34,8 +27,10 @@
                 <a href="mailto:{{ value|safe_email }}">{{ value|safe_email }}</a>
             {% elseif key is same as('url') %}
                 <a href="{{ value }}">{{ value }}</a>
-            {% else %}
+            {% elseif key in ['categories', 'tags', 'date'] %}
                 <a href="{{ base_url_absolute }}{{ theme.routes.search }}/{{ type }}={{ value }}">{{ value }}</a>
+            {% else %}
+                <span>{{ value }}</span>
             {% endif %}
             </dd>
         {% endif %}

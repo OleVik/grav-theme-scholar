@@ -14,7 +14,7 @@
     {% if config.theme.css %}
         {% do assets.addCss('theme://css/theme.css', 100) %}
         {% do assets.addCss('theme://css/print.css', {'priority': 99, 'media': "print"}) %}
-        {% do assets.addCss('theme://css/styles/' ~ uri.query('style') ?? page.header.theme.style ?? config.theme.style ~ '.css', 99) %}
+        {% do assets.addCss('theme://css/styles/' ~ uri.query('style') ?? page.header.theme.style ?? page.topParent.header.theme.style ?? config.theme.style ~ '.css', 99) %}
     {% endif %}
     {% do assets.addCss('theme://css/custom.css', 97) %}
     {% block stylesheets %}

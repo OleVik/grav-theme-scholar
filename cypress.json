@@ -17,6 +17,8 @@
       "index": "/",
       "article": "/article",
       "blog": "/blog",
+      "post": "/blog/classic-modern-architecture",
+      "book": "/book",
       "cv": "/cv",
       "docs": "/docs/features"
     },
@@ -38,6 +40,12 @@
         "body": "body"
       },
       "blog": {
+        "body": "body"
+      },
+      "post": {
+        "body": "body"
+      },
+      "book": {
         "body": "body"
       },
       "cv": {

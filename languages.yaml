@@ -4,6 +4,7 @@ en:
       AT: at
       IN: in
       WITH: with
+      FOR: for
       BY: by
       OPEN: open
       CLOSE: close
@@ -107,6 +108,8 @@ en:
       EMPTY: Empty page
       CHILDREN: children
       SIBLINGS: siblings
+      HERO_IMAGE: Hero Image
+      BOOK_COVER: Book Cover
     SEARCH:
       TITLE: Search
       LABEL: Search through site content

@@ -4,7 +4,7 @@
 
 {% block article %}
 <section>
-    <img alt="Hero image for {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
+    <img alt="{{ "THEME_SCHOLAR.PAGE.HERO_IMAGE"|t }} {{ "THEME_SCHOLAR.GENERIC.FOR"|t }}  {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
     <article>
         {% block content %}
         <header>

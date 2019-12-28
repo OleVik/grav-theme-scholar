@@ -32,6 +32,9 @@
             } %}
             {{ block('content', 'partials/book/content.html.twig') }}
         {% endwith %}
+        {% if page.header.image %}
+            <img alt="{{ "THEME_SCHOLAR.PAGE.BOOK_COVER"|t }} {{ "THEME_SCHOLAR.GENERIC.FOR"|t }} {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
+        {% endif %}
         {% if navigablePage.content is empty %}
             {% if page.template == 'chapter' %}
                 {% with {

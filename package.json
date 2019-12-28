@@ -13,7 +13,7 @@
     "scripts:babel": "babel src/js --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
     "scripts:watch": "parcel watch src/js/theme.js --out-dir js --global Scholar",
     "scripts:build": "parcel build src/js/theme.js --out-dir js --global Scholar",
-    "test": "cypress open"
+    "tests": "cypress open"
   },
   "babel": {
     "presets": [
