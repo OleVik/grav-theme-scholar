@@ -80,6 +80,9 @@ class Utilities
      */
     public static function filesFinder(string $directory, array $types): array
     {
+        if (!file_exists($directory)) {
+            return [];
+        }
         $iterator = new \RecursiveDirectoryIterator(
             $directory,
             \RecursiveDirectoryIterator::SKIP_DOTS
@@ -109,6 +112,9 @@ class Utilities
     {
         $return = array();
         foreach ($locations as $location) {
+            if (!file_exists($location)) {
+                continue;
+            }
             $folders = new \DirectoryIterator($location);
             foreach ($folders as $folder) {
                 if ($folder->isDir() && !$folder->isDot()) {

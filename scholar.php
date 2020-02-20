@@ -67,6 +67,9 @@ class Scholar extends Theme
         if ($this->config->get('themes.scholar.enabled') != true) {
             return;
         }
+        if ($this->config->get('system.pages.type') == "flex") {
+            return;
+        }
         $this->autoload();
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
@@ -190,6 +193,7 @@ class Scholar extends Theme
      */
     public static function getHighlighterThemeBlueprint(): array
     {
+        include __DIR__ . '/vendor/autoload.php';
         $stylesFolders = Utils::arrayMergeRecursiveUnique(
             Utilities::filesFinder('theme://css/highlighter', ['css']),
             Utilities::filesFinder('user://themes/scholar/css/highlighter', ['css'])

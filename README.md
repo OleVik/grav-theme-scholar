@@ -67,3 +67,17 @@ This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://g
 ## [Development](https://github.com/OleVik/grav-theme-scholar/blob/master/DEVELOPMENT.md)
 
 ## [Contributing](https://github.com/OleVik/grav-theme-scholar/blob/master/CONTRIBUTING.md)
+
+## TODO
+
+- [ ] Smaller type for related Pages
+  - [ ] Drop for Blog (or make dependant on Related?)
+  - [ ] Visible on mobile
+- [ ] Enable header across the board
+  - [ ] Optional through toolbar.enabled
+- [ ] Margin- and sidenotes across the board
+  - [ ] Theme.css adaptation
+- [ ] Generalize chaper.html.twig and listing.html.twig
+  - [ ] Chapter: Hide all if content
+  - [ ] Listing: Show all always
+- [ ] Extension: Filter content with FlexSearch
