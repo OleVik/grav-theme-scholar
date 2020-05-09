@@ -1,3 +1,10 @@
+# v1.0.4
+## 09-05-2020
+
+1. [](#bugfix)
+    * Use onGetPageTemplates-event in Admin
+    * README-link
+
 # v1.0.3
 ## 20-02-2020
 

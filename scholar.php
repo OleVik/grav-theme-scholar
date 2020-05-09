@@ -77,7 +77,8 @@ class Scholar extends Theme
         if ($this->isAdmin() && $this->config->get('plugins.admin')) {
             $this->enable(
                 [
-                    'onGetPageBlueprints' => ['onGetPageBlueprints', 0]
+                    'onGetPageBlueprints' => ['onGetPageBlueprints', 0],
+                    'onGetPageTemplates' => ['onGetPageTemplates', 0]
                 ]
             );
         }
@@ -226,13 +227,34 @@ class Scholar extends Theme
             );
             if ($componentFolder) {
                 $folder = $this->grav['locator']->findResource(
-                    $componentFolder,
+                    'theme://components/' . $component,
                     true,
                     true
                 );
                 if (is_dir($folder)) {
                     $event->types->scanBlueprints($folder);
                 }
+            }
+        }
+    }
+
+    /**
+     * Register Page blueprints
+     *
+     * @param Event $event Instance of RocketTheme\Toolbox\Event\Event.
+     *
+     * @return void
+     */
+    public function onGetPageTemplates(Event $event)
+    {
+        foreach ($this->config->get('themes.scholar.components') as $component) {
+            $folder = $this->grav['locator']->findResource(
+                'theme://components/' . $component,
+                true,
+                true
+            );
+            if (is_dir($folder)) {
+                $event->types->scanTemplates($folder);
             }
         }
     }
