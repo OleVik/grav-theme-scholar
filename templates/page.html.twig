@@ -4,6 +4,8 @@
     {% set template_extends = 'book.html.twig' %}
 {% elseif root_template(page.route) == 'default' %}
     {% set template_extends = 'default.html.twig' %}
+{% elseif root_template(page.route) == 'listing' %}
+    {% set template_extends = 'default.html.twig' %}
 {% elseif root_template(page.route) == 'sequence' %}
     {% set template_extends = 'default.html.twig' %}
 {% else %}

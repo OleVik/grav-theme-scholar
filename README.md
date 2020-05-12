@@ -44,6 +44,8 @@ A demonstration is available at [OleVik.me/staging/grav-skeleton-scholar](https:
 
 ## Installation
 
+**NOTE:** Your installation of PHP must satisfy the version constraint `>=7.1.3 <7.4`, as Grav and its dependencies currently suffers errors from incompatibilities in the ecosystem.
+
 ### Grav Package Manager
 
 The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal -- also called the command line. From the root of your Grav install type:
@@ -70,14 +72,5 @@ This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://g
 
 ## TODO
 
-- [ ] Smaller type for related Pages
-  - [ ] Drop for Blog (or make dependant on Related?)
-  - [ ] Visible on mobile
-- [ ] Enable header across the board
-  - [ ] Optional through toolbar.enabled
-- [ ] Margin- and sidenotes across the board
-  - [ ] Theme.css adaptation
-- [ ] Generalize chaper.html.twig and listing.html.twig
-  - [ ] Chapter: Hide all if content
-  - [ ] Listing: Show all always
+- [ ] Evaluate metadata text-wrapping
 - [ ] Extension: Filter content with FlexSearch

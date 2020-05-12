@@ -13,9 +13,12 @@ en:
       AND: and
       NONE: none
     TOOLBAR:
+      ENABLED: Enable toolbar
       BREADCRUMBS: Breadcrumbs
       SEARCH: Search
       NAVIGATION: Navigation
+    RELATED:
+      ENABLED: Enable related Pages
     ADMIN:
       STYLE: Style
       ITEMIZE: Itemize elements

@@ -79,8 +79,10 @@ table {
     > footer {
       background: var(--foreground);
       border: solid 1px var(--border-color);
-      a:any-link {
-        border-bottom: 1px solid var(--generic-border);
+      :not(header) {
+        a:any-link {
+          border-bottom: 1px solid var(--generic-border);
+        }
       }
       a:hover,
       a:focus,
@@ -501,4 +503,10 @@ footer[role="contentinfo"] {
       filter: contrast(1.5);
     }
   }
+}
+
+/* Notes */
+.marginnote,
+.sidenote {
+  text-align: justify;
 }

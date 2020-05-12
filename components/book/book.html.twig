@@ -1,4 +1,4 @@
-{% extends 'partials/base.html.twig' %}
+{% extends 'default.html.twig' %}
 
 {% set navigablePage = page_navigation(page.content ?? '', page.header.itemize ?? theme.itemize ?? false) %}
 {% set language = grav.language.getActive ?: grav.config.site.default_lang|default('en') %}
@@ -18,54 +18,47 @@
     {% set body_classes = (body_classes|default('book page')) %}
 {% endif %}
 
-{% block main %}
-
-<main>
-    {% block article %}
+{% block article %}
     <article typeof="schema:{{ schema_type(page.template) }}">
-        {% block content %}
-        {% with {
-            'title': page.title,
-            'subtitle': page.header.subtitle ?? null,
-            'metadata': true,
-            'content': navigablePage.content|strip_html_tags(['h1'])
-            } %}
-            {{ block('content', 'partials/book/content.html.twig') }}
-        {% endwith %}
-        {% if page.header.image %}
-            <img alt="{{ "THEME_SCHOLAR.PAGE.BOOK_COVER"|t }} {{ "THEME_SCHOLAR.GENERIC.FOR"|t }} {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
+    {% block content %}
+    {% with {
+        'title': page.title,
+        'subtitle': page.header.subtitle ?? null,
+        'metadata': true,
+        'content': navigablePage.content|strip_html_tags(['h1'])
+        } %}
+        {{ block('content', 'partials/book/content.html.twig') }}
+    {% endwith %}
+    {% if page.header.image %}
+        <img alt="{{ "THEME_SCHOLAR.PAGE.BOOK_COVER"|t }} {{ "THEME_SCHOLAR.GENERIC.FOR"|t }} {{ page.title }}" src="{{ page.media[page.header.image.url ?? page.header.image].url }}" />
+    {% endif %}
+    {% if navigablePage.content is empty %}
+        {% if page.template == 'chapter' %}
+            {% with {
+                'page': page,
+                'collection': collection.order(
+                    page.header.content.order.by ?? 'folder',
+                    page.header.content.order.dir ?? 'asc'
+                    )
+                } %}
+                {{ block('content', 'partials/book/chapter/listing.html.twig') }}
+            {% endwith %}
+        {% else %}
+            {% with {
+                'page': page,
+                'collection': collection.order(
+                    page.header.content.order.by ?? 'folder',
+                    page.header.content.order.dir ?? 'asc'
+                    )
+                } %}
+                {{ block('content', 'partials/book/listing.html.twig') }}
+            {% endwith %}
         {% endif %}
-        {% if navigablePage.content is empty %}
-            {% if page.template == 'chapter' %}
-                {% with {
-                    'page': page,
-                    'collection': collection.order(
-                        page.header.content.order.by ?? 'folder',
-                        page.header.content.order.dir ?? 'asc'
-                        )
-                    } %}
-                    {{ block('content', 'partials/book/chapter/listing.html.twig') }}
-                {% endwith %}
-            {% else %}
-                {% with {
-                    'page': page,
-                    'collection': collection.order(
-                        page.header.content.order.by ?? 'folder',
-                        page.header.content.order.dir ?? 'asc'
-                        )
-                    } %}
-                    {{ block('content', 'partials/book/listing.html.twig') }}
-                {% endwith %}
-            {% endif %}
-        {% endif %}
-        {% endblock %}
-    </article>
+    {% endif %}
     {% endblock %}
-</main>
+{% endblock %}
 
 {% block footer %}
 {% include 'partials/components/related.html.twig' with {'page': page} %}
 {% include 'partials/footer.html.twig' %}
-{% endblock %}
-
 {% endblock %}

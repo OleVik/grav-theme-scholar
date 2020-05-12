@@ -1,3 +1,5 @@
+{% if config.theme.related.enabled %}
+
 {% if page.evaluate([{'@page.children': page.parent.route}])|length > 0 %}
     {% set collection = page.evaluate([{'@page.children': page.parent.route}]) %}
 {% endif %}
@@ -48,3 +50,5 @@
 {% endif %}
 
 {% endapply %}
+
+{% endif %}

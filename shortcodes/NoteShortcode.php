@@ -117,7 +117,7 @@ class NoteShortcode extends Shortcode
         }
         $prefix = $type == 'sidenote' ? 'sn' : 'mn';
         $output = $this->twig->processTemplate(
-            'partials/tufte/note.html.twig',
+            'partials/components/note.html.twig',
             [
                 'type' => $type,
                 'wrap' => $wrap ?? null,

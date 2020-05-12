@@ -1,3 +1,20 @@
+# v2.0.0
+## 12-05-2020
+
+1. [](#new)
+    * Generalized Listing-template
+    * Generalized margin- and side-notes
+    * Header enabled in all templates, option to disable in `toolbar.enabled`
+    * Related Pages links optimized, option to disable in `related.enabled`
+2. [](#improved)
+    * Smaller type for related Pages, enabled on mobile
+    * Listing fallback for Page.summary()
+    * Explicit version constraint for Composer (`>=7.1.3 <7.4`), with extensions
+    * README-note about PHP-version
+3. [](#bugfix)
+    * Heading-borders
+    * Related links alignment and size
+
 # v1.0.4
 ## 09-05-2020
 

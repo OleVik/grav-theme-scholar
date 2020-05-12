@@ -1,5 +1,5 @@
 name: Scholar
-version: 1.0.4
+version: 2.0.0
 description: An academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé. Features include high accessibility, fast performance, print-friendly styles and more.
 icon: book
 author:
@@ -44,6 +44,14 @@ form:
               label: THEME_SCHOLAR.ADMIN.STYLE
               description: THEME_SCHOLAR.ADMIN.DESCRIPTION.STYLE
               data-options@: '\Grav\Theme\Scholar::getStylesBlueprint'
+            toolbar.enabled:
+              type: toggle
+              label: THEME_SCHOLAR.TOOLBAR.ENABLED
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
             toolbar.breadcrumbs:
               type: toggle
               label: THEME_SCHOLAR.TOOLBAR.BREADCRUMBS
@@ -66,6 +74,14 @@ form:
               type: toggle
               label: THEME_SCHOLAR.TOOLBAR.NAVIGATION
               description: THEME_SCHOLAR.ADMIN.DESCRIPTION.TOOLBAR
+              options:
+                1: PLUGIN_ADMIN.ENABLED
+                0: PLUGIN_ADMIN.DISABLED
+              validate:
+                type: bool
+            related.enabled:
+              type: toggle
+              label: THEME_SCHOLAR.RELATED.ENABLED
               options:
                 1: PLUGIN_ADMIN.ENABLED
                 0: PLUGIN_ADMIN.DISABLED

@@ -1,0 +1,20 @@
+{% extends 'default.html.twig' %}
+
+{% block article %}
+    <section>
+        <article>
+            {% block content %}
+            <header>
+                <h1>{{ page.title }}</h1>
+            </header>
+            {{ navigablePage.content }}
+            {% endblock %}
+        </article>
+    </section>
+    {% with {
+        'page': page,
+        'collection': page.collection
+        } %}
+        {{ block('content', 'partials/listing.html.twig') }}
+    {% endwith %}
+{% endblock %}

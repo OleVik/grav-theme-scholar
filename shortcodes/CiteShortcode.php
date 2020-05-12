@@ -38,7 +38,7 @@ class CiteShortcode extends Shortcode
         $this->shortcode->getHandlers()->add(
             'cite',
             function (ShortcodeInterface $sc) {
-                return $this->BlockquoteCiteRenderer($sc);
+                return $this->blockquoteCiteRenderer($sc);
             }
         );
     }
@@ -50,9 +50,9 @@ class CiteShortcode extends Shortcode
      *
      * @return string
      */
-    public function BlockquoteCiteRenderer(ShortcodeInterface $sc)
+    public function blockquoteCiteRenderer(ShortcodeInterface $sc)
     {
-        $link = $sc->getParameter('link',  $sc->getParameter('href', null));
+        $link = $sc->getParameter('link', $sc->getParameter('href', null));
         $content = $sc->getParameter('content', $sc->getContent());
         $output = $this->twig->processTemplate(
             'partials/components/cite.html.twig',
