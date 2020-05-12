@@ -157,6 +157,11 @@
     }
   }
   .page {
+    &:not(.listing) {
+      main {
+        width: 90%;
+      }
+    }
     header[role="banner"] {
       flex-wrap: wrap;
       flex-direction: row;
@@ -246,6 +251,11 @@
     }
   }
   .page {
+    &:not(.listing) {
+      main {
+        width: 80%;
+      }
+    }
     header[role="banner"] {
       h1 {
         a {
@@ -263,8 +273,7 @@
     main,
     &.listing main {
       grid-gap: 0;
-      width: 100%;
-      margin-top: 2rem;
+      width: calc(100% - 5rem);
       article {
         width: 100%;
         margin: 0 0 1rem;

@@ -14,6 +14,7 @@
 3. [](#bugfix)
     * Heading-borders
     * Related links alignment and size
+    * Responsive sizes
 
 # v1.0.4
 ## 09-05-2020
