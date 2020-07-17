@@ -1,4 +1,4 @@
 ---
 title: Advanced Search
-search: 'user://data/persist/learn.full.js'
+search: 'user://data/persist/static/index.full.js'
 ---
