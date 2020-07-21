@@ -91,7 +91,8 @@
   }
   .page main,
   .page article,
-  .page.listing main {
+  .page.listing main,
+  .main {
     width: calc(100% - 0.25rem);
   }
   .cv {
@@ -158,7 +159,8 @@
   }
   .page {
     &:not(.listing) {
-      main {
+      main,
+      .main {
         width: 90%;
       }
     }
@@ -439,12 +441,14 @@
     .sidebar {
       display: flex;
       grid-column-end: span 3;
-      .menu {
-        ol {
-          li {
-            padding: 0.5rem 0.75rem 0.25rem 0.75rem;
-          }
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .menu ol li {
+        padding: 0.5rem 0.75rem 0.25rem 0.75rem;
       }
     }
   }

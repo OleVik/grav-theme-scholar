@@ -1,3 +1,9 @@
+# v2.1.0-beta.1
+## 21-07-2020
+
+1. [](#new)
+    * "What Links Here" component
+
 # v2.0.0
 ## 12-05-2020
 

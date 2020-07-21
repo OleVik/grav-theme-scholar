@@ -39,10 +39,13 @@
     {% block search_results %}
     {% include 'partials/components/search/wrapper.html.twig' %}
     {% endblock %}
+    {% if 'what-links-here' in theme.components %}
+        {% include 'partials/what_links_here.html.twig' %}
+    {% endif %}
 </main>
 
 {% block footer %}
-{% include 'partials/footer.html.twig' %}
+    {% include 'partials/footer.html.twig' %}
 {% endblock %}
 
 {% endblock %}

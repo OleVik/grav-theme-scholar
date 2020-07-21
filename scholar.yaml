@@ -19,6 +19,7 @@ components:
   - cv
   - docs
   - tufte
+  - what-links-here
 router: true
 routes:
   data: "/data"

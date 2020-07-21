@@ -1,0 +1,35 @@
+{% if config.plugins.backlinks.enabled and backlinks is not empty and page.route in backlinks|keys %}
+    {% set links = [] %}
+    {% for key, source in backlinks %}
+        {% set key = key|regex_replace('~\#.*~', '')|trim('/', 'right') %}
+        {% set source = source|regex_replace('~\#.*~', '') %}
+        {% if key in links|keys %}
+            {% set source = source|merge(source) %}
+        {% endif %}
+        {% set links = links|merge({(key): source}) %}
+    {% endfor %}
+
+    {% set counts = [] %}
+    {% for key in links|keys %}
+        {% set counts = counts|merge({(key): links[key]|count}) %}
+    {% endfor %}
+
+    {% set internal_links = [] %}
+    {% for route in backlinks[page.route] %}
+        {% set link = page.find(route) %}
+        {% if link %}
+            {% set internal_links = internal_links|merge({(link.route): (link.title)}) %}
+        {% endif %}
+    {% endfor %}
+
+    <nav class="what-links-here menu" aria-label="{{ "THEME_SCHOLAR.PAGE.WHAT_LINKS_HERE"|t }}">
+        <h2>{{ "THEME_SCHOLAR.PAGE.WHAT_LINKS_HERE"|t }}</h2>
+        <ol>
+        {% for route, title in internal_links|sort|reverse|slice(0, 5) if page.find(route) %}
+            <li>
+                <a href="{{ page.find(route).url }}">{{ title }}</a>
+            </li>
+        {% endfor %}
+        </ol>
+    </nav>
+{% endif %}

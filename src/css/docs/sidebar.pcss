@@ -4,6 +4,16 @@
     flex-direction: column;
     font-size: 1.125rem;
     line-height: 1;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: inherit;
+      margin: 0;
+      padding: 0.5rem 1rem 0.5rem 1rem;
+    }
     header,
     footer {
       display: flex;
@@ -45,6 +55,11 @@
       }
       .current-group {
         padding-top: 0.5rem;
+      }
+      &.what-links-here {
+        ol {
+          margin-top: 0;
+        }
       }
     }
     footer {
