@@ -1,7 +1,6 @@
 {% extends 'article.html.twig' %}
 
 {% set body_classes = (body_classes|default('page article tufte')) %}
-{% set navigablePage = page_navigation(page.content|strip_html_tags(['h1'])|section_wrapper('section', ['h2', 'h3', 'h4', 'h5', 'h6']), page.header.itemize ?? theme.itemize ?? false) %}
 
 {% block stylesheets %}
     {% do assets.addCss('theme://components/tufte/assets/tufte.min.css', 100) %}
@@ -18,6 +17,7 @@
         <p class="subtitle">{{ page.header.subtitle }}</p>
         {% endif %}
         {% include 'partials/tufte/metadata.html.twig' with {'page': page} %}
+        {% set navigablePage = page_navigation(page.content|strip_html_tags(['h1'])|section_wrapper('section', ['h2', 'h3', 'h4', 'h5', 'h6']), page.header.itemize ?? theme.itemize ?? false) %}
         {{ navigablePage.content }}
         {% endblock %}
     </article>
