@@ -1,3 +1,9 @@
+# v2.1.0-beta.3
+## 25-08-2020
+
+1. [](#bugfix)
+    * "Tufte" component: Variable-location
+
 # v2.1.0-beta.2
 ## 25-08-2020
 
