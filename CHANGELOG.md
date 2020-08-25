@@ -1,3 +1,9 @@
+# v2.1.0-beta.2
+## 25-08-2020
+
+1. [](#improved)
+    * "Tufte" component: Header-links, styling
+
 # v2.1.0-beta.1
 ## 21-07-2020
 

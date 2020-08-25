@@ -2,7 +2,7 @@ const { resolve } = require("path");
 
 module.exports = {
   map: { inline: false },
-  // configBaseDir: resolve(__dirname, "node_modules"),
+  configBaseDir: resolve(__dirname, "node_modules"),
   plugins: [
     require("postcss-import"),
     require("postcss-nested"),

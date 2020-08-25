@@ -234,7 +234,38 @@
   }
 }
 .page.article.tufte {
+  padding-left: 0;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    clear: both;
+    text-align: left;
+  }
   main {
     width: 100%;
+    article {
+      section {
+        p {
+          width: 65%;
+        }
+        .marginnote,
+        .sidenote {
+          width: 50% !important;
+          margin-right: -55%;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .active,
+  a:active,
+  a:focus,
+  a:hover,
+  a:link,
+  a:visited {
+    background: 0;
   }
 }
