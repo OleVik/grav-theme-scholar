@@ -1,9 +1,17 @@
 {
-  "baseUrl": "http://127.0.0.1:8000/",
+  "baseUrl": "http://localhost:8000/",
   "numTestsKeptInMemory": 1000,
+  "watchForFileChanges": false,
   "env": {
     "context": {
-      "exclude": [["#query"], ["label[for=\"query\"]"], [".search-button"]]
+      "exclude": [
+        ["#query"],
+        ["label[for=\"query\"]"],
+        [".search-button"],
+        ["nav[aria-checked]"],
+        ["aside[aria-checked]"],
+        ["drawer-menu[aria-checked]"]
+      ]
     },
     "config": {
       "runOnly": ["wcag2a", "section508", "best-practice"],

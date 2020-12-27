@@ -1,3 +1,14 @@
+# v2.2.0
+## 28-12-2020
+
+1. [](#improved)
+    * Only include Published and Visible Pages in header
+    * Tests
+2. [](#bugfix)
+    * CV-template
+    * Slight padding
+    * Router
+
 # v2.1.0
 ## 22-09-2020
 

@@ -2,111 +2,99 @@
 
 {% set body_classes = (body_classes|default('cv page')) %}
 
-{% block main %}
+{% block article %}
+<article typeof="schema:{{ schema_type(page.template) }}">
+    {% block content %}
 
-{% block header %}
-<header role="banner">
-    {% include 'partials/header.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
-</header>
-{% endblock %}
+    {% if page.header.basics and page.header.basics is not empty %}
+        {% with {
+            'basics': page.header.basics
+            } %}
+            {{ block('content', 'partials/cv/header.html.twig') }}
+        {% endwith %}
+    {% endif %}
 
-<main>
-    {% block article %}
-    <article typeof="schema:{{ schema_type(page.template) }}">
-        {% block content %}
+    <div>
+    {% if page.content is not empty %}
+        {{ page.content }}
+    {% elseif page.header.basics.description is not empty %}
+        {{  page.header.basics.description|markdown }}
+    {% endif %}
+    </div>
 
-        {% if page.header.basics and page.header.basics is not empty %}
-            {% with {
-                'basics': page.header.basics
-                } %}
-                {{ block('content', 'partials/cv/header.html.twig') }}
-            {% endwith %}
-        {% endif %}
+    <section>
+    {% if page.header.competencies and page.header.competencies is not empty %}
+        {% with {
+            'name': 'Competencies',
+            'listing': page.header.competencies
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.work and page.header.work is not empty %}
+        {% with {
+            'name': 'Work',
+            'listing': page.header.work
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.volunteer and page.header.volunteer is not empty %}
+        {% with {
+            'name': 'Volunteer',
+            'listing': page.header.volunteer
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.education and page.header.education is not empty %}
+        {% with {
+            'name': 'Education',
+            'listing': page.header.education
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.awards and page.header.awards is not empty %}
+        {% with {
+            'name': 'Awards',
+            'listing': page.header.awards
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.interests and page.header.interests is not empty %}
+        {% with {
+            'name': 'Interests',
+            'listing': page.header.interests
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.publications and page.header.publications is not empty %}
+        {% with {
+            'name': 'Publications',
+            'listing': page.header.publications
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    {% if page.header.languages and page.header.languages is not empty %}
+        {% with {
+            'name': 'Languages',
+            'listing': page.header.languages
+            } %}
+            {{ block('content', 'partials/cv/listing.html.twig') }}
+        {% endwith %}
+    {% endif %}
+    </section>
 
-        <div>
-        {% if page.content is not empty %}
-            {{ page.content }}
-        {% elseif page.header.basics.description is not empty %}
-            {{  page.header.basics.description|markdown }}
-        {% endif %}
-        </div>
-
-        <section>
-        {% if page.header.competencies and page.header.competencies is not empty %}
-            {% with {
-                'name': 'Competencies',
-                'listing': page.header.competencies
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.work and page.header.work is not empty %}
-            {% with {
-                'name': 'Work',
-                'listing': page.header.work
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.volunteer and page.header.volunteer is not empty %}
-            {% with {
-                'name': 'Volunteer',
-                'listing': page.header.volunteer
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.education and page.header.education is not empty %}
-            {% with {
-                'name': 'Education',
-                'listing': page.header.education
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.awards and page.header.awards is not empty %}
-            {% with {
-                'name': 'Awards',
-                'listing': page.header.awards
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.interests and page.header.interests is not empty %}
-            {% with {
-                'name': 'Interests',
-                'listing': page.header.interests
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.publications and page.header.publications is not empty %}
-            {% with {
-                'name': 'Publications',
-                'listing': page.header.publications
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        {% if page.header.languages and page.header.languages is not empty %}
-            {% with {
-                'name': 'Languages',
-                'listing': page.header.languages
-                } %}
-                {{ block('content', 'partials/cv/listing.html.twig') }}
-            {% endwith %}
-        {% endif %}
-        </section>
-
-        {% endblock %}
-    </article>
     {% endblock %}
-</main>
+</article>
+{% endblock %}
 
 {% block footer %}
 {% include 'partials/footer.html.twig' %}
-{% endblock %}
-
 {% endblock %}
 
 {% block append %}

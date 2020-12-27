@@ -198,9 +198,9 @@ class Router
                 && isset($Parent->header()->print['process'])
                 && $Parent->header()->print['process'] === true
             ) {
-                $this->handleProcessedContent($page, $template);
+                $this->handleProcessedContent($Page, $template);
             } elseif ($collection) {
-                $page = $this->handleRawContent($page, $collection, $template);
+                $page = $this->handleRawContent($Page, $collection, $template);
             }
         } else {
             $page = $Parent;

@@ -13,7 +13,7 @@
     "scripts:babel": "babel src/js --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
     "scripts:watch": "parcel watch src/js/theme.js --out-dir js --global Scholar --public-url /user/themes/scholar/js",
     "scripts:build": "parcel build src/js/theme.js --out-dir js --global Scholar --no-source-maps",
-    "tests": "cypress open"
+    "test": "cypress open"
   },
   "babel": {
     "presets": [
@@ -66,9 +66,9 @@
     "concurrently": "^5.2.0",
     "core-js": "^3.6.5",
     "cssnano": "^4.1.10",
-    "cypress": "^4.5.0",
-    "cypress-axe": "^0.5.1",
-    "cypress-plugin-tab": "^1.0.5",
+    "cypress": "^5.3",
+    "cypress-axe": "^0.8",
+    "cypress-plugin-tab": "^1",
     "formbase": "^10.0.0",
     "fs-extra": "^8.1.0",
     "gutenberg-css": "^0.5.0",
