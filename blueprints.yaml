@@ -13,13 +13,13 @@ bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/master/README.md
 license: MIT
 dependencies:
-  - { name: grav, version: "~1.6.21" }
+  - { name: grav, version: ">=1.7.7" }
   - { name: error }
   - { name: swiper }
   - { name: problems }
   - { name: breadcrumbs }
   - { name: shortcode-core }
-  - { name: static-generator, version: "~1.0.0" }
+  - { name: static-generator, version: ">=2.0.0" }
 
 form:
   validation: strict
