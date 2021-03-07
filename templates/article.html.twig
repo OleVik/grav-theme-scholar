@@ -12,6 +12,9 @@
 {% endblock %}
 
 <main>
+    {% block search_results %}
+        {% include 'partials/components/search/wrapper.html.twig' %}
+    {% endblock %}
     {% block article %}
     <section>
         <article typeof="schema:{{ schema_type(page.template) }}">
@@ -25,9 +28,6 @@
             {% endblock %}
         </article>
     </section>
-    {% endblock %}
-    {% block search_results %}
-    {% include 'partials/components/search/wrapper.html.twig' %}
     {% endblock %}
 </main>
 

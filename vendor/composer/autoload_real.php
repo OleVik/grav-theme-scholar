@@ -13,19 +13,24 @@ class ComposerAutoloaderInit785cb74a939a47c9971b9fe8f0e7ca59
         }
     }
 
+    /**
+     * @return \Composer\Autoload\ClassLoader
+     */
     public static function getLoader()
     {
         if (null !== self::$loader) {
             return self::$loader;
         }
 
+        require __DIR__ . '/platform_check.php';
+
         spl_autoload_register(array('ComposerAutoloaderInit785cb74a939a47c9971b9fe8f0e7ca59', 'loadClassLoader'), true, true);
-        self::$loader = $loader = new \Composer\Autoload\ClassLoader();
+        self::$loader = $loader = new \Composer\Autoload\ClassLoader(\dirname(\dirname(__FILE__)));
         spl_autoload_unregister(array('ComposerAutoloaderInit785cb74a939a47c9971b9fe8f0e7ca59', 'loadClassLoader'));
 
         $useStaticLoader = PHP_VERSION_ID >= 50600 && !defined('HHVM_VERSION') && (!function_exists('zend_loader_file_encoded') || !zend_loader_file_encoded());
         if ($useStaticLoader) {
-            require_once __DIR__ . '/autoload_static.php';
+            require __DIR__ . '/autoload_static.php';
 
             call_user_func(\Composer\Autoload\ComposerStaticInit785cb74a939a47c9971b9fe8f0e7ca59::getInitializer($loader));
         } else {
@@ -45,6 +50,7 @@ class ComposerAutoloaderInit785cb74a939a47c9971b9fe8f0e7ca59
             }
         }
 
+        $loader->setApcuPrefix('7O5y5y4mSxXN2Znak0W8V');
         $loader->register(true);
 
         return $loader;

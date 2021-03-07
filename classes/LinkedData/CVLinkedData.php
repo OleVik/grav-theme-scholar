@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Linked Data for CV
  *
@@ -11,6 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Inflector;
@@ -179,7 +181,7 @@ class CVLinkedData extends AbstractLinkedData
                 }
                 $schemaCollection = ['@type' => 'ItemList', 'itemListElement' => array()];
                 foreach ($page->collection($collection) as $item) {
-                    $schemaCollection['itemListElement'][] = self::buildSchema($item, true);
+                    $schemaCollection['itemListElement'][] = $this->buildSchema($item, true);
                 }
                 $this->data['mainEntity'][] = $schemaCollection;
             }

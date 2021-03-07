@@ -17,9 +17,10 @@
         {% do assets.addCss('theme://css/styles/' ~ uri.query('style') ?? page.header.theme.style ?? page.topParent.header.theme.style ?? config.theme.style ~ '.css', 99) %}
     {% endif %}
     {% do assets.addCss('theme://css/custom.css', 97) %}
-    {% block stylesheets %}
-    {% endblock %}
-
+    {% block stylesheets %}{% endblock %}
+    {% if config.flexsearch.enabled %}
+        {% do assets.addJs('theme://node_modules/flexsearch/dist/flexsearch.min.js', {group: 'bottom'}) %}
+    {% endif %}
     {% if config.theme.js %}
         {% do assets.addJs('theme://js/theme.js', {group: 'bottom'}) %}
         {% do assets.addInlineJs('Scholar.accessibilityInit();', {group: 'bottom'}) %}

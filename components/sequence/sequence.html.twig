@@ -26,7 +26,7 @@
 <header>
     <h1>{{ page.title }}</h1>
 </header>
-{{ navigablePage.content }}
+{{ navigablePage.content|raw }}
 {% endblock %}
 <article>
 {% if collection|length > 0 %}

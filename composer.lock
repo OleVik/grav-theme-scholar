@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4c3948363a72f48dc8b98b581776583",
+    "content-hash": "b68b2dc96c84911e47864b58628b85c3",
     "packages": [
         {
             "name": "hanneskod/classtools",
@@ -258,6 +258,10 @@
                 "schema-org",
                 "spatie"
             ],
+            "support": {
+                "issues": "https://github.com/spatie/schema-org/issues",
+                "source": "https://github.com/spatie/schema-org/tree/master"
+            },
             "time": "2019-10-06T13:17:19+00:00"
         },
         {
@@ -316,6 +320,17 @@
     "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": []
+    "platform": {
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-curl": "*",
+        "ext-zip": "*",
+        "ext-dom": "*"
+    },
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "7.1.3"
+    },
+    "plugin-api-version": "2.0.0"
 }

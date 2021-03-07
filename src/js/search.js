@@ -7,9 +7,12 @@ import * as util from "./utilities.js";
  * @param {array} options List of options for FlexSearch
  */
 function searchFieldInit(data, fields, options) {
+  if (!document.querySelector("#query")) {
+    return;
+  }
   const start = performance.now();
   var dataIndex;
-  toggleResults("main aside.search", "main section");
+  toggleResults("main > aside.search", "main > section");
   const FlexSearchOptions = options;
   FlexSearchOptions.doc = {
     id: "url",
@@ -279,9 +282,11 @@ function toggleResults(target, sibling) {
       }
     });
   });
-  searchObserver.observe(targetNode, {
-    attributes: true,
-  });
+  if (targetNode) {
+    searchObserver.observe(targetNode, {
+      attributes: true,
+    });
+  }
 }
 
 /**

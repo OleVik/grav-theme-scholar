@@ -16,7 +16,7 @@
 
     <div>
     {% if page.content is not empty %}
-        {{ page.content }}
+        {{ page.content|raw }}
     {% elseif page.header.basics.description is not empty %}
         {{  page.header.basics.description|markdown }}
     {% endif %}

@@ -18,7 +18,7 @@
         {% endif %}
         {% include 'partials/tufte/metadata.html.twig' with {'page': page} %}
         {% set navigablePage = page_navigation(page.content|strip_html_tags(['h1'])|section_wrapper('section', ['h2', 'h3', 'h4', 'h5', 'h6']), page.header.itemize ?? theme.itemize ?? false) %}
-        {{ navigablePage.content }}
+        {{ navigablePage.content|raw }}
         {% endblock %}
     </article>
     {% endblock %}

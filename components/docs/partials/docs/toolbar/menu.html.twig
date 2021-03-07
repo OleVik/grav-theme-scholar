@@ -10,7 +10,12 @@
 {% endblock %}
 
 {% block search %}
-    {% if config.theme.toolbar.search and config.theme.flexsearch.enabled %}
+    {% set searchFile = files_exist([
+        page.header.search,
+        page.topParent.header.search,
+        'user://data/persist/index.js'
+    ]) %}
+    {% if config.theme.toolbar.search and searchFile %}
         <form class="search" role="search">
             <input id="query" maxlength="100" type="search" name="search" tabindex="0" aria-label="{{ "THEME_SCHOLAR.SEARCH.LABEL"|t }}" placeholder="{{ "THEME_SCHOLAR.SEARCH.PLACEHOLDER"|t }}" aria-label="{{ "THEME_SCHOLAR.SEARCH.TITLE"|t }}" aria-current="false" />
             <label class="search-button" for="query" role="button" aria-label="{{ "THEME_SCHOLAR.SEARCH.LABEL"|t }}">

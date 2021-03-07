@@ -1,9 +1,9 @@
 <footer>
     {% if link is not empty %}
     <cite>
-        <a href="{{ link }}">{{ content }}</a>
+        <a href="{{ link }}">{{ content|raw }}</a>
     </cite>
     {% else %}
-    <cite>{{ content }}</cite>
+    <cite>{{ content|raw }}</cite>
     {% endif %}
 </footer>

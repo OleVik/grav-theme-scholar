@@ -11,15 +11,15 @@
             <h3>{{ page.header.subtitle }}</h3>
             {% endif %}
             {% if page.header.image %}
-                {{ page.media[page.header.image].html(null, null) }}
+                {{ page.media[page.header.image].html(null, null)|raw }}
             {% endif %}
             </a>
         </header>
         <section>
         {% if page.summary %}
-            {{ page.summary|strip_html_tags('h1,h2,h3,h4,h5,h6') }}
+            {{ page.summary|strip_html_tags('h1,h2,h3,h4,h5,h6')|raw }}
         {% else %}
-            {{ page.content|strip_html_tags('h1,h2,h3,h4,h5,h6')|truncate_words }}
+            {{ page.content|strip_html_tags('h1,h2,h3,h4,h5,h6')|truncate_words|raw }}
         {% endif %}
         </section>
         <footer>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Router
  *
@@ -62,8 +63,7 @@ class Router
                 $this->dataRoute,
                 $this->printRoute
             ]
-        )
-        ) {
+        )) {
             $page = $this->dispatch($path);
             $page->parent(
                 $this->grav['pages']->find(
@@ -194,7 +194,8 @@ class Router
         }
         if (isset($Parent->header()->print['items'])) {
             $collection = $Parent->collection('print')->published();
-            if ($collection
+            if (
+                $collection
                 && isset($Parent->header()->print['process'])
                 && $Parent->header()->print['process'] === true
             ) {
@@ -261,8 +262,8 @@ class Router
         $content = '';
         foreach ($collection as $item) {
             if (strlen($item['title']) > 0) {
-                $content .= '<h' . $item['depth'] .'>' .
-                $item['title'] . '</h' . $item['depth'] . '>';
+                $content .= '<h' . $item['depth'] . '>' .
+                    $item['title'] . '</h' . $item['depth'] . '>';
             }
             $content .= $item['content'];
         }
@@ -272,7 +273,7 @@ class Router
             $template = $Page->parent()->template();
         }
         $content = $this->grav['twig']->processTemplate(
-            $template . '.html.twig', 
+            $template . '.html.twig',
             [
                 'page' => $Page
             ]

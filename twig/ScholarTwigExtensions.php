@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Twig Extensions
  *
@@ -10,6 +11,7 @@
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme;
 
 use Grav\Common\Grav;
@@ -46,6 +48,7 @@ class ScholarTwigExtensions extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('root_template', [$this, 'rootTemplate']),
             new \Twig_SimpleFunction('file_exists', [$this, 'fileExists']),
+            new \Twig_SimpleFunction('files_exist', [$this, 'filesExist']),
             new \Twig_SimpleFunction('rawcontent', [$this, 'getFileContents']),
             new \Twig_SimpleFunction('schema_type', [$this, 'getSchemaType']),
             new \Twig_SimpleFunction('page_navigation', [$this, 'pageNavigation']),
@@ -106,8 +109,32 @@ class ScholarTwigExtensions extends \Twig_Extension
      */
     public static function fileExists(string $path): bool
     {
-        $path = Grav::instance()['locator']->findResource($path, true, true);
-        return file_exists($path);
+        return file_exists(
+            Grav::instance()['locator']->findResource($path, true, true)
+        );
+    }
+
+    /**
+     * Check multiple file existence
+     *
+     * @param array $paths Paths to files
+     *
+     * @return string|boolean Path if exists, false otherwise
+     */
+    public static function filesExist(array $paths): string
+    {
+        foreach ($paths as $path) {
+            if (
+                !is_string($path) ||
+                !file_exists(
+                    Grav::instance()['locator']->findResource($path, true, true)
+                )
+            ) {
+                continue;
+            }
+            return $path;
+        }
+        return false;
     }
 
     /**

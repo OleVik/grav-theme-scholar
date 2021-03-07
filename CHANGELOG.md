@@ -1,3 +1,17 @@
+# v3.0.0-beta.1
+## 08-03-2021
+
+1. [](#new)
+    * Compatibility with Grav Core 1.7
+    * Bundler changed from Parcel to Rollup
+    * `filesExist` Twig-function
+    * Dependencies strictness
+2. [](#bugfix)
+    * Relocate search-results for correct keyboard-navigation
+    * Forcibly cast Linked Dataas strings
+    * Fall back to `en` for Linked Data
+    * Search-mechanisms
+
 # v2.2.0
 ## 28-12-2020
 

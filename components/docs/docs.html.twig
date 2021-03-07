@@ -37,8 +37,11 @@
         {% include 'partials/docs/header.html.twig' with {'page': page, 'navigablePage': navigablePage} %}
     </header>
     {% endblock %}
-    <section>
+    {% block search_results %}
+        {% include 'partials/components/search/wrapper.html.twig' %}
+    {% endblock %}
     {% block article %}
+    <section>
         <article>
         {% if navigablePage.content is empty %}
             {% with {
@@ -57,10 +60,7 @@
             {% endwith %}
         {% endif %}
         </article>
-    {% endblock %}
     </section>
-    {% block search_results %}
-    {% include 'partials/components/search/wrapper.html.twig' %}
     {% endblock %}
     {% include 'partials/components/related.html.twig' with {'page': page} %}
 </main>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Linked Data Interface
  *
@@ -11,6 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Page\Page;

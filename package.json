@@ -1,7 +1,7 @@
 {
   "name": "grav-theme-scholar",
-  "version": "1.0.0",
-  "description": "The **Scholar** Theme is for [Grav CMS](http://github.com/getgrav/grav).  This README.md file should be modified to describe the features, installation, configuration, and general usage of this theme.",
+  "version": "2.0.0",
+  "description": "Scholar is an academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé, with Grav CMS",
   "main": "src/theme.js",
   "scripts": {
     "theme": "postcss src/css/theme.pcss --watch --verbose --output css/theme.css",
@@ -10,38 +10,9 @@
     "metal": "postcss src/css/styles/metal.pcss --watch --verbose -c postcss.config.js -o css/styles/metal.css",
     "print": "postcss src/css/print.pcss --watch --verbose -c postcss.config.js -o css/print.css",
     "css": "concurrently --names \"Theme,Base,Styles,Print\" --prefix-colors \"blue,white,cyan,grey\" \"npm run theme\" \"npm run base\" \"npm run styles\" \"npm run print\"",
-    "scripts:babel": "babel src/js --watch --source-maps --verbose --out-file \"js/theme.js\" --ignore \"src/docs/**/*.js\"",
-    "scripts:watch": "parcel watch src/js/theme.js --out-dir js --global Scholar --public-url /user/themes/scholar/js",
-    "scripts:build": "parcel build src/js/theme.js --out-dir js --global Scholar --no-source-maps",
+    "scripts:watch": "rollup --config --watch",
+    "scripts:build": "rollup --config",
     "test": "cypress open"
-  },
-  "babel": {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": "defaults",
-          "useBuiltIns": "usage",
-          "corejs": {
-            "version": 3,
-            "proposals": true
-          }
-        }
-      ]
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-transform-modules-umd",
-        {
-          "globals": {
-            "scholar": "Scholar"
-          },
-          "exactGlobals": true
-        }
-      ]
-    ],
-    "moduleId": "scholar",
-    "comments": false
   },
   "author": "Ole Vik <git@olevik.net> (https://olevik.me/",
   "contributors": [
@@ -50,21 +21,18 @@
   "license": "MIT",
   "browserslist": "defaults",
   "devDependencies": {
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-transform-modules-umd": "^7.9.0",
-    "@babel/preset-env": "^7.9.6",
+    "@babel/core": "^7.13.8",
+    "@babel/preset-env": "^7.13.9",
     "@fullhuman/postcss-purgecss": "^1.2.0",
     "@khanacademy/tota11y": "^0.2.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^17.1.0",
+    "@rollup/plugin-node-resolve": "^11.2.0",
     "axe-core": "^3.5.3",
     "babel-preset-minify": "^0.5.1",
-    "babelify": "^10.0.0",
-    "browserify": "^16.5.0",
-    "chalk": "^2.4.2",
     "chokidar-cli": "^2.0.0",
-    "chromatism": "^3.0.0",
     "concurrently": "^5.2.0",
-    "core-js": "^3.6.5",
+    "core-js": "^3.9.1",
     "cssnano": "^4.1.10",
     "cypress": "^5.3",
     "cypress-axe": "^0.8",
@@ -76,8 +44,6 @@
     "magica11y": "^1.4.2",
     "paged-design": "github:electricbookworks/paged-design",
     "pagedjs": "^0.1.40",
-    "parcel-bundler": "^1.12.3",
-    "parcel-plugin-css-pretransform": "^1.0.0",
     "postcss": "^7.0.29",
     "postcss-cli": "^7.1.1",
     "postcss-ignore": "^0.1.4",
@@ -89,18 +55,19 @@
     "postcss-scss": "^2.0.0",
     "postcss-wcag-contrast": "^2.0.0",
     "prettier": "^1.18.2",
+    "rollup": "^2.40.0",
+    "rollup-plugin-terser": "^7.0.2",
     "stylelint": "^13.3.3",
     "stylelint-config-prettier": "^6.0.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
     "stylelint-declaration-strict-value": "^1.4.3",
     "stylelint-no-indistinguishable-colors": "^1.2.1",
     "stylelint-prettier": "^1.1.2",
-    "stylelint-selector-no-empty": "^1.0.7",
-    "watchify": "^3.11.1",
-    "yargs": "^14.2.3"
+    "stylelint-selector-no-empty": "^1.0.7"
   },
   "dependencies": {
     "dayjs": "^1.8.26",
+    "deasync": "^0.1.21",
     "flexsearch": "^0.6.30",
     "focus-within-polyfill": "^4.1.0",
     "fontfaceobserver": "^2.1.0",

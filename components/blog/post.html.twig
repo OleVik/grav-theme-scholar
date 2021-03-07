@@ -11,7 +11,7 @@
             <h1>{{ page.title }}</h1>
         </header>
         {% include 'partials/components/default/metadata.html.twig' with {'page': page} %}
-        {{ navigablePage.content }}
+        {{ navigablePage.content|raw }}
         {% endblock %}
     </article>
 </section>

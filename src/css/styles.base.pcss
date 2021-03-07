@@ -434,8 +434,8 @@ header[role="banner"] {
   form[role="search"] {
     input[type="search"] {
       color: var(--text);
-      background-color: transparent;
-      transition-delay: 99999s;
+      background: transparent;
+      transition-delay: 0ms;
       box-shadow: none;
       &:focus {
         &::placeholder {
@@ -446,11 +446,6 @@ header[role="banner"] {
         opacity: 0;
         color: var(--text);
       }
-    }
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus {
-      -webkit-transition-delay: 99999s;
     }
   }
 }

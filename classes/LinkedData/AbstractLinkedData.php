@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Linked Data Abstract
  *
@@ -11,11 +12,12 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Grav;
+use Grav\Common\Utils;
 use Grav\Common\Page\Page;
-use Grav\Common\Language\Language;
 use Spatie\SchemaOrg\Schema;
 use Grav\Theme\Scholar\Utilities;
 use Grav\Theme\Scholar\LinkedData\LinkedDataInterface;
@@ -54,7 +56,8 @@ abstract class AbstractLinkedData implements LinkedDataInterface
         if (isset($header['author']) && is_string($header['author'])) {
             $data['@type'] = 'Person';
             $data['name'] = $header['author'];
-        } elseif (Grav::instance()['config']->get('site.author.name') !== null
+        } elseif (
+            Grav::instance()['config']->get('site.author.name') !== null
             && is_string(Grav::instance()['config']->get('site.author.name'))
         ) {
             $data['@type'] = 'Person';
@@ -74,7 +77,8 @@ abstract class AbstractLinkedData implements LinkedDataInterface
     public static function getImage(array $header, array $media): array
     {
         $data = array();
-        if (isset($header['image'])
+        if (
+            isset($header['image'])
             && is_string($header['image'])
             && !empty($header['image'])
             && isset($media[$header['image']])
@@ -97,7 +101,8 @@ abstract class AbstractLinkedData implements LinkedDataInterface
         $collections = Utilities::filterRecursive(
             $header,
             function ($value) {
-                if (is_array($value)
+                if (
+                    is_array($value)
                     && array_key_exists('items', $value)
                     && is_array($value['items'])
                     && !empty($value['items'])
@@ -143,12 +148,17 @@ abstract class AbstractLinkedData implements LinkedDataInterface
      *
      * @param array   $options Page data.
      * @param string  $type    Type of Schema.
-     * @param boolean $script  Return as JavaScript, default false.
+     * @param boolean $script  Return as LD JSON, default false.
      *
      * @return array|string
      */
     public static function getSchema(array $options, string $type, $script = false)
     {
+        $options = Utils::arrayFlattenDotNotation($options);
+        foreach ($options as $key => $value) {
+            $options[$key] = (string) $value;
+        }
+        $options = Utils::arrayUnflattenDotNotation($options);
         $Schema = Schema::$type();
         foreach ($options as $key => $value) {
             $Schema->$key($value);

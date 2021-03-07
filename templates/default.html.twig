@@ -23,6 +23,9 @@
 {% endblock %}
 
 <main>
+    {% block search_results %}
+        {% include 'partials/components/search/wrapper.html.twig' %}
+    {% endblock %}
     {% block article %}
     <section>
         <article>
@@ -31,13 +34,10 @@
                 <h1>{{ page.title }}</h1>
             </header>
             {% include 'partials/components/default/metadata.html.twig' with {'page': page} %}
-            {{ navigablePage.content }}
+            {{ navigablePage.content|raw }}
             {% endblock %}
         </article>
     </section>
-    {% endblock %}
-    {% block search_results %}
-    {% include 'partials/components/search/wrapper.html.twig' %}
     {% endblock %}
     {% if 'what-links-here' in theme.components %}
         {% include 'partials/what_links_here.html.twig' %}

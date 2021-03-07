@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme
  *
@@ -11,6 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-theme-scholar
  */
+
 namespace Grav\Theme;
 
 use Grav\Common\Grav;
@@ -19,17 +21,8 @@ use Grav\Common\Utils;
 use Grav\Common\Inflector;
 use Grav\Framework\File\YamlFile;
 use Grav\Framework\File\Formatter\YamlFormatter;
-use Grav\Theme\Scholar\Content;
-use Grav\Theme\Scholar\LinkedData;
-use Grav\Theme\Scholar\Router;
-use Grav\Theme\Scholar\Source;
-use Grav\Theme\Scholar\TaxonomyMap;
-use Grav\Theme\Scholar\Timer;
-use Grav\Theme\Scholar\Autoload;
 use Grav\Theme\Scholar\Utilities;
-
 use RocketTheme\Toolbox\Event\Event;
-use Grav\Plugin\StaticGeneratorPlugin as StaticGenerator;
 
 /**
  * Scholar Theme
@@ -51,7 +44,6 @@ class Scholar extends Theme
      */
     public static function getSubscribedEvents()
     {
-        include __DIR__ . '/vendor/autoload.php';
         return [
             'onThemeInitialized' => ['onThemeInitialized', 0]
         ];
@@ -70,7 +62,6 @@ class Scholar extends Theme
         if ($this->config->get('system.pages.type') == "flex") {
             return;
         }
-        $this->autoload();
         if ($this->config->get('system.debugger.enabled')) {
             $this->grav['debugger']->startTimer('scholar', 'Scholar');
         }
@@ -81,16 +72,17 @@ class Scholar extends Theme
                     'onGetPageTemplates' => ['onGetPageTemplates', 0]
                 ]
             );
+        } else {
+            $this->enable(
+                [
+                    'onPagesInitialized' => ['onPagesInitialized', 0],
+                    'onPageInitialized' => ['onPageInitialized', 0],
+                    'onTwigExtensions' => ['onTwigExtensions', 0],
+                    'onTwigTemplatePaths' => ['templates', 0],
+                    'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0]
+                ]
+            );
         }
-        $this->enable(
-            [
-                'onPagesInitialized' => ['onPagesInitialized', 0],
-                'onPageInitialized' => ['onPageInitialized', 0],
-                'onTwigExtensions' => ['onTwigExtensions', 0],
-                'onTwigTemplatePaths' => ['templates', 0],
-                'onTwigSiteVariables' => ['transportTaxonomyTranslations', 0]
-            ]
-        );
         $this->schemas();
         if (isset($this->grav['shortcode'])) {
             $this->registerShortcodes();
@@ -127,7 +119,7 @@ class Scholar extends Theme
                     } elseif (is_array($property)) {
                         $data[$key] = call_user_func_array(
                             $property[0],
-                            array_slice($property, 1, count($property)-1, true)
+                            array_slice($property, 1, count($property) - 1, true)
                         );
                     }
                 }
@@ -138,7 +130,7 @@ class Scholar extends Theme
             if (!isset($data['default']) && $config->get('theme.' . $name)) {
                 $data['default'] = $config->get('theme.' . $name);
             }
-            $return [$prefix . $name] = $data;
+            $return[$prefix . $name] = $data;
         }
         return $return;
     }
@@ -284,7 +276,8 @@ class Scholar extends Theme
      */
     public function onPageInitialized()
     {
-        if (isset($this->grav['page']->header()->theme)
+        if (
+            isset($this->grav['page']->header()->theme)
             && !empty($this->grav['page']->header()->theme)
         ) {
             $this->grav['config']->set(
@@ -364,27 +357,14 @@ class Scholar extends Theme
             $searchRoute = $this->grav['page']->url(true, true, true);
         } else {
             $searchRoute = $this->grav['uri']->rootUrl(true) .
-            $this->config->get('themes.scholar.routes.search');
+                $this->config->get('themes.scholar.routes.search');
         }
         $this->grav['assets']->addInlineJs(
             'const systemLanguage = "' . $language . '";' . "\n" .
-            'const systemDateformat = {' . $dateFormatsJS() . '};' . "\n" .
-            'const siteTaxonomy = [\'' . implode("','", $this->config->get('site.taxonomies')) . '\'];' . "\n" .
-            'const searchRoute = "' . $searchRoute . '";' . "\n" .
-            'const ScholarTranslation = ' . json_encode(Utils::arrayUnflattenDotNotation($translationStrings)['THEME_SCHOLAR']) . ';'
-        );
-    }
-
-    /**
-     * Register APIs
-     *
-     * @return void
-     */
-    public function autoload()
-    {
-        new Autoload(
-            self::FQCN(),
-            Utils::arrayFlatten($this->config->get('theme.api'))
+                'const systemDateformat = {' . $dateFormatsJS() . '};' . "\n" .
+                'const siteTaxonomy = [\'' . implode("','", $this->config->get('site.taxonomies')) . '\'];' . "\n" .
+                'const searchRoute = "' . $searchRoute . '";' . "\n" .
+                'const ScholarTranslation = ' . json_encode(Utils::arrayUnflattenDotNotation($translationStrings)['THEME_SCHOLAR']) . ';'
         );
     }
 
@@ -477,7 +457,7 @@ class Scholar extends Theme
         include_once __DIR__ . '/twig/ScholarTwigExtensions.php';
         $this->grav['twig']->twig->addExtension(new ScholarTwigExtensions());
     }
-    
+
     /**
      * Initialize Shortcodes
      *
@@ -542,5 +522,15 @@ class Scholar extends Theme
             $options[$match] = $match;
         }
         return $options;
+    }
+
+    /**
+     * Composer autoload.
+     *
+     * @return \Composer\Autoload\ClassLoader
+     */
+    public function autoload(): \Composer\Autoload\ClassLoader
+    {
+        return require __DIR__ . '/vendor/autoload.php';
     }
 }

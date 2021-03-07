@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Linked Data for Page
  *
@@ -11,6 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Theme\Scholar;
@@ -41,6 +43,12 @@ class PageLinkedData extends AbstractLinkedData
     {
         $this->data = array();
         $this->Language = $Language;
+        if (empty($this->Language->getLanguages())) {
+            $this->Language->setLanguages(['en']);
+        }
+        if (!$this->Language->getDefault()) {
+            $this->Language->setDefault('en');
+        }
         $this->TaxonomyMap = Scholar::getInstance(
             $Config->get(
                 'theme.api.taxonomy_map',
@@ -125,7 +133,7 @@ class PageLinkedData extends AbstractLinkedData
                 }
                 $schemaCollection = ['@type' => 'ItemList', 'itemListElement' => array()];
                 foreach ($page->collection($collection) as $item) {
-                    $schemaCollection['itemListElement'][] = self::buildSchema($item, true);
+                    $schemaCollection['itemListElement'][] = $this->buildSchema($item, true);
                 }
                 $this->data['mainEntity'][] = $schemaCollection;
             }

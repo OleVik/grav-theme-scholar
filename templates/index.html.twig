@@ -14,13 +14,13 @@
     <header>
         {% if page.header.logo %}
             {% if page.media[page.header.logo.url ?? page.header.logo].extension == 'svg' %}
-                {{ rawcontent(page.media[page.header.logo.url ?? page.header.logo].filepath) }}
+                {{ rawcontent(page.media[page.header.logo.url ?? page.header.logo].filepath)|raw }}
             {% else %}
                 <img src="{{ page.media[page.header.logo.url ?? page.header.logo].url }}" role="figure" />
             {% endif %}
         {% endif %}
         <h1>{{ page.title }}</h1>
-        {{ page.content }}
+        {{ page.content|raw }}
     </header>
     {% with {
         'page': page,

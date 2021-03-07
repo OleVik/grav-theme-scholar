@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Autoload
  *
@@ -11,6 +12,7 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar;
 
 /**
@@ -21,6 +23,7 @@ namespace Grav\Theme\Scholar;
  * @author   Ole Vik <git@olevik.net>
  * @license  http://www.opensource.org/licenses/mit-license.html MIT License
  * @link     https://github.com/OleVik/grav-plugin-scholar
+ * @deprecated 3.0.0
  */
 class Autoload
 {

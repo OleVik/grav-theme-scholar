@@ -1,6 +1,8 @@
 name: Scholar
-version: 2.2.0
+version: 3.0.0-beta.1
 testing: true
+slug: scholar
+type: theme
 description: An academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé. Features include high accessibility, fast performance, print-friendly styles and more.
 icon: book
 author:
@@ -13,13 +15,10 @@ bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/master/README.md
 license: MIT
 dependencies:
-  - { name: grav, version: ">=1.7.7" }
-  - { name: error }
-  - { name: swiper }
-  - { name: problems }
+  - { name: grav, version: ">=1.7" }
   - { name: breadcrumbs }
   - { name: shortcode-core }
-  - { name: static-generator, version: ">=2.0.0" }
+  - { name: static-generator }
 
 form:
   validation: strict

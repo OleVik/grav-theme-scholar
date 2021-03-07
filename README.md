@@ -6,7 +6,7 @@ Scholar is an academic-focused theme, for publishing papers, articles, books, do
 
 - Extensible Components, Layouts and template-partials, Styles, API
 - Responsive Layouts, multiple Styles
-  - Print-friendly styles
+  - Print-friendly
 - Performant, light on resources
 - Accessible, tested against WCAG AA, Section 508, and best practices
   - Navigable by keyboard and screen readers
@@ -44,7 +44,9 @@ A demonstration is available at [OleVik.me/staging/grav-skeleton-scholar](https:
 
 ## Installation
 
-**NOTE:** Your installation of PHP must satisfy the version constraint `>=7.1.3 <7.4`, as Grav and its dependencies currently suffers errors from incompatibilities in the ecosystem.
+### Version 3.0.0 and higher
+
+This major-version update targets compatibility with Grav Core 1.7, but also updates some internals.
 
 ### Grav Package Manager
 
