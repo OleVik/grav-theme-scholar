@@ -11,6 +11,7 @@
     * Forcibly cast Linked Dataas strings
     * Fall back to `en` for Linked Data
     * Search-mechanisms
+    * Remove redundant `aria-checked`-attribute
 
 # v2.2.0
 ## 28-12-2020
