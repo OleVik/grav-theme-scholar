@@ -46,7 +46,7 @@ A demonstration is available at [OleVik.me/staging/grav-skeleton-scholar](https:
 
 ### Version 3.0.0 and higher
 
-This major-version update targets compatibility with Grav Core 1.7, but also updates some internals.
+This major-version update targets compatibility with Grav Core 1.7, and also updates and changes some internals.
 
 ### Grav Package Manager
 
@@ -64,7 +64,7 @@ You should now have all the theme files under
 
     /your/site/grav/user/themes/scholar
 
-This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes much of the logic in either, it is rebranded as Scholar.
+This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes most of the logic in either, it is rebranded as Scholar. It also goes much further in what a documentation-theme can be and do.
 
 ## [Advanced Usage](https://github.com/OleVik/grav-theme-scholar/blob/master/ADVANCED.md)
 
@@ -75,4 +75,4 @@ This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://g
 ## TODO
 
 - [ ] Evaluate metadata text-wrapping
-- [ ] Extension: Filter content with FlexSearch
+- [ ] Search: Replace with engine-agnostic approach, decoupling into a plugin

@@ -266,6 +266,7 @@ class Scholar extends Theme
                 ),
                 $this->grav
             );
+            new $Router($this->grav);
         }
     }
 
@@ -507,9 +508,11 @@ class Scholar extends Theme
      */
     public static function getClassNames(string $key)
     {
+        $classes = \HaydenPierce\ClassFinder\ClassFinder::getClassesInNamespace(
+            'Grav\Theme',
+            \HaydenPierce\ClassFinder\ClassFinder::RECURSIVE_MODE
+        );
         $language = Grav::instance()['language'];
-        $regex = '/Grav\\\\Theme\\\\Scholar\\\\(?<api>.*)/i';
-        $classes = preg_grep($regex, get_declared_classes());
         $matches = preg_grep('/' . $key . '/i', $classes);
         $options = [
             '' => $language->translate(['THEME_SCHOLAR.GENERIC.NONE'])

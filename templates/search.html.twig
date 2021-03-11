@@ -1,5 +1,7 @@
 {% extends page.topParent.template ?? 'default' ~ '.html.twig' %}
 
+{% set renderSearch = false %}
+
 {% block javascripts %}
     {% with {
         'mode': 'form'
@@ -8,16 +10,7 @@
     {% endwith %}
 {% endblock %}
 
-{% block header %}
-<header role="banner">
-    {% with {
-        'page': page,
-        'navigablePage': navigablePage
-        } %}
-        {{ block('links', 'partials/docs/header.html.twig') }}
-    {% endwith %}
-</header>
-{% endblock %}
+{% block search_results %}{% endblock %}
 
 {% block article %}
 <article class="search">

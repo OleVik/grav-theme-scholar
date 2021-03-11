@@ -1,3 +1,17 @@
+# v3.0.0-beta.2
+## 12-03-2021
+
+1. [](#new)
+    * `render`-variables for `templates/partials/header.html.twig` and `components/docs/partials/docs/toolbar/menu.html.twig`
+2. [](#improved)
+    * Search-template
+    * Expect metadata in `user://data/persist/index.js`
+    * Expect full data in `user://data/persist/static/index.full.js`
+3. [](#bugfix)
+    * API-alignment to use `Grav\Common\Page\Interfaces\PageInterface`
+    * ClassNames-getter
+    * Patch Router Page-instance
+
 # v3.0.0-beta.1
 ## 08-03-2021
 
@@ -8,7 +22,7 @@
     * Dependencies strictness
 2. [](#bugfix)
     * Relocate search-results for correct keyboard-navigation
-    * Forcibly cast Linked Dataas strings
+    * Forcibly cast Linked Data as strings
     * Fall back to `en` for Linked Data
     * Search-mechanisms
     * Remove redundant `aria-checked`-attribute

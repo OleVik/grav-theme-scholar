@@ -15,7 +15,7 @@
 
 namespace Grav\Theme\Scholar\LinkedData;
 
-use Grav\Common\Page\Page;
+use Grav\Common\Page\Interfaces\PageInterface as Page;
 
 /**
  * Linked Data Interface

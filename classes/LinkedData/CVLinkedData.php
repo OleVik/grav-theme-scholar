@@ -16,7 +16,7 @@
 namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Inflector;
-use Grav\Common\Page\Page;
+use Grav\Common\Page\Interfaces\PageInterface as Page;
 use Grav\Common\Language\Language;
 
 /**

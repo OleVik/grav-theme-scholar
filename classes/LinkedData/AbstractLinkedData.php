@@ -17,7 +17,7 @@ namespace Grav\Theme\Scholar\LinkedData;
 
 use Grav\Common\Grav;
 use Grav\Common\Utils;
-use Grav\Common\Page\Page;
+use Grav\Common\Page\Interfaces\PageInterface as Page;
 use Spatie\SchemaOrg\Schema;
 use Grav\Theme\Scholar\Utilities;
 use Grav\Theme\Scholar\LinkedData\LinkedDataInterface;

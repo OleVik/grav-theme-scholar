@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Content
  *
@@ -11,11 +12,11 @@
  * @license    http://www.opensource.org/licenses/mit-license.html MIT License
  * @link       https://github.com/OleVik/grav-plugin-scholar
  */
+
 namespace Grav\Theme\Scholar\Content;
 
 use Grav\Common\Grav;
 use Grav\Common\Inflector;
-use Grav\Common\Page\Page;
 use Grav\Common\Page\Media;
 use Grav\Theme\Scholar\Content\ContentInterface;
 
@@ -106,8 +107,8 @@ class Content implements ContentInterface
                 $fragment = $doc->createDocumentFragment();
                 $fragment->appendXML(
                     '<a name="' . $id . '"><' . $element->nodeName
-                    . '>' . $element->textContent
-                    . '</' . $element->nodeName . '></a>'
+                        . '>' . $element->textContent
+                        . '</' . $element->nodeName . '></a>'
                 );
                 $element->parentNode->replaceChild($fragment, $element);
             } else {
@@ -193,7 +194,7 @@ class Content implements ContentInterface
         $node = $doc->getElementsByTagName('body')[0];
         return self::getInnerHTML($node, false);
     }
-    
+
     /**
      * Extract headings from HTML
      *
@@ -214,7 +215,7 @@ class Content implements ContentInterface
             $href = $data[$title]['href'];
             $level = $data[$title]['level'];
             $nextLevel = $data[next($keys)]['level'] ?? null;
-        
+
             if ($nextLevel > $level) {
                 $output .= '<li><a href="#' . $href . '">' . $title . '</a><ol>';
             } else {

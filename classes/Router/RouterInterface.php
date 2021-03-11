@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Scholar Theme, Router Interface
  *
@@ -15,7 +16,7 @@
 namespace Grav\Theme\Scholar\Router;
 
 use Grav\Common\Grav;
-use Grav\Common\Page\Page;
+use Grav\Common\Page\Interfaces\PageInterface as Page;
 use Grav\Common\Page\Collection;
 
 /**

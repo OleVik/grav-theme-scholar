@@ -53,7 +53,6 @@ class Router
         $this->printRoute = $this->grav['config']->get('theme.routes.print')
             ?? $this->grav['config']->get('themes.scholar.routes.print')
             ?? '/print';
-
         $path = $this->grav['uri']->path();
         if (\in_array(
             '/' . basename($path),
@@ -65,11 +64,14 @@ class Router
             ]
         )) {
             $page = $this->dispatch($path);
-            $page->parent(
-                $this->grav['pages']->find(
-                    str_replace('/' . basename($path), '', $path)
-                )
+            $parent = $this->grav['pages']->find(
+                str_replace('/' . basename($path), '', $path)
             );
+            if ($parent == null) {
+                $parent = $this->grav['pages']->find('/');
+                $parent->template('default');
+            }
+            $page->parent($parent);
         } else {
             return;
         }

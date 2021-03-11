@@ -15,7 +15,7 @@
                 Scholar.searchFieldInit(GravMetadataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "media"], ' ~ json_encode(config.theme.flexsearch.index) ~ ');
             ', {group: 'bottom'}) %}
         {% else %}
-            {% do assets.addInlineJs('console.debug("No data to search.");', {group: 'bottom'}) %}
+            {% do assets.addInlineJs('console.debug("No data for search-field.");', {group: 'bottom'}) %}
         {% endif %}
     {% elseif mode == 'form' %}
         {% do assets.addCss('theme://node_modules/mobius1-selectr/dist/selectr.min.css') %}
@@ -32,7 +32,7 @@
         {% set searchFile = files_exist([
             page.header.search,
             page.topParent.header.search,
-            'user://data/persist/index.full.js'
+            'user://data/persist/static/index.full.js'
         ]) %}
         {% if searchFile %}
             {% do assets.addJs(searchFile) %}
@@ -40,7 +40,7 @@
             Scholar.searchPageInit(GravDataIndex, ["title", "date", "taxonomy:categories", "taxonomy:tags", "content", "media"], ' ~ json_encode(config.theme.flexsearch.full) ~ ');
         ', {group: 'bottom'}) %}
         {% else %}
-            {% do assets.addInlineJs('console.debug("No data to search.");', {group: 'bottom'}) %}
+            {% do assets.addInlineJs('console.debug("No data for search-form.");', {group: 'bottom'}) %}
         {% endif %}
     {% endif %}
 {% endblock %}
