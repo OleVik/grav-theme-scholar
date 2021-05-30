@@ -56,7 +56,7 @@ class Scholar extends Theme
      */
     public function onThemeInitialized()
     {
-        if ($this->config->get('themes.scholar.enabled') != true) {
+        if (!$this->config->get('themes.scholar.enabled')) {
             return;
         }
         if ($this->config->get('system.pages.type') == "flex") {
@@ -143,11 +143,12 @@ class Scholar extends Theme
     public static function getStylesBlueprint(): array
     {
         include __DIR__ . '/vendor/autoload.php';
+        $styles = array('' => 'Blank');
+        $styles = array('metal' => 'Metal');
         $stylesFolders = Utils::arrayMergeRecursiveUnique(
             Utilities::filesFinder('theme://css/styles', ['css']),
             Utilities::filesFinder('user://themes/scholar/css/styles', ['css'])
         );
-        $styles = array();
         foreach (array_unique($stylesFolders) as $style) {
             $name = $style->getBasename('.' . $style->getExtension());
             $styles[$name] = Inflector::titleize($name);
@@ -209,6 +210,12 @@ class Scholar extends Theme
      */
     public function onGetPageBlueprints(Event $event)
     {
+        if (
+            $this->config->get('theme.components') !== null ||
+            !is_array($this->config->get('theme.components'))
+        ) {
+            return;
+        }
         foreach ($this->config->get('themes.scholar.components') as $component) {
             $componentFolder = Utilities::folderFinder(
                 'blueprints',
@@ -239,6 +246,12 @@ class Scholar extends Theme
      */
     public function onGetPageTemplates(Event $event)
     {
+        if (
+            $this->config->get('theme.components') !== null ||
+            !is_array($this->config->get('theme.components'))
+        ) {
+            return;
+        }
         foreach ($this->config->get('themes.scholar.components') as $component) {
             $folder = $this->grav['locator']->findResource(
                 'theme://components/' . $component,
@@ -376,6 +389,12 @@ class Scholar extends Theme
      */
     public function templates()
     {
+        if (
+            $this->config->get('theme.components') !== null ||
+            !is_array($this->config->get('theme.components'))
+        ) {
+            return;
+        }
         $locator = $this->grav['locator'];
         foreach ($this->config->get('theme.components') as $component) {
             $target = Utilities::folderFinder(
@@ -396,6 +415,14 @@ class Scholar extends Theme
      */
     public function schemas()
     {
+        if (
+            $this->config->get('theme.components') !== null ||
+            !is_array($this->config->get('theme.components'))
+        ) {
+            $this->grav['config']->set('theme.schema.default', 'CreativeWork');
+            $this->grav['config']->set('theme.schema.types.default', 'CreativeWork');
+            return;
+        }
         $locator = $this->grav['locator'];
         $formatter = new YamlFormatter;
         $target = Utilities::fileFinder(
@@ -423,7 +450,7 @@ class Scholar extends Theme
                 $this->grav['config']->set('theme.schema.types.' . $schema, $data);
             }
         }
-        foreach ($this->config->get('themes.scholar.components') as $component) {
+        foreach ($this->config->get('theme.components') as $component) {
             $target = Utilities::fileFinder(
                 'schema.yaml',
                 [
@@ -467,6 +494,12 @@ class Scholar extends Theme
     public function registerShortcodes()
     {
         $this->grav['shortcode']->registerAllShortcodes(__DIR__ . '/shortcodes');
+        if (
+            $this->config->get('theme.components') !== null ||
+            !is_array($this->config->get('theme.components'))
+        ) {
+            return;
+        }
         foreach ($this->config->get('theme.components') as $component) {
             $path = 'theme://components/' . $component . '/shortcodes';
             if (is_dir($this->grav['locator']->findResource($path))) {

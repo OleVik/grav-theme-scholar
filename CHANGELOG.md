@@ -1,3 +1,9 @@
+# v3.0.1
+## 30-05-2021
+
+1. [](#bugfix)
+    * Return gracefully from unset theme-options
+
 # v3.0.0
 ## 10-04-2021
 
