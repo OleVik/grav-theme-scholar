@@ -24,7 +24,7 @@
             <p class="subtitle">{{ page.header.subtitle }}</p>
             {% endif %}
             {% include 'partials/components/article/metadata.html.twig' with {'page': page} %}
-            {{ navigablePage.content|strip_html_tags(['h1']) }}
+            {{ navigablePage.content|strip_html_tags(['h1'])|raw }}
             {% endblock %}
         </article>
     </section>
