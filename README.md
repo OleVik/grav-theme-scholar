@@ -64,7 +64,7 @@ You should now have all the theme files under
 
     /your/site/grav/user/themes/scholar
 
-This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme. As this theme decouples and supercedes most of the logic in either, it is rebranded as Scholar. It also goes much further in what a documentation-theme can be and do.
+This theme started as a clone of Paul Hibbitt's [Learn2 with Git Sync](https://github.com/hibbitts-design/grav-theme-learn2-git-sync)-theme, which is a customized version of the [Learn2](https://github.com/getgrav/grav-theme-learn2)-theme, and drew inspiration from [HTML5Up's Future Imperfect template](https://html5up.net/future-imperfect). As this theme decouples and supercedes most of the logic in either, it is rebranded as Scholar. It also goes much further in what a documentation-theme can be and do.
 
 ## [Advanced Usage](https://github.com/OleVik/grav-theme-scholar/blob/master/ADVANCED.md)
 
