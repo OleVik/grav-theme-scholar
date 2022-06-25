@@ -390,7 +390,7 @@ class Scholar extends Theme
     public function templates()
     {
         if (
-            $this->config->get('theme.components') !== null ||
+            $this->config->get('theme.components') === null ||
             !is_array($this->config->get('theme.components'))
         ) {
             return;

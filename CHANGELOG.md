@@ -1,3 +1,9 @@
+# v3.0.3
+## 25-06-2022
+
+1. [](#bugfix)
+    * Components registration and What Links Here component fallback [#27](https://github.com/OleVik/grav-theme-scholar/issues/27), [#29](https://github.com/OleVik/grav-theme-scholar/issues/29), [#32](https://github.com/OleVik/grav-theme-scholar/issues/32)
+
 # v3.0.2
 ## 30-05-2021
 
