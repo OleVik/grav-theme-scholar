@@ -3,6 +3,8 @@
 
 1. [](#bugfix)
     * Components registration and What Links Here component fallback [#27](https://github.com/OleVik/grav-theme-scholar/issues/27), [#29](https://github.com/OleVik/grav-theme-scholar/issues/29), [#32](https://github.com/OleVik/grav-theme-scholar/issues/32)
+2. [](#tested)
+    * Grav v1.7.34 - Admin v1.10.34
 
 # v3.0.2
 ## 30-05-2021
