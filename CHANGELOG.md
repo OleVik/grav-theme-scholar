@@ -1,3 +1,10 @@
+# v3.0.4
+## 26-06-2022
+
+1. [](#bugfix)
+    * Menu-alignment
+    * Correct Stylelint-config
+
 # v3.0.3
 ## 25-06-2022
 

@@ -5,10 +5,7 @@ module.exports = {
   plugins: [
     "stylelint-declaration-block-no-ignored-properties",
     "stylelint-declaration-strict-value",
-    // resolve(
-    //   __dirname,
-    //   "local_modules/node_modules/stylelint-no-indistinguishable-colors"
-    // ),
+    "stylelint-no-indistinguishable-colors",
     "stylelint-selector-no-empty",
     "stylelint-prettier",
   ],
