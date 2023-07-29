@@ -1,5 +1,5 @@
 name: Scholar
-version: 3.0.4
+version: 3.0.5
 slug: scholar
 type: theme
 description: An academic-focused theme, for publishing papers, articles, books, documentation, your blog, and even your resumé. Features include high accessibility, fast performance, print-friendly styles and more.
@@ -8,7 +8,7 @@ author:
   name: Ole Vik
   email: git@olevik.net
 homepage: https://github.com/OleVik/grav-theme-scholar
-demo: https://olevik.me/staging/grav-skeleton-scholar
+demo: https://olevik.net/staging/grav-skeleton-scholar
 keywords: grav, theme, academic, paper, papers, article, articles, book, books, docs, documentation, resume, cv
 bugs: https://github.com/OleVik/grav-theme-scholar/issues
 readme: https://github.com/OleVik/grav-theme-scholar/blob/master/README.md
